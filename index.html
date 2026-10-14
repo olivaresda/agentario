@@ -534,6 +534,10 @@ const MP_LINK = "https://link.mercadopago.cl/danielolivares";
 const SUSCRIPCION_EMAIL = CONTACTO;
 /* Segundos antes de mostrar el pop-up de novedades a un visitante nuevo */
 const POPUP_SEGUNDOS = 12;
+/* Analítica con GoatCounter (gratis, sin cookies). Crea tu cuenta en goatcounter.com y escribe aquí
+   tu código (si tu panel es https://agentario.goatcounter.com, el código es "agentario").
+   Vacío = no se mide nada. */
+const GOATCOUNTER = "";
 
 /* Sponsors activos: {nombre, url}. Vacío = se muestran espacios disponibles */
 const SPONSORS = [];
@@ -893,7 +897,30 @@ function renderStatic(){
   $('#sponsorMail').href = `mailto:${CONTACTO}?subject=${sp}&body=${spb}`;
 }
 
-function setCat(k){ state.cat=k; state.limit=12; document.querySelectorAll('#chips .chip').forEach(b=>b.setAttribute('aria-pressed', b.dataset.cat===k)); renderList(); }
+/* ============ Analítica ============ */
+const medir = (() => {
+  const activo = GOATCOUNTER && /^https?:$/.test(location.protocol) && !/claude\.ai$|claudeusercontent/.test(location.hostname);
+  const cola = [];
+  if (activo) {
+    const sc = document.createElement('script');
+    sc.async = true; sc.src = 'https://gc.zgo.at/count.js';
+    sc.dataset.goatcounter = `https://${GOATCOUNTER}.goatcounter.com/count`;
+    sc.dataset.goatcounterSettings = '{"no_onload":true}';
+    sc.onload = () => { while (cola.length) enviar(cola.shift()); };
+    document.head.appendChild(sc);
+  }
+  function enviar(d){ try { window.goatcounter.count(d); } catch(e) {} }
+  return {
+    /* Visita a una sección o caso: aparece como página en el panel */
+    vista(path, title){ if (!activo) return; const d = {path, title}; window.goatcounter && window.goatcounter.count ? enviar(d) : cola.push(d); },
+    /* Acción del visitante: aparece en el panel con event: true */
+    evento(path, title){ if (!activo) return; const d = {path, title: title || path, event: true}; window.goatcounter && window.goatcounter.count ? enviar(d) : cola.push(d); }
+  };
+})();
+const tituloCaso = id => (CASOS.find(c=>c.id===id)||{}).t || id;
+/* ==================================== */
+
+function setCat(k){ medir.evento('filtro-categoria/' + k, 'Filtro: ' + (CATS[k]||'Todos')); state.cat=k; state.limit=12; document.querySelectorAll('#chips .chip').forEach(b=>b.setAttribute('aria-pressed', b.dataset.cat===k)); renderList(); }
 
 /* ============ Pop-up de novedades ============ */
 const news = {
@@ -973,6 +1000,7 @@ $('#newsForm').addEventListener('submit', async e => {
   btn.disabled = false; btn.textContent = 'Quiero recibir novedades';
   if (ok) {
     store.set('agentario-news', 'ok');
+    medir.evento('suscripcion-novedades', 'Suscripción a novedades');
     $('#newsFormWrap').hidden = true; $('#newsDone').hidden = false; $('#newsOk').focus();
   } else {
     const mail = `mailto:${CONTACTO}?subject=${encodeURIComponent('Quiero recibir novedades de Agentario')}&body=${encodeURIComponent('Mi correo: ' + email + (nombre ? '\nMi nombre: ' + nombre : ''))}`;
@@ -1005,6 +1033,7 @@ $('#apForm').addEventListener('submit', async e => {
   if (!ok) { try { ok = await guardarConFormSubmit('Nuevo caso aportado a Agentario: ' + datos.titulo, datos); } catch(e2) { ok = false; } }
   btn.disabled = false; btn.textContent = 'Enviar mi caso';
   if (ok) {
+    medir.evento('aporte-enviado', 'Aporte enviado: ' + datos.agente);
     f.reset(); f.hidden = true; $('#apDone').hidden = false; $('#apDone').scrollIntoView({block:'center'});
   } else {
     const cuerpo = Object.entries(datos).filter(([k,x])=>x && k!=='origen').map(([k,x])=>k + ': ' + x).join('\n\n');
@@ -1034,20 +1063,26 @@ function autoPopup(){
 document.addEventListener('click', async e => {
   const t = e.target.closest('button,a'); if (!t) return;
   const find = id => CASOS.find(c=>c.id===id);
-  if (t.hasAttribute('data-news')){ news.open();
+  if (t.classList.contains('via') || t.classList.contains('fo')) {
+    const id = (t.closest('.case')||{}).id || ''; medir.evento((t.classList.contains('via')?'clic-alianza/':'clic-fuente/') + id.replace(/^caso-/,''), (t.classList.contains('via')?'Clic Agent Use Cases: ':'Clic fuente: ') + tituloCaso(id.replace(/^caso-/,'')));
+  }
+  if (t.hasAttribute('data-news')){ news.open(); medir.evento('abrir-novedades', 'Abrir pop-up de novedades');
   } else if (t.dataset.toggle){
     const li = t.closest('.case'); const open = li.classList.toggle('open');
     t.setAttribute('aria-expanded', open); t.textContent = open ? 'Ocultar prompt' : 'Ver prompt';
+    if (open) medir.evento('ver-prompt/' + t.dataset.toggle, 'Ver prompt: ' + tituloCaso(t.dataset.toggle));
   } else if (t.dataset.open){
     e.preventDefault(); const li=t.closest('.case'); if(!li.classList.contains('open')) li.querySelector('[data-toggle]').click();
   } else if (t.dataset.copy){
     const c = find(t.dataset.copy);
+    medir.evento('copiar-prompt/' + c.id, 'Copiar prompt: ' + c.t);
     try { await navigator.clipboard.writeText(c.p); toast('Prompt copiado'); }
     catch(err){ const li=t.closest('.case'); if(!li.classList.contains('open')) li.querySelector('[data-toggle]').click(); toast('Selecciona el texto para copiarlo'); }
   } else if (t.dataset.share){
     const c = find(t.dataset.share);
     const url = location.href.split('#')[0] + '#caso-' + c.id;
     try {
+      medir.evento('compartir/' + c.id, 'Compartir: ' + c.t);
       if (navigator.share) { await navigator.share({title:c.t, text:c.d, url}); }
       else { await navigator.clipboard.writeText(url); toast('Enlace copiado'); }
     } catch(err){}
@@ -1056,6 +1091,7 @@ document.addEventListener('click', async e => {
     saved.has(id) ? saved.delete(id) : saved.add(id); persist();
     document.querySelectorAll(`[data-save="${CSS.escape(id)}"]`).forEach(b=>{ b.setAttribute('aria-pressed', saved.has(id)); b.textContent = saved.has(id)?'Guardado':'Guardar'; });
     toast(saved.has(id)?'Guardado en este navegador':'Quitado de guardados');
+    if (saved.has(id)) medir.evento('guardar/' + id, 'Guardar: ' + tituloCaso(id));
     if (state.onlySaved) renderList();
   } else if (t.dataset.cat){ setCat(t.dataset.cat);
   } else if (t.dataset.gotoCat){ setCat(t.dataset.gotoCat); $('#todos').scrollIntoView({behavior:'smooth'});
@@ -1064,6 +1100,7 @@ document.addEventListener('click', async e => {
     state.sort=t.dataset.sort; document.querySelectorAll('[data-sort]').forEach(b=>b.setAttribute('aria-pressed', b===t)); renderList();
   } else if (t.hasAttribute('data-partner') || t.hasAttribute('data-goto-partner')){
     state.onlyPartner = t.hasAttribute('data-goto-partner') ? true : !state.onlyPartner; state.limit=12;
+    if (state.onlyPartner) medir.evento('filtro-alianza', 'Filtro: Agent Use Cases');
     $('[data-partner]').setAttribute('aria-pressed', state.onlyPartner); renderList();
     if (t.hasAttribute('data-goto-partner')) $('#todos').scrollIntoView({behavior:'smooth'});
   } else if (t.hasAttribute('data-saved')){
@@ -1071,13 +1108,23 @@ document.addEventListener('click', async e => {
   } else if (t.id==='more'){ state.limit+=12; renderList(); }
 });
 
-$('#q').addEventListener('input', e => { state.q=e.target.value; state.limit=12; renderList(); });
-$('#agentSel').addEventListener('change', e => { state.agent=e.target.value; state.limit=12; renderList(); });
+let busquedaTimer;
+$('#q').addEventListener('input', e => {
+  state.q=e.target.value; state.limit=12; renderList();
+  clearTimeout(busquedaTimer);
+  busquedaTimer = setTimeout(() => {
+    const q = state.q.trim().toLowerCase().replace(/[^a-z0-9áéíóúñü ]/g,'').replace(/\s+/g,' ').slice(0,40);
+    if (q.length >= 3) medir.evento('busqueda/' + q.replace(/ /g,'-'), 'Búsqueda: ' + q + (filtered().length ? '' : ' (sin resultados)'));
+  }, 1500);
+});
+$('#agentSel').addEventListener('change', e => { state.agent=e.target.value; state.limit=12; renderList(); medir.evento('filtro-agente/' + state.agent.toLowerCase().replace(/\s+/g,'-'), 'Filtro agente: ' + state.agent); });
 
 function route(){
   const h = location.hash;
   const view = h.startsWith('#/patrocina') ? 'sponsor' : h.startsWith('#/aporta') ? 'aporta' : 'home';
   const sponsor = view !== 'home';
+  if (h.startsWith('#caso-')) medir.vista('/caso/' + h.slice(6), tituloCaso(h.slice(6)));
+  else medir.vista({home:'/', aporta:'/aporta', sponsor:'/patrocina'}[view], {home:'Inicio', aporta:'Aporta tu caso', sponsor:'Patrocina'}[view]);
   ['home','aporta','sponsor'].forEach(k => { $('#view-' + k).hidden = k !== view; });
   document.querySelectorAll('[data-nav]').forEach(a => a.dataset.nav === view ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
   document.title = { home:'Agentario: casos de uso de agentes de IA en español', aporta:'Aporta tu caso a Agentario', sponsor:'Patrocina Agentario' }[view];

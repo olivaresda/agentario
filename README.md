@@ -19,3 +19,7 @@ La página muestra un pop-up que pide el correo del visitante (a los 12 segundos
 
 - En GitHub Pages, cada suscripción se envía por correo a `SUSCRIPCION_EMAIL` mediante [FormSubmit](https://formsubmit.co). La primera vez llega un correo de activación que hay que confirmar.
 - Dentro de claude.ai (artefacto), se guarda en la base de datos del artefacto, colección `suscriptores`, visible solo para el dueño.
+
+## Analítica
+
+La página mide visitas y acciones con [GoatCounter](https://www.goatcounter.com) (sin cookies). Para activarla, escribe tu código en la constante `GOATCOUNTER` de `index.html`. Se registran: secciones visitadas, casos abiertos por enlace, búsquedas (marcando las que no tienen resultados), filtros de categoría, agente y alianza, prompts vistos, copiados, compartidos y guardados, clics a Agent Use Cases y a las fuentes, suscripciones y aportes enviados.
