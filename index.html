@@ -99,6 +99,11 @@ ol.cases{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.88rem;color:var(--ink-soft)}
 .meta .agent{font-weight:700;color:var(--ink)}
 .meta .new{background:var(--new-soft);color:var(--new);font-weight:700;padding:2px 9px;border-radius:999px}
+.meta .via{background:var(--sky-soft);color:var(--ink);font-weight:700;padding:2px 9px;border-radius:999px;text-decoration:none}
+.meta .via:hover{text-decoration:underline}
+.meta a.fo{color:var(--ink-soft)}
+.case p.res{margin:0 0 10px;max-width:72ch;font-size:.95rem;border-left:3px solid var(--new);padding-left:10px}
+.case p.res strong{color:var(--new)}
 .meta .spon{background:var(--sun-glow);color:var(--ink);font-weight:700;padding:2px 9px;border-radius:999px}
 .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .act{border:1.5px solid var(--line);background:var(--surface);border-radius:9px;padding:6px 12px;font-size:.9rem;font-weight:700;color:var(--ink)}
@@ -166,6 +171,30 @@ ol.steps li::before{content:counter(s);display:grid;place-items:center;width:32p
 .who h3{font-size:1.1rem;margin-bottom:6px}
 .who p{margin:0;color:var(--ink-soft)}
 
+/* Aporta */
+.ap-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start;padding-bottom:12px}
+.ap-form{background:var(--surface);border:1.5px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:14px}
+.ap-form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ap-form label{display:grid;gap:6px;font-weight:700;font-size:.95rem}
+.ap-form label small{font-weight:400;color:var(--ink-soft)}
+.ap-form input,.ap-form textarea,.ap-form select{width:100%;font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px}
+.ap-form textarea{min-height:110px;resize:vertical}
+.ap-form input:focus,.ap-form textarea:focus,.ap-form select:focus{border-color:var(--sky);outline:none}
+.ap-form .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.92rem;color:var(--ink-soft)}
+.ap-form .check input{width:auto;margin-top:4px}
+.ap-form .btn{justify-self:start}
+.ap-side{display:grid;gap:16px}
+.ap-side .box{background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:20px}
+.ap-side h3{font-size:1.1rem;margin-bottom:8px}
+.ap-side ul{margin:0;padding-left:18px;color:var(--ink-soft)}
+.ap-side li{margin:5px 0}
+.ap-done{background:var(--new-soft);border-radius:22px;padding:24px}
+.ap-done h2{font-size:1.4rem;margin-bottom:6px}
+.partner{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;background:linear-gradient(120deg,var(--sky-soft),var(--surface) 75%);border:1.5px solid var(--line);border-radius:22px;padding:22px 24px}
+.partner .logo{width:52px;height:52px;border-radius:14px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:1.05rem}
+.partner h2{font-size:1.3rem}
+.partner p{margin:4px 0 0;color:var(--ink-soft)}
+
 /* Pop-up de novedades */
 dialog.news{border:0;padding:0;background:transparent;color:var(--ink);max-width:min(460px,calc(100vw - 32px));width:100%}
 dialog.news::backdrop{background:rgba(15,23,48,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
@@ -204,9 +233,14 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
   .browse{grid-template-columns:1fr}
   .band{grid-template-columns:1fr}
   .donate-box{grid-template-columns:1fr}
+  .ap-grid,.ap-form .two{grid-template-columns:1fr}
+  .partner{grid-template-columns:auto 1fr}
+  .partner .btn{grid-column:1 / -1;justify-self:start}
 }
 @media (max-width:520px){
   nav.main a:not(.donate):not([aria-current="page"]){display:none}
+  nav.main button[data-news]{display:none}
+  .top .wrap{gap:10px}
   .browse ul{columns:1}
   ol.steps{grid-template-columns:1fr}
   .count{margin-left:0;width:100%}
@@ -221,6 +255,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
     <a class="brand" href="#/" aria-label="Agentario, inicio"><span class="dot" aria-hidden="true"></span>Agentario</a>
     <nav class="main" aria-label="Principal">
       <a href="#/" data-nav="home">Casos</a>
+      <a href="#/aporta" data-nav="aporta">Aporta</a>
       <a href="#/patrocina" data-nav="sponsor">Patrocina</a>
       <button type="button" data-news>Novedades</button>
       <a class="donate" href="https://link.mercadopago.cl/danielolivares" target="_blank" rel="noopener">Donar</a>
@@ -259,6 +294,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
             <button type="button" data-sort="new" aria-pressed="true">Recientes</button>
             <button type="button" data-sort="az" aria-pressed="false">A–Z</button>
             <button type="button" data-saved aria-pressed="false">Guardados</button>
+            <button type="button" data-partner aria-pressed="false">Agent Use Cases</button>
           </div>
           <span class="count" id="count" aria-live="polite"></span>
         </div>
@@ -280,7 +316,18 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
           <h2>¿Usaste un agente para algo útil?</h2>
           <p>Cuéntanos qué hiciste, con qué herramienta y el prompt. Si lo publicamos, aparece con tu nombre.</p>
         </div>
-        <a class="btn ink-b" id="submitBtn" href="#">Enviar un caso</a>
+        <a class="btn ink-b" href="#/aporta">Aportar un caso</a>
+      </div>
+    </section>
+
+    <section class="block" aria-label="Alianza">
+      <div class="partner">
+        <div class="logo" aria-hidden="true">AU</div>
+        <div>
+          <h2>En alianza con Agent Use Cases</h2>
+          <p>Traemos al español los casos reales que recopila <a href="https://agentusecases.ai/" target="_blank" rel="noopener">agentusecases.ai</a>, con su fuente original y el resultado que obtuvo cada persona.</p>
+        </div>
+        <button class="btn ghost" type="button" data-goto-partner>Ver sus casos</button>
       </div>
     </section>
 
@@ -288,6 +335,81 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
       <div><h2>Por agente</h2><ul id="byAgent"></ul></div>
       <div><h2>Por categoría</h2><ul id="byCat"></ul></div>
     </section>
+  </div>
+</main>
+
+<main id="view-aporta" hidden>
+  <div class="wrap">
+    <div class="sp-hero">
+      <h1>Aporta tu caso de uso</h1>
+      <p>¿Usaste un agente de IA para resolver algo real? Cuéntanos qué hiciste, con qué herramienta y cómo te fue. Revisamos cada aporte y, si lo publicamos, aparece con tu nombre.</p>
+    </div>
+    <div class="ap-grid">
+      <div>
+        <form class="ap-form" id="apForm" novalidate>
+          <label>Título del caso
+            <input name="titulo" maxlength="120" required placeholder="Ej.: Conciliar las ventas del mes con el banco">
+          </label>
+          <div class="two">
+            <label>Agente o herramienta
+              <input name="agente" maxlength="60" required placeholder="Ej.: Claude, n8n, ChatGPT Agent" list="apAgentes">
+              <datalist id="apAgentes"></datalist>
+            </label>
+            <label>Categoría
+              <select name="categoria" id="apCat" required></select>
+            </label>
+          </div>
+          <label>¿Qué hiciste? <small>Qué problema resolviste y cómo lo hizo el agente</small>
+            <textarea name="descripcion" maxlength="1500" required placeholder="Cuéntalo en dos o tres frases"></textarea>
+          </label>
+          <label>Prompt o instrucciones <small>(opcional, pero es lo que más ayuda a otros)</small>
+            <textarea name="prompt" maxlength="3000" placeholder="Pega el prompt que usaste. Quita datos personales o de clientes."></textarea>
+          </label>
+          <label>Resultado <small>(opcional) Cuánto tiempo o dinero ahorraste, qué falló</small>
+            <input name="resultado" maxlength="300" placeholder="Ej.: Pasé de 3 horas a 20 minutos al mes">
+          </label>
+          <label>Enlace de referencia <small>(opcional) Video, post o repositorio</small>
+            <input name="enlace" type="url" maxlength="300" placeholder="https://">
+          </label>
+          <div class="two">
+            <label>Tu nombre para el crédito
+              <input name="nombre" maxlength="80" required autocomplete="name">
+            </label>
+            <label>Tu correo <small>(no se publica)</small>
+              <input name="email" type="email" maxlength="120" required autocomplete="email">
+            </label>
+          </div>
+          <div class="hp" aria-hidden="true" style="position:absolute;left:-9999px"><label>No llenar<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+          <label class="check"><input type="checkbox" name="permiso" required> Autorizo a Agentario a editar y publicar este caso con mi nombre. Confirmo que no incluye datos personales de terceros.</label>
+          <p class="news-msg" id="apMsg" role="alert"></p>
+          <button class="btn sun-b" type="submit" id="apBtn">Enviar mi caso</button>
+        </form>
+        <div class="ap-done" id="apDone" hidden>
+          <h2>¡Gracias por tu aporte!</h2>
+          <p>Lo revisaremos y te avisaremos por correo si lo publicamos. Puedes enviar otro cuando quieras.</p>
+          <p style="margin-top:14px"><button class="btn ink-b" type="button" id="apOtro">Enviar otro caso</button> <a class="btn ghost" href="#/">Volver a los casos</a></p>
+        </div>
+      </div>
+      <aside class="ap-side">
+        <div class="box">
+          <h3>Qué publicamos</h3>
+          <ul>
+            <li>Casos que hayas probado tú o tu equipo, no ideas.</li>
+            <li>Tareas concretas: qué se delegó y qué hizo el agente.</li>
+            <li>Resultados honestos, incluidos los tropiezos.</li>
+            <li>Prompts que otra persona pueda copiar y adaptar.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Cómo lo revisamos</h3>
+          <ul>
+            <li>Editamos el texto para que sea claro y breve.</li>
+            <li>Quitamos datos personales, de clientes o credenciales.</li>
+            <li>Si algo no calza, te escribimos antes de publicar.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
   </div>
 </main>
 
@@ -423,8 +545,81 @@ const CATS = {
   marketing:"Marketing y contenido", research:"Investigación", software:"Software y datos", vida:"Vida diaria y viajes"
 };
 
+/* Casos de la alianza: src (página en agentusecases.ai), fo (fuente original {n,u}), r (resultado real) */
 /* Casos: id, t (título), d (descripción), a (agente), c (categoría), f (fecha AAAA-MM-DD), p (prompt), s (patrocinado, opcional) */
 const CASOS = [
+{id:"whatsapp-agenda-registro",f:"2026-10-14",c:"ventas",a:"n8n",
+ src:"https://agentusecases.ai/use-case/run-business-whatsapp-customer-messages-with-an-agent",fo:{n:"X",u:"https://x.com/aiautomationexp/status/2110035889871257677"},
+ t:"Atender WhatsApp, agendar citas y registrar cada conversación",
+ d:"Un agente en n8n responde los mensajes de WhatsApp del negocio, busca la respuesta en tu información, revisa disponibilidad en el calendario y anota cada conversación en una planilla.",
+ r:"El negocio dejó WhatsApp funcionando solo: el agente responde por WhatsApp y envía copia por correo.",
+ p:"Construye un flujo en n8n con un agente que responda los mensajes de WhatsApp de mi [tipo de negocio]. Debe buscar las respuestas en [documento o base de conocimiento], revisar disponibilidad en [Google Calendar] antes de ofrecer horarios, registrar cada conversación en [Google Sheets o Notion] y responder por WhatsApp con copia a [correo]. Mientras lo pruebo, antes de confirmar cualquier reserva o enviar cualquier mensaje, pásamelo para aprobarlo."},
+{id:"taller-clasificar-solicitudes",f:"2026-10-14",c:"ops",a:"n8n",
+ src:"https://agentusecases.ai/use-case/triage-car-repair-requests-and-reply-to-customers",fo:{n:"X",u:"https://x.com/ho_lar_s/status/2109790708970438953"},
+ t:"Clasificar las solicitudes de un taller y responder al cliente al instante",
+ d:"Cada solicitud que llega por el formulario web se clasifica por tipo de trabajo y urgencia, queda registrada en Airtable y el cliente recibe una respuesta inmediata.",
+ r:"El taller ve en Airtable el estado y la hora de cada solicitud; los casos dudosos quedan marcados para revisión y los que no corresponden reciben una respuesta amable.",
+ p:"Arma un flujo en n8n que se active con cada envío del formulario de [mi taller o negocio]. Clasifica la solicitud por tipo de trabajo, urgencia y un resumen de una línea, crea un registro en [Airtable o Google Sheets] y envía al cliente un acuse de recibo. Si la solicitud no corresponde a lo que hacemos, responde con un rechazo amable. Si la IA no está segura, márcalo para mí en vez de responder. Retén las respuestas para mi aprobación hasta que revise algunas pruebas."},
+{id:"resumen-antes-reunion-ventas",f:"2026-10-14",c:"ventas",a:"Lindy",
+ src:"https://agentusecases.ai/use-case/prep-sales-calls-and-research-youtube-ideas-with-agents",fo:{n:"Annika Helendi (Substack)",u:"https://annikahelendi.substack.com"},
+ t:"Recibir un resumen del cliente 10 minutos antes de cada reunión de ventas",
+ d:"Cuando tu calendario tiene una reunión de descubrimiento, el agente investiga a la persona y su empresa y te envía un resumen de una página con preguntas sugeridas.",
+ r:"La plantilla funcionó en minutos. Ojo: construir flujos más complejos en Lindy consumió rápido los créditos del plan.",
+ p:"Diez minutos antes de cada evento de mi calendario que tenga '[reunión de descubrimiento]' en el título, busca a los asistentes en LinkedIn o en el sitio de su empresa y envíame por correo un resumen de una página: cargo, empresa, noticias recientes y tres preguntas que debería hacer. Antes de activarlo, muéstrame un resumen de ejemplo."},
+{id:"newsletters-a-podcast",f:"2026-10-14",c:"marketing",a:"Claude Cowork",
+ src:"https://agentusecases.ai/use-case/turn-ai-newsletters-into-a-daily-podcast",fo:{n:"Bronson Elliott (Substack)",u:"https://bronsonelliott.substack.com/p/i-built-a-daily-ai-podcast-that-runs"},
+ t:"Convertir tus newsletters en un podcast diario",
+ d:"Cada noche el agente junta los newsletters de una etiqueta de Gmail, descarta los de poco valor, escribe un guion conversado y lo convierte en un episodio de audio.",
+ r:"Lo armó en unas dos horas y el primer episodio, de 8 a 10 minutos, estaba en Apple Podcasts a la mañana siguiente. Lo más difícil fue conseguir una voz que sonara bien.",
+ p:"Cada noche a las [hora], reúne los newsletters de la etiqueta [nombre de la etiqueta] de mi Gmail. Extrae las noticias más importantes, descarta las repetidas o de poco valor y escribe un guion conversado de unos 10 minutos en español. Genera el audio y guárdalo en [carpeta o app de podcast]. La tarea está lista cuando el archivo del episodio existe y me enviaste la lista de noticias que cubriste."},
+{id:"entrenador-datos-reloj",f:"2026-10-14",c:"vida",a:"Claude",
+ src:"https://agentusecases.ai/use-case/coach-training-and-diet-from-wearable-data",fo:{n:"Reddit r/ClaudeAI",u:"https://www.reddit.com/r/ClaudeAI/comments/1x2c0v0/has_anyone_used_claude_as_a_training_and_diet"},
+ t:"Un entrenador personal con los datos de tu reloj y tu alimentación",
+ d:"El agente analiza tus datos de entrenamiento, sueño, alimentación y exámenes, mantiene un panel actualizado y te propone ajustes semanales.",
+ r:"Quienes lo usan dicen que el plan se ajusta a semanas difíciles, viajes o poco sueño y evita el sobreentrenamiento. El costo está en la configuración inicial.",
+ p:"Voy a subir mi [exportación de Apple Health, Garmin o Strava], mi registro de [alimentación] y mis datos de [entrenamiento], además de [exámenes o notas de medicamentos]. Analiza las tendencias de entrenamiento, recuperación y alimentación en relación con mi objetivo: [objetivo]. Construye un panel en HTML que pueda actualizar cada semana y sugiere tres cambios para probar esta semana. Si algo requiere opinión médica, no adivines: anótalo como pregunta para mi doctor."},
+{id:"llamar-empresa-cambiar-reserva",f:"2026-10-14",c:"vida",a:"Grok",
+ src:"https://agentusecases.ai/use-case/call-a-car-rental-company-to-add-an-infant-seat",fo:{n:"X (@gtupak)",u:"https://x.com/gtupak/status/2109993490495226347"},
+ t:"Que un agente llame por ti para modificar una reserva",
+ d:"Un agente de voz llama a la empresa, navega el menú telefónico, espera en línea hasta hablar con una persona y consigue la confirmación por correo.",
+ r:"El agente llamó a la empresa de arriendo de autos, agregó una silla para bebé a la reserva y la confirmación llegó por correo.",
+ p:"Llama a [empresa] al [teléfono] por mi reserva [número de confirmación] a nombre de [mi nombre] y pide [el cambio que necesito] para el [fecha] en [lugar]. Navega el menú telefónico, habla con una persona y consigue que me confirmen el cambio por correo a [mi correo]. Antes de aceptar cualquier cobro adicional, detente y dime el precio. Al terminar, envíame un resumen de lo acordado."},
+{id:"apelar-seguro-viaje",f:"2026-10-14",c:"dinero",a:"Gemini",
+ src:"https://agentusecases.ai/use-case/appeal-a-denied-travel-insurance-claim",fo:{n:"Reddit r/GeminiAI",u:"https://www.reddit.com/r/GeminiAI/comments/1wdxo80/how_gemini_helped_me_successfully_appeal_a"},
+ t:"Apelar un reembolso rechazado por tu seguro de viaje",
+ d:"Subes la póliza completa y toda la correspondencia; el agente revisa si el rechazo calza con las condiciones y redacta una apelación sólida.",
+ r:"Tras dos rechazos y unas cinco semanas, la aseguradora revirtió su decisión y reembolsó el cargo por cambio de vuelo.",
+ p:"Mi seguro de viaje rechazó el reembolso por [viaje e incidente] con este motivo: [motivo del rechazo]. Te adjunto la póliza completa y la carta de rechazo. Revisa si el rechazo calza con las condiciones de la póliza, identifica qué cláusulas me favorecen y haz una lista de la evidencia que debo reunir. Luego redacta una carta de apelación formal que yo pueda revisar antes de enviarla."},
+{id:"disputar-cobros-contratista",f:"2026-10-14",c:"dinero",a:"Claude Cowork",
+ src:"https://agentusecases.ai/use-case/dispute-contractor-pricing-and-change-orders",fo:{n:"X",u:"https://x.com/AddictedHoosier/status/2105711009327456547"},
+ t:"Revisar los cobros de un contratista y disputar las diferencias",
+ d:"El agente compara la orden de compra, los correos y cada ítem facturado, encuentra cobros que no calzan y redacta los reclamos por ti.",
+ r:"Durante la obra, los reclamos lograron que le devolvieran unos US$20.000, con muy poco esfuerzo de su parte.",
+ p:"En la carpeta [nombre] están la orden de compra, los correos con el contratista y el detalle de cobros del proyecto [nombre del proyecto]. Compara los precios cotizados con lo facturado y con las órdenes de cambio. Lista cada diferencia con el monto y la evidencia, y redacta un correo de reclamo por cada una con mi tono. No envíes nada. Termina con el total que se puede disputar."},
+{id:"informe-inversion",f:"2026-10-14",c:"research",a:"Claude Cowork",
+ src:"https://agentusecases.ai/use-case/produce-investment-memos-with-claude-cowork",fo:{n:"Invest with AI (Substack)",u:"https://investwithai.substack.com/p/9-steps-in-claude-cowork-to-automate"},
+ t:"Preparar un informe de inversión sobre una empresa",
+ d:"El agente descarga reportes y datos financieros, arma un modelo en Excel con escenarios y redacta un informe con tesis, riesgos y valoración.",
+ r:"El primer informe estuvo listo en menos de 15 minutos; al guardarlo como flujo reutilizable, los siguientes salieron en un par de minutos.",
+ p:"Escribe un informe de inversión sobre [empresa o ticker]. Cubre el negocio, los resultados financieros recientes, competidores, riesgos principales, valoración y una recomendación clara de comprar, mantener o descartar, citando las fuentes que usaste. Guárdalo como [Word o PDF] en mi carpeta [nombre] y crea también una planilla de seguimiento con el precio de entrada, mi tesis y las fechas y métricas que debo revisar. Detente cuando ambos archivos estén guardados y dame un resumen breve. Esto no es asesoría financiera: es material para mi propio análisis."},
+{id:"reembolsos-seguro-mascota",f:"2026-10-14",c:"dinero",a:"OpenClaw",
+ src:"https://agentusecases.ai/use-case/turn-vet-charges-into-ready-to-send-pet-insurance-claims",fo:{n:"GitHub",u:"https://github.com/jagberg/Me.OpenClaw"},
+ t:"Preparar los reembolsos del seguro de tu mascota",
+ d:"El agente encuentra los cobros del veterinario en tu cartola, busca las boletas en tu correo y deja listo el formulario de reembolso como borrador para que lo apruebes.",
+ r:"En diez liquidaciones reales, los montos cuadraron al centavo. Nunca envía nada solo: si duda, pregunta.",
+ p:"Revisa mi [cartola o estado de cuenta] y encuentra los cobros de veterinaria de los últimos [periodo]. Para cada uno, busca la boleta o factura en mi correo, completa el formulario de reembolso de [aseguradora] y deja un borrador de correo con el formulario y la boleta adjuntos. Muéstrame los borradores. No envíes nada hasta que yo lo apruebe."},
+{id:"cancelar-suscripciones",f:"2026-10-14",c:"dinero",a:"ChatGPT Agent",
+ src:"https://agentusecases.ai/use-case/cancel-streaming-subscriptions-with-chatgpt-agent",fo:{n:"Tom's Guide",u:"https://www.tomsguide.com/ai/i-used-chatgpt-to-cancel-my-streaming-subscriptions-heres-how-to-try-it-too"},
+ t:"Cancelar suscripciones que ya no usas",
+ d:"El agente entra a cada servicio, recorre el proceso de cancelación, rechaza las ofertas para retenerte y se detiene antes del último clic para que confirmes tú.",
+ r:"Canceló tres servicios de streaming sin problemas. Algunos sitios bloquean a los agentes, así que conviene revisar el resultado.",
+ p:"Quiero cancelar mis suscripciones a [servicio 1, servicio 2, servicio 3]. Yo inicio sesión cuando me lo pidas. Recorre el proceso de cancelación de cada uno, rechaza las ofertas de retención y detente en el botón final de confirmación para mostrarme la fecha de término y cualquier cobro antes de que yo apruebe. Al terminar, dame la lista de lo que cancelaste y lo que no pudiste cancelar."},
+{id:"apelar-multa",f:"2026-10-14",c:"dinero",a:"ChatGPT",
+ src:"https://agentusecases.ai/use-case/write-a-parking-ticket-appeal-that-got-dismissed",fo:{n:"Reddit r/ChatGPT",u:"https://www.reddit.com/r/ChatGPT/comments/144mzb5"},
+ t:"Apelar una multa de estacionamiento o tránsito",
+ d:"Le cuentas qué pasó y el agente revisa el procedimiento de reclamo de tu municipio, redacta una apelación breve y te dice qué pruebas adjuntar.",
+ r:"La persona corrigió algunos datos que el modelo había inventado, envió el correo y al día siguiente le anularon la multa.",
+ p:"Me cursaron una multa por [motivo] el [fecha] en [ciudad]. Esto es lo que pasó: [mi situación]. Busca cómo y dónde se reclama una multa así en mi ciudad y cuál es el plazo. Redacta una apelación breve, cordial y firme, y dame la lista de pruebas que debería adjuntar. No inventes hechos: si te falta un dato, pregúntamelo. Muéstrame el borrador antes de presentar cualquier cosa."},
 {id:"flujo-caja-excel",f:"2026-10-14",c:"dinero",a:"Claude en Excel",
  t:"Proyectar el flujo de caja de los próximos tres meses",
  d:"Dentro de tu planilla, el agente ordena ingresos y egresos históricos, proyecta los próximos 90 días y marca las semanas en que podría faltar caja.",
@@ -609,7 +804,7 @@ const persist = () => store.set('agentario-saved', JSON.stringify([...saved]));
 
 const latest = CASOS.reduce((m,c)=> c.f>m?c.f:m, '0');
 const weekAgo = (() => { const [y,m,d]=latest.split('-').map(Number); const t=new Date(y,m-1,d-6); return t.toISOString().slice(0,10); })();
-const state = { q:'', cat:'all', agent:'all', sort:'new', onlySaved:false, limit:12 };
+const state = { q:'', cat:'all', agent:'all', sort:'new', onlySaved:false, onlyPartner:false, limit:12 };
 
 function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toast.h); toast.h=setTimeout(()=>t.classList.remove('show'),1800); }
 
@@ -620,12 +815,15 @@ function caseHTML(c){
     <div>
       <h3><a href="#caso-${esc(c.id)}" data-open="${esc(c.id)}">${esc(c.t)}</a></h3>
       <p class="desc">${esc(c.d)}</p>
+      ${c.r?`<p class="res"><strong>Resultado real:</strong> ${esc(c.r)}</p>`:''}
       <div class="meta">
         ${c.s?'<span class="spon">Patrocinado</span>':''}
         ${isNew?'<span class="new">Nuevo</span>':''}
         <span class="agent">${esc(c.a)}</span>
         <span>${esc(CATS[c.c]||'')}</span>
         <span>${esc(fmt(c.f))}</span>
+        ${c.src?`<a class="via" href="${esc(c.src)}" target="_blank" rel="noopener">Vía Agent Use Cases</a>`:''}
+        ${c.fo?`<a class="fo" href="${esc(c.fo.u)}" target="_blank" rel="noopener">Fuente: ${esc(c.fo.n)}</a>`:''}
       </div>
       <div class="actions">
         <button class="act" type="button" data-toggle="${esc(c.id)}" aria-expanded="false">Ver prompt</button>
@@ -644,7 +842,8 @@ function filtered(){
     (state.cat==='all'||c.c===state.cat) &&
     (state.agent==='all'||c.a===state.agent) &&
     (!state.onlySaved||saved.has(c.id)) &&
-    (!q || (c.t+' '+c.d+' '+c.a+' '+c.p+' '+(CATS[c.c]||'')).toLowerCase().includes(q)));
+    (!state.onlyPartner||!!c.src) &&
+    (!q || (c.t+' '+c.d+' '+c.a+' '+c.p+' '+(c.r||'')+' '+(CATS[c.c]||'')).toLowerCase().includes(q)));
   list.sort((a,b)=> (b.s?1:0)-(a.s?1:0) || (state.sort==='az' ? a.t.localeCompare(b.t,'es') : b.f.localeCompare(a.f)));
   return list;
 }
@@ -687,9 +886,8 @@ function renderStatic(){
   $('#wall').innerHTML = wall.length ? wall.map(n=>`<span>${esc(n)}</span>`).join('')
     : `<p class="empty" style="padding:0">Todavía no hay nombres aquí. Tu aporte puede ser el primero: al donar, escríbenos si quieres aparecer en el muro. <a href="${MP_LINK}" target="_blank" rel="noopener">Donar ahora</a></p>`;
 
-  const sub = encodeURIComponent('Nuevo caso para Agentario');
-  const body = encodeURIComponent('Qué hiciste con el agente:\n\nHerramienta o agente usado:\n\nPrompt (si lo tienes):\n\nLink de referencia (opcional):\n\nNombre para el crédito:');
-  $('#submitBtn').href = `mailto:${CONTACTO}?subject=${sub}&body=${body}`;
+  $('#apCat').innerHTML = '<option value="">Elige una</option>' + Object.entries(CATS).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('');
+  $('#apAgentes').innerHTML = agents.map(a=>`<option value="${esc(a)}">`).join('');
   const sp = encodeURIComponent('Quiero patrocinar Agentario');
   const spb = encodeURIComponent('Plan elegido:\n\nNombre de la marca:\n\nLink a mostrar:\n\n(Adjunta tu logo y el comprobante de Mercado Pago)');
   $('#sponsorMail').href = `mailto:${CONTACTO}?subject=${sp}&body=${spb}`;
@@ -718,8 +916,8 @@ news.dlg.addEventListener('click', e => { if (e.target === news.dlg) news.close(
 $('#newsClose').addEventListener('click', () => news.close());
 $('#newsOk').addEventListener('click', () => news.close());
 
-/* Dentro de claude.ai la suscripción se guarda en la base de datos del artefacto.
-   Fuera de claude.ai (GitHub Pages u otro hosting) se envía por correo con FormSubmit. */
+/* Dentro de claude.ai, suscripciones y aportes se guardan en la base de datos del artefacto.
+   Fuera de claude.ai (GitHub Pages u otro hosting) se envían por correo con FormSubmit. */
 function capacidad(name){
   if (!window.claude || typeof window.claude.use !== 'function') return Promise.resolve(null);
   return Promise.race([
@@ -727,23 +925,28 @@ function capacidad(name){
     new Promise(r => setTimeout(()=>r(null), 4000))
   ]);
 }
-async function guardarEnArtefacto(datos){
+/* Cada persona escribe solo su propio documento: suscriptores/<id> o aportes/<id> (con una lista de casos). */
+async function guardarEnArtefacto(coleccion, datos, agregar){
   const db = await capacidad('db');
   if (!db) return false;
   const user = await capacidad('user');
   const uid = user ? await user.id().catch(()=>null) : null;
   if (!uid) return false;
-  await db.doc('suscriptores/' + uid).set(datos);
+  const ref = db.doc(coleccion + '/' + uid);
+  if (agregar) {
+    const snap = await ref.get();
+    const prev = snap.exists && Array.isArray((snap.data()||{}).items) ? snap.data().items : [];
+    await ref.set({ items: [...prev, datos].slice(-20) });
+  } else {
+    await ref.set(datos);
+  }
   return true;
 }
-async function guardarConFormSubmit(datos){
+async function guardarConFormSubmit(asunto, campos){
   const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(SUSCRIPCION_EMAIL), {
     method:'POST',
     headers:{'Content-Type':'application/json', 'Accept':'application/json'},
-    body: JSON.stringify({
-      email: datos.email, nombre: datos.nombre || '(sin nombre)', fecha: datos.fecha, pagina: datos.origen,
-      _subject: 'Nueva suscripción a novedades de Agentario', _template: 'table', _captcha: 'false'
-    })
+    body: JSON.stringify({ ...campos, _subject: asunto, _template: 'table', _captcha: 'false' })
   });
   const j = await res.json().catch(()=>({}));
   if (!res.ok || j.success === false || j.success === 'false') throw new Error(j.message || 'envio');
@@ -762,8 +965,11 @@ $('#newsForm').addEventListener('submit', async e => {
   const datos = { email, nombre, fecha: new Date().toISOString(), origen: location.hostname || 'local' };
   btn.disabled = true; btn.textContent = 'Enviando…'; msg.textContent = ''; msg.className = 'news-msg';
   let ok = false;
-  try { ok = await guardarEnArtefacto(datos); } catch(err) { ok = false; }
-  if (!ok) { try { ok = await guardarConFormSubmit(datos); } catch(err) { ok = false; } }
+  try { ok = await guardarEnArtefacto('suscriptores', datos); } catch(err) { ok = false; }
+  if (!ok) {
+    try { ok = await guardarConFormSubmit('Nueva suscripción a novedades de Agentario',
+      { email, nombre: nombre || '(sin nombre)', fecha: datos.fecha, pagina: datos.origen }); } catch(err) { ok = false; }
+  }
   btn.disabled = false; btn.textContent = 'Quiero recibir novedades';
   if (ok) {
     store.set('agentario-news', 'ok');
@@ -775,13 +981,48 @@ $('#newsForm').addEventListener('submit', async e => {
   }
 });
 
+/* ============ Aporta tu caso ============ */
+const AP_ETIQUETAS = { titulo:'el título', agente:'el agente o herramienta', categoria:'la categoría', descripcion:'qué hiciste', nombre:'tu nombre', email:'tu correo' };
+$('#apForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, msg = $('#apMsg'), btn = $('#apBtn');
+  if (f._honey.value) return;
+  const v = k => f[k].value.trim();
+  const falta = Object.keys(AP_ETIQUETAS).find(k => !v(k));
+  const err = (texto, campo) => { msg.textContent = texto; msg.className = 'news-msg err'; if (campo) campo.focus(); };
+  if (falta) return err('Falta ' + AP_ETIQUETAS[falta] + '.', f[falta]);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email'))) return err('Revisa tu correo: parece que falta algo.', f.email);
+  if (v('enlace') && !/^https?:\/\//i.test(v('enlace'))) return err('El enlace debe empezar con https://', f.enlace);
+  if (!f.permiso.checked) return err('Necesitamos tu autorización para publicar el caso.', f.permiso);
+  const datos = {
+    titulo: v('titulo'), agente: v('agente'), categoria: CATS[v('categoria')] || v('categoria'),
+    descripcion: v('descripcion'), prompt: v('prompt'), resultado: v('resultado'), enlace: v('enlace'),
+    nombre: v('nombre'), email: v('email').toLowerCase(), fecha: new Date().toISOString(), origen: location.hostname || 'local'
+  };
+  btn.disabled = true; btn.textContent = 'Enviando…'; msg.textContent = ''; msg.className = 'news-msg';
+  let ok = false;
+  try { ok = await guardarEnArtefacto('aportes', datos, true); } catch(e2) { ok = false; }
+  if (!ok) { try { ok = await guardarConFormSubmit('Nuevo caso aportado a Agentario: ' + datos.titulo, datos); } catch(e2) { ok = false; } }
+  btn.disabled = false; btn.textContent = 'Enviar mi caso';
+  if (ok) {
+    f.reset(); f.hidden = true; $('#apDone').hidden = false; $('#apDone').scrollIntoView({block:'center'});
+  } else {
+    const cuerpo = Object.entries(datos).filter(([k,x])=>x && k!=='origen').map(([k,x])=>k + ': ' + x).join('\n\n');
+    const mail = `mailto:${CONTACTO}?subject=${encodeURIComponent('Nuevo caso para Agentario')}&body=${encodeURIComponent(cuerpo)}`;
+    msg.innerHTML = `No pudimos enviarlo desde aquí. <a href="${mail}">Envíalo por correo</a> y lo revisamos igual.`;
+    msg.className = 'news-msg err';
+  }
+});
+$('#apOtro').addEventListener('click', () => { $('#apForm').hidden = false; $('#apDone').hidden = true; $('#apForm').titulo.focus(); });
+/* ========================================= */
+
 function autoPopup(){
   const st = store.get('agentario-news') || '';
   if (st === 'ok') return;
   if (st.startsWith('cerrado:') && Date.now() - Number(st.slice(8)) < 14*24*3600*1000) return;
   let shown = false;
   const show = () => {
-    if (shown || location.hash.startsWith('#/patrocina') || document.querySelector('dialog[open]')) return;
+    if (shown || location.hash.startsWith('#/patrocina') || location.hash.startsWith('#/aporta') || document.querySelector('dialog[open]')) return;
     shown = true; window.removeEventListener('scroll', onScroll); news.open();
   };
   const onScroll = () => { if (window.scrollY > document.documentElement.scrollHeight * 0.45) show(); };
@@ -821,6 +1062,10 @@ document.addEventListener('click', async e => {
   } else if (t.dataset.gotoAgent){ state.agent=t.dataset.gotoAgent; $('#agentSel').value=state.agent; renderList(); $('#todos').scrollIntoView({behavior:'smooth'});
   } else if (t.dataset.sort){
     state.sort=t.dataset.sort; document.querySelectorAll('[data-sort]').forEach(b=>b.setAttribute('aria-pressed', b===t)); renderList();
+  } else if (t.hasAttribute('data-partner') || t.hasAttribute('data-goto-partner')){
+    state.onlyPartner = t.hasAttribute('data-goto-partner') ? true : !state.onlyPartner; state.limit=12;
+    $('[data-partner]').setAttribute('aria-pressed', state.onlyPartner); renderList();
+    if (t.hasAttribute('data-goto-partner')) $('#todos').scrollIntoView({behavior:'smooth'});
   } else if (t.hasAttribute('data-saved')){
     state.onlySaved=!state.onlySaved; t.setAttribute('aria-pressed', state.onlySaved); renderList();
   } else if (t.id==='more'){ state.limit+=12; renderList(); }
@@ -831,11 +1076,11 @@ $('#agentSel').addEventListener('change', e => { state.agent=e.target.value; sta
 
 function route(){
   const h = location.hash;
-  const sponsor = h.startsWith('#/patrocina');
-  $('#view-home').hidden = sponsor; $('#view-sponsor').hidden = !sponsor;
-  document.querySelectorAll('[data-nav]').forEach(a=>a.toggleAttribute('aria-current', (a.dataset.nav==='sponsor')===sponsor));
-  document.querySelectorAll('[data-nav][aria-current]').forEach(a=>a.setAttribute('aria-current','page'));
-  document.title = sponsor ? 'Patrocina Agentario' : 'Agentario: casos de uso de agentes de IA en español';
+  const view = h.startsWith('#/patrocina') ? 'sponsor' : h.startsWith('#/aporta') ? 'aporta' : 'home';
+  const sponsor = view !== 'home';
+  ['home','aporta','sponsor'].forEach(k => { $('#view-' + k).hidden = k !== view; });
+  document.querySelectorAll('[data-nav]').forEach(a => a.dataset.nav === view ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
+  document.title = { home:'Agentario: casos de uso de agentes de IA en español', aporta:'Aporta tu caso a Agentario', sponsor:'Patrocina Agentario' }[view];
   if (h === '#novedades') { news.open(); return; }
   if (h.startsWith('#caso-')){
     const id = h.slice(6);
