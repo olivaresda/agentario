@@ -1,0 +1,79 @@
+<!--
+  Medición de Agentario → libro, para pegar en laexperienciaeselcodigo.com
+  justo antes de </body>. Usa la misma cuenta de GoatCounter que Agentario
+  (agentario.goatcounter.com), así todo el recorrido queda en un solo panel.
+
+  Qué registra (todo aparece en el panel con el prefijo "libro/"):
+  - libro/visita/<origen>/<caso>     llegada al sitio del libro desde Agentario
+  - libro/ve-preventa/<origen>/<caso> la persona llegó a ver la sección #preventa
+  - libro/clic-pagar/<nivel>/<origen>/<caso> clic en un botón o enlace de pago
+  - libro/compra/<origen>/<caso>     llegada a una página de gracias (ver nota)
+
+  <origen> y <caso> salen de las marcas utm_medium y utm_content que pone
+  Agentario en cada enlace. Si la visita no viene de Agentario, se anota "directo".
+
+  Nota: para medir compras reales, configura en Mercado Pago la URL de retorno
+  de pago aprobado hacia una página de tu sitio cuya dirección contenga "gracias"
+  (por ejemplo https://laexperienciaeselcodigo.com/gracias).
+-->
+<script>
+(function () {
+  var GC = 'https://agentario.goatcounter.com/count';
+  var KEY = 'agentario-origen';
+  var p = new URLSearchParams(location.search);
+  var o = null;
+  try {
+    if (p.get('utm_source') === 'agentario') {
+      o = { medio: p.get('utm_medium') || 'otro', caso: p.get('utm_content') || 'sin-caso' };
+      sessionStorage.setItem(KEY, JSON.stringify(o));
+    } else {
+      o = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    }
+  } catch (e) {}
+  var etiqueta = o ? o.medio + '/' + o.caso : 'directo';
+  var cola = [];
+  function contar(path, title, evento) {
+    var d = { path: path, title: title, event: !!evento };
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(d); else cola.push(d);
+  }
+  var s = document.createElement('script');
+  s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.dataset.goatcounter = GC;
+  s.dataset.goatcounterSettings = '{"no_onload":true}';
+  s.onload = function () { while (cola.length) window.goatcounter.count(cola.shift()); };
+  document.head.appendChild(s);
+
+  // Visita al sitio del libro (como página) y, si viene de Agentario, también como evento
+  contar('/sitio-libro' + location.pathname, 'Sitio del libro: ' + document.title);
+  if (o) contar('libro/visita/' + etiqueta, 'Llegó al libro desde Agentario · ' + etiqueta, true);
+
+  // Compra: página de gracias tras el pago
+  if (/gracias/i.test(location.pathname + location.hash)) contar('libro/compra/' + etiqueta, 'Compra del libro · ' + etiqueta, true);
+
+  // Vio la sección de preventa
+  function observarPreventa() {
+    var sec = document.getElementById('preventa');
+    if (!sec || !('IntersectionObserver' in window)) return;
+    var visto = false;
+    new IntersectionObserver(function (es, obs) {
+      if (!visto && es.some(function (x) { return x.isIntersecting; })) {
+        visto = true; obs.disconnect();
+        contar('libro/ve-preventa/' + etiqueta, 'Vio la preventa · ' + etiqueta, true);
+      }
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(sec);
+  }
+
+  // Clic en pagar: enlaces o botones dentro de #preventa, o cualquier enlace a Mercado Pago
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('a,button'); if (!t) return;
+    var href = t.getAttribute('href') || '';
+    var enPreventa = !!t.closest('#preventa');
+    if (!enPreventa && !/mercadopago|mpago\.la|checkout|pago/i.test(href)) return;
+    var nivel = (t.closest('[data-nivel]') && t.closest('[data-nivel]').getAttribute('data-nivel')) ||
+      (t.textContent || 'boton').trim().toLowerCase().replace(/[^a-z0-9áéíóúñ ]/g, '').replace(/\s+/g, '-').slice(0, 30);
+    contar('libro/clic-pagar/' + nivel + '/' + etiqueta, 'Clic en pagar: ' + nivel + ' · ' + etiqueta, true);
+  }, true);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observarPreventa); else observarPreventa();
+})();
+</script>

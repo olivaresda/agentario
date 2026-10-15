@@ -1,0 +1,10 @@
+// Configuración de Cloudflare para publicar el sitio del libro (laexperienciaeselcodigo.com).
+// Publica solo la carpeta libro-sitio; Agentario se publica aparte con GitHub Pages.
+{
+  "name": "laexperienciaeselcodigo",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./libro-sitio",
+    "not_found_handling": "single-page-application"
+  }
+}

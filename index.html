@@ -198,7 +198,7 @@ ol.steps li::before{content:counter(s);display:grid;place-items:center;width:32p
 /* Pop-up de novedades */
 dialog.news{border:0;padding:0;background:transparent;color:var(--ink);max-width:min(460px,calc(100vw - 32px));width:100%}
 dialog.news::backdrop{background:rgba(15,23,48,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-.news-card{position:relative;overflow:hidden;background:var(--surface);border:1.5px solid var(--line);border-radius:24px;padding:30px 24px 24px;box-shadow:0 24px 60px rgba(15,23,48,.3)}
+.news-card{position:relative;overflow:auto;max-height:calc(100vh - 32px);background:var(--surface);border:1.5px solid var(--line);border-radius:24px;padding:30px 24px 24px;box-shadow:0 24px 60px rgba(15,23,48,.3)}
 .news-card::before{content:"";position:absolute;right:-60px;top:-60px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle at 42% 38%,#FFF3BF,#FFD95E 40%,var(--sun) 65%,#FFA51F);box-shadow:0 0 0 16px var(--sun-glow);opacity:.95}
 .news-card > *{position:relative}
 dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
@@ -220,6 +220,37 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
 .news-done{text-align:left}
 .news-done .check{width:52px;height:52px;border-radius:50%;background:var(--new-soft);color:var(--new);display:grid;place-items:center;font-size:1.6rem;font-weight:800;margin-bottom:12px}
 
+/* Tarjeta del libro al copiar un prompt */
+.book-card{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;margin-top:12px;background:linear-gradient(120deg,var(--sun-glow),var(--surface) 80%);border:1.5px solid var(--sun);border-radius:16px;padding:16px;max-width:76ch;animation:pop .35s cubic-bezier(.2,.8,.2,1)}
+@media (prefers-reduced-motion:reduce){.book-card{animation:none}}
+.book-card .cover{width:46px;height:62px;border-radius:4px 8px 8px 4px;background:linear-gradient(160deg,#172240,#2E5BFF);box-shadow:3px 3px 0 var(--sun);display:grid;place-items:center;color:#FFC233;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:.7rem;text-align:center;line-height:1.05;padding:4px}
+.book-card p{margin:0 0 10px;font-size:.98rem}
+.book-card .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.book-card .btn{padding:9px 16px;font-size:.95rem}
+.book-card .link{border:0;background:none;padding:0;color:var(--sky);font-weight:700;font-size:.92rem;text-decoration:underline}
+
+/* Página del libro */
+.lb-hero{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;padding:48px 0 18px}
+.lb-hero h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800;letter-spacing:-.025em}
+.lb-hero .kicker{font-weight:700;color:var(--sky);margin:0 0 10px}
+.lb-hero p.lead{color:var(--ink-soft);font-size:1.12rem;margin:16px 0 22px;max-width:56ch}
+.lb-hero .row{display:flex;flex-wrap:wrap;gap:10px}
+.lb-cover{width:190px;height:260px;border-radius:6px 16px 16px 6px;background:linear-gradient(160deg,#172240 10%,#2E5BFF);box-shadow:10px 10px 0 var(--sun),0 20px 40px rgba(15,23,48,.25);color:#fff;padding:22px 18px;display:flex;flex-direction:column;justify-content:space-between}
+.lb-cover strong{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.5rem;line-height:1.05;color:#FFC233}
+.lb-cover span{font-size:.85rem;opacity:.85}
+.lb-chapters{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;counter-reset:ch}
+.lb-chapters li{counter-increment:ch;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px 16px 16px 58px;position:relative}
+.lb-chapters li::before{content:counter(ch);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--sky-soft);color:var(--ink);display:grid;place-items:center;font-weight:800;font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.lb-chapters strong{display:block}
+.lb-chapters span{color:var(--ink-soft);font-size:.92rem}
+.lb-tiers{grid-template-columns:repeat(4,1fr)}
+.lb-tiers .price small{display:block;margin-top:2px}
+.lb-note{color:var(--ink-soft);font-size:.92rem;margin-top:14px}
+.news-form select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px}
+.news-prompts{list-style:none;margin:10px 0 16px;padding:0;display:grid;gap:6px}
+.news-prompts li{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:.92rem}
+.news-prompts button{flex:none;border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:4px 10px;font-weight:700;font-size:.85rem}
+
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;font-weight:700;transition:.25s;pointer-events:none;z-index:50}
 .toast.show{opacity:1;transform:translateX(-50%)}
 [hidden]{display:none!important}
@@ -233,6 +264,11 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
   .browse{grid-template-columns:1fr}
   .band{grid-template-columns:1fr}
   .donate-box{grid-template-columns:1fr}
+  .lb-hero{grid-template-columns:1fr}
+  .lb-cover{order:-1;width:140px;height:190px}
+  .lb-cover strong{font-size:1.15rem}
+  .lb-chapters{grid-template-columns:1fr}
+  .lb-tiers{grid-template-columns:1fr 1fr}
   .ap-grid,.ap-form .two{grid-template-columns:1fr}
   .partner{grid-template-columns:auto 1fr}
   .partner .btn{grid-column:1 / -1;justify-self:start}
@@ -244,6 +280,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
   .browse ul{columns:1}
   ol.steps{grid-template-columns:1fr}
   .count{margin-left:0;width:100%}
+  .lb-tiers{grid-template-columns:1fr}
   .news-card{padding:26px 18px 20px}
 }
 </style>
@@ -257,8 +294,8 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
       <a href="#/" data-nav="home">Casos</a>
       <a href="#/aporta" data-nav="aporta">Aporta</a>
       <a href="#/patrocina" data-nav="sponsor">Patrocina</a>
-      <button type="button" data-news>Novedades</button>
-      <a class="donate" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener">Precompra el libro</a>
+      <button type="button" data-news data-origen="menu">Capítulo 1 gratis</button>
+      <a class="donate" href="#/libro" data-nav="libro">El libro</a>
     </nav>
   </div>
 </header>
@@ -306,10 +343,10 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
     <section class="block">
       <div class="band">
         <div>
-          <h2>Recibe los casos nuevos en tu correo</h2>
-          <p>Te enviamos las novedades de Agentario: casos nuevos, prompts y herramientas que vale la pena probar.</p>
+          <h2>Lee gratis el capítulo 1 del libro</h2>
+          <p><em>Tu experiencia es el 90 %</em>: por qué lo que sabes de tu trabajo es lo más valioso para crear un agente. Te lo enviamos junto con los 10 prompts más copiados.</p>
         </div>
-        <button class="btn sun-b" type="button" data-news>Quiero recibir novedades</button>
+        <button class="btn sun-b" type="button" data-news data-origen="franja">Quiero el capítulo 1</button>
       </div>
       <div class="band">
         <div>
@@ -334,6 +371,79 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
     <section class="block browse" aria-label="Explorar">
       <div><h2>Por agente</h2><ul id="byAgent"></ul></div>
       <div><h2>Por categoría</h2><ul id="byCat"></ul></div>
+    </section>
+  </div>
+</main>
+
+<main id="view-libro" hidden>
+  <div class="wrap">
+    <div class="lb-hero">
+      <div>
+        <p class="kicker">El libro detrás de Agentario</p>
+        <h1>La experiencia es el código</h1>
+        <p class="lead">Aprende a crear agentes de IA sin programar. Tú describes con detalle cómo haces tu trabajo y el agente escribe el código a partir de esas instrucciones. Los prompts de Agentario son el comienzo; el libro te enseña a lograr que el agente trabaje como tú.</p>
+        <div class="row">
+          <a class="btn sun-b" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="pagina-libro">Precompra el libro</a>
+          <button class="btn ghost" type="button" data-news data-origen="pagina-libro">Lee gratis el capítulo 1</button>
+        </div>
+      </div>
+      <div class="lb-cover" aria-hidden="true"><span>Daniel Olivares Martínez</span><strong>La experiencia es el código</strong><span>IA agéntica para profesionales</span></div>
+    </div>
+
+    <section class="block" aria-labelledby="lbWhoT">
+      <h2 id="lbWhoT">Para quién es</h2>
+      <p class="sub">Para profesionales con trayectoria que dominan su oficio y quieren usar IA sin volverse programadores.</p>
+      <div class="who">
+        <div><h3>Tu experiencia vale más que el código</h3><p>Llevas años resolviendo problemas que un agente no conoce. El libro te enseña a convertir ese criterio en instrucciones que la IA puede seguir.</p></div>
+        <div><h3>Sin programar</h3><p>No necesitas saber código. Aprendes a pedir, probar y corregir hasta que el agente haga el trabajo como tú lo harías.</p></div>
+        <div><h3>Casos de tu rubro</h3><p>Se escribe en vivo con entrevistas a profesionales de Chile, Latinoamérica y España en finanzas, recursos humanos, salud, logística, educación y atención al cliente.</p></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="lbChT">
+      <h2 id="lbChT">Qué aprendes</h2>
+      <p class="sub">Siete capítulos. Los digitales se liberan a medida que se escriben.</p>
+      <ol class="lb-chapters">
+        <li><strong>Tu experiencia es el 90 %</strong><span>Por qué lo que sabes de tu trabajo es la parte más difícil de un agente.</span></li>
+        <li><strong>Saber pedir: escribir la especificación</strong><span>Cómo describir tu trabajo para que la IA lo entienda.</span></li>
+        <li><strong>Un agente que construye agentes</strong><span>Deja que la IA escriba el código a partir de tus instrucciones.</span></li>
+        <li><strong>Probar antes de confiar</strong><span>Cómo poner a prueba al agente antes de dejarlo trabajar solo.</span></li>
+        <li><strong>Cómo saber si el agente lo hace bien</strong><span>Criterios para evaluar sus resultados como lo haría un experto.</span></li>
+        <li><strong>Del escritorio al mundo real</strong><span>Llevar el agente al trabajo diario, con sus datos y sus personas.</span></li>
+        <li><strong>De un agente a un equipo de agentes</strong><span>Coordinar varios agentes para procesos completos.</span></li>
+      </ol>
+    </section>
+
+    <section class="block" aria-labelledby="lbTierT">
+      <h2 id="lbTierT">Niveles de preventa</h2>
+      <p class="sub">El libro impreso sale el 5 de abril de 2027. Si no llega en la fecha comprometida, te devolvemos el 100 %.</p>
+      <div class="tiers lb-tiers">
+        <div class="tier">
+          <h3>Lector digital</h3>
+          <div class="price">USD 25 <small>$24.000 CLP · lista USD 35</small></div>
+          <ul><li>Ebook completo</li><li>Capítulos digitales a medida que se liberan</li></ul>
+          <a class="btn ghost" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="nivel-digital">Elegir digital</a>
+        </div>
+        <div class="tier hi">
+          <h3>Lector fundador</h3>
+          <div class="price" id="lbFundador">USD 55 <small>$52.000 CLP · lista USD 85</small></div>
+          <ul><li>Libro impreso firmado y ebook (envío incluido en Chile)</li><li>Taller en línea y en vivo</li><li>Tu nombre en los agradecimientos y certificado</li></ul>
+          <a class="btn sun-b" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="nivel-fundador">Ser lector fundador</a>
+        </div>
+        <div class="tier">
+          <h3>Mecenas</h3>
+          <div class="price">USD 450</div>
+          <ul><li>Todo lo del lector fundador</li><li>Entrevista como caso del libro</li><li>Sesión individual en línea</li></ul>
+          <a class="btn ghost" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="nivel-mecenas">Ser mecenas</a>
+        </div>
+        <div class="tier">
+          <h3>Empresas</h3>
+          <div class="price">A cotizar</div>
+          <ul><li>Diez ejemplares firmados</li><li>Taller para tu equipo, presencial o en línea</li><li>Opción de contar el caso de tu empresa</li></ul>
+          <a class="btn ghost" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="nivel-empresas">Cotizar para mi empresa</a>
+        </div>
+      </div>
+      <p class="lb-note">En Chile se paga en pesos con Mercado Pago. Precios y condiciones vigentes en <a href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="nota-precios">laexperienciaeselcodigo.com</a>.</p>
     </section>
   </div>
 </main>
@@ -425,7 +535,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
       <div>
         <h2>Precompra el libro</h2>
         <p>Agentario es el adelanto abierto de <strong>La experiencia es el código</strong>, un libro que se escribe en vivo con profesionales de Chile, Latinoamérica y España. Al precomprarlo financias cada caso nuevo, recibes los capítulos a medida que se publican y te sumas a la comunidad fundadora. El libro impreso sale el 5 de abril de 2027.</p>
-        <a class="btn sun-b" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener">Ver los niveles de preventa</a>
+        <a class="btn sun-b" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="patrocina">Ver los niveles de preventa</a>
       </div>
     </div>
 
@@ -447,7 +557,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
           <h3>Lector fundador</h3>
           <div class="price">$52.000 <small>preventa del libro</small></div>
           <ul><li>Libro impreso firmado con envío incluido en Chile, ebook y taller en línea</li><li>Tu nombre en los agradecimientos del libro y en este muro</li></ul>
-          <a class="btn ghost" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener">Precomprar el libro</a>
+          <a class="btn ghost" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="patrocina-niveles">Precomprar el libro</a>
         </div>
         <div class="tier hi">
           <h3>Sponsor de la barra</h3>
@@ -490,8 +600,8 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
 
 <footer>
   <div class="wrap">
-    <span>Agentario es curado por <a href="https://www.linkedin.com/in/dolivares/" target="_blank" rel="noopener">Daniel Olivares</a> y es el adelanto abierto del libro <a href="https://laexperienciaeselcodigo.com">La experiencia es el código</a>. Los casos son ideas para probar: revisa siempre lo que hace el agente antes de enviar, pagar o firmar.</span>
-    <span><button type="button" data-news>Recibir novedades por correo</button> · <span id="updated"></span></span>
+    <span>Agentario es curado por <a href="https://www.linkedin.com/in/dolivares/" target="_blank" rel="noopener">Daniel Olivares</a> y es el adelanto abierto del libro <a href="https://laexperienciaeselcodigo.com" data-libro="pie">La experiencia es el código</a>. Los casos son ideas para probar: revisa siempre lo que hace el agente antes de enviar, pagar o firmar.</span>
+    <span><button type="button" data-news data-origen="pie">Capítulo 1 gratis</button> · <span id="updated"></span></span>
   </div>
 </footer>
 
@@ -499,24 +609,35 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
   <div class="news-card">
     <button type="button" class="news-x" id="newsClose" aria-label="Cerrar">×</button>
     <div id="newsFormWrap">
-      <h2 id="newsT">Casos nuevos, directo a tu correo</h2>
-      <p class="lead">Suscríbete y te avisamos cuando sumemos casos de uso y prompts nuevos. Sin spam: puedes darte de baja cuando quieras.</p>
+      <h2 id="newsT">Recibe gratis el capítulo 1</h2>
+      <p class="lead"><strong>Tu experiencia es el 90 %</strong>, el primer capítulo de <em>La experiencia es el código</em>, más los 10 prompts más copiados de Agentario.</p>
       <form class="news-form" id="newsForm" novalidate>
         <label for="newsEmail">Tu correo</label>
         <input id="newsEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="nombre@empresa.com" required>
         <label for="newsName">Tu nombre <span style="font-weight:400;color:var(--ink-soft)">(opcional)</span></label>
         <input id="newsName" name="nombre" type="text" autocomplete="name" placeholder="Cómo te llamas">
+        <label for="newsRubro">¿A qué te dedicas? <span style="font-weight:400;color:var(--ink-soft)">(opcional)</span></label>
+        <select id="newsRubro" name="rubro">
+          <option value="">Prefiero no decir</option>
+          <option>Finanzas</option><option>Recursos humanos</option><option>Salud</option><option>Logística</option>
+          <option>Educación</option><option>Atención al cliente</option><option>Otro</option>
+        </select>
         <div class="hp" aria-hidden="true"><label>No llenar<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
         <p class="news-msg" id="newsMsg" role="alert"></p>
-        <button class="btn sun-b" type="submit" id="newsBtn">Quiero recibir novedades</button>
+        <button class="btn sun-b" type="submit" id="newsBtn">Quiero el capítulo 1</button>
       </form>
-      <p class="news-fine">Usamos tu correo solo para enviarte novedades de Agentario.</p>
+      <p class="news-fine">Usamos tu correo para enviarte el capítulo y novedades del libro y de Agentario. Puedes darte de baja cuando quieras.</p>
     </div>
     <div class="news-done" id="newsDone" hidden>
       <div class="check" aria-hidden="true">✓</div>
-      <h2>¡Listo, estás dentro!</h2>
-      <p class="lead">Te escribiremos cuando haya casos nuevos. Mientras, explora los de hoy.</p>
-      <button type="button" class="btn ink-b" id="newsOk">Seguir explorando</button>
+      <h2>¡Listo! Aquí tienes tu regalo</h2>
+      <p class="lead" id="newsCap"></p>
+      <p style="margin:0;font-weight:700">Los 10 prompts más copiados</p>
+      <ul class="news-prompts" id="newsPrompts"></ul>
+      <div class="row" style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="btn sun-b" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener" data-libro="popup-gracias">Precompra el libro</a>
+        <button type="button" class="btn ghost" id="newsOk">Seguir explorando</button>
+      </div>
     </div>
   </div>
 </dialog>
@@ -528,6 +649,19 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
 const CONTACTO = "dolivaresm@fen.uchile.cl";
 const MP_LINK = "https://link.mercadopago.cl/danielolivares";
 const LIBRO_URL = "https://laexperienciaeselcodigo.com/#preventa";
+/* Enlace de descarga del capítulo 1 (PDF o página). Si está vacío, se avisa que llegará por correo. */
+const CAPITULO1_URL = "";
+/* Los 10 prompts que se regalan en el pop-up: actualiza los ids según los más copiados en GoatCounter */
+const TOP_PROMPTS = ["whatsapp-agenda-registro","newsletters-a-podcast","resumen-antes-reunion-ventas","conciliar-mercado-pago","cuenta-clinica-negociar","comparar-cotizaciones-pdf","minuta-reunion","clasificar-facturas-correo","apelar-seguro-viaje","prospeccion-b2b"];
+/* Precio del lector fundador según la fecha (tramos publicados en laexperienciaeselcodigo.com) */
+const TRAMOS_FUNDADOR = [
+  {hasta:"2026-11-17", usd:55, clp:"52.000"},
+  {hasta:"2026-11-26", usd:65},
+  {hasta:"2026-11-30", usd:59},
+  {hasta:"2026-12-14", usd:65},
+  {hasta:"2027-04-04", usd:69},
+  {hasta:"9999-12-31", usd:85}
+];
 
 /* Correo que recibe las suscripciones a novedades cuando la página se ve fuera de claude.ai
    (por ejemplo en GitHub Pages). Se envían con FormSubmit: la primera vez llega un correo
@@ -553,6 +687,54 @@ const CATS = {
 /* Casos de la alianza: src (página en agentusecases.ai), fo (fuente original {n,u}), r (resultado real) */
 /* Casos: id, t (título), d (descripción), a (agente), c (categoría), f (fecha AAAA-MM-DD), p (prompt), s (patrocinado, opcional) */
 const CASOS = [
+{id:"cuenta-clinica-negociar",f:"2026-10-15",c:"dinero",a:"Claude",
+ src:"https://agentusecases.ai/use-case/cut-a-hospital-bill-using-claude-s-medicare-price-analysis",fo:{n:"AOL",u:"https://www.aol.com/articles/used-claude-negotiate-163-000-100601051.html"},
+ t:"Revisar una cuenta de clínica y negociar los cobros excesivos",
+ d:"Pegas la cuenta detallada con sus códigos y el agente compara cada cobro con un precio de referencia, marca duplicados y cobros dudosos, y te da los argumentos para negociar.",
+ r:"Con la planilla que armó Claude, una persona negoció una cuenta de US$195.628 y terminó pagando cerca de US$32.500: unos US$163.000 menos.",
+ p:"Te pego la cuenta detallada de la clínica con sus códigos de prestación: [pegar]. Para cada código, busca un precio de referencia ([arancel de Fonasa o de mi isapre, tarifa de mi seguro o arancel público de mi país]) y arma una planilla con el cobro, el precio de referencia y cuántas veces más me cobraron. Destaca las mayores diferencias y los cobros duplicados o dudosos. Si te falta información (tipo de seguro, ciudad, año), pregúntame. Termina con los argumentos para una carta de negociación; la carta la escribo yo."},
+{id:"vender-cosas-usadas",f:"2026-10-15",c:"vida",a:"ChatGPT Agent",
+ src:"https://agentusecases.ai/use-case/sell-your-unused-items-online-with-an-agent",fo:{n:"Reddit r/ChatGPTPromptGenius",u:"https://www.reddit.com/r/ChatGPTPromptGenius/comments/1pt74uj/chatgpt_agent_mode_can_sell_your_stuff_online_in"},
+ t:"Vender lo que ya no usas en Mercado Libre o Marketplace",
+ d:"Subes una foto y algunos datos; el agente investiga precios de productos parecidos, redacta la publicación y te propone respuestas para cada comprador.",
+ r:"Bajó de 2 a 3 horas de gestión a 10 a 20 minutos de supervisión. No es automático: hay que iniciar sesión, aprobar y despachar uno mismo.",
+ p:"Quiero vender [producto], en estado [estado y detalles o fallas], en [Mercado Libre, Facebook Marketplace o Yapo]. Investiga publicaciones parecidas, sugiere un precio y redacta la publicación con título, descripción y una lista de fotos que debería tomar. Muéstrame la publicación antes de publicarla y muéstrame cada respuesta a compradores con la respuesta que sugieres antes de enviarla. Cada [3] días dame un resumen y, si no se vende, sugiere una rebaja. Detente cuando se venda o cuando yo te diga."},
+{id:"prospectos-diseno-web",f:"2026-10-15",c:"ventas",a:"OpenClaw",
+ src:"https://agentusecases.ai/use-case/find-web-design-prospects-with-sales-agents",fo:{n:"Reddit r/passive_income",u:"https://www.reddit.com/r/passive_income/comments/1rmsb2o/i_set_up_6_ai_agents_that_sell_web_services_24_7"},
+ t:"Encontrar negocios locales que necesitan una página web",
+ d:"El agente busca negocios en Google Maps, revisa si tienen sitio web y si funciona bien en celular, y te entrega una lista priorizada para contactar.",
+ r:"El sistema entrega cada día una lista ordenada de negocios a contactar sin buscar a mano. No publicó cifras de ventas cerradas.",
+ p:"Busca en Google Maps [tipo de negocio] en [comuna o ciudad] y reúne al menos [30] resultados. Para cada uno anota nombre, teléfono, dirección, calificación, número de reseñas, si tiene sitio web y si el sitio se ve anticuado o no funciona bien en celular. Ordénalos del mejor al peor prospecto para servicios de diseño web, con los que no tienen sitio primero, en una tabla con una frase que explique cada uno. Detente cuando la tabla esté lista. No contactes a nadie."},
+{id:"postular-empleos",f:"2026-10-15",c:"vida",a:"ChatGPT Agent",
+ src:"https://agentusecases.ai/use-case/auto-apply-to-jobs-on-linkedin-with-chatgpt-agent",fo:{n:"Reddit r/ArtificialInteligence",u:"https://www.reddit.com/r/ArtificialInteligence/comments/1s9zio8/does_chatgpt_agent_mode_do_a_good_job_to_auto"},
+ t:"Postular a ofertas de trabajo en LinkedIn",
+ d:"El agente busca ofertas que calcen con tu CV y tus criterios, adapta tus respuestas a cada una y te pide aprobación antes de enviar cada postulación.",
+ r:"Una persona cuenta que el agente postuló a 40 empleos y consiguió 2 entrevistas, aunque agotó rápido el límite mensual de uso.",
+ p:"Usando mi sesión de LinkedIn, busca [15] ofertas de [cargo] en [ciudad o remoto] que calcen con mi CV adjunto y estos criterios: [sueldo mínimo, modalidad, industria]. Adapta las respuestas de cada postulación a partir de mi CV, sin inventar experiencia. Muéstrame un resumen de cada postulación y espera mi aprobación antes de enviarla. Termina con la lista de ofertas a las que postulaste y las que descartaste, con el motivo."},
+{id:"reservar-restaurante-lleno",f:"2026-10-15",c:"vida",a:"Odessia",
+ src:"https://agentusecases.ai/use-case/monitor-and-book-a-hard-to-get-restaurant-table",fo:{n:"X (@heyfredds)",u:"https://x.com/heyfredds/status/2110440342256546287"},
+ t:"Conseguir mesa en un restaurante que está lleno",
+ d:"El agente vigila el sistema de reservas del restaurante y, apenas se libera una mesa en el horario que quieres, te avisa o la reserva por ti.",
+ r:"El agente detectó una mesa que se liberó un martes a las 16:12, reservó para dos a las 20:45 y confirmó por mensaje de texto.",
+ p:"Vigila [restaurante] en [sitio de reservas] para [2] personas, entre el [fecha] y el [fecha], en horario de [20:00 a 22:00]. Revisa cada [15 minutos]. Cuando se libere una mesa, avísame y espera mi aprobación. Una vez que apruebe, reserva y envíame los datos de confirmación. Detente cuando quede reservado o si llega el [fecha límite]."},
+{id:"ordenar-renombrar-imagenes",f:"2026-10-15",c:"ops",a:"ChatGPT Agent",
+ src:"https://agentusecases.ai/use-case/rename-and-sort-100-images-into-folders",fo:{n:"Reddit r/ChatGPT",u:"https://www.reddit.com/r/ChatGPT/comments/1m8k3xh/agent_mode_just_released_on_plus"},
+ t:"Renombrar y ordenar cientos de fotos en carpetas",
+ d:"Subes un zip con imágenes y el agente mira cada una, le pone un nombre que describe su contenido y las ordena en carpetas por tema.",
+ r:"Con más de 100 imágenes, el agente hizo un trabajo bastante sólido y además encontró una foto específica que se le pidió después.",
+ p:"Te subo un zip con [n] imágenes de [productos, eventos, obra]. Revisa cada una, renómbrala con un nombre corto y descriptivo con el formato [AAAA-MM-DD_tema_detalle] y ordénalas en subcarpetas por [tema, cliente o fecha]. Devuélveme un zip con todo ordenado y una tabla con nombre antiguo, nombre nuevo y carpeta. Si no estás seguro de una imagen, márcala en vez de adivinar."},
+{id:"grabar-tarea-agente-repite",f:"2026-10-15",c:"ops",a:"ChatGPT Agent",
+ src:"https://agentusecases.ai/use-case/turn-a-recorded-task-into-instructions-an-agent-runs",fo:{n:"Reddit r/ChatGPT",u:"https://www.reddit.com/r/ChatGPT/comments/1m97oeu"},
+ t:"Grabar una tarea repetitiva para que el agente la haga por ti",
+ d:"Grabas tu pantalla mientras explicas en voz alta cómo haces un reporte; la grabación se convierte en instrucciones paso a paso y el agente las sigue solo.",
+ r:"El agente sacó un reporte de Salesforce, lo cruzó con Gong y armó un Word con el mismo resultado que la persona hacía a mano. Los inicios de sesión los hizo ella.",
+ p:"Esta es la descripción paso a paso (o la transcripción de mi grabación) de cómo hago [tarea] en [herramientas]: [pegar]. Conviértela en instrucciones numeradas y claras, y muéstramelas antes de empezar. Luego síguelas para producir [resultado esperado] a partir de [datos de entrada]. Cuando necesites iniciar sesión, pídemelo. Detente y pregúntame antes de enviar, publicar o borrar cualquier cosa."},
+{id:"coordinar-tratamiento-familiar",f:"2026-10-15",c:"vida",a:"Agente propio",
+ src:"https://agentusecases.ai/use-case/coordinate-a-cancer-patient-s-records-and-care-with-an-agent",fo:{n:"Hacker News",u:"https://news.ycombinator.com/item?id=50100601"},
+ t:"Ordenar los exámenes y medicamentos de un familiar enfermo",
+ d:"Cuando un familiar ve a muchos médicos, el agente une fichas, exámenes y recetas en una sola línea de tiempo y detecta inconsistencias para conversarlas con el equipo médico.",
+ r:"Una familia detectó una pauta de analgésicos equivocada y un error de transcripción en marcadores genéticos que cambió el tratamiento. No reemplaza a los médicos: ayuda a hacer mejores preguntas.",
+ p:"Mi familiar [nombre], con [diagnóstico], está siendo atendido por varios médicos. Te pego su pauta de medicamentos, resultados de exámenes y notas de las consultas: [pegar]. Arma una sola línea de tiempo y marca las inconsistencias: medicamentos o dosis que se contradicen, valores distintos entre documentos y posibles errores de transcripción. Termina con preguntas concretas para su equipo médico. No des indicaciones de tratamiento: no reemplazas a los profesionales de salud."},
 {id:"whatsapp-agenda-registro",f:"2026-10-14",c:"ventas",a:"n8n",
  src:"https://agentusecases.ai/use-case/run-business-whatsapp-customer-messages-with-an-agent",fo:{n:"X",u:"https://x.com/aiautomationexp/status/2110035889871257677"},
  t:"Atender WhatsApp, agendar citas y registrar cada conversación",
@@ -885,11 +1067,11 @@ function renderStatic(){
 
   const slots = SPONSORS.map(s=>`<a class="slot real" href="${esc(s.url)}" target="_blank" rel="noopener sponsored">${esc(s.nombre)}</a>`);
   while (slots.length < 3) slots.push('<a class="slot" href="#/patrocina">Tu marca aquí</a>');
-  $('#strip').innerHTML = '<span class="lab">Sponsors</span>' + slots.join('') + `<a class="slot" href="${LIBRO_URL}" target="_blank" rel="noopener">Precompra el libro</a>`;
+  $('#strip').innerHTML = '<span class="lab">Sponsors</span>' + slots.join('') + `<a class="slot" href="${LIBRO_URL}" target="_blank" rel="noopener" data-libro="barra">Precompra el libro</a>`;
 
   const wall = [...SPONSORS.map(s=>s.nombre), ...DONANTES];
   $('#wall').innerHTML = wall.length ? wall.map(n=>`<span>${esc(n)}</span>`).join('')
-    : `<p class="empty" style="padding:0">Todavía no hay nombres aquí. Los lectores fundadores del libro aparecerán en este muro. <a href="${LIBRO_URL}" target="_blank" rel="noopener">Precompra el libro</a></p>`;
+    : `<p class="empty" style="padding:0">Todavía no hay nombres aquí. Los lectores fundadores del libro aparecerán en este muro. <a href="${LIBRO_URL}" target="_blank" rel="noopener" data-libro="muro">Precompra el libro</a></p>`;
 
   $('#apCat').innerHTML = '<option value="">Elige una</option>' + Object.entries(CATS).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('');
   $('#apAgentes').innerHTML = agents.map(a=>`<option value="${esc(a)}">`).join('');
@@ -923,11 +1105,56 @@ const tituloCaso = id => (CASOS.find(c=>c.id===id)||{}).t || id;
 
 function setCat(k){ medir.evento('filtro-categoria/' + k, 'Filtro: ' + (CATS[k]||'Todos')); state.cat=k; state.limit=12; document.querySelectorAll('#chips .chip').forEach(b=>b.setAttribute('aria-pressed', b.dataset.cat===k)); renderList(); }
 
+/* ============ Libro: enlaces medidos, tarjeta y regalo ============ */
+let ultimoCaso = '';
+/* Agrega marcas de origen (UTM) a un enlace del libro para medir en su sitio de dónde llega cada visita */
+function urlLibro(href, lugar, contenido){
+  const [base, hash] = href.split('#');
+  const u = new URL(base);
+  u.searchParams.set('utm_source', 'agentario');
+  u.searchParams.set('utm_medium', lugar);
+  u.searchParams.set('utm_campaign', 'preventa');
+  if (contenido) u.searchParams.set('utm_content', contenido);
+  return u.toString() + (hash ? '#' + hash : '');
+}
+function vistaActual(){
+  const h = location.hash;
+  return h.startsWith('#/libro') ? 'libro' : h.startsWith('#/patrocina') ? 'patrocina' : h.startsWith('#/aporta') ? 'aporta' : 'inicio';
+}
+function tarjetaLibro(li, id){
+  if (li.querySelector('.book-card')) return;
+  const div = document.createElement('div');
+  div.className = 'book-card';
+  div.innerHTML = `<div class="cover" aria-hidden="true">La exp. es el código</div>
+    <div><p><strong>Este prompt es un comienzo.</strong> Si quieres que el agente haga tu trabajo como tú lo haces, eso se aprende en <em>La experiencia es el código</em>.</p>
+    <div class="row"><a class="btn sun-b" href="${LIBRO_URL}" target="_blank" rel="noopener" data-libro="tarjeta-copiar">Precompra el libro</a>
+    <a class="link" href="#/libro" data-libro-interno="tarjeta-copiar">Conoce el libro</a>
+    <button type="button" class="link" data-news data-origen="tarjeta-copiar">Lee gratis el capítulo 1</button></div></div>`;
+  li.querySelector('.prompt').after(div);
+  medir.evento('tarjeta-libro/' + id, 'Tarjeta del libro mostrada: ' + tituloCaso(id));
+}
+function llenarRegalo(){
+  $('#newsCap').innerHTML = CAPITULO1_URL
+    ? `<a href="${esc(CAPITULO1_URL)}" target="_blank" rel="noopener" data-libro="descarga-capitulo1">Descarga aquí el capítulo 1: <strong>Tu experiencia es el 90 %</strong></a>`
+    : 'Te enviaremos el capítulo 1, <strong>Tu experiencia es el 90 %</strong>, a tu correo apenas se libere. Mientras, aquí tienes los prompts.';
+  $('#newsPrompts').innerHTML = TOP_PROMPTS.map(id => CASOS.find(c=>c.id===id)).filter(Boolean)
+    .map(c => `<li><span>${esc(c.t)}</span><button type="button" data-copy="${esc(c.id)}">Copiar</button></li>`).join('');
+}
+function precioFundador(){
+  const hoy = new Date().toISOString().slice(0,10);
+  const t = TRAMOS_FUNDADOR.find(x => hoy <= x.hasta);
+  if (t) $('#lbFundador').innerHTML = `USD ${t.usd} <small>${t.clp ? '$' + t.clp + ' CLP · ' : ''}lista USD 85</small>`;
+}
+/* ================================================================= */
+
 /* ============ Pop-up de novedades ============ */
 const news = {
   dlg: $('#news'),
-  open(){
+  origen: 'auto',
+  open(origen){
+    this.origen = origen || 'auto';
     const sub = store.get('agentario-news') === 'ok';
+    if (sub) llenarRegalo();
     $('#newsFormWrap').hidden = sub; $('#newsDone').hidden = !sub;
     $('#newsMsg').textContent = ''; $('#newsMsg').className = 'news-msg';
     if (!this.dlg.open) { if (this.dlg.showModal) this.dlg.showModal(); else this.dlg.setAttribute('open',''); }
@@ -987,24 +1214,33 @@ $('#newsForm').addEventListener('submit', async e => {
   if (f._honey.value) return;
   const email = f.email.value.trim().toLowerCase();
   const nombre = f.nombre.value.trim().slice(0,80);
+  const rubro = f.rubro.value;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
     msg.textContent = 'Revisa tu correo: parece que falta algo.'; msg.className = 'news-msg err'; f.email.focus(); return;
   }
-  const datos = { email, nombre, fecha: new Date().toISOString(), origen: location.hostname || 'local' };
+  const datos = { email, nombre, rubro, interes: news.origen, caso: ultimoCaso, fecha: new Date().toISOString(), origen: location.hostname || 'local' };
   btn.disabled = true; btn.textContent = 'Enviando…'; msg.textContent = ''; msg.className = 'news-msg';
   let ok = false;
   try { ok = await guardarEnArtefacto('suscriptores', datos); } catch(err) { ok = false; }
   if (!ok) {
-    try { ok = await guardarConFormSubmit('Nueva suscripción a novedades de Agentario',
-      { email, nombre: nombre || '(sin nombre)', fecha: datos.fecha, pagina: datos.origen }); } catch(err) { ok = false; }
+    const preventa = urlLibro(LIBRO_URL, 'correo-bienvenida', news.origen);
+    try { ok = await guardarConFormSubmit('Nuevo lector: capítulo 1' + (rubro ? ' (' + rubro + ')' : ''), {
+      email, nombre: nombre || '(sin nombre)', rubro: rubro || '(no indicó)', desde: news.origen,
+      caso_copiado: ultimoCaso ? tituloCaso(ultimoCaso) : '(ninguno)', fecha: datos.fecha, pagina: datos.origen,
+      _autoresponse: '¡Gracias por sumarte a La experiencia es el código! ' +
+        (CAPITULO1_URL ? 'Descarga el capítulo 1 aquí: ' + CAPITULO1_URL + ' ' : 'Te enviaremos el capítulo 1 apenas se libere. ') +
+        'Si quieres el libro completo, la preventa está abierta: ' + preventa
+    }); } catch(err) { ok = false; }
   }
-  btn.disabled = false; btn.textContent = 'Quiero recibir novedades';
+  btn.disabled = false; btn.textContent = 'Quiero el capítulo 1';
   if (ok) {
     store.set('agentario-news', 'ok');
-    medir.evento('suscripcion-novedades', 'Suscripción a novedades');
-    $('#newsFormWrap').hidden = true; $('#newsDone').hidden = false; $('#newsOk').focus();
+    medir.evento('lead-capitulo1/' + (rubro ? rubro.toLowerCase().replace(/\s+/g,'-') : 'sin-rubro') + '/' + news.origen,
+      'Lead capítulo 1: ' + (rubro || 'sin rubro') + ' · desde ' + news.origen);
+    llenarRegalo();
+    $('#newsFormWrap').hidden = true; $('#newsDone').hidden = false; $('.news-card').scrollTop = 0; $('#newsOk').focus({preventScroll:true});
   } else {
-    const mail = `mailto:${CONTACTO}?subject=${encodeURIComponent('Quiero recibir novedades de Agentario')}&body=${encodeURIComponent('Mi correo: ' + email + (nombre ? '\nMi nombre: ' + nombre : ''))}`;
+    const mail = `mailto:${CONTACTO}?subject=${encodeURIComponent('Quiero el capítulo 1 de La experiencia es el código')}&body=${encodeURIComponent('Mi correo: ' + email + (nombre ? '\nMi nombre: ' + nombre : ''))}`;
     msg.innerHTML = `No pudimos registrarte desde aquí. <a href="${mail}">Escríbenos y te sumamos</a>.`;
     msg.className = 'news-msg err';
   }
@@ -1052,8 +1288,8 @@ function autoPopup(){
   if (st.startsWith('cerrado:') && Date.now() - Number(st.slice(8)) < 14*24*3600*1000) return;
   let shown = false;
   const show = () => {
-    if (shown || location.hash.startsWith('#/patrocina') || location.hash.startsWith('#/aporta') || document.querySelector('dialog[open]')) return;
-    shown = true; window.removeEventListener('scroll', onScroll); news.open();
+    if (shown || location.hash.startsWith('#/patrocina') || location.hash.startsWith('#/aporta') || location.hash.startsWith('#/libro') || document.querySelector('dialog[open]')) return;
+    shown = true; window.removeEventListener('scroll', onScroll); news.open('auto');
   };
   const onScroll = () => { if (window.scrollY > document.documentElement.scrollHeight * 0.45) show(); };
   setTimeout(show, POPUP_SEGUNDOS * 1000);
@@ -1067,7 +1303,15 @@ document.addEventListener('click', async e => {
   if (t.classList.contains('via') || t.classList.contains('fo')) {
     const id = (t.closest('.case')||{}).id || ''; medir.evento((t.classList.contains('via')?'clic-alianza/':'clic-fuente/') + id.replace(/^caso-/,''), (t.classList.contains('via')?'Clic Agent Use Cases: ':'Clic fuente: ') + tituloCaso(id.replace(/^caso-/,'')));
   }
-  if (t.hasAttribute('data-news')){ news.open(); medir.evento('abrir-novedades', 'Abrir pop-up de novedades');
+  if (t.tagName === 'A' && /laexperienciaeselcodigo\.com/.test(t.getAttribute('href') || '')) {
+    const lugar = t.dataset.libro || 'otro';
+    const caso = ((t.closest('.case')||{}).id || '').replace(/^caso-/, '');
+    const contenido = caso || ultimoCaso || vistaActual();
+    t.href = urlLibro(t.getAttribute('href'), lugar, contenido);
+    medir.evento('clic-libro/' + lugar + '/' + contenido, 'Clic al libro: ' + lugar + (caso ? ' · ' + tituloCaso(caso) : ''));
+  }
+  if (t.dataset.libroInterno) medir.evento('ver-pagina-libro/' + t.dataset.libroInterno, 'Ir a la página del libro desde ' + t.dataset.libroInterno);
+  if (t.hasAttribute('data-news')){ const o = t.dataset.origen || 'boton'; news.open(o); medir.evento('abrir-capitulo1/' + o, 'Abrir oferta capítulo 1 desde ' + o);
   } else if (t.dataset.toggle){
     const li = t.closest('.case'); const open = li.classList.toggle('open');
     t.setAttribute('aria-expanded', open); t.textContent = open ? 'Ocultar prompt' : 'Ver prompt';
@@ -1076,9 +1320,15 @@ document.addEventListener('click', async e => {
     e.preventDefault(); const li=t.closest('.case'); if(!li.classList.contains('open')) li.querySelector('[data-toggle]').click();
   } else if (t.dataset.copy){
     const c = find(t.dataset.copy);
-    medir.evento('copiar-prompt/' + c.id, 'Copiar prompt: ' + c.t);
+    const li = t.closest('.case');
+    ultimoCaso = c.id;
+    medir.evento((li ? 'copiar-prompt/' : 'copiar-prompt-regalo/') + c.id, 'Copiar prompt: ' + c.t);
     try { await navigator.clipboard.writeText(c.p); toast('Prompt copiado'); }
-    catch(err){ const li=t.closest('.case'); if(!li.classList.contains('open')) li.querySelector('[data-toggle]').click(); toast('Selecciona el texto para copiarlo'); }
+    catch(err){
+      if (li && !li.classList.contains('open')) li.querySelector('[data-toggle]').click();
+      toast(li ? 'Selecciona el texto para copiarlo' : 'No pudimos copiar: ábrelo desde la lista de casos');
+    }
+    if (li) tarjetaLibro(li, c.id);
   } else if (t.dataset.share){
     const c = find(t.dataset.share);
     const url = location.href.split('#')[0] + '#caso-' + c.id;
@@ -1122,13 +1372,13 @@ $('#agentSel').addEventListener('change', e => { state.agent=e.target.value; sta
 
 function route(){
   const h = location.hash;
-  const view = h.startsWith('#/patrocina') ? 'sponsor' : h.startsWith('#/aporta') ? 'aporta' : 'home';
+  const view = h.startsWith('#/patrocina') ? 'sponsor' : h.startsWith('#/aporta') ? 'aporta' : h.startsWith('#/libro') ? 'libro' : 'home';
   const sponsor = view !== 'home';
   if (h.startsWith('#caso-')) medir.vista('/caso/' + h.slice(6), tituloCaso(h.slice(6)));
-  else medir.vista({home:'/', aporta:'/aporta', sponsor:'/patrocina'}[view], {home:'Inicio', aporta:'Aporta tu caso', sponsor:'Patrocina'}[view]);
-  ['home','aporta','sponsor'].forEach(k => { $('#view-' + k).hidden = k !== view; });
+  else medir.vista({home:'/', aporta:'/aporta', sponsor:'/patrocina', libro:'/libro'}[view], {home:'Inicio', aporta:'Aporta tu caso', sponsor:'Patrocina', libro:'El libro'}[view]);
+  ['home','aporta','sponsor','libro'].forEach(k => { $('#view-' + k).hidden = k !== view; });
   document.querySelectorAll('[data-nav]').forEach(a => a.dataset.nav === view ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
-  document.title = { home:'Agentario: casos de uso de agentes de IA en español', aporta:'Aporta tu caso a Agentario', sponsor:'Patrocina Agentario' }[view];
+  document.title = { home:'Agentario: casos de uso de agentes de IA en español', aporta:'Aporta tu caso a Agentario', sponsor:'Patrocina Agentario', libro:'La experiencia es el código: el libro' }[view];
   if (h === '#novedades') { news.open(); return; }
   if (h.startsWith('#caso-')){
     const id = h.slice(6);
@@ -1139,7 +1389,7 @@ function route(){
 }
 window.addEventListener('hashchange', route);
 
-renderStatic(); renderList(); route(); autoPopup();
+renderStatic(); renderList(); precioFundador(); route(); autoPopup();
 </script>
 </body>
 </html>

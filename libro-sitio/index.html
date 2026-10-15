@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La experiencia es el código: libro de IA agéntica para profesionales</title>
+<meta name="description" content="Aprende a crear agentes de inteligencia artificial sin programar. Un libro en español que se escribe en vivo con profesionales con trayectoria. Preventa abierta; libro impreso el 5 de abril de 2027.">
+<meta name="keywords" content="IA agéntica, agentes de IA, crear agentes de IA sin programar, inteligencia artificial para profesionales, inteligencia artificial para mayores de 50, libro de inteligencia artificial en español, casos de uso de agentes de IA, automatizar tareas con IA, taller de agentes de IA online, Claude Code, prompts en español">
+<meta name="author" content="Daniel Olivares Martínez">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://laexperienciaeselcodigo.com/">
+<meta name="theme-color" content="#E9EEF2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101B2C" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="La experiencia es el código">
+<meta property="og:locale" content="es_CL">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:title" content="La experiencia es el código: IA agéntica para profesionales que saben lo que piden">
+<meta property="og:description" content="Un libro que se escribe en vivo: casos reales de profesionales con trayectoria que convierten su experiencia en agentes de IA. Preventa abierta.">
+<meta property="og:url" content="https://laexperienciaeselcodigo.com/">
+<meta property="og:image" content="https://laexperienciaeselcodigo.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Portada: La experiencia es el código. IA agéntica para profesionales que saben lo que piden.">
+<meta property="book:author" content="Daniel Olivares Martínez">
+<meta property="book:release_date" content="2027-04-05">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La experiencia es el código">
+<meta name="twitter:description" content="IA agéntica para profesionales que saben lo que piden. Preventa abierta.">
+<meta name="twitter:image" content="https://laexperienciaeselcodigo.com/og.png">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://laexperienciaeselcodigo.com/#sitio",
+      "url": "https://laexperienciaeselcodigo.com/",
+      "name": "La experiencia es el código",
+      "inLanguage": "es"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://laexperienciaeselcodigo.com/#autor",
+      "name": "Daniel Olivares Martínez",
+      "jobTitle": "Director de IA",
+      "homeLocation": { "@type": "Place", "name": "Santiago de Chile" },
+      "sameAs": ["https://www.linkedin.com/in/dolivares/"]
+    },
+    {
+      "@type": "Book",
+      "@id": "https://laexperienciaeselcodigo.com/#libro",
+      "name": "La experiencia es el código",
+      "alternativeHeadline": "IA agéntica para profesionales que saben lo que piden",
+      "author": { "@id": "https://laexperienciaeselcodigo.com/#autor" },
+      "inLanguage": "es",
+      "datePublished": "2027-04-05",
+      "bookFormat": "https://schema.org/Paperback",
+      "genre": ["Inteligencia artificial", "Desarrollo profesional", "Tecnología y sociedad"],
+      "about": ["IA agéntica", "Agentes de inteligencia artificial", "Automatización del trabajo", "Profesionales con trayectoria"],
+      "audience": { "@type": "Audience", "audienceType": "Profesionales con trayectoria, especialmente mayores de 50 años" },
+      "image": "https://laexperienciaeselcodigo.com/og.png",
+      "url": "https://laexperienciaeselcodigo.com/",
+      "offers": [
+        { "@type": "Offer", "name": "Lector digital", "price": "25", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
+        { "@type": "Offer", "name": "Lector fundador", "price": "55", "priceCurrency": "USD", "priceValidUntil": "2026-11-17", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
+        { "@type": "Offer", "name": "Mecenas", "price": "450", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Necesito saber programar para crear un agente de IA?", "acceptedAnswer": { "@type": "Answer", "text": "No. El libro parte de una idea simple: si sabes explicar con detalle cómo haces tu trabajo, ya tienes el 90 % de lo necesario. El código lo escribe un agente de IA a partir de tus instrucciones." } },
+        { "@type": "Question", "name": "¿Qué es la IA agéntica?", "acceptedAnswer": { "@type": "Answer", "text": "Es inteligencia artificial que no solo responde preguntas: ejecuta tareas de varios pasos, usa herramientas y entrega un resultado, como conciliar pagos, preparar una minuta o responder clientes." } },
+        { "@type": "Question", "name": "¿Cuándo recibo el libro?", "acceptedAnswer": { "@type": "Answer", "text": "El libro impreso se lanza el 5 de abril de 2027. Los capítulos digitales se liberan desde ahora, a medida que se escriben." } },
+        { "@type": "Question", "name": "¿Cuánto cuesta el envío?", "acceptedAnswer": { "@type": "Answer", "text": "En Chile, el envío está incluido en el precio. En España, el libro se despacha desde Málaga con un recargo de envío que se informa al confirmar la reserva. Para otros países, el envío se coordina con cada lector." } },
+        { "@type": "Question", "name": "¿Los talleres son presenciales?", "acceptedAnswer": { "@type": "Answer", "text": "Los talleres incluidos en la preventa son en línea y en vivo. Solo el nivel para empresas puede ser presencial." } },
+        { "@type": "Question", "name": "¿Puedo pedir la devolución de mi precompra?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --paper: #E9EEF2;
+    --card: #FBFCFD;
+    --ink: #14233A;
+    --muted: #4E5E72;
+    --line: #C3CDD7;
+    --pencil: #C9962B;
+    --pencil-soft: #F2E4C2;
+    --on-pencil: #14233A;
+    --ok: #2F6B4F;
+    --err: #A33A2B;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101B2C;
+      --card: #172538;
+      --ink: #E6ECF2;
+      --muted: #A3B1C2;
+      --line: #2C3D55;
+      --pencil: #E0B04A;
+      --pencil-soft: #3A3220;
+      --on-pencil: #101B2C;
+      --ok: #7FC4A0;
+      --err: #F0907F;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Literata", Georgia, "Times New Roman", serif;
+    font-size: 1.125rem; line-height: 1.65;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  a { color: inherit; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--pencil); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+  .sans { font-family: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 1rem; top: 1rem; background: var(--card); padding: .5rem 1rem; z-index: 10; }
+
+  /* Cabecera */
+  header.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: calc(1.25rem + env(safe-area-inset-top, 0px)) 0 1.25rem; font-size: 1rem; }
+  header.top .marca { text-decoration: none; font-weight: 600; }
+  header.top nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+  header.top nav a { text-decoration: none; }
+  header.top nav a:hover { text-decoration: underline; }
+  header.top nav a.nav-cta { background: var(--ink); color: var(--paper); padding: .45rem .9rem; border-radius: 3px; font-weight: 600; }
+  header.top nav a.nav-cta:hover { text-decoration: none; filter: brightness(1.15); }
+
+  /* Botones */
+  .btn { display: inline-block; padding: .8rem 1.25rem; font: 600 1rem/1.2 "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; text-decoration: none; border-radius: 3px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+  .btn.primary { background: var(--pencil); border-color: var(--pencil); color: var(--on-pencil); }
+  .btn:hover { filter: brightness(1.06); }
+  .btn[disabled] { opacity: .6; cursor: wait; }
+
+  /* Portada */
+  .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3.5rem; align-items: center; padding: 3rem 0 4.5rem; }
+  h1 { font-size: clamp(2.75rem, 7vw, 5.25rem); line-height: 1.02; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 1.1rem; font-variation-settings: "opsz" 72; }
+  .subtitle { font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.35; color: var(--muted); margin: 0 0 1.5rem; max-width: 30ch; }
+  .lede { max-width: 38rem; margin: 0 0 1.5rem; }
+  .hechos { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin: 0 0 2rem; padding: 0; list-style: none; font-size: 1rem; }
+  .hechos li::before { content: ""; display: inline-block; width: .55rem; height: .55rem; background: var(--pencil); margin-right: .55rem; vertical-align: .08rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  .ficha { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem 1.75rem 1.5rem; transform: rotate(-1.2deg);
+    box-shadow: 10px 12px 0 -2px color-mix(in srgb, var(--pencil) 35%, transparent); }
+  .ficha dd { padding-bottom: .9rem; border-bottom: 1px solid var(--line); }
+  .ficha dd:last-of-type { border-bottom: 0; padding-bottom: 0; }
+  .ficha h2 { font-size: 1.05rem; font-weight: 600; margin: 0 0 1rem; padding-bottom: .6rem; border-bottom: 2px solid var(--pencil); }
+  .ficha dl { margin: 0; }
+  .ficha dt { font-size: .85rem; color: var(--muted); font-weight: 500; }
+  .ficha dd { margin: 0 0 .9rem; font-size: 1.02rem; line-height: 1.45; }
+  .ficha .firma { font-size: .85rem; color: var(--muted); margin: .5rem 0 0; }
+
+  /* Bloques */
+  section.block { padding: 4.5rem 0; border-top: 1px solid var(--line); }
+  section.block h2 { font-size: clamp(1.75rem, 3.5vw, 2.4rem); line-height: 1.15; margin: 0 0 1rem; font-weight: 700; letter-spacing: -0.01em; max-width: 26ch; }
+  .intro { max-width: 42rem; margin: 0 0 2.5rem; color: var(--muted); }
+
+  ol.pasos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; counter-reset: paso; }
+  ol.pasos li { counter-increment: paso; }
+  ol.pasos li::before { content: counter(paso); display: block; font-size: 3rem; font-weight: 700; line-height: 1; color: var(--pencil); margin-bottom: .75rem; }
+  ol.pasos h3 { font-size: 1.25rem; margin: 0 0 .4rem; }
+  ol.pasos p { margin: 0; color: var(--muted); }
+
+  /* Agentario */
+  .agentario { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem; align-items: start; }
+  .agentario .rol { margin: 0 0 1rem; }
+  ul.casos { list-style: none; margin: 0 0 1.75rem; padding: 0; }
+  ul.casos li { border-bottom: 1px dotted var(--line); }
+  ul.casos a { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; padding: 1rem 0; text-decoration: none; }
+  ul.casos a:hover .t { text-decoration: underline; }
+  ul.casos .t { font-size: 1.12rem; line-height: 1.35; }
+  ul.casos .area { font-size: .92rem; color: var(--muted); white-space: nowrap; }
+  ul.casos .por { grid-column: 1 / -1; font-size: .98rem; color: var(--muted); }
+
+  /* Capítulos */
+  ol.indice { list-style: none; margin: 0; padding: 0; max-width: 46rem; counter-reset: cap; }
+  ol.indice li { counter-increment: cap; display: grid; grid-template-columns: 3rem 1fr auto; gap: 1rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px dotted var(--line); }
+  ol.indice li::before { content: counter(cap); font-weight: 700; color: var(--muted); }
+  ol.indice .titulo { font-size: 1.15rem; }
+  ol.indice .estado { font-size: .95rem; color: var(--muted); white-space: nowrap; }
+  ol.indice .estado.vivo { color: var(--ink); font-weight: 600; }
+  ol.indice .estado.vivo::before { content: ""; display: inline-block; width: .55rem; height: .55rem; border-radius: 50%; background: var(--pencil); margin-right: .45rem; vertical-align: .1rem; }
+
+  /* Preventa: lista de precios con forma de catálogo de librería */
+  .precios { list-style: none; margin: 0 0 3rem; padding: 0; border-top: 2px solid var(--ink); }
+  .precios > li { display: grid; grid-template-columns: 1fr 11rem 11.5rem; gap: 1.5rem; align-items: center; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
+  .precios h3 { font-size: 1.35rem; margin: 0 0 .35rem; }
+  .precios ul { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+  .precios .monto { text-align: right; }
+  .precios .ahora { display: block; font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+  .precios .clp { display: block; font-size: .92rem; color: var(--muted); }
+  .precios .lista { display: block; font-size: .92rem; color: var(--muted); }
+  .precios .lista s { text-decoration-thickness: 1px; }
+  .precios .accion { text-align: right; }
+  .precios .accion .btn { width: 100%; text-align: center; white-space: nowrap; }
+  .precios > li.destacado { background: var(--card); border-left: 6px solid var(--pencil); padding-left: 1.4rem; padding-right: 1.4rem; margin: 0 -1.4rem; }
+  .precios .etapa { display: inline-block; margin-bottom: .5rem; font-size: .9rem; font-weight: 600; background: var(--pencil-soft); padding: .15rem .55rem; border-radius: 2px; }
+
+  .etapas-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .etapas-wrap h3 { font-size: 1.3rem; margin: 0 0 1rem; }
+  ol.etapas { list-style: none; margin: 0; padding: 0; position: relative; }
+  ol.etapas li { position: relative; padding: 0 0 1.25rem 1.75rem; border-left: 2px solid var(--line); margin-left: .4rem; }
+  ol.etapas li:last-child { padding-bottom: 0; }
+  ol.etapas li::before { content: ""; position: absolute; left: -.5rem; top: .45rem; width: .85rem; height: .85rem; border-radius: 50%; background: var(--paper); border: 2px solid var(--line); }
+  ol.etapas li.actual::before { background: var(--pencil); border-color: var(--pencil); }
+  ol.etapas li.pasada { color: var(--muted); }
+  ol.etapas .fecha { display: block; font-size: .95rem; color: var(--muted); }
+  ol.etapas .p { font-weight: 600; }
+  ol.etapas li.actual .p::after { content: " Etapa actual"; font-family: "IBM Plex Sans Condensed", Arial, sans-serif; font-weight: 600; font-size: .85rem; background: var(--pencil-soft); padding: .1rem .45rem; margin-left: .5rem; border-radius: 2px; }
+  dl.condiciones { margin: 0; }
+  dl.condiciones dt { font-weight: 700; margin-top: 1rem; }
+  dl.condiciones dt:first-child { margin-top: 0; }
+  dl.condiciones dd { margin: .2rem 0 0; color: var(--muted); }
+
+  /* Comunidad */
+  .comunidad { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  ul.roles { list-style: none; margin: 0; padding: 0; }
+  ul.roles li { padding: .9rem 0; border-bottom: 1px dotted var(--line); }
+  ul.roles strong { display: block; font-size: 1.1rem; }
+  ul.roles span { color: var(--muted); font-size: 1rem; }
+  form.f { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem; }
+  form.f h3 { margin: 0 0 1.25rem; font-size: 1.3rem; }
+  .campo { margin-bottom: 1rem; }
+  .campo label, fieldset legend { display: block; font-size: .95rem; font-weight: 600; margin-bottom: .35rem; }
+  .campo input, .campo select, .campo textarea { width: 100%; font: 400 1.05rem/1.4 "Literata", Georgia, serif; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: .65rem .75rem; }
+  .campo textarea { min-height: 5.5rem; resize: vertical; }
+  fieldset { border: 0; margin: 0 0 1rem; padding: 0; }
+  .check { display: flex; gap: .6rem; align-items: flex-start; margin: .45rem 0; font-size: 1rem; }
+  .check input { width: 1.15rem; height: 1.15rem; margin-top: .25rem; accent-color: var(--pencil); flex: none; }
+  .honey { position: absolute; left: -9999px; }
+  .nota { font-size: .9rem; color: var(--muted); margin: .75rem 0 0; }
+  .msg { margin: .9rem 0 0; font-size: 1rem; min-height: 1.4em; }
+  .msg.ok { color: var(--ok); }
+  .msg.err { color: var(--err); }
+
+  /* Preguntas */
+  .faq { max-width: 46rem; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { cursor: pointer; list-style: none; padding: 1.1rem 2rem 1.1rem 0; font-size: 1.15rem; font-weight: 500; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: .25rem; top: .95rem; font-size: 1.5rem; line-height: 1; color: var(--muted); }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { margin: 0 0 1.25rem; color: var(--muted); max-width: 40rem; }
+
+  /* Diálogo de precompra */
+  dialog.precompra { border: 1px solid var(--line); border-radius: 4px; padding: 0; width: min(34rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); background: var(--card); color: var(--ink); }
+  dialog.precompra::backdrop { background: rgba(16, 27, 44, .55); }
+  dialog.precompra .in { padding: 1.75rem; position: relative; }
+  dialog.precompra form.f { border: 0; padding: 0; background: transparent; }
+  dialog.precompra .cerrar { position: absolute; right: .75rem; top: .6rem; background: none; border: 0; font-size: 1.8rem; line-height: 1; color: var(--muted); cursor: pointer; padding: .25rem .5rem; }
+  dialog.precompra .resumen { background: var(--pencil-soft); padding: .75rem 1rem; border-radius: 3px; margin: 0 0 1.25rem; font-size: 1rem; }
+  dialog.precompra .paso2 h3 { margin: 0 0 .75rem; font-size: 1.35rem; }
+  dialog.precompra .paso2 p { margin: 0 0 1rem; }
+
+  footer { padding: 3rem 0 calc(4rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); font-size: 1rem; color: var(--muted); }
+  footer p { margin: 0 0 .4rem; }
+  footer a { color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .hero, .agentario, .comunidad, .etapas-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero { padding-top: 1.5rem; }
+    .ficha { transform: none; }
+    ol.pasos { grid-template-columns: 1fr; }
+    .precios > li { grid-template-columns: 1fr auto; gap: 1rem 1.5rem; }
+    .precios .accion { grid-column: 1 / -1; text-align: left; }
+    .precios .accion .btn { width: auto; }
+  }
+  @media (max-width: 600px) {
+    header.top { flex-direction: column; align-items: flex-start; }
+    header.top nav { gap: .9rem 1.1rem; }
+    .precios > li { grid-template-columns: 1fr; }
+    .precios .monto { text-align: left; }
+    .precios > li.destacado { margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+    ol.indice li { grid-template-columns: 2rem 1fr; }
+    ol.indice .estado { grid-column: 2; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .ficha { animation: llega 700ms ease-out both; }
+    @keyframes llega { from { opacity: 0; transform: rotate(-4deg) translateY(12px); } to { opacity: 1; transform: rotate(-1.2deg); } }
+  }
+  @media (prefers-reduced-motion: no-preference) and (max-width: 900px) {
+    @keyframes llega { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+  <a class="skip sans" href="#contenido">Saltar al contenido</a>
+  <div class="wrap">
+    <header class="top sans">
+      <a class="marca" href="/">La experiencia es el código</a>
+      <nav aria-label="Secciones">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#agentario">Agentario</a>
+        <a href="#capitulos">Capítulos</a>
+        <a href="#comunidad">Comunidad</a>
+        <a class="nav-cta" href="#preventa">Precomprar</a>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section class="hero" aria-labelledby="titulo">
+        <div>
+          <h1 id="titulo">La experiencia es el código</h1>
+          <p class="subtitle">IA agéntica para profesionales que saben lo que piden</p>
+          <p class="lede">Un libro para aprender a crear agentes de inteligencia artificial sin programar, escrito en vivo junto a profesionales con trayectoria. Cada capítulo y cada entrevista se publica aquí a medida que avanza.</p>
+          <ul class="hechos sans">
+            <li>Libro impreso: 5 de abril de 2027</li>
+            <li>Capítulos digitales: desde hoy</li>
+            <li>Talleres en línea y en vivo</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="#preventa" data-cta-precio>Precomprar el libro</a>
+            <a class="btn" href="#comunidad">Unirme a la comunidad</a>
+          </div>
+        </div>
+
+        <aside class="ficha" aria-label="Ejemplo de ficha de especificación de un agente de IA">
+          <h2 class="sans">Ficha de especificación</h2>
+          <dl>
+            <dt class="sans">Lo que sé hacer mejor que nadie</dt>
+            <dd>Revisar una factura y saber, en un minuto, si algo no cuadra.</dd>
+            <dt class="sans">Lo que nunca se debe hacer</dt>
+            <dd>Aprobar un pago sin la orden de compra, aunque el cliente apure.</dd>
+            <dt class="sans">Cómo sé que salió bien</dt>
+            <dd>Cero pagos duplicados en el mes y respuesta al proveedor en menos de un día.</dd>
+          </dl>
+          <p class="firma sans">Con esto, un agente ya sabe qué hacer. El código lo escribe la IA.</p>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <section class="block" id="como-funciona" aria-labelledby="como-t">
+    <div class="wrap">
+      <h2 id="como-t">Un libro de IA escrito con su comunidad</h2>
+      <p class="intro">Tu experiencia es el 90 % del trabajo para construir un agente de inteligencia artificial. El otro 10 % lo hace la máquina. Este libro lo demuestra con casos reales, contados por quienes los viven, en finanzas, recursos humanos, salud, logística, educación y atención al cliente.</p>
+      <ol class="pasos">
+        <li>
+          <h3>Entrevistamos</h3>
+          <p>Profesionales con trayectoria de Chile, Latinoamérica y España cuentan, con detalle, una tarea que dominan.</p>
+        </li>
+        <li>
+          <h3>Escribimos</h3>
+          <p>Cada entrevista se convierte en un capítulo: la historia de su oficio y la especificación de un agente de IA que lo ayudaría.</p>
+        </li>
+        <li>
+          <h3>Publicamos</h3>
+          <p>Los capítulos y las entrevistas se liberan aquí a medida que quedan listos, antes de llegar al libro impreso.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="agentario" aria-labelledby="agentario-t">
+    <div class="wrap agentario">
+      <div>
+        <h2 id="agentario-t">Agentario: la prueba de que ya es posible</h2>
+        <p class="rol">El Agentario es el adelanto abierto y masivo de este libro: más de 50 casos de uso de agentes de IA en español, en siete áreas. Mientras los capítulos se escriben con calma, el Agentario publica todos los días casos concretos de lo que ya puedes delegar a un agente, cada uno con el prompt listo para copiar.</p>
+        <p class="rol">Su trabajo es mostrar lo fácil y accesible que es empezar: no hace falta saber programar ni comprar software caro. Hace falta saber pedir, y eso es justo lo que un profesional con trayectoria domina.</p>
+        <a class="btn" href="https://agentario.laexperienciaeselcodigo.com/">Explorar los casos del Agentario</a>
+      </div>
+      <div>
+        <ul class="casos" aria-label="Casos destacados del Agentario">
+          <li><a href="https://agentario.laexperienciaeselcodigo.com/#caso-revisar-contrato-arriendo"><span class="t">Revisar un contrato de arriendo antes de firmar</span><span class="area sans">Vida diaria</span><span class="por">Para quien ha firmado cientos de documentos y sabe qué cláusula preocupa.</span></a></li>
+          <li><a href="https://agentario.laexperienciaeselcodigo.com/#caso-conciliar-mercado-pago"><span class="t">Conciliar los pagos de Mercado Pago con tus ventas</span><span class="area sans">Finanzas</span><span class="por">Horas de planilla convertidas en un reporte que el agente prepara solo.</span></a></li>
+          <li><a href="https://agentario.laexperienciaeselcodigo.com/#caso-minuta-reunion"><span class="t">Convertir una reunión grabada en minuta y tareas</span><span class="area sans">Operaciones</span><span class="por">Tú diriges la reunión; el agente escribe el acta y reparte los pendientes.</span></a></li>
+          <li><a href="https://agentario.laexperienciaeselcodigo.com/#caso-agente-cobranza-amable"><span class="t">Un agente de voz que recuerda vencimientos con amabilidad</span><span class="area sans">Cobranza</span><span class="por">El tono lo defines tú, con la experiencia de años tratando con clientes.</span></a></li>
+          <li><a href="https://agentario.laexperienciaeselcodigo.com/#caso-resumir-papers"><span class="t">Resumir papers para preparar una clase</span><span class="area sans">Educación</span><span class="por">El criterio de qué importa sigue siendo del profesor.</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="capitulos" aria-labelledby="capitulos-t">
+    <div class="wrap">
+      <h2 id="capitulos-t">Capítulos del libro</h2>
+      <p class="intro">El índice crece con cada entrevista. Esta es la ruta de trabajo actual. Quienes precompran reciben cada capítulo digital apenas se libera.</p>
+      <ol class="indice">
+        <li><span class="titulo">Tu experiencia es el 90 %</span><span class="estado vivo sans">En escritura</span></li>
+        <li><span class="titulo">Saber pedir: escribir la especificación</span><span class="estado sans">Próximamente</span></li>
+        <li><span class="titulo">Un agente que construye agentes</span><span class="estado sans">Próximamente</span></li>
+        <li><span class="titulo">Probar antes de confiar</span><span class="estado sans">Próximamente</span></li>
+        <li><span class="titulo">Cómo saber si el agente lo hace bien</span><span class="estado sans">Próximamente</span></li>
+        <li><span class="titulo">Del escritorio al mundo real</span><span class="estado sans">Próximamente</span></li>
+        <li><span class="titulo">De un agente a un equipo de agentes</span><span class="estado sans">Próximamente</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="preventa" aria-labelledby="preventa-t">
+    <div class="wrap">
+      <h2 id="preventa-t">Preventa del libro</h2>
+      <p class="intro">Precomprar es la forma de sostener un libro que se escribe en vivo. A cambio, recibes los capítulos antes que nadie, entras a los talleres en línea y tu nombre queda impreso en sus páginas. El precio sube por etapas hasta el lanzamiento del 5 de abril de 2027.</p>
+
+      <ul class="precios">
+        <li>
+          <div>
+            <h3>Lector digital</h3>
+            <ul><li>Ebook del libro completo</li><li>Capítulos digitales a medida que se liberan</li></ul>
+          </div>
+          <div class="monto"><span class="ahora" data-precio="digital">USD 25</span><span class="clp" data-clp="digital">$24.000 CLP</span><span class="lista">Precio de lista: <s>USD 35</s></span></div>
+          <div class="accion"><button class="btn" type="button" data-nivel="digital">Precomprar</button></div>
+        </li>
+        <li class="destacado">
+          <div>
+            <span class="etapa sans" data-etapa-nombre>Precio de fundador, hasta el 17 de noviembre</span>
+            <h3>Lector fundador</h3>
+            <ul><li>Libro impreso firmado y ebook, con envío incluido en Chile</li><li>Capítulos digitales a medida que se liberan</li><li>Un taller en línea y en vivo para crear tu primer agente</li><li>Tu nombre en los agradecimientos y certificado de lector fundador</li></ul>
+          </div>
+          <div class="monto"><span class="ahora" data-precio="fundador">USD 55</span><span class="clp" data-clp="fundador">$52.000 CLP</span><span class="lista">Precio de lista: <s>USD 85</s></span></div>
+          <div class="accion"><button class="btn primary" type="button" data-nivel="fundador">Precomprar</button></div>
+        </li>
+        <li>
+          <div>
+            <h3>Mecenas</h3>
+            <ul><li>Todo lo del lector fundador</li><li>Tu caso entrevistado para el libro</li><li>Una sesión individual en línea para construir tu agente</li></ul>
+          </div>
+          <div class="monto"><span class="ahora" data-precio="mecenas">USD 450</span><span class="clp" data-clp="mecenas">$425.000 CLP</span></div>
+          <div class="accion"><button class="btn" type="button" data-nivel="mecenas">Precomprar</button></div>
+        </li>
+        <li>
+          <div>
+            <h3>Empresas</h3>
+            <ul><li>Diez ejemplares impresos firmados</li><li>Un taller para tu equipo, presencial o en línea</li><li>El caso de tu empresa, si quieres contarlo</li></ul>
+          </div>
+          <div class="monto"><span class="ahora">A cotizar</span><span class="clp">Según equipo y ciudad</span></div>
+          <div class="accion"><button class="btn" type="button" data-nivel="empresas">Pedir cotización</button></div>
+        </li>
+      </ul>
+
+      <div class="etapas-wrap">
+        <div>
+          <h3>Cómo sube el precio del lector fundador</h3>
+          <ol class="etapas" id="etapas">
+            <li data-desde="2026-10-01" data-hasta="2026-11-17"><span class="p">USD 55</span> <span class="fecha">Fundadores: hasta el 17 de noviembre de 2026 o hasta completar 100 cupos</span></li>
+            <li data-desde="2026-11-18" data-hasta="2026-12-14"><span class="p">USD 65</span> <span class="fecha">Regalo de Navidad: del 18 de noviembre al 14 de diciembre. Durante Black Friday, del 27 al 30 de noviembre, baja a USD 59</span></li>
+            <li data-desde="2026-12-15" data-hasta="2027-04-04"><span class="p">USD 69</span> <span class="fecha">Del 15 de diciembre de 2026 al 4 de abril de 2027</span></li>
+            <li data-desde="2027-04-05" data-hasta="2099-12-31"><span class="p">USD 85</span> <span class="fecha">Desde el lanzamiento del libro impreso, el 5 de abril de 2027</span></li>
+          </ol>
+        </div>
+        <div>
+          <h3>Condiciones</h3>
+          <dl class="condiciones">
+            <dt>Garantía de devolución</dt>
+            <dd>Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado.</dd>
+            <dt>Talleres en línea</dt>
+            <dd>Los talleres y sesiones de la preventa son en línea y en vivo. Solo el nivel para empresas puede ser presencial.</dd>
+            <dt>Pago</dt>
+            <dd>En Chile pagas en pesos con Mercado Pago. Desde otros países te enviamos un enlace de pago internacional por correo.</dd>
+            <dt>Envío del libro impreso</dt>
+            <dd>En Chile, el envío está incluido. En España, el libro se despacha desde Málaga con un recargo de envío que te informamos al confirmar tu reserva. Para otros países, coordinamos el envío contigo.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="comunidad" aria-labelledby="comunidad-t">
+    <div class="wrap comunidad">
+      <div>
+        <h2 id="comunidad-t">Únete a la comunidad fundadora</h2>
+        <p class="intro">Este libro necesita algo más que lectores. Necesita personas que cuenten su oficio, que lean los borradores con ojo crítico y que lo recomienden a quien le sirva. No hace falta precomprar para sumarse.</p>
+        <ul class="roles">
+          <li><strong>Voz del libro</strong><span>Te entrevistamos sobre una tarea que dominas y tu historia puede convertirse en un capítulo.</span></li>
+          <li><strong>Lector beta</strong><span>Recibes los borradores antes que nadie y nos dices qué no se entiende.</span></li>
+          <li><strong>Embajador</strong><span>Compartes el libro en tu red y recibes un enlace propio para seguir lo que generas.</span></li>
+          <li><strong>Empresa aliada</strong><span>Tu equipo prueba los talleres y tu organización aparece como aliada del proyecto.</span></li>
+        </ul>
+      </div>
+      <form class="f" id="form-comunidad" novalidate>
+        <h3>Quiero participar</h3>
+        <div class="campo"><label for="c-nombre">Nombre</label><input id="c-nombre" name="nombre" autocomplete="name" required></div>
+        <div class="campo"><label for="c-email">Correo</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="campo"><label for="c-pais">País</label>
+          <select id="c-pais" name="pais"><option>Chile</option><option>Argentina</option><option>Colombia</option><option>México</option><option>Perú</option><option>Uruguay</option><option>España</option><option>Otro país</option></select></div>
+        <fieldset>
+          <legend>Cómo quieres participar</legend>
+          <label class="check"><input type="checkbox" name="rol" value="Voz del libro"> Quiero contar mi oficio en una entrevista</label>
+          <label class="check"><input type="checkbox" name="rol" value="Lector beta"> Quiero leer los borradores</label>
+          <label class="check"><input type="checkbox" name="rol" value="Embajador"> Quiero recomendar el libro</label>
+          <label class="check"><input type="checkbox" name="rol" value="Empresa aliada"> Represento a una empresa</label>
+        </fieldset>
+        <div class="campo"><label for="c-oficio">Tu oficio, en una línea (opcional)</label><input id="c-oficio" name="oficio" placeholder="Ej.: 25 años en cobranza de una distribuidora"></div>
+        <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn primary" type="submit">Sumarme a la comunidad</button>
+        <p class="msg" role="status" aria-live="polite"></p>
+        <p class="nota sans">Usamos tus datos solo para escribirte sobre el libro y la comunidad.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="block" id="preguntas" aria-labelledby="preguntas-t">
+    <div class="wrap">
+      <h2 id="preguntas-t">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details><summary>¿Necesito saber programar para crear un agente de IA?</summary><p>No. El libro parte de una idea simple: si sabes explicar con detalle cómo haces tu trabajo, ya tienes el 90 % de lo necesario. El código lo escribe un agente de IA a partir de tus instrucciones.</p></details>
+        <details><summary>¿Qué es la IA agéntica?</summary><p>Es inteligencia artificial que no solo responde preguntas: ejecuta tareas de varios pasos, usa herramientas y entrega un resultado, como conciliar pagos, preparar una minuta o responder clientes.</p></details>
+        <details><summary>¿Para quién es este libro?</summary><p>Para profesionales con trayectoria, especialmente mayores de 50 años, que conocen su oficio a fondo y quieren aprovechar la inteligencia artificial sin convertirse en programadores.</p></details>
+        <details><summary>¿Cuándo recibo el libro?</summary><p>El libro impreso se lanza el 5 de abril de 2027. Los capítulos digitales se liberan desde ahora, a medida que se escriben.</p></details>
+        <details><summary>¿Cuánto cuesta el envío?</summary><p>En Chile, el envío está incluido en el precio. En España, el libro se despacha desde Málaga con un recargo de envío que te informamos al confirmar la reserva. Para otros países, coordinamos el envío contigo.</p></details>
+        <details><summary>¿Los talleres son presenciales?</summary><p>Los talleres incluidos en la preventa son en línea y en vivo. Solo el nivel para empresas puede ser presencial.</p></details>
+        <details><summary>¿Puedo pedir la devolución de mi precompra?</summary><p>Sí. Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Un libro de <a href="https://www.linkedin.com/in/dolivares/" rel="author">Daniel Olivares Martínez</a>, escrito desde Santiago de Chile.</p>
+      <p>Explora los casos de uso en el <a href="https://agentario.laexperienciaeselcodigo.com/">Agentario</a>.</p>
+      <p>© 2026 La experiencia es el código</p>
+    </div>
+  </footer>
+
+  <dialog class="precompra" id="dlg" aria-labelledby="dlg-t">
+    <div class="in">
+      <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
+      <form class="f" id="form-precompra" novalidate>
+        <h3 id="dlg-t">Precomprar el libro</h3>
+        <p class="resumen sans" id="dlg-resumen"></p>
+        <div class="campo"><label for="p-nombre">Nombre</label><input id="p-nombre" name="nombre" autocomplete="name" required></div>
+        <div class="campo"><label for="p-email">Correo</label><input id="p-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="campo"><label for="p-pais">País</label>
+          <select id="p-pais" name="pais"><option>Chile</option><option>Argentina</option><option>Colombia</option><option>México</option><option>Perú</option><option>Uruguay</option><option>España</option><option>Otro país</option></select></div>
+        <div class="campo" id="p-empresa-campo" hidden><label for="p-empresa">Empresa y tamaño del equipo</label><input id="p-empresa" name="empresa" placeholder="Ej.: Distribuidora Sur, 25 personas"></div>
+        <div class="campo"><label for="p-nota">Comentario (opcional)</label><textarea id="p-nota" name="nota" placeholder="Por ejemplo, si es un regalo y para quién"></textarea></div>
+        <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn primary" type="submit" id="p-btn">Reservar mi ejemplar</button>
+        <p class="msg" role="status" aria-live="polite"></p>
+      </form>
+      <div class="paso2" id="paso2" hidden>
+        <h3>Reserva recibida</h3>
+        <div id="paso2-cuerpo"></div>
+      </div>
+    </div>
+  </dialog>
+
+<script>
+(() => {
+  const CORREO = "dolivaresm@fen.uchile.cl";
+  const MP_LINK = "https://link.mercadopago.cl/danielolivares";
+
+  /* Precios por nivel. El lector fundador cambia por etapa; los demás, solo al lanzamiento. */
+  const LANZAMIENTO = "2027-04-05";
+  const ETAPAS = [
+    { desde: "2026-10-01", hasta: "2026-11-17", usd: 55, clp: 52000, nombre: "Precio de fundador, hasta el 17 de noviembre" },
+    { desde: "2026-11-27", hasta: "2026-11-30", usd: 59, clp: 56000, nombre: "Precio de Black Friday, hasta el 30 de noviembre" },
+    { desde: "2026-11-18", hasta: "2026-12-14", usd: 65, clp: 62000, nombre: "Precio de Navidad, hasta el 14 de diciembre" },
+    { desde: "2026-12-15", hasta: "2027-04-04", usd: 69, clp: 65000, nombre: "Precio de preventa, hasta el 4 de abril" },
+    { desde: "2027-04-05", hasta: "2099-12-31", usd: 85, clp: 80000, nombre: "Precio de lanzamiento" }
+  ];
+  const hoy = (() => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); })();
+  const lanzado = hoy >= LANZAMIENTO;
+  const etapa = ETAPAS.find(e => hoy >= e.desde && hoy <= e.hasta) || ETAPAS[0];
+  const NIVELES = {
+    digital: { nombre: "Lector digital", usd: lanzado ? 35 : 25, clp: lanzado ? 33000 : 24000 },
+    fundador: { nombre: "Lector fundador", usd: etapa.usd, clp: etapa.clp },
+    mecenas: { nombre: "Mecenas", usd: 450, clp: 425000 },
+    empresas: { nombre: "Empresas", usd: null, clp: null }
+  };
+  const pesos = n => "$" + n.toLocaleString("es-CL");
+  const $ = s => document.querySelector(s);
+
+  Object.entries(NIVELES).forEach(([k, n]) => {
+    if (!n.usd) return;
+    const p = document.querySelector(`[data-precio="${k}"]`), c = document.querySelector(`[data-clp="${k}"]`);
+    if (p) p.textContent = "USD " + n.usd;
+    if (c) c.textContent = pesos(n.clp) + " CLP";
+  });
+  const et = document.querySelector("[data-etapa-nombre]"); if (et) et.textContent = etapa.nombre;
+  const cta = document.querySelector("[data-cta-precio]"); if (cta) cta.textContent = `Precomprar desde USD ${NIVELES.digital.usd}`;
+  document.querySelectorAll("#etapas li").forEach(li => {
+    if (hoy > li.dataset.hasta) li.classList.add("pasada");
+    else if (hoy >= li.dataset.desde) li.classList.add("actual");
+  });
+
+  async function enviar(asunto, campos) {
+    const r = await fetch("https://formsubmit.co/ajax/" + encodeURIComponent(CORREO), {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ ...campos, _subject: asunto, _template: "table", _captcha: "false" })
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || "envio");
+  }
+  const correoValido = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+  /* Diálogo de precompra */
+  const dlg = $("#dlg"), fp = $("#form-precompra"), paso2 = $("#paso2");
+  let nivelActual = "fundador";
+  document.querySelectorAll("[data-nivel]").forEach(b => b.addEventListener("click", () => {
+    nivelActual = b.dataset.nivel;
+    const n = NIVELES[nivelActual];
+    $("#dlg-t").textContent = nivelActual === "empresas" ? "Pedir cotización para empresas" : "Precomprar el libro";
+    $("#dlg-resumen").textContent = n.usd ? `${n.nombre}: USD ${n.usd} (${pesos(n.clp)} CLP)` : "Empresas: te enviamos una propuesta según tu equipo y ciudad.";
+    $("#p-empresa-campo").hidden = nivelActual !== "empresas";
+    $("#p-btn").textContent = nivelActual === "empresas" ? "Pedir cotización" : "Reservar mi ejemplar";
+    fp.hidden = false; paso2.hidden = true; fp.querySelector(".msg").textContent = "";
+    if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+    $("#p-nombre").focus();
+  }));
+  dlg.querySelector("[data-cerrar]").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+  fp.addEventListener("submit", async e => {
+    e.preventDefault();
+    const msg = fp.querySelector(".msg"), btn = $("#p-btn");
+    if (fp._honey.value) return;
+    const nombre = fp.nombre.value.trim(), email = fp.email.value.trim().toLowerCase(), pais = fp.pais.value;
+    if (!nombre) { msg.textContent = "Escribe tu nombre para registrar la reserva."; msg.className = "msg err"; fp.nombre.focus(); return; }
+    if (!correoValido(email)) { msg.textContent = "Revisa el correo: parece que falta algo."; msg.className = "msg err"; fp.email.focus(); return; }
+    const n = NIVELES[nivelActual];
+    btn.disabled = true; msg.textContent = "Enviando tu reserva…"; msg.className = "msg";
+    try {
+      await enviar(`Precompra: ${n.nombre} (${nombre})`, {
+        nivel: n.nombre, precio: n.usd ? `USD ${n.usd} / ${pesos(n.clp)} CLP` : "A cotizar",
+        nombre, email, pais, empresa: fp.empresa.value.trim(), comentario: fp.nota.value.trim(), etapa: etapa.nombre, fecha: hoy
+      });
+      fp.hidden = true; paso2.hidden = false;
+      const cuerpo = $("#paso2-cuerpo");
+      if (nivelActual === "empresas") {
+        cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Te escribiremos a <strong>${email}</strong> con una propuesta para tu equipo en menos de dos días hábiles.</p>`;
+      } else if (pais === "Chile") {
+        cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Tu cupo de <strong>${n.nombre}</strong> queda reservado.</p>
+          <p>Paso final: paga <strong>${pesos(n.clp)}</strong> en Mercado Pago. En el detalle del pago escribe “${n.nombre}”. Te confirmaremos por correo.</p>
+          <a class="btn primary" href="${MP_LINK}" target="_blank" rel="noopener">Pagar ${pesos(n.clp)} con Mercado Pago</a>`;
+      } else if (pais === "España") {
+        cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Tu cupo de <strong>${n.nombre}</strong> queda reservado al precio de hoy: <strong>USD ${n.usd}</strong>.</p>
+          <p>${nivelActual === "digital" ? "" : "Tu libro impreso se despachará desde Málaga. "}En menos de 24 horas te enviaremos a <strong>${email}</strong> un enlace de pago internacional${nivelActual === "digital" ? "" : " con el recargo de envío incluido"}.</p>`;
+      } else {
+        cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Tu cupo de <strong>${n.nombre}</strong> queda reservado al precio de hoy: <strong>USD ${n.usd}</strong>.</p>
+          <p>En menos de 24 horas te enviaremos a <strong>${email}</strong> un enlace de pago internacional${nivelActual === "digital" ? "" : " y coordinaremos contigo el envío del libro"}.</p>`;
+      }
+    } catch (err) {
+      msg.innerHTML = `No pudimos enviar la reserva. Escríbenos a <a href="mailto:${CORREO}?subject=${encodeURIComponent("Precompra: " + n.nombre)}">${CORREO}</a> y te respondemos con tu cupo.`;
+      msg.className = "msg err";
+    } finally { btn.disabled = false; }
+  });
+
+  /* Comunidad */
+  const fc = $("#form-comunidad");
+  fc.addEventListener("submit", async e => {
+    e.preventDefault();
+    const msg = fc.querySelector(".msg"), btn = fc.querySelector("button[type=submit]");
+    if (fc._honey.value) return;
+    const nombre = fc.nombre.value.trim(), email = fc.email.value.trim().toLowerCase();
+    const roles = [...fc.querySelectorAll("input[name=rol]:checked")].map(i => i.value);
+    if (!nombre) { msg.textContent = "Escribe tu nombre para sumarte."; msg.className = "msg err"; fc.nombre.focus(); return; }
+    if (!correoValido(email)) { msg.textContent = "Revisa el correo: parece que falta algo."; msg.className = "msg err"; fc.email.focus(); return; }
+    btn.disabled = true; msg.textContent = "Enviando…"; msg.className = "msg";
+    try {
+      await enviar(`Comunidad: ${nombre}`, { nombre, email, pais: fc.pais.value, roles: roles.join(", ") || "Sin especificar", oficio: fc.oficio.value.trim(), fecha: hoy });
+      fc.reset();
+      msg.textContent = `¡Listo, ${nombre.split(" ")[0]}! Ya eres parte de la comunidad fundadora. Te escribiremos pronto.`;
+      msg.className = "msg ok";
+    } catch (err) {
+      msg.innerHTML = `No pudimos enviar tus datos. Escríbenos a <a href="mailto:${CORREO}">${CORREO}</a>.`;
+      msg.className = "msg err";
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
+<!--
+  Medición de Agentario → libro, para pegar en laexperienciaeselcodigo.com
+  justo antes de </body>. Usa la misma cuenta de GoatCounter que Agentario
+  (agentario.goatcounter.com), así todo el recorrido queda en un solo panel.
+
+  Qué registra (todo aparece en el panel con el prefijo "libro/"):
+  - libro/visita/<origen>/<caso>     llegada al sitio del libro desde Agentario
+  - libro/ve-preventa/<origen>/<caso> la persona llegó a ver la sección #preventa
+  - libro/clic-pagar/<nivel>/<origen>/<caso> clic en un botón o enlace de pago
+  - libro/compra/<origen>/<caso>     llegada a una página de gracias (ver nota)
+
+  <origen> y <caso> salen de las marcas utm_medium y utm_content que pone
+  Agentario en cada enlace. Si la visita no viene de Agentario, se anota "directo".
+
+  Nota: para medir compras reales, configura en Mercado Pago la URL de retorno
+  de pago aprobado hacia una página de tu sitio cuya dirección contenga "gracias"
+  (por ejemplo https://laexperienciaeselcodigo.com/gracias).
+-->
+<script>
+(function () {
+  var GC = 'https://agentario.goatcounter.com/count';
+  var KEY = 'agentario-origen';
+  var p = new URLSearchParams(location.search);
+  var o = null;
+  try {
+    if (p.get('utm_source') === 'agentario') {
+      o = { medio: p.get('utm_medium') || 'otro', caso: p.get('utm_content') || 'sin-caso' };
+      sessionStorage.setItem(KEY, JSON.stringify(o));
+    } else {
+      o = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    }
+  } catch (e) {}
+  var etiqueta = o ? o.medio + '/' + o.caso : 'directo';
+  var cola = [];
+  function contar(path, title, evento) {
+    var d = { path: path, title: title, event: !!evento };
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(d); else cola.push(d);
+  }
+  var s = document.createElement('script');
+  s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.dataset.goatcounter = GC;
+  s.dataset.goatcounterSettings = '{"no_onload":true}';
+  s.onload = function () { while (cola.length) window.goatcounter.count(cola.shift()); };
+  document.head.appendChild(s);
+
+  // Visita al sitio del libro (como página) y, si viene de Agentario, también como evento
+  contar('/sitio-libro' + location.pathname, 'Sitio del libro: ' + document.title);
+  if (o) contar('libro/visita/' + etiqueta, 'Llegó al libro desde Agentario · ' + etiqueta, true);
+
+  // Compra: página de gracias tras el pago
+  if (/gracias/i.test(location.pathname + location.hash)) contar('libro/compra/' + etiqueta, 'Compra del libro · ' + etiqueta, true);
+
+  // Vio la sección de preventa
+  function observarPreventa() {
+    var sec = document.getElementById('preventa');
+    if (!sec || !('IntersectionObserver' in window)) return;
+    var visto = false;
+    new IntersectionObserver(function (es, obs) {
+      if (!visto && es.some(function (x) { return x.isIntersecting; })) {
+        visto = true; obs.disconnect();
+        contar('libro/ve-preventa/' + etiqueta, 'Vio la preventa · ' + etiqueta, true);
+      }
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(sec);
+  }
+
+  // Clic en pagar: enlaces o botones dentro de #preventa, o cualquier enlace a Mercado Pago
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('a,button'); if (!t) return;
+    var href = t.getAttribute('href') || '';
+    var enPreventa = !!t.closest('#preventa');
+    if (!enPreventa && !/mercadopago|mpago\.la|checkout|pago/i.test(href)) return;
+    var nivel = (t.closest('[data-nivel]') && t.closest('[data-nivel]').getAttribute('data-nivel')) ||
+      (t.textContent || 'boton').trim().toLowerCase().replace(/[^a-z0-9áéíóúñ ]/g, '').replace(/\s+/g, '-').slice(0, 30);
+    contar('libro/clic-pagar/' + nivel + '/' + etiqueta, 'Clic en pagar: ' + nivel + ' · ' + etiqueta, true);
+  }, true);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observarPreventa); else observarPreventa();
+})();
+</script>
+
+</body>
+</html>
