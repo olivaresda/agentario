@@ -258,7 +258,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
       <a href="#/aporta" data-nav="aporta">Aporta</a>
       <a href="#/patrocina" data-nav="sponsor">Patrocina</a>
       <button type="button" data-news>Novedades</button>
-      <a class="donate" href="https://link.mercadopago.cl/danielolivares" target="_blank" rel="noopener">Donar</a>
+      <a class="donate" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener">Precompra el libro</a>
     </nav>
   </div>
 </header>
@@ -417,15 +417,15 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
   <div class="wrap">
     <div class="sp-hero">
       <h1>Ayuda a que Agentario siga creciendo</h1>
-      <p>Agentario es gratuito y se actualiza con casos nuevos cada día. Si te ha servido, puedes donar. Si tu empresa quiere llegar a personas que están adoptando agentes de IA en Latinoamérica, puedes patrocinar.</p>
+      <p>Agentario es gratuito y se actualiza con casos nuevos cada día. Si te ha servido, la mejor forma de apoyarlo es precomprar el libro del que nace: <em>La experiencia es el código</em>. Si tu empresa quiere llegar a personas que están adoptando agentes de IA en Latinoamérica, puedes patrocinar.</p>
     </div>
 
     <div class="donate-box">
       <div class="mini-sun" aria-hidden="true"></div>
       <div>
-        <h2>Dona lo que quieras</h2>
-        <p>Cada aporte financia horas de búsqueda, prueba y redacción de casos. El pago es seguro a través de Mercado Pago y no necesitas crear cuenta.</p>
-        <a class="btn sun-b" href="https://link.mercadopago.cl/danielolivares" target="_blank" rel="noopener">Donar con Mercado Pago</a>
+        <h2>Precompra el libro</h2>
+        <p>Agentario es el adelanto abierto de <strong>La experiencia es el código</strong>, un libro que se escribe en vivo con profesionales de Chile, Latinoamérica y España. Al precomprarlo financias cada caso nuevo, recibes los capítulos a medida que se publican y te sumas a la comunidad fundadora. El libro impreso sale el 5 de abril de 2027.</p>
+        <a class="btn sun-b" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener">Ver los niveles de preventa</a>
       </div>
     </div>
 
@@ -444,10 +444,10 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
       <p class="sub">Valores en pesos chilenos. Todos los pagos se hacen por Mercado Pago.</p>
       <div class="tiers">
         <div class="tier">
-          <h3>Donante</h3>
-          <div class="price">Libre <small>monto a elección</small></div>
-          <ul><li>Tu nombre en el muro de donantes, si lo deseas</li><li>Nuestro agradecimiento público</li></ul>
-          <a class="btn ghost" href="https://link.mercadopago.cl/danielolivares" target="_blank" rel="noopener">Donar</a>
+          <h3>Lector fundador</h3>
+          <div class="price">$52.000 <small>preventa del libro</small></div>
+          <ul><li>Libro impreso firmado con envío incluido en Chile, ebook y taller en línea</li><li>Tu nombre en los agradecimientos del libro y en este muro</li></ul>
+          <a class="btn ghost" href="https://laexperienciaeselcodigo.com/#preventa" target="_blank" rel="noopener">Precomprar el libro</a>
         </div>
         <div class="tier hi">
           <h3>Sponsor de la barra</h3>
@@ -477,7 +477,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
     </section>
 
     <section class="block" aria-labelledby="wallT">
-      <h2 id="wallT">Muro de patrocinadores y donantes</h2>
+      <h2 id="wallT">Muro de patrocinadores y lectores fundadores</h2>
       <p class="sub">Gracias a quienes mantienen Agentario abierto para todos.</p>
       <div class="wall" id="wall"></div>
     </section>
@@ -490,7 +490,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
 
 <footer>
   <div class="wrap">
-    <span>Agentario es curado por <a href="https://www.linkedin.com/in/dolivares/" target="_blank" rel="noopener">Daniel Olivares</a>. Los casos son ideas para probar: revisa siempre lo que hace el agente antes de enviar, pagar o firmar.</span>
+    <span>Agentario es curado por <a href="https://www.linkedin.com/in/dolivares/" target="_blank" rel="noopener">Daniel Olivares</a> y es el adelanto abierto del libro <a href="https://laexperienciaeselcodigo.com">La experiencia es el código</a>. Los casos son ideas para probar: revisa siempre lo que hace el agente antes de enviar, pagar o firmar.</span>
     <span><button type="button" data-news>Recibir novedades por correo</button> · <span id="updated"></span></span>
   </div>
 </footer>
@@ -527,6 +527,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
 /* ============ DATOS: edita aquí para actualizar el sitio ============ */
 const CONTACTO = "dolivaresm@fen.uchile.cl";
 const MP_LINK = "https://link.mercadopago.cl/danielolivares";
+const LIBRO_URL = "https://laexperienciaeselcodigo.com/#preventa";
 
 /* Correo que recibe las suscripciones a novedades cuando la página se ve fuera de claude.ai
    (por ejemplo en GitHub Pages). Se envían con FormSubmit: la primera vez llega un correo
@@ -932,11 +933,11 @@ function renderStatic(){
 
   const slots = SPONSORS.map(s=>`<a class="slot real" href="${esc(s.url)}" target="_blank" rel="noopener sponsored">${esc(s.nombre)}</a>`);
   while (slots.length < 3) slots.push('<a class="slot" href="#/patrocina">Tu marca aquí</a>');
-  $('#strip').innerHTML = '<span class="lab">Sponsors</span>' + slots.join('') + `<a class="slot" href="${MP_LINK}" target="_blank" rel="noopener">Apoya con una donación</a>`;
+  $('#strip').innerHTML = '<span class="lab">Sponsors</span>' + slots.join('') + `<a class="slot" href="${LIBRO_URL}" target="_blank" rel="noopener">Precompra el libro</a>`;
 
   const wall = [...SPONSORS.map(s=>s.nombre), ...DONANTES];
   $('#wall').innerHTML = wall.length ? wall.map(n=>`<span>${esc(n)}</span>`).join('')
-    : `<p class="empty" style="padding:0">Todavía no hay nombres aquí. Tu aporte puede ser el primero: al donar, escríbenos si quieres aparecer en el muro. <a href="${MP_LINK}" target="_blank" rel="noopener">Donar ahora</a></p>`;
+    : `<p class="empty" style="padding:0">Todavía no hay nombres aquí. Los lectores fundadores del libro aparecerán en este muro. <a href="${LIBRO_URL}" target="_blank" rel="noopener">Precompra el libro</a></p>`;
 
   $('#apCat').innerHTML = '<option value="">Elige una</option>' + Object.entries(CATS).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('');
   $('#apAgentes').innerHTML = agents.map(a=>`<option value="${esc(a)}">`).join('');
