@@ -60,7 +60,7 @@
         visto = true; obs.disconnect();
         contar('libro/ve-preventa/' + etiqueta, 'Vio la preventa · ' + etiqueta, true);
       }
-    }, { threshold: 0.3 }).observe(sec);
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(sec);
   }
 
   // Clic en pagar: enlaces o botones dentro de #preventa, o cualquier enlace a Mercado Pago
