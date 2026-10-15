@@ -23,3 +23,12 @@ La página muestra un pop-up que pide el correo del visitante (a los 12 segundos
 ## Analítica
 
 La página mide visitas y acciones con [GoatCounter](https://www.goatcounter.com) (sin cookies). Para activarla, escribe tu código en la constante `GOATCOUNTER` de `index.html`. Se registran: secciones visitadas, casos abiertos por enlace, búsquedas (marcando las que no tienen resultados), filtros de categoría, agente y alianza, prompts vistos, copiados, compartidos y guardados, clics a Agent Use Cases y a las fuentes, suscripciones y aportes enviados.
+
+## Embudo hacia el libro
+
+Agentario existe para llevar lectores a la preventa de *La experiencia es el código* (laexperienciaeselcodigo.com).
+
+- **Tarjeta al copiar un prompt:** invita a precomprar el libro, conocerlo o leer el capítulo 1.
+- **Página "El libro"** (`#/libro`): qué aprendes, para quién es y niveles de preventa. El precio del lector fundador cambia solo según `TRAMOS_FUNDADOR`.
+- **Pop-up "capítulo 1 gratis"**: pide correo, nombre y rubro (opcional) y regala los prompts de `TOP_PROMPTS`. Si `CAPITULO1_URL` tiene un enlace, se entrega al instante y en el correo automático.
+- **Medición de punta a punta:** cada enlace al libro lleva `utm_source=agentario`, `utm_medium=<lugar>` y `utm_content=<caso>`, y se registra en GoatCounter como `clic-libro/<lugar>/<caso>`. En el sitio del libro hay que pegar `libro/medicion-goatcounter.html`, que registra `libro/visita`, `libro/ve-preventa`, `libro/clic-pagar` y `libro/compra`.
