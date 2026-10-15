@@ -557,6 +557,12 @@
 (() => {
   const CORREO = "dolivaresm@fen.uchile.cl";
   const MP_LINK = "https://link.mercadopago.cl/danielolivares";
+  /* Link de Mercado Pago con el monto fijo de cada nivel. Si un nivel queda vacío, se usa MP_LINK (monto libre). */
+  const MP_LINKS = {
+    digital: "",
+    fundador: "",
+    mecenas: ""
+  };
 
   /* Precios por nivel. El lector fundador cambia por etapa; los demás, solo al lanzamiento. */
   const LANZAMIENTO = "2027-04-05";
@@ -640,8 +646,8 @@
         cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Te escribiremos a <strong>${email}</strong> con una propuesta para tu equipo en menos de dos días hábiles.</p>`;
       } else if (pais === "Chile") {
         cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Tu cupo de <strong>${n.nombre}</strong> queda reservado.</p>
-          <p>Paso final: paga <strong>${pesos(n.clp)}</strong> en Mercado Pago. En el detalle del pago escribe “${n.nombre}”. Te confirmaremos por correo.</p>
-          <a class="btn primary" href="${MP_LINK}" target="_blank" rel="noopener">Pagar ${pesos(n.clp)} con Mercado Pago</a>`;
+          <p>Paso final: paga <strong>${pesos(n.clp)}</strong> en Mercado Pago.${MP_LINKS[nivelActual] ? "" : ` En el detalle del pago escribe “${n.nombre}”.`} Te confirmaremos por correo.</p>
+          <a class="btn primary" href="${MP_LINKS[nivelActual] || MP_LINK}" target="_blank" rel="noopener">Pagar ${pesos(n.clp)} con Mercado Pago</a>`;
       } else if (pais === "España") {
         cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Tu cupo de <strong>${n.nombre}</strong> queda reservado al precio de hoy: <strong>USD ${n.usd}</strong>.</p>
           <p>${nivelActual === "digital" ? "" : "Tu libro impreso se despachará desde Málaga. "}En menos de 24 horas te enviaremos a <strong>${email}</strong> un enlace de pago internacional${nivelActual === "digital" ? "" : " con el recargo de envío incluido"}.</p>`;
