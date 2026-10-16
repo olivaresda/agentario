@@ -1,0 +1,46 @@
+# Regenera las páginas estáticas de los casos (casos/, categoria/, agente/ y sitemap.xml)
+# cada vez que cambia index.html en main, y vuelve a publicar GitHub Pages.
+name: Generar páginas de casos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - herramientas/generar-paginas.mjs
+      - .github/workflows/paginas.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: paginas
+  cancel-in-progress: false
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generar páginas
+        run: node herramientas/generar-paginas.mjs
+      - name: Guardar y publicar si hubo cambios
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add -A casos categoria agente sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Las páginas ya estaban al día."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Regenerar páginas de casos"
+          git push
+          # Un push hecho con este token no dispara la publicación de Pages por sí solo.
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "No se pudo pedir la publicación; se hará con el próximo cambio."
