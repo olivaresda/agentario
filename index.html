@@ -179,7 +179,7 @@ ol.cases{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .browse h2{font-size:1.3rem;margin-bottom:10px}
 .browse ul{list-style:none;margin:0;padding:0;columns:2;column-gap:18px}
 .browse li{break-inside:avoid;padding:5px 0}
-.browse button{border:0;background:none;padding:0;color:var(--sky);font-weight:700;text-align:left}
+.browse button,.browse a{border:0;background:none;padding:0;color:var(--sky);font-weight:700;text-align:left;text-decoration:none}
 .browse span{color:var(--ink-soft);margin-left:6px;font-size:.9rem}
 
 footer{padding:36px 0 48px;color:var(--ink-soft);font-size:.92rem}
@@ -643,7 +643,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
 <footer>
   <div class="wrap">
     <span>Agentario es curado por <a href="https://www.linkedin.com/in/dolivares/" target="_blank" rel="noopener">Daniel Olivares</a> y es el adelanto abierto del libro <a href="https://laexperienciaeselcodigo.com" data-libro="pie">La experiencia es el código</a>. Los casos son ideas para probar: revisa siempre lo que hace el agente antes de enviar, pagar o firmar.</span>
-    <span><button type="button" data-news data-origen="pie">Capítulo 1 gratis</button> · <span id="updated"></span></span>
+    <span><a href="/casos/">Todos los casos</a> · <button type="button" data-news data-origen="pie">Capítulo 1 gratis</button> · <span id="updated"></span></span>
   </div>
 </footer>
 
@@ -1019,6 +1019,7 @@ const CASOS = [
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = f => { const [y,m,d] = f.split('-').map(Number); return new Date(y,m-1,d).toLocaleDateString('es-CL',{day:'numeric',month:'long',year:'numeric'}); };
+const slug = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const initials = a => a.split(/\s+/).filter(w=>!/^(en|de)$/i.test(w)).slice(0,2).map(w=>w[0]).join('').toUpperCase();
 const PALETTE = ['#FFD86B','#A9C2FF','#9EE6C5','#FFB8A8','#D8C6FF','#FFE3A3','#B7E3FF','#F7C6E3'];
 const color = a => { let h=0; for (const ch of a) h=(h*31+ch.charCodeAt(0))>>>0; return PALETTE[h%PALETTE.length]; };
@@ -1042,7 +1043,7 @@ function caseHTML(c){
   return `<li class="case" id="caso-${esc(c.id)}">
     <div class="badge" style="background:${color(c.a)}" aria-hidden="true">${esc(initials(c.a))}</div>
     <div>
-      <h3><a href="#caso-${esc(c.id)}" data-open="${esc(c.id)}">${esc(c.t)}</a></h3>
+      <h3><a href="/casos/${esc(c.id)}/">${esc(c.t)}</a></h3>
       <p class="desc">${esc(c.d)}</p>
       ${c.r?`<p class="res"><strong>Resultado real:</strong> ${esc(c.r)}</p>`:''}
       <div class="meta">
@@ -1100,12 +1101,13 @@ function renderStatic(){
   const catCount = {}; CASOS.forEach(c=>catCount[c.c]=(catCount[c.c]||0)+1);
   $('#chips').innerHTML = `<button type="button" class="chip" data-cat="all" aria-pressed="true">Todos<span class="c">${CASOS.length}</span></button>` +
     Object.entries(CATS).filter(([k])=>catCount[k]).map(([k,v])=>`<button type="button" class="chip" data-cat="${k}" aria-pressed="false">${esc(v)}<span class="c">${catCount[k]}</span></button>`).join('');
-  $('#byCat').innerHTML = Object.entries(CATS).filter(([k])=>catCount[k]).map(([k,v])=>`<li><button type="button" data-goto-cat="${k}">${esc(v)}</button><span>${catCount[k]}</span></li>`).join('');
+  $('#byCat').innerHTML = Object.entries(CATS).filter(([k])=>catCount[k]).map(([k,v])=>`<li><a href="/categoria/${slug(v)}/">${esc(v)}</a><span>${catCount[k]}</span></li>`).join('');
 
   const agCount = {}; CASOS.forEach(c=>agCount[c.a]=(agCount[c.a]||0)+1);
   const agents = Object.keys(agCount).sort((a,b)=>agCount[b]-agCount[a]||a.localeCompare(b,'es'));
   $('#agentSel').innerHTML = '<option value="all">Todos los agentes</option>' + agents.map(a=>`<option value="${esc(a)}">${esc(a)} (${agCount[a]})</option>`).join('');
-  $('#byAgent').innerHTML = agents.map(a=>`<li><button type="button" data-goto-agent="${esc(a)}">${esc(a)}</button><span>${agCount[a]}</span></li>`).join('');
+  /* Los agentes con 2 casos o más tienen página propia (la genera herramientas/generar-paginas.mjs) */
+  $('#byAgent').innerHTML = agents.map(a=>`<li>${agCount[a]>=2 && a!=='Agente propio' ? `<a href="/agente/${slug(a)}/">${esc(a)}</a>` : `<button type="button" data-goto-agent="${esc(a)}">${esc(a)}</button>`}<span>${agCount[a]}</span></li>`).join('');
 
   const slots = SPONSORS.map(s=>`<a class="slot real" href="${esc(s.url)}" target="_blank" rel="noopener sponsored">${esc(s.nombre)}</a>`);
   while (slots.length < 3) slots.push('<a class="slot" href="#/patrocina">Tu marca aquí</a>');
@@ -1373,7 +1375,7 @@ document.addEventListener('click', async e => {
     if (li) tarjetaLibro(li, c.id);
   } else if (t.dataset.share){
     const c = find(t.dataset.share);
-    const url = location.href.split('#')[0] + '#caso-' + c.id;
+    const url = location.origin + '/casos/' + c.id + '/';
     try {
       medir.evento('compartir/' + c.id, 'Compartir: ' + c.t);
       if (navigator.share) { await navigator.share({title:c.t, text:c.d, url}); }

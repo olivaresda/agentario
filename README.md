@@ -2,8 +2,16 @@
 
 Casos de uso de agentes de IA en español, con el prompt listo para copiar.
 
-- Sitio: https://olivaresda.github.io/agentario/
+- Sitio: https://agentario.laexperienciaeselcodigo.com/
 - Todo el contenido está en `index.html`, en el bloque `DATOS` del script (`CASOS`, `SPONSORS`, `DONANTES`).
+
+## Páginas de cada caso (SEO)
+
+Cada caso, categoría y agente (con 2 casos o más) tiene su propia página estática para que Google pueda indexarla: `casos/<id>/`, `categoria/<nombre>/` y `agente/<nombre>/`, más el índice `casos/` y `sitemap.xml`.
+
+- **No se editan a mano.** Las genera `node herramientas/generar-paginas.mjs` a partir de `CATS` y `CASOS` de `index.html`.
+- Al hacer push a `main` con cambios en `index.html`, la acción `.github/workflows/paginas.yml` las regenera, las guarda y vuelve a publicar GitHub Pages. También se puede correr a mano desde la pestaña *Actions*.
+- El `id` de un caso es parte de su dirección: no lo cambies después de publicarlo.
 
 ## Alianza con Agent Use Cases
 
