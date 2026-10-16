@@ -30,7 +30,9 @@
 <meta name="twitter:description" content="IA agéntica para profesionales que saben lo que piden. Preventa abierta.">
 <meta name="twitter:image" content="https://laexperienciaeselcodigo.com/og.png">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
@@ -62,16 +64,34 @@
       "author": { "@id": "https://laexperienciaeselcodigo.com/#autor" },
       "inLanguage": "es",
       "datePublished": "2027-04-05",
-      "bookFormat": "https://schema.org/Paperback",
       "genre": ["Inteligencia artificial", "Desarrollo profesional", "Tecnología y sociedad"],
       "about": ["IA agéntica", "Agentes de inteligencia artificial", "Automatización del trabajo", "Profesionales con trayectoria"],
       "audience": { "@type": "Audience", "audienceType": "Profesionales con trayectoria, especialmente mayores de 50 años" },
       "image": "https://laexperienciaeselcodigo.com/og.png",
       "url": "https://laexperienciaeselcodigo.com/",
-      "offers": [
-        { "@type": "Offer", "name": "Lector digital", "price": "25", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
-        { "@type": "Offer", "name": "Lector fundador", "price": "55", "priceCurrency": "USD", "priceValidUntil": "2026-11-17", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
-        { "@type": "Offer", "name": "Mecenas", "price": "450", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" }
+      "workExample": [
+        {
+          "@type": "Book",
+          "name": "La experiencia es el código (edición digital)",
+          "bookFormat": "https://schema.org/EBook",
+          "inLanguage": "es",
+          "offers": [
+            { "@type": "Offer", "name": "Lector digital", "price": "25", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
+            { "@type": "Offer", "name": "Lector digital", "price": "24000", "priceCurrency": "CLP", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" }
+          ]
+        },
+        {
+          "@type": "Book",
+          "name": "La experiencia es el código (edición impresa)",
+          "bookFormat": "https://schema.org/Paperback",
+          "inLanguage": "es",
+          "offers": [
+            { "@type": "Offer", "name": "Lector fundador", "price": "55", "priceCurrency": "USD", "priceValidUntil": "2026-11-17", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
+            { "@type": "Offer", "name": "Lector fundador", "price": "52000", "priceCurrency": "CLP", "priceValidUntil": "2026-11-17", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
+            { "@type": "Offer", "name": "Mecenas", "price": "450", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" },
+            { "@type": "Offer", "name": "Mecenas", "price": "450000", "priceCurrency": "CLP", "availability": "https://schema.org/PreOrder", "url": "https://laexperienciaeselcodigo.com/#preventa" }
+          ]
+        }
       ]
     },
     {
@@ -583,6 +603,20 @@
     empresas: { nombre: "Empresas", usd: null, clp: null }
   };
   const pesos = n => "$" + n.toLocaleString("es-CL");
+
+  /* Mantiene los precios de los datos estructurados (para Google) iguales a los que muestra la página. */
+  const ld = document.querySelector('script[type="application/ld+json"]');
+  try {
+    const datos = JSON.parse(ld.textContent);
+    const libro = datos["@graph"].find(x => x["@type"] === "Book");
+    libro.workExample.forEach(ed => ed.offers.forEach(of => {
+      const n = Object.values(NIVELES).find(v => v.nombre === of.name);
+      if (!n || !n.usd) return;
+      of.price = String(of.priceCurrency === "USD" ? n.usd : n.clp);
+      if (of.name === "Lector fundador") { if (etapa.hasta < "2099-01-01") of.priceValidUntil = etapa.hasta; else delete of.priceValidUntil; }
+    }));
+    ld.textContent = JSON.stringify(datos);
+  } catch (e) {}
   const $ = s => document.querySelector(s);
 
   Object.entries(NIVELES).forEach(([k, n]) => {

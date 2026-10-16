@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agentario.laexperienciaeselcodigo.com/sitemap.xml
