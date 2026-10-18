@@ -2,11 +2,59 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/casos/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/formularios-migratorios-conversando/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/negociar-compra-auto/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/reservas-padel-whatsapp/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/revisar-contrato-control-cambios/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/facturas-proveedores-monday/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/ordenar-correo-agenda-scout/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/tramites-web-operator/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/datos-paneles-a-planilla/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/seguro-auto-mas-barato/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/pendientes-personales-telegram/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/analizar-bases-licitacion-app/</loc>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/tarea-codigo-de-local-a-nube-devin/</loc>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/casos/video-producto-flow/</loc>
@@ -314,15 +362,15 @@
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/dinero-y-tramites/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/ventas-y-cobranza/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/operaciones-y-pyme/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/marketing-y-contenido/</loc>
@@ -334,15 +382,15 @@
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/software-y-datos/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/vida-diaria-y-viajes/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/claude/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/chatgpt-agent/</loc>
@@ -361,16 +409,16 @@
     <lastmod>2026-10-09</lastmod>
   </url>
   <url>
-    <loc>https://agentario.laexperienciaeselcodigo.com/agente/gemini/</loc>
-    <lastmod>2026-10-16</lastmod>
-  </url>
-  <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/n8n/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/chatgpt/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/agente/gemini/</loc>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/perplexity-comet/</loc>
@@ -379,6 +427,10 @@
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/lindy/</loc>
     <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/agente/make/</loc>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/manus/</loc>
