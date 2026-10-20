@@ -205,6 +205,11 @@ const historial = leerHistorial();
 let errores = 0;
 const archivos = archivosCola();
 if (!archivos.length) console.log('No hay propuestas en social/cola/.');
+// Sin ninguna credencial no se toca nada: las propuestas esperan en la cola hasta que haya al menos una red conectada.
+if (!PRUEBA && !REDES.some(r => PUBLICADORES[r].credenciales())) {
+  console.log('No hay credenciales de ninguna red todavía; las propuestas quedan en social/cola/ sin cambios.');
+  process.exit(0);
+}
 
 for (const ruta of archivos) {
   const propuesta = leerJson(ruta);
