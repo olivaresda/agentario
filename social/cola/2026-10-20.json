@@ -1,0 +1,43 @@
+{
+  "fecha": "2026-10-20",
+  "tipo": "caso",
+  "id": "whatsapp-agenda-registro",
+  "motivo": "caso más copiado",
+  "enlace": "https://agentario.laexperienciaeselcodigo.com/casos/whatsapp-agenda-registro/",
+  "enlaces": {
+    "x": "https://agentario.laexperienciaeselcodigo.com/casos/whatsapp-agenda-registro/?utm_source=x&utm_medium=social&utm_campaign=agente-redes",
+    "linkedin": "https://agentario.laexperienciaeselcodigo.com/casos/whatsapp-agenda-registro/?utm_source=linkedin&utm_medium=social&utm_campaign=agente-redes",
+    "instagram": "https://agentario.laexperienciaeselcodigo.com/casos/whatsapp-agenda-registro/?utm_source=instagram&utm_medium=social&utm_campaign=agente-redes"
+  },
+  "imagen": {
+    "plantilla": "caso",
+    "campos": {
+      "categoria": "Ventas y cobranza",
+      "agente": "n8n",
+      "titulo": "Atender WhatsApp, agendar citas y registrar cada conversación",
+      "prompt": "Construye un flujo en n8n con un agente que responda los mensajes de WhatsApp de mi [tipo de negocio]. Debe buscar las respuestas en [documento o base de conocimiento], revisar disponibilidad en [Google Calendar] antes de ofrecer horarios, registrar cada conversación en [Google Sheets o Notion] y responder por WhatsApp con copia a [correo]. Mientras lo pruebo, antes de confirmar cualquier reserva o enviar cualquier mensaje, pásamelo para aprobarlo.",
+      "url": "agentario.laexperienciaeselcodigo.com",
+      "etiqueta": ""
+    }
+  },
+  "redes": {
+    "x": {
+      "texto": "¿Tu negocio pierde clientes porque nadie alcanza a contestar el WhatsApp?\n\nUn agente en n8n responde con tu información, revisa el calendario antes de ofrecer una hora y anota cada conversación en una planilla.\n\nEl prompt, listo para copiar:\nhttps://agentario.laexperienciaeselcodigo.com/casos/whatsapp-agenda-registro/?utm_source=x&utm_medium=social&utm_campaign=agente-redes",
+      "alt": "Tarjeta de Agentario con el caso «Atender WhatsApp, agendar citas y registrar cada conversación», de Ventas y cobranza con n8n, y el prompt listo para copiar.",
+      "estado": "pendiente",
+      "imagen": "social/img/2026-10-20-whatsapp-agenda-registro-horizontal.jpg"
+    },
+    "linkedin": {
+      "texto": "Son las 21:40 y entra otro WhatsApp preguntando si quedan horas para mañana. Nadie lo ve hasta el día siguiente.\n\nEse es el caso más copiado del Agentario: un agente construido en n8n que atiende el WhatsApp del negocio. Busca la respuesta en tu propia información, revisa la disponibilidad en el calendario antes de ofrecer un horario y anota cada conversación en una planilla.\n\nSegún el caso original, publicado en X, el negocio dejó su WhatsApp funcionando solo: el agente responde y envía una copia por correo.\n\nLo interesante no es la herramienta. Es que el prompt lo escribe mejor quien conoce el negocio: qué preguntan los clientes, qué nunca se promete y qué datos hay que guardar. Y mientras lo pruebas, el agente te pide aprobación antes de confirmar cualquier reserva o enviar un mensaje.\n\nEl prompt está listo para copiar:\nhttps://agentario.laexperienciaeselcodigo.com/casos/whatsapp-agenda-registro/?utm_source=linkedin&utm_medium=social&utm_campaign=agente-redes\n\nEs parte del Agentario, el adelanto abierto de mi libro La experiencia es el código.\n\n#AgentesDeIA #IAenEspañol #Pymes",
+      "alt": "Tarjeta de Agentario con el caso «Atender WhatsApp, agendar citas y registrar cada conversación», de Ventas y cobranza con n8n, y el prompt listo para copiar.",
+      "estado": "pendiente",
+      "imagen": "social/img/2026-10-20-whatsapp-agenda-registro-vertical.jpg"
+    },
+    "instagram": {
+      "texto": "Que tu WhatsApp conteste aunque estés ocupado.\n\nUn agente en n8n:\n— responde con la información de tu negocio\n— revisa tu calendario antes de ofrecer una hora\n— anota cada conversación en una planilla\n\nMientras lo pruebas, te pide aprobación antes de confirmar cualquier reserva o enviar un mensaje.\n\nEs el caso más copiado del Agentario. No hace falta programar: hace falta conocer bien tu negocio, y eso ya lo tienes.\n\nEl prompt completo está en el link de mi bio.\nGuárdalo para probarlo después.\n\n#AgentesDeIA #IAenEspañol #Agentario #WhatsAppBusiness #n8n #Pymes #Emprendedores",
+      "alt": "Tarjeta de Agentario con el caso «Atender WhatsApp, agendar citas y registrar cada conversación», de Ventas y cobranza con n8n, y el prompt listo para copiar.",
+      "estado": "pendiente",
+      "imagen": "social/img/2026-10-20-whatsapp-agenda-registro-vertical.jpg"
+    }
+  }
+}

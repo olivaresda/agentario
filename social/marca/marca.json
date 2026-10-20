@@ -1,0 +1,87 @@
+{
+  "_nota": "Plantilla de marca para las publicaciones en redes. Es la fuente única: las imágenes y los textos del agente de redes salen de aquí. Los colores y fuentes son los mismos de los dos sitios.",
+  "autor": {
+    "nombre": "Daniel Olivares",
+    "linkedin": "https://www.linkedin.com/in/dolivares"
+  },
+  "agentario": {
+    "nombre": "Agentario",
+    "url": "https://agentario.laexperienciaeselcodigo.com",
+    "lema": "Lo que ya puedes delegar a un agente de IA",
+    "bajada": "Casos de uso reales con el prompt listo para copiar. En español, pensado para Latinoamérica.",
+    "logo": "../../favicon.svg",
+    "colores": {
+      "fondo": "#F6F9FF",
+      "superficie": "#FFFFFF",
+      "tinta": "#172240",
+      "tinta_suave": "#4A5675",
+      "linea": "#DCE4F5",
+      "cielo": "#2E5BFF",
+      "cielo_suave": "#E7EDFF",
+      "sol": "#FFC233",
+      "sol_brillo": "#FFE9A8",
+      "nuevo": "#0F7F57",
+      "nuevo_suave": "#E2F6EE"
+    },
+    "fuentes": {
+      "titulos": "Bricolage Grotesque (500, 700, 800)",
+      "texto": "Atkinson Hyperlegible (400, 700)"
+    },
+    "elementos": [
+      "Barra superior de color cielo",
+      "Sol amarillo (círculo con halo) en la esquina superior derecha",
+      "Logo: cuadrado redondeado azul con una A blanca y un punto amarillo",
+      "Etiqueta de categoría en píldora cielo suave",
+      "Prompt en tarjeta blanca con borde suave y comillas grandes"
+    ]
+  },
+  "libro": {
+    "nombre": "La experiencia es el código",
+    "subtitulo": "IA agéntica para profesionales que saben lo que piden",
+    "url": "https://laexperienciaeselcodigo.com",
+    "logo": "../../libro-sitio/favicon.svg",
+    "lanzamiento": "2027-04-05",
+    "colores": {
+      "papel": "#E9EEF2",
+      "tarjeta": "#FBFCFD",
+      "tinta": "#14233A",
+      "tinta_suave": "#4E5E72",
+      "linea": "#C3CDD7",
+      "lapiz": "#C9962B",
+      "lapiz_suave": "#F2E4C2",
+      "ok": "#2F6B4F"
+    },
+    "fuentes": {
+      "titulos": "Literata (400, 500, 700)",
+      "etiquetas": "IBM Plex Sans Condensed (400, 500, 600)"
+    },
+    "elementos": [
+      "Fondo papel gris azulado",
+      "Título grande en Literata",
+      "Ficha de especificación inclinada con sombra dorada (lápiz)",
+      "Cuadradito gris antes de los datos clave"
+    ]
+  },
+  "formatos": {
+    "vertical": { "ancho": 1080, "alto": 1350, "redes": ["instagram", "linkedin"] },
+    "horizontal": { "ancho": 1200, "alto": 675, "redes": ["x"] }
+  },
+  "voz": {
+    "persona": "Primera persona, como Daniel. Cercano, concreto, sin exagerar.",
+    "publico": "Profesionales con trayectoria (muchos de 50+) que saben pedir con detalle en su área, pero no programan.",
+    "reglas": [
+      "Español neutro latinoamericano, de tú.",
+      "Abrir con el problema concreto que resuelve el caso, no con la herramienta.",
+      "Nada de promesas infladas ni palabras como 'revolucionario' o 'increíble'.",
+      "Recordar que el agente se revisa antes de enviar, pagar o firmar cuando el caso lo amerite.",
+      "Cada post lleva un solo llamado a la acción.",
+      "Sin emojis o, como mucho, uno.",
+      "Hashtags solo en Instagram (5 a 8) y LinkedIn (máximo 3); en X, ninguno o uno."
+    ],
+    "hashtags_base": ["#AgentesDeIA", "#IAenEspañol", "#Productividad", "#Agentario", "#LaExperienciaEsElCodigo"]
+  },
+  "utm": {
+    "medium": "social",
+    "campaign": "agente-redes"
+  }
+}

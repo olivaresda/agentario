@@ -40,3 +40,7 @@ Agentario existe para llevar lectores a la preventa de *La experiencia es el có
 - **Página "El libro"** (`#/libro`): qué aprendes, para quién es y niveles de preventa. El precio del lector fundador cambia solo según `TRAMOS_FUNDADOR`.
 - **Pop-up "capítulo 1 gratis"**: pide correo, nombre y rubro (opcional) y regala los prompts de `TOP_PROMPTS`. Si `CAPITULO1_URL` tiene un enlace, se entrega al instante y en el correo automático.
 - **Medición de punta a punta:** cada enlace al libro lleva `utm_source=agentario`, `utm_medium=<lugar>` y `utm_content=<caso>`, y se registra en GoatCounter como `clic-libro/<lugar>/<caso>`. En el sitio del libro hay que pegar `libro/medicion-goatcounter.html`, que registra `libro/visita`, `libro/ve-preventa`, `libro/clic-pagar` y `libro/compra`.
+
+## Agente de redes
+
+Cada mañana un agente en Claude propone un post para X, LinkedIn e Instagram con un caso del Agentario (o el libro, cuando ya no quedan casos sin publicar). Se aprueba haciendo merge del pull request y la acción `Publicar en redes` lo publica con las APIs oficiales. Detalles, credenciales y medición en [`social/LEEME.md`](social/LEEME.md).

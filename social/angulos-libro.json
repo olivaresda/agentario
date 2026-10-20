@@ -1,0 +1,96 @@
+{
+  "_nota": "Ángulos para los días en que no quedan casos sin publicar. El agente usa el que lleva más tiempo sin salir. Variables: {precio} {hasta} {siguiente} {dias} {lanzamiento}.",
+  "angulos": [
+    {
+      "id": "experiencia-90",
+      "tema": "Tu experiencia es el 90 % del trabajo para construir un agente; el otro 10 % lo hace la máquina.",
+      "titular": "Tu experiencia es el 90 % del trabajo",
+      "bajada": "El otro 10 % lo hace la IA. Un libro para crear agentes sin programar.",
+      "ficha": [
+        { "etiqueta": "Lo que sé hacer mejor que nadie", "valor": "Revisar una factura y saber, en un minuto, si algo no cuadra." },
+        { "etiqueta": "Lo que nunca se debe hacer", "valor": "Aprobar un pago sin la orden de compra." },
+        { "etiqueta": "Cómo sé que salió bien", "valor": "Cero pagos duplicados en el mes." }
+      ],
+      "dato": "Preventa abierta. Libro impreso el {lanzamiento}",
+      "enlace": "https://laexperienciaeselcodigo.com/"
+    },
+    {
+      "id": "precio-fundador",
+      "tema": "Precio de lector fundador: USD {precio} hasta el {hasta}; después sube a USD {siguiente}. Incluye libro impreso firmado, ebook, capítulos a medida que salen y un taller en vivo.",
+      "titular": "Lector fundador: USD {precio} hasta el {hasta}",
+      "bajada": "Libro firmado, ebook, capítulos antes que nadie y un taller en vivo para crear tu primer agente.",
+      "ficha": [
+        { "etiqueta": "Hoy", "valor": "USD {precio}" },
+        { "etiqueta": "Después del {hasta}", "valor": "USD {siguiente}" },
+        { "etiqueta": "Precio de lista", "valor": "USD 85" }
+      ],
+      "dato": "El precio sube por etapas hasta el lanzamiento",
+      "enlace": "https://laexperienciaeselcodigo.com/#preventa"
+    },
+    {
+      "id": "escrito-en-vivo",
+      "tema": "Un libro que se escribe en vivo: entrevistas a profesionales con trayectoria de Chile, Latinoamérica y España; cada capítulo se libera apenas está listo.",
+      "titular": "Un libro que se escribe en vivo",
+      "bajada": "Entrevistamos, escribimos y publicamos cada capítulo apenas queda listo.",
+      "ficha": [
+        { "etiqueta": "Entrevistamos", "valor": "Profesionales que dominan su oficio." },
+        { "etiqueta": "Escribimos", "valor": "Su historia y la especificación de su agente." },
+        { "etiqueta": "Publicamos", "valor": "Capítulo a capítulo, antes del impreso." }
+      ],
+      "dato": "Quienes precompran reciben cada capítulo digital apenas se libera",
+      "enlace": "https://laexperienciaeselcodigo.com/#como-funciona"
+    },
+    {
+      "id": "saber-pedir",
+      "tema": "No hace falta programar ni comprar software caro: hace falta saber pedir, y eso es justo lo que domina un profesional con trayectoria.",
+      "titular": "No hace falta programar. Hace falta saber pedir",
+      "bajada": "Y eso es justo lo que domina un profesional con años de oficio.",
+      "ficha": [
+        { "etiqueta": "Lo que pides", "valor": "Qué hacer, qué nunca hacer y cómo saber si salió bien." },
+        { "etiqueta": "Lo que hace la IA", "valor": "Escribir el código y ejecutar la tarea." },
+        { "etiqueta": "Lo que revisas tú", "valor": "Todo antes de enviar, pagar o firmar." }
+      ],
+      "dato": "IA agéntica para profesionales que saben lo que piden",
+      "enlace": "https://laexperienciaeselcodigo.com/"
+    },
+    {
+      "id": "comunidad",
+      "tema": "Invitación a la comunidad del libro: ser entrevistado, lector beta, embajador o empresa aliada.",
+      "titular": "¿Tu oficio merece un capítulo?",
+      "bajada": "Busco profesionales con trayectoria para entrevistar, lectores beta y empresas aliadas.",
+      "ficha": [
+        { "etiqueta": "Entrevistado", "valor": "Cuentas con detalle una tarea que dominas." },
+        { "etiqueta": "Lector beta", "valor": "Lees y comentas los capítulos antes que nadie." },
+        { "etiqueta": "Empresa aliada", "valor": "Un taller para tu equipo y el caso de tu empresa." }
+      ],
+      "dato": "Únete a la comunidad del libro",
+      "enlace": "https://laexperienciaeselcodigo.com/#comunidad"
+    },
+    {
+      "id": "cuenta-regresiva",
+      "tema": "Faltan {dias} días para el lanzamiento del libro impreso ({lanzamiento}); los capítulos digitales ya se están liberando.",
+      "titular": "Faltan {dias} días para el libro impreso",
+      "bajada": "Mientras tanto, los capítulos digitales se liberan a medida que se escriben.",
+      "ficha": [
+        { "etiqueta": "Libro impreso", "valor": "{lanzamiento}" },
+        { "etiqueta": "Capítulos digitales", "valor": "Desde hoy, por etapas." },
+        { "etiqueta": "Talleres", "valor": "En línea y en vivo." }
+      ],
+      "dato": "Preventa abierta en laexperienciaeselcodigo.com",
+      "enlace": "https://laexperienciaeselcodigo.com/#preventa"
+    },
+    {
+      "id": "agentario-adelanto",
+      "tema": "El Agentario es el adelanto abierto del libro: casos de uso de agentes de IA en español, cada uno con el prompt listo para copiar.",
+      "titular": "{casos} casos de agentes de IA, gratis y en español",
+      "bajada": "El Agentario es el adelanto abierto del libro: cada caso trae su prompt listo para copiar.",
+      "ficha": [
+        { "etiqueta": "Qué es", "valor": "Casos reales de lo que ya puedes delegar." },
+        { "etiqueta": "Cuánto cuesta", "valor": "Nada. Copias el prompt y lo pruebas." },
+        { "etiqueta": "Para quién", "valor": "Profesionales que no programan." }
+      ],
+      "dato": "Adelanto abierto de La experiencia es el código",
+      "enlace": "https://agentario.laexperienciaeselcodigo.com/"
+    }
+  ]
+}

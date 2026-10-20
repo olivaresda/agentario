@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<!-- Plantilla de marca Agentario para redes. La rellena herramientas/social/imagen.mjs.
+     Campos: {{formato}} {{categoria}} {{agente}} {{titulo}} {{prompt}} {{url}} {{etiqueta}} -->
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-weight:500;src:url(fuentes/bricolage-grotesque-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-weight:700;src:url(fuentes/bricolage-grotesque-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-weight:800;src:url(fuentes/bricolage-grotesque-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;src:url(fuentes/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:700;src:url(fuentes/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2")}
+:root{
+  --fondo:#F6F9FF; --superficie:#FFFFFF; --tinta:#172240; --tinta-suave:#4A5675; --linea:#DCE4F5;
+  --cielo:#2E5BFF; --cielo-suave:#E7EDFF; --sol:#FFC233; --sol-brillo:#FFE9A8; --nuevo:#0F7F57; --nuevo-suave:#E2F6EE;
+}
+*{box-sizing:border-box;margin:0}
+html,body{width:var(--w);height:var(--h);overflow:hidden}
+body{background:var(--fondo);color:var(--tinta);font-family:"Atkinson Hyperlegible",sans-serif;position:relative}
+body.vertical{--w:1080px;--h:1350px;--pad:84px}
+body.horizontal{--w:1200px;--h:675px;--pad:64px}
+
+.barra{position:absolute;inset:0 0 auto 0;height:14px;background:var(--cielo)}
+.halo{position:absolute;border-radius:50%;background:var(--sol-brillo)}
+.sol{position:absolute;border-radius:50%;background:var(--sol)}
+.vertical .halo{width:520px;height:520px;right:-170px;top:-190px}
+.vertical .sol{width:210px;height:210px;right:-10px;top:-30px}
+.horizontal .halo{width:380px;height:380px;right:-120px;top:-150px}
+.horizontal .sol{width:150px;height:150px;right:-5px;top:-25px}
+
+.lienzo{position:absolute;inset:0;padding:calc(var(--pad) + 14px) var(--pad) var(--pad);display:flex;flex-direction:column}
+.marca{display:flex;align-items:center;gap:20px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.01em}
+.marca svg{flex:none}
+.vertical .marca{font-size:46px}
+.vertical .marca svg{width:76px;height:76px}
+.horizontal .marca{font-size:36px}
+.horizontal .marca svg{width:58px;height:58px}
+
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{font-weight:700;border-radius:999px;padding:.38em .9em;line-height:1.1}
+.chip.cat{background:var(--cielo-suave);color:var(--cielo)}
+.chip.agente{background:var(--superficie);color:var(--tinta-suave);border:2px solid var(--linea)}
+.chip.etiqueta{background:var(--nuevo-suave);color:var(--nuevo)}
+.chip.etiqueta:empty{display:none}
+.vertical .chips{margin-top:64px;font-size:26px}
+.horizontal .chips{margin-top:34px;font-size:21px}
+
+h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.04;text-wrap:balance;
+   display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+.vertical h1{font-size:var(--t,80px);margin-top:30px;-webkit-line-clamp:4;max-width:900px}
+.horizontal h1{font-size:var(--t,58px);margin-top:20px;-webkit-line-clamp:3;max-width:1000px}
+
+.prompt{position:relative;background:var(--superficie);border:2px solid var(--linea);border-radius:28px;box-shadow:0 18px 40px -24px rgba(23,34,64,.35)}
+.prompt .rotulo{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;color:var(--cielo);text-transform:uppercase;letter-spacing:.08em}
+.prompt p{color:var(--tinta);display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+.prompt mark{background:var(--sol-brillo);color:var(--tinta);border-radius:6px;padding:0 .18em}
+.prompt .comillas{position:absolute;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--sol);line-height:1}
+.vertical .prompt{margin-top:auto;padding:40px 44px 44px}
+.vertical .prompt .rotulo{font-size:22px;margin-bottom:16px}
+.vertical .prompt p{font-size:30px;line-height:1.45;-webkit-line-clamp:7}
+.vertical .prompt .comillas{font-size:150px;right:30px;top:-6px}
+.horizontal .prompt{margin-top:28px;padding:22px 30px;max-width:930px}
+.horizontal .prompt .rotulo{font-size:16px;margin-bottom:8px}
+.horizontal .prompt p{font-size:22px;line-height:1.45;-webkit-line-clamp:2}
+.horizontal .prompt .comillas{font-size:96px;right:20px;top:-4px}
+
+.pie{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.pie .url{font-family:"Atkinson Hyperlegible",sans-serif;font-weight:700;color:var(--cielo);display:flex;flex-direction:column}
+.pie .url small{font-weight:400;color:var(--tinta-suave);font-size:.85em}
+.pie .libro{color:var(--tinta-suave);text-align:right;white-space:nowrap}
+.pie .libro b{color:var(--tinta)}
+.vertical .pie{margin-top:44px;font-size:24px}
+.vertical .pie .url{font-size:27px}
+.horizontal .pie{margin-top:auto;font-size:20px}
+.horizontal .pie .url{font-size:24px}
+</style>
+</head>
+<body class="{{formato}}">
+  <div class="barra"></div><div class="halo"></div><div class="sol"></div>
+  <main class="lienzo">
+    <div class="marca">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#2E5BFF"/><path d="M17 50 L30 16 L43 50 M22.5 38 H37.5" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="49" cy="17" r="7" fill="#FFC233"/></svg>
+      <span>Agentario</span>
+    </div>
+    <div class="chips">
+      <span class="chip cat">{{categoria}}</span>
+      <span class="chip agente">Con {{agente}}</span>
+      <span class="chip etiqueta">{{etiqueta}}</span>
+    </div>
+    <h1>{{titulo}}</h1>
+    <section class="prompt">
+      <span class="comillas" aria-hidden="true">&rdquo;</span>
+      <div class="rotulo">Prompt listo para copiar</div>
+      <p>{{prompt}}</p>
+    </section>
+    <footer class="pie">
+      <span class="url"><small>Prompt completo en</small>{{url}}</span>
+      <span class="libro">Adelanto del libro<br><b>La experiencia es el código</b></span>
+    </footer>
+  </main>
+</body>
+</html>
