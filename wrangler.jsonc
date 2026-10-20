@@ -6,5 +6,7 @@
   "assets": {
     "directory": "./libro-sitio",
     "not_found_handling": "404-page"
-  }
+  },
+  // Necesario para las previsualizaciones de ramas (npx wrangler preview).
+  "previews": {}
 }
