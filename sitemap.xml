@@ -2,11 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/casos/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/tramites-oficina-dots/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/tramites-personales-dots/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/posts-x-aprobacion-slack-make/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/calificar-prospectos-bienvenida-make/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/curso-online-interactivo-manus/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/resumen-noticias-telegram-hermes/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/casos/proyecto-cliente-gmail-notion-openclaw/</loc>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/casos/agente-whatsapp-venta-autos-mercadolibre/</loc>
@@ -422,19 +450,19 @@
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/ventas-y-cobranza/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/operaciones-y-pyme/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/marketing-y-contenido/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/investigacion/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/software-y-datos/</loc>
@@ -442,7 +470,7 @@
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/categoria/vida-diaria-y-viajes/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/claude/</loc>
@@ -473,6 +501,10 @@
     <lastmod>2026-10-21</lastmod>
   </url>
   <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/agente/openclaw/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/chatgpt/</loc>
     <lastmod>2026-10-18</lastmod>
   </url>
@@ -481,24 +513,28 @@
     <lastmod>2026-10-16</lastmod>
   </url>
   <url>
-    <loc>https://agentario.laexperienciaeselcodigo.com/agente/openclaw/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <loc>https://agentario.laexperienciaeselcodigo.com/agente/make/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/agente/manus/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/agente/openai-dots/</loc>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/perplexity-comet/</loc>
     <lastmod>2026-10-16</lastmod>
   </url>
   <url>
+    <loc>https://agentario.laexperienciaeselcodigo.com/agente/hermes-agent/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/lindy/</loc>
     <lastmod>2026-10-14</lastmod>
-  </url>
-  <url>
-    <loc>https://agentario.laexperienciaeselcodigo.com/agente/make/</loc>
-    <lastmod>2026-10-18</lastmod>
-  </url>
-  <url>
-    <loc>https://agentario.laexperienciaeselcodigo.com/agente/manus/</loc>
-    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://agentario.laexperienciaeselcodigo.com/agente/openai-codex/</loc>
