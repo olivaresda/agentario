@@ -32,6 +32,26 @@ La página muestra un pop-up que pide el correo del visitante (a los 12 segundos
 
 La página mide visitas y acciones con [GoatCounter](https://www.goatcounter.com) (sin cookies). Para activarla, escribe tu código en la constante `GOATCOUNTER` de `index.html`. Se registran: secciones visitadas, casos abiertos por enlace, búsquedas (marcando las que no tienen resultados), filtros de categoría, agente y alianza, prompts vistos, copiados, compartidos y guardados, clics a Agent Use Cases y a las fuentes, suscripciones y aportes enviados.
 
+## Portada que invita a explorar (Agentario 2.0)
+
+- **Portada:** buscador «¿Qué quieres delegar?», botones por área de trabajo (las mismas categorías con nombres de oficio, en `OFICIOS`), carrusel de nuevos y catálogo en tarjetas compactas con filtros fijos al bajar. Cada tarjeta lleva a la página del caso (`/casos/<id>/`); los enlaces antiguos `#caso-<id>` redirigen ahí.
+- **Arma tu kit** (`#/kit`): tres preguntas (área, herramienta, tarea) y 5 casos recomendados (`kitRecomendar`). Desde ahí se puede copiar los 5 prompts o pedir el kit por correo junto con el capítulo 1.
+- **Página de cada caso:** botones «Copiar prompt» y «Abrir en Claude» (abre un chat nuevo con el prompt escrito, sin enviarlo), oferta del kit y del capítulo 1 al copiar, y barra fija «Siguiente en <categoría>» que aparece al bajar.
+- **Pop-up del capítulo 1:** ya no sale a los 12 segundos. Aparece solo cuando hay interés: después de ver 2 casos (`agentario-vistos`, lo suman las páginas de caso) o de copiar un prompt (`agentario-copio`).
+
+Eventos nuevos en GoatCounter:
+
+| Evento | Qué mide |
+|---|---|
+| `filtro-oficio/<categoría>` | Clic en un área de trabajo de la portada |
+| `abrir-caso/<nuevos\|catalogo\|kit>/<caso>` | Clic en una tarjeta para ver el caso |
+| `kit-inicio/<origen>` · `kit-completado/<área>/<herramienta>/<tarea>` · `kit-copiar-todo` | Uso de Arma tu kit |
+| `abrir-en-claude/<caso>` | Clic en «Abrir en Claude» |
+| `siguiente-caso/<desde>/<hacia>` · `ver-relacionado/<desde>/<hacia>` | Navegación entre casos desde la página de un caso |
+| `abrir-capitulo1/auto-copio` · `abrir-capitulo1/auto-vistos` | Por qué se abrió el pop-up |
+
+Métrica principal: **casos vistos por visita** (páginas `/casos/<id>/` ÷ visitas). Meta inicial: 2,5. Secundaria: porcentaje de visitas que copian o abren un prompt (meta inicial: 8 %).
+
 ## Embudo hacia el libro
 
 Agentario existe para llevar lectores a la preventa de *La experiencia es el código* (laexperienciaeselcodigo.com).
