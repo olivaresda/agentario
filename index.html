@@ -97,7 +97,10 @@ nav.main a.donate{color:#172240;background:var(--sun)}
 .hero p.lead{color:var(--ink-soft);font-size:1.15rem;max-width:46ch;margin:16px 0 24px}
 .search{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:4px 6px 4px 14px;max-width:560px}
 .search:focus-within{border-color:var(--sky)}
-.search svg{flex:none;color:var(--ink-soft)}
+.search .lupa{flex:none;display:grid;place-items:center;border:0;background:none;padding:6px;margin:0 0 0 -6px;border-radius:8px;color:var(--ink-soft)}
+.search .lupa:hover{color:var(--sky)}
+.q-hint{margin:8px 0 0;font-size:.95rem;color:var(--ink-soft)}
+.q-hint a{font-weight:700}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:12px 0;outline:none}
 .search input::placeholder{color:var(--ink-soft)}
 .sun{position:relative;width:210px;height:210px;border-radius:50%;display:grid;place-items:center;text-align:center;color:#172240;
@@ -427,11 +430,11 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
         <a class="pill-hoy" href="#hoy"><span class="dot" aria-hidden="true"></span><span id="pillHoy">Casos nuevos hoy</span></a>
         <h1>Lo que ya puedes delegar a un agente de IA</h1>
         <p class="lead">Casos concretos, en español, con el prompt listo para copiar y probar hoy.</p>
-        <label class="search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <span class="sr" hidden>Buscar casos</span>
-          <input id="q" type="search" placeholder="¿Qué quieres delegar? Ej.: cobranza, WhatsApp…" autocomplete="off" aria-label="Buscar casos">
-        </label>
+        <form class="search" id="qForm" role="search">
+          <button class="lupa" type="submit" aria-label="Buscar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+          <input id="q" type="search" enterkeyhint="search" placeholder="¿Qué quieres delegar? Ej.: cobranza, WhatsApp…" autocomplete="off" aria-label="Buscar casos">
+        </form>
+        <p class="q-hint" id="qHint" aria-live="polite" hidden></p>
         <div class="oficios">
           <p class="lab" id="ofT">O elige tu área de trabajo</p>
           <ul id="oficios" aria-labelledby="ofT"></ul>
@@ -1490,14 +1493,16 @@ function caseHTML(c){
 const OFICIOS = { dinero:'Finanzas y trámites', ventas:'Ventas y cobranza', ops:'Pyme y operaciones', marketing:'Marketing y contenido', research:'Investigación', software:'Datos y planillas', vida:'Mi casa y viajes' };
 const lugarDe = el => el.closest('#todayList') ? 'nuevos' : el.closest('#kitList') ? 'kit' : 'catalogo';
 
+/* Búsqueda sin distinguir mayúsculas ni tildes: "tramite" encuentra "trámite" */
+const normalizar = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 function filtered(){
-  const q = state.q.trim().toLowerCase();
+  const q = normalizar(state.q.trim());
   let list = CASOS.filter(c =>
     (state.cat==='all'||c.c===state.cat) &&
     (state.agent==='all'||c.a===state.agent) &&
     (!state.onlySaved||saved.has(c.id)) &&
     (!state.onlyPartner||!!c.src) &&
-    (!q || (c.t+' '+c.d+' '+c.a+' '+c.p+' '+(c.r||'')+' '+(CATS[c.c]||'')).toLowerCase().includes(q)));
+    (!q || normalizar(c.t+' '+c.d+' '+c.a+' '+c.p+' '+(c.r||'')+' '+(CATS[c.c]||'')).includes(q)));
   list.sort((a,b)=> (b.s?1:0)-(a.s?1:0) || (state.sort==='az' ? a.t.localeCompare(b.t,'es') : b.f.localeCompare(a.f)));
   return list;
 }
@@ -1849,8 +1854,27 @@ document.addEventListener('click', async e => {
 });
 
 let busquedaTimer;
+/* El buscador filtra la lista "Todos los casos", que está más abajo: el aviso y la lupa (o Enter) llevan a los resultados */
+function avisoBusqueda(){
+  const h = $('#qHint'), q = state.q.trim();
+  if (!q) { h.hidden = true; return; }
+  const n = filtered().length;
+  h.hidden = false;
+  h.innerHTML = n ? `${n === 1 ? '1 caso' : n + ' casos'} con «${esc(q)}». <a href="#todos" data-ver-resultados>Ver resultados ↓</a>`
+                  : `No encontramos casos con «${esc(q)}». Prueba otra palabra o <a href="#/aporta">aporta tu caso</a>.`;
+}
+function verResultados(){
+  $('#todos').scrollIntoView({behavior:'smooth', block:'start'});
+  $('#q').blur();
+}
+$('#qForm').addEventListener('submit', e => {
+  e.preventDefault();
+  state.q = $('#q').value; state.limit = 12; renderList(); avisoBusqueda();
+  if (state.q.trim()) verResultados(); else $('#q').focus();
+});
+$('#qHint').addEventListener('click', e => { if (e.target.closest('[data-ver-resultados]')) { e.preventDefault(); verResultados(); } });
 $('#q').addEventListener('input', e => {
-  state.q=e.target.value; state.limit=12; renderList();
+  state.q=e.target.value; state.limit=12; renderList(); avisoBusqueda();
   clearTimeout(busquedaTimer);
   busquedaTimer = setTimeout(() => {
     const q = state.q.trim().toLowerCase().replace(/[^a-z0-9áéíóúñü ]/g,'').replace(/\s+/g,' ').slice(0,40);
