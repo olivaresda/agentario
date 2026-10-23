@@ -45,9 +45,13 @@
   <p class="meta">Agente: <a class="agent" href="/agente/gemini/">Gemini</a><a href="/categoria/investigacion/">Investigación</a><span>Publicado el 5 de octubre de 2026</span></p>
   
   <h2>El prompt</h2>
-  <p class="tip">Cópialo en Gemini y reemplaza lo que está entre [corchetes] con tus datos.</p>
+  <p class="tip">Cópialo en Gemini o ábrelo directo en Claude, y reemplaza lo que está entre [corchetes] con tus datos.</p>
+  <div class="acciones">
+    <button class="btn copiar" type="button" data-copiar="prompt">Copiar prompt</button>
+    <a class="btn sec" href="https://claude.ai/new?q=Investiga%20a%20estos%20competidores%3A%20%5Blista%5D.%20Para%20cada%20uno%2C%20resume%20su%20oferta%2C%20precios%20publicados%2C%20a%20qui%C3%A9n%20le%20venden%2C%20c%C3%B3mo%20se%20describen%20y%20qu%C3%A9%20dicen%20sus%20clientes%20en%20rese%C3%B1as%20p%C3%BAblicas.%20Cierra%20con%20una%20tabla%20comparativa%20y%20tres%20oportunidades%20que%20no%20est%C3%A9n%20cubriendo.%20Cita%20las%20fuentes." target="_blank" rel="noopener" data-abrir="claude">Abrir en Claude</a>
+  </div>
   <pre class="prompt" id="prompt">Investiga a estos competidores: [lista]. Para cada uno, resume su oferta, precios publicados, a quién le venden, cómo se describen y qué dicen sus clientes en reseñas públicas. Cierra con una tabla comparativa y tres oportunidades que no estén cubriendo. Cita las fuentes.</pre>
-  <button class="btn copiar" type="button" data-copiar="prompt">Copiar prompt</button>
+  <p class="oferta" id="oferta" hidden>¿Te sirvió? <a href="/#/kit" data-kit-origen="caso-copiar">Arma tu kit con 5 casos para tu trabajo</a> o <a href="/#novedades" data-capitulo="caso-copiar">recibe gratis el capítulo 1</a>.</p>
   
 </article>
 <aside class="band">
@@ -80,8 +84,11 @@
     <p class="desc">El agente descarga reportes y datos financieros, arma un modelo en Excel con escenarios y redacta un informe con tesis, riesgos y valoración.</p>
     <p class="meta"><a class="agent" href="/agente/claude-cowork/">Claude Cowork</a><span>14 de octubre de 2026</span></p>
   </li></ol>
-  <p><a class="ver" href="/categoria/investigacion/">Ver los 8 casos de investigación</a></p>
+  <p class="ver-row"><a class="ver" href="/categoria/investigacion/">Ver los 8 casos de investigación</a><a class="ver kit" href="/#/kit" data-kit-origen="caso">Arma tu kit de 5 casos</a></p>
 </section>
+<nav class="sig" aria-label="Siguiente caso">
+  <a href="/casos/resumir-papers/" data-siguiente="resumir-papers"><span>Siguiente en investigación</span><strong>Resumir papers para preparar una clase</strong><b aria-hidden="true">→</b></a>
+</nav>
 </main>
 <footer>
   <div class="wrap">

@@ -13,6 +13,21 @@
   };
   const caso = document.body.dataset.caso || '';
   const lugarPagina = caso || location.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'inicio';
+  const guarda = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+  const lee = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  // Cuenta los casos vistos: la portada muestra el pop-up del capítulo 1 recién desde el segundo caso.
+  if (caso) guarda('agentario-vistos', String(Number(lee('agentario-vistos') || 0) + 1));
+
+  // La barra "Siguiente caso" aparece al bajar más allá de los botones del prompt (o al copiar), para no tapar el botón de copiar.
+  const sig = document.querySelector('.sig');
+  const mostrarSig = () => { if (sig) delete sig.dataset.oculto; };
+  if (sig) {
+    const ancla = document.querySelector('.acciones');
+    if ('IntersectionObserver' in window && ancla) {
+      sig.dataset.oculto = '';
+      new IntersectionObserver(([e]) => { if (!e.isIntersecting && e.boundingClientRect.top < 0) mostrarSig(); }).observe(ancla);
+    }
+  }
 
   document.addEventListener('click', async e => {
     const t = e.target.closest('a,button'); if (!t) return;
@@ -20,7 +35,12 @@
     if (t.dataset.copiar) {
       const el = document.getElementById(t.dataset.copiar);
       evento('copiar-prompt-pagina/' + caso, 'Copiar prompt (página): ' + document.title);
-      try { await navigator.clipboard.writeText(el.textContent); t.textContent = 'Prompt copiado'; }
+      try {
+        await navigator.clipboard.writeText(el.textContent); t.textContent = 'Prompt copiado';
+        guarda('agentario-copio', '1');
+        const oferta = document.getElementById('oferta'); if (oferta) oferta.hidden = false;
+        mostrarSig();
+      }
       catch (err) {
         const r = document.createRange(); r.selectNodeContents(el);
         const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
@@ -31,6 +51,11 @@
     }
 
     if (t.tagName !== 'A') return;
+    if (t.dataset.abrir) evento('abrir-en-claude/' + caso, 'Abrir en Claude: ' + document.title);
+    if (t.dataset.siguiente) evento('siguiente-caso/' + caso + '/' + t.dataset.siguiente, 'Siguiente caso desde: ' + document.title);
+    if (t.dataset.kitOrigen) evento('kit-inicio/' + t.dataset.kitOrigen + '/' + lugarPagina, 'Arma tu kit desde ' + t.dataset.kitOrigen);
+    if (t.dataset.capitulo) evento('abrir-capitulo1/' + t.dataset.capitulo + '/' + lugarPagina, 'Capítulo 1 desde ' + t.dataset.capitulo);
+    if (caso && t.closest('.cases')) evento('ver-relacionado/' + caso + '/' + t.pathname.replace(/^\/casos\/|\/$/g, ''), 'Caso relacionado desde: ' + document.title);
     if (t.classList.contains('via')) evento('clic-alianza/' + caso, 'Clic Agent Use Cases: ' + document.title);
     if (t.classList.contains('fo')) evento('clic-fuente/' + caso, 'Clic fuente: ' + document.title);
     if (t.hostname === 'laexperienciaeselcodigo.com') {

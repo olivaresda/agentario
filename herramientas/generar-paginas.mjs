@@ -177,6 +177,11 @@ for (const c of CASOS) {
   const m = migas([['Agentario', '/'], [cat, urlCat(c.c)], [c.t, ruta]]);
   const titulo = (c.t + ' con ' + c.a).length <= 58 ? `${c.t} con ${c.a} | Agentario` : `${c.t} | Agentario`;
   const relacionados = porCat[c.c].filter(x => x.id !== c.id).slice(0, 5);
+  // Siguiente caso de la misma categoría (en orden de publicación, vuelve al primero al final)
+  const deCat = porCat[c.c];
+  const sig = deCat.length > 1 ? deCat[(deCat.indexOf(c) + 1) % deCat.length] : null;
+  // "Abrir en Claude" abre un chat nuevo con el prompt ya escrito, para completar los [corchetes] antes de enviarlo
+  const abrirClaude = 'https://claude.ai/new?q=' + encodeURIComponent(c.p);
   const fuentes = [
     c.fo ? `<a class="fo" href="${esc(c.fo.u)}" target="_blank" rel="noopener">Fuente original: ${esc(c.fo.n)}</a>` : '',
     c.src ? `<a class="via" href="${esc(c.src)}" target="_blank" rel="noopener">Vía Agent Use Cases</a>` : ''
@@ -188,17 +193,24 @@ for (const c of CASOS) {
   <p class="meta">Agente: ${agenteHTML(c.a)}<a href="${urlCat(c.c)}">${esc(cat)}</a><span>Publicado el ${fecha(c.f)}</span></p>
   ${c.r ? `<p class="res"><strong>Resultado real:</strong> ${esc(c.r)}</p>` : ''}
   <h2>El prompt</h2>
-  <p class="tip">Cópialo en ${esc(c.a)} y reemplaza lo que está entre [corchetes] con tus datos.</p>
+  <p class="tip">${/^claude/i.test(c.a) ? 'Cópialo o ábrelo directo en Claude' : `Cópialo en ${esc(c.a)} o ábrelo directo en Claude`}, y reemplaza lo que está entre [corchetes] con tus datos.</p>
+  <div class="acciones">
+    <button class="btn copiar" type="button" data-copiar="prompt">Copiar prompt</button>
+    <a class="btn sec" href="${esc(abrirClaude)}" target="_blank" rel="noopener" data-abrir="claude">Abrir en Claude</a>
+  </div>
   <pre class="prompt" id="prompt">${esc(c.p)}</pre>
-  <button class="btn copiar" type="button" data-copiar="prompt">Copiar prompt</button>
+  <p class="oferta" id="oferta" hidden>¿Te sirvió? <a href="/#/kit" data-kit-origen="caso-copiar">Arma tu kit con 5 casos para tu trabajo</a> o <a href="/#novedades" data-capitulo="caso-copiar">recibe gratis el capítulo 1</a>.</p>
   ${fuentes ? `<p class="fuentes">${fuentes}</p>` : ''}
 </article>
 ${bandaLibro('caso-pagina')}
 ${relacionados.length ? `<section class="block">
   <h2>Más casos de ${esc(cat.toLowerCase())}</h2>
   <ol class="cases">${relacionados.map(x => itemLista(x, { conCat: false })).join('')}</ol>
-  <p><a class="ver" href="${urlCat(c.c)}">Ver los ${porCat[c.c].length} casos de ${esc(cat.toLowerCase())}</a></p>
-</section>` : ''}`;
+  <p class="ver-row"><a class="ver" href="${urlCat(c.c)}">Ver los ${porCat[c.c].length} casos de ${esc(cat.toLowerCase())}</a><a class="ver kit" href="/#/kit" data-kit-origen="caso">Arma tu kit de 5 casos</a></p>
+</section>` : ''}
+${sig ? `<nav class="sig" aria-label="Siguiente caso">
+  <a href="${urlCaso(sig)}" data-siguiente="${esc(sig.id)}"><span>Siguiente en ${esc(cat.toLowerCase())}</span><strong>${esc(sig.t)}</strong><b aria-hidden="true">→</b></a>
+</nav>` : ''}`;
   escribe(ruta, pagina({
     ruta, titulo, descripcion: recorta(c.d, 155), tipoOg: 'article', caso: c.id, cuerpo,
     datos: [{
