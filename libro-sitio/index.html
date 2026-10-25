@@ -427,7 +427,7 @@
         <li><span class="titulo">Agentes de voz (opcional)</span><span class="estado sans">En construcción</span></li>
         <li><span class="titulo">Proyecto final y entregables</span><span class="estado sans">En construcción</span></li>
       </ol>
-      <p class="intro"><a class="btn" href="/capitulo-1/">Lee gratis el avance del capítulo 1</a></p>
+      <p class="intro" style="margin-top:2rem"><a class="btn" href="/capitulo-1/">Lee gratis el avance del capítulo 1</a></p>
     </div>
   </section>
 
@@ -469,6 +469,14 @@
           </div>
           <div class="monto"><span class="ahora">A cotizar</span><span class="clp">Según equipo y ciudad</span></div>
           <div class="accion"><button class="btn" type="button" data-nivel="empresas">Pedir cotización</button></div>
+        </li>
+        <li id="librerias">
+          <div>
+            <h3>Librerías</h3>
+            <ul><li>Ejemplares del libro impreso para tu tienda</li><li>Condiciones especiales para librerías de Chile y España</li><li>La posibilidad de presentar el libro en tu local</li></ul>
+          </div>
+          <div class="monto"><span class="ahora">Conversemos</span><span class="clp">Condiciones por librería</span></div>
+          <div class="accion"><button class="btn" type="button" data-nivel="librerias">Contactar</button></div>
         </li>
       </ul>
 
@@ -523,6 +531,7 @@
           <label class="check"><input type="checkbox" name="rol" value="Lector beta"> Quiero leer los borradores</label>
           <label class="check"><input type="checkbox" name="rol" value="Embajador"> Quiero recomendar el libro</label>
           <label class="check"><input type="checkbox" name="rol" value="Empresa aliada"> Represento a una empresa</label>
+          <label class="check"><input type="checkbox" name="rol" value="Librería"> Tengo una librería</label>
         </fieldset>
         <div class="campo"><label for="c-oficio">Tu oficio, en una línea (opcional)</label><input id="c-oficio" name="oficio" placeholder="Ej.: 25 años en cobranza de una distribuidora"></div>
         <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -543,6 +552,7 @@
         <details><summary>¿Cuándo recibo el libro?</summary><p>El libro impreso se lanza el 5 de abril de 2027. Los capítulos digitales se liberan desde ahora, a medida que se escriben.</p></details>
         <details><summary>¿Cuánto cuesta el envío?</summary><p>En Chile, el envío está incluido en el precio. En España, el libro se despacha desde Málaga con un recargo de envío que te informamos al confirmar la reserva. Para otros países, coordinamos el envío contigo.</p></details>
         <details><summary>¿Los talleres son presenciales?</summary><p>Los talleres incluidos en la preventa son en línea y en vivo. Solo el nivel para empresas puede ser presencial.</p></details>
+        <details><summary>¿Puedo tener el libro en mi librería?</summary><p>Sí. Buscamos librerías en Chile y España que quieran tener el libro en su tienda. Escríbenos desde la sección <a href="#librerias">Librerías</a> de la preventa y te enviamos las condiciones.</p></details>
         <details><summary>¿Puedo pedir la devolución de mi precompra?</summary><p>Sí. Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado.</p></details>
       </div>
     </div>
@@ -606,7 +616,8 @@
     digital: { nombre: "Lector digital", usd: lanzado ? 35 : 25, clp: lanzado ? 33000 : 24000 },
     fundador: { nombre: "Lector fundador", usd: etapa.usd, clp: etapa.clp },
     mecenas: { nombre: "Mecenas", usd: 450, clp: 450000 },
-    empresas: { nombre: "Empresas", usd: null, clp: null }
+    empresas: { nombre: "Empresas", usd: null, clp: null },
+    librerias: { nombre: "Librerías", usd: null, clp: null }
   };
   const pesos = n => "$" + n.toLocaleString("es-CL");
 
@@ -655,10 +666,13 @@
   document.querySelectorAll("[data-nivel]").forEach(b => b.addEventListener("click", () => {
     nivelActual = b.dataset.nivel;
     const n = NIVELES[nivelActual];
-    $("#dlg-t").textContent = nivelActual === "empresas" ? "Pedir cotización para empresas" : "Precomprar el libro";
-    $("#dlg-resumen").textContent = n.usd ? `${n.nombre}: USD ${n.usd} (${pesos(n.clp)} CLP)` : "Empresas: te enviamos una propuesta según tu equipo y ciudad.";
-    $("#p-empresa-campo").hidden = nivelActual !== "empresas";
-    $("#p-btn").textContent = nivelActual === "empresas" ? "Pedir cotización" : "Reservar mi ejemplar";
+    const lib = nivelActual === "librerias";
+    $("#dlg-t").textContent = nivelActual === "empresas" ? "Pedir cotización para empresas" : lib ? "El libro en tu librería" : "Precomprar el libro";
+    $("#dlg-resumen").textContent = n.usd ? `${n.nombre}: USD ${n.usd} (${pesos(n.clp)} CLP)` : lib ? "Librerías: te escribimos con las condiciones para tener el libro en tu tienda." : "Empresas: te enviamos una propuesta según tu equipo y ciudad.";
+    $("#p-empresa-campo").hidden = n.usd !== null;
+    $("#p-empresa-campo label").textContent = lib ? "Librería y ciudad" : "Empresa y tamaño del equipo";
+    $("#p-empresa").placeholder = lib ? "Ej.: Librería del Puerto, Valparaíso" : "Ej.: Distribuidora Sur, 25 personas";
+    $("#p-btn").textContent = nivelActual === "empresas" ? "Pedir cotización" : lib ? "Enviar" : "Reservar mi ejemplar";
     fp.hidden = false; paso2.hidden = true; fp.querySelector(".msg").textContent = "";
     if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
     $("#p-nombre").focus();
@@ -676,7 +690,7 @@
     const n = NIVELES[nivelActual];
     btn.disabled = true; msg.textContent = "Enviando tu reserva…"; msg.className = "msg";
     try {
-      await enviar(`Precompra: ${n.nombre} (${nombre})`, {
+      await enviar(n.usd ? `Precompra: ${n.nombre} (${nombre})` : `${n.nombre}: ${nombre}`, {
         nivel: n.nombre, precio: n.usd ? `USD ${n.usd} / ${pesos(n.clp)} CLP` : "A cotizar",
         nombre, email, pais, empresa: fp.empresa.value.trim(), comentario: fp.nota.value.trim(), etapa: etapa.nombre, fecha: hoy
       });
@@ -684,6 +698,8 @@
       const cuerpo = $("#paso2-cuerpo");
       if (nivelActual === "empresas") {
         cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Te escribiremos a <strong>${email}</strong> con una propuesta para tu equipo en menos de dos días hábiles.</p>`;
+      } else if (nivelActual === "librerias") {
+        cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Te escribiremos a <strong>${email}</strong> con las condiciones para librerías en menos de dos días hábiles.</p>`;
       } else if (pais === "Chile") {
         cuerpo.innerHTML = `<p>Gracias, ${nombre.split(" ")[0]}. Tu cupo de <strong>${n.nombre}</strong> queda reservado.</p>
           <p>Paso final: paga <strong>${pesos(n.clp)}</strong> en Mercado Pago.${MP_LINKS[nivelActual] ? "" : ` En el detalle del pago escribe “${n.nombre}”.`} Te confirmaremos por correo.</p>
