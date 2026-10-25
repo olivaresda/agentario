@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /social/
+Disallow: /propuestas/
 
 Sitemap: https://agentario.laexperienciaeselcodigo.com/sitemap.xml
