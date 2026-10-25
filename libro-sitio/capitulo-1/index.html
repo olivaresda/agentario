@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La experiencia es el código, capítulo 1</title>
+<meta name="description" content="Capítulo 1 de «La experiencia es el código», escrito en vivo: el stack del libro, la instalación guiada con Antigravity y cómo crear y cuidar tu propia clave de API.">
+<meta property="og:title" content="Capítulo 1 · La experiencia es el código (en construcción)">
+<meta property="og:description" content="IA agéntica para profesionales que saben lo que piden. Un libro que se escribe en vivo.">
+<link rel="canonical" href="https://laexperienciaeselcodigo.com/capitulo-1/">
+<meta property="og:url" content="https://laexperienciaeselcodigo.com/capitulo-1/">
+<meta property="og:image" content="https://laexperienciaeselcodigo.com/capitulo-1/tapa-oscura.webp">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Chapter","name":"Capítulo 1 · Preparar el entorno","position":1,
+ "isPartOf":{"@type":"Book","name":"La experiencia es el código","alternativeHeadline":"IA agéntica para profesionales que saben lo que piden","author":{"@type":"Person","name":"Daniel Olivares"},"inLanguage":"es","url":"https://laexperienciaeselcodigo.com"},
+ "creativeWorkStatus":"Draft","dateModified":"2026-10-25","inLanguage":"es"}
+</script>
+<style>
+/* Concepto: un libro abierto sobre el escritorio. Portada en 3D, página de créditos, índice con líneas de puntos y un pliego de lectura con capitular. */
+:root{
+  --desk:#e7dfcf; --paper:#fbf7ef; --paper-2:#f2ebdd; --ink:#2b2620; --ink-soft:#6a6156; --rule:#dccfb8;
+  --gold:#9c6f1e; --gold-bright:#c8952e; --navy:#15223a; --navy-ink:#eef1f5;
+  --code-bg:#f1e9da; --code-ink:#2b2620; --warn:#9a4a0c; --open:#2f6b5e; --violet:#4f4a8c;
+  --serif:"Literata",Georgia,"Times New Roman",serif; --display:"Playfair Display",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --fs:19px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --desk:#0d1320; --paper:#151d2c; --paper-2:#1b2537; --ink:#e7e1d3; --ink-soft:#a39c8e; --rule:#33405a; --gold:#d9a94c; --code-bg:#1d283b; --code-ink:#e7e1d3; --warn:#f0a05a; --open:#7cc4b2; --violet:#aca6f0; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --desk:#0d1320; --paper:#151d2c; --paper-2:#1b2537; --ink:#e7e1d3; --ink-soft:#a39c8e; --rule:#33405a; --gold:#d9a94c; --code-bg:#1d283b; --code-ink:#e7e1d3; --warn:#f0a05a; --open:#7cc4b2; --violet:#aca6f0; color-scheme:dark }
+/* Modo de lectura elegido por el lector */
+:root.noche{ --desk:#0d1320; --paper:#151d2c; --paper-2:#1b2537; --ink:#e7e1d3; --ink-soft:#a39c8e; --rule:#33405a; --gold:#d9a94c; --code-bg:#1d283b; --code-ink:#e7e1d3; --warn:#f0a05a; --open:#7cc4b2; --violet:#aca6f0; color-scheme:dark }
+:root.papel{ --desk:#e7dfcf; --paper:#fbf7ef; --paper-2:#f2ebdd; --ink:#2b2620; --ink-soft:#6a6156; --rule:#dccfb8; --gold:#9c6f1e; --code-bg:#f1e9da; --code-ink:#2b2620; --warn:#9a4a0c; --open:#2f6b5e; --violet:#4f4a8c; color-scheme:light }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--desk);color:var(--ink);font:400 var(--fs)/1.7 var(--serif);font-optical-sizing:auto;-webkit-font-smoothing:antialiased;font-kerning:normal;font-variant-ligatures:common-ligatures}
+a{color:inherit;text-decoration-color:var(--gold);text-underline-offset:3px}
+::selection{background:#e9cf8f;color:#1d1a15}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Barra de lectura */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--paper)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar-in{max-width:1180px;margin:0 auto;height:52px;display:flex;align-items:center;gap:10px}
+.bar .brand{font:600 16px/1 var(--display);text-decoration:none;white-space:nowrap}
+.bar .brand em{color:var(--gold);font-weight:500}
+.bar .where{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .sp{flex:1}
+.tool{font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:999px;height:32px;min-width:32px;padding:0 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap}
+.tool:hover{border-color:var(--gold)}
+.tool.cta{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--gold-bright)}
+@media (max-width:720px){.bar .where,.tool.hide-s{display:none}}
+@media (max-width:480px){.bar-in{gap:6px}.bar .brand{font-size:14px}.bar .brand em{display:none}.tool{padding:0 9px}}
+
+/* Portada */
+.cover-spread{max-width:1180px;margin:0 auto;padding-block:56px 40px;display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:64px;align-items:center}
+.book{perspective:1800px;width:100%;max-width:360px;justify-self:center;cursor:pointer}
+.book-body{position:relative;aspect-ratio:2/3;max-width:100%;transform:perspective(1800px) rotateY(-12deg) rotateX(2deg);transform-origin:left center;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.book:hover .book-body,.book:focus-visible .book-body{position:relative;aspect-ratio:2/3;max-width:100%;transform:perspective(1800px) rotateY(-12deg) rotateX(2deg);transform-origin:left center;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.book-face{position:absolute;inset:0;z-index:2;border-radius:2px 5px 5px 2px;overflow:hidden;box-shadow:18px 26px 40px -16px rgba(0,0,0,.5)}
+.book-face img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity 1s ease}
+.book-face img+img{position:absolute;inset:0;opacity:0}
+.book.alt .book-face img+img{opacity:1}
+.book-face::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.28) 0,rgba(255,255,255,.08) 4%,transparent 9%,transparent 92%,rgba(0,0,0,.12));pointer-events:none}
+.book-pages{position:absolute;z-index:1;top:1.2%;bottom:1.2%;right:-11px;width:14px;background:repeating-linear-gradient(90deg,#f4eee2 0 2px,#d9cfbc 2px 3px);border-radius:0 3px 3px 0;box-shadow:inset -2px 0 3px rgba(0,0,0,.15)}
+.stamp{position:absolute;z-index:3;right:-8px;top:41%;transform:rotate(-11deg);font:600 13px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#c8952e;border:2px solid #c8952e;background:rgba(15,24,41,.9);padding:9px 12px;border-radius:3px}
+.cover-cap{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;font:12px var(--mono);color:var(--ink-soft)}
+.cover-cap button{width:28px;height:4px;border:0;border-radius:2px;background:var(--rule);cursor:pointer;padding:0}
+.cover-cap button[aria-pressed="true"]{background:var(--gold-bright)}
+
+.title-page{max-width:36rem}
+.eyebrow{font:500 12px/1.5 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 26px}
+.chap-no{font:500 15px/1 var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.chap-title{font:600 clamp(44px,6.4vw,76px)/1 var(--display);margin:0 0 6px;text-wrap:balance}
+.chap-title em{display:block;font-style:italic;font-weight:500;color:var(--gold)}
+.epigraph{margin:30px 0 30px;padding-left:20px;border-left:2px solid var(--gold-bright);font-style:italic;color:var(--ink-soft);max-width:30em}
+.epigraph cite{display:block;margin-top:6px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;font-style:normal}
+.status{display:grid;gap:10px;font-size:.84em;color:var(--ink-soft);max-width:30em}
+.meter{display:flex;gap:4px}
+.meter span{flex:1;height:6px;border-radius:1px;background:var(--rule)}
+.meter span.on{background:var(--gold-bright)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{font:500 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:14px 18px;border-radius:2px;text-decoration:none;border:1px solid var(--ink);color:var(--ink)}
+.btn.solid{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+@media (max-width:860px){.cover-spread{grid-template-columns:minmax(0,1fr);gap:44px;padding-block:36px 24px}.book{max-width:250px}.title-page{max-width:none}}
+
+/* Pliegos */
+.sheet{max-width:46rem;margin:0 auto 34px;background:var(--paper);box-shadow:0 1px 0 var(--rule),0 24px 60px -36px rgba(30,20,5,.45);border-radius:2px;padding:clamp(28px,6vw,80px) clamp(22px,7vw,88px) clamp(36px,6vw,72px);position:relative}
+.run{display:flex;justify-content:space-between;gap:12px;font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:clamp(28px,5vw,56px)}
+.folio{text-align:center;font:500 11px var(--mono);letter-spacing:.2em;color:var(--ink-soft);margin-top:48px}
+.sheet h2.page-h{font:600 clamp(30px,4vw,40px)/1.1 var(--display);margin:0 0 6px}
+.lede{color:var(--ink-soft);margin:0 0 28px;font-size:.92em}
+
+/* Índice con líneas de puntos */
+.contents{list-style:none;margin:0 0 34px;padding:0}
+.contents li a,.contents li>.line{display:flex;align-items:baseline;gap:10px;padding:9px 0;text-decoration:none}
+.contents .n{font:500 13px var(--mono);color:var(--gold);min-width:5.2em}
+.contents .t{flex:0 1 auto}
+.contents .lead-dots{flex:1;border-bottom:1px dotted var(--ink-soft);opacity:.55;transform:translateY(-5px);min-width:20px}
+.contents .s{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.contents .ok{color:var(--open)}
+.contents .wip{color:var(--warn)}
+.contents li.pend .t{color:var(--ink-soft)}
+.contents li.cur{background:linear-gradient(90deg,color-mix(in srgb,var(--gold-bright) 16%,transparent),transparent);margin:0 -12px;padding:0 12px}
+.contents-h{font:500 12px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin:30px 0 8px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.contents a.s{text-decoration:underline;text-decoration-style:dotted}
+
+/* Texto del capítulo */
+.chapter p,.chapter li{hyphens:auto;-webkit-hyphens:auto}
+@media (min-width:720px){.chapter p{text-align:justify;text-justify:inter-word}}
+.chapter p{margin:0 0 .9em;orphans:2;widows:2}
+.sec-head{text-align:center;margin:0 0 44px}
+.sec-no{font:italic 500 clamp(56px,9vw,92px)/1 var(--display);color:var(--gold-bright);margin:0}
+.sec-title{font:600 clamp(26px,3.6vw,36px)/1.15 var(--display);margin:12px auto 12px;max-width:20em;text-wrap:balance}
+.sec-ver{font:italic .8em/1.5 var(--serif);color:var(--ink-soft);margin:0 auto;max-width:34em;text-align:center!important}
+.sec-state{display:inline-block;margin-top:16px;font:500 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--open);border:1px solid currentColor;padding:5px 9px;border-radius:999px}
+.opening::first-letter{float:left;font:600 4.3em/.8 var(--display);color:var(--gold);padding:.06em .09em 0 0}
+.opening::first-line{font-variant:small-caps;letter-spacing:.04em}
+.chapter h3{font:600 1.32em/1.25 var(--display);margin:2.2em 0 .6em;text-wrap:balance}
+.chapter h4{font:600 .78em/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:2em 0 .6em}
+.chapter ul,.chapter ol{padding-left:1.3em;margin:0 0 1em}
+.chapter li{margin-bottom:.35em}
+.chapter li::marker{color:var(--gold)}
+.chapter strong{font-weight:600}
+.fleuron{text-align:center!important;color:var(--gold-bright);font:1.4em/1 var(--display);letter-spacing:.6em;margin:2.4em 0!important}
+
+/* Tablas de libro (tres filetes) */
+.fig-label{font:600 .72em/1.4 var(--mono)!important;letter-spacing:.14em;text-transform:uppercase;margin:2.2em 0 .1em!important;text-align:left!important}
+.fig-label+p{text-align:left!important}
+.fig-label+p em{color:var(--ink-soft)}
+.tbl{overflow-x:auto;margin:.6em 0 .4em;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:.8em;line-height:1.45;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);font-variant-numeric:tabular-nums}
+th{text-align:left;font:600 .86em/1.35 var(--mono);letter-spacing:.04em;padding:10px 12px 9px 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:9px 12px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;text-align:left}
+tr:last-child td{border-bottom:0}
+.tbl+p{font-size:.82em;text-align:left!important;color:var(--ink-soft)}
+
+/* Código: se puede seleccionar y copiar */
+code{font:.82em/1.5 var(--mono);background:var(--code-bg);color:var(--code-ink);padding:.12em .38em;border-radius:3px;overflow-wrap:anywhere;user-select:all;-webkit-user-select:all;cursor:copy}
+pre{position:relative;margin:1.1em 0 1.3em}
+pre.cmd{background:var(--code-bg);border-left:3px solid var(--gold-bright);border-radius:0 4px 4px 0;padding:44px 18px 16px;overflow-x:auto}
+pre.cmd::before{content:"Terminal";position:absolute;left:18px;top:14px;font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+pre code,pre.cmd code{display:block;background:none;padding:0;font:.8em/1.65 var(--mono);white-space:pre;user-select:text;-webkit-user-select:text;cursor:text}
+.copy{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:7px 11px;cursor:pointer;user-select:none;-webkit-user-select:none}
+.copy:hover{border-color:var(--gold)}
+.copy.ok{background:var(--open);border-color:var(--open);color:#fff}
+pre.cmd .copy{position:absolute;right:10px;top:7px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--navy);color:var(--navy-ink);font:500 13px var(--mono);padding:10px 16px;border-radius:999px;transition:all .25s;pointer-events:none;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Recuadros como en un libro de texto */
+.box{margin:1.8em 0;padding:1.1em 0 .4em;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);font-size:.9em}
+.box p,.box li{text-align:left!important}
+.box-h{font:600 .74em/1.4 var(--mono)!important;letter-spacing:.16em;text-transform:uppercase;margin:0 0 .8em!important;color:var(--gold)}
+.box.warn{border-top-color:var(--warn)} .box.warn .box-h{color:var(--warn)}
+.box.open{border-top-color:var(--open)} .box.open .box-h{color:var(--open)}
+.box.facil .box-h{color:var(--violet)}
+.box.goals{background:var(--paper-2);border:0;border-radius:2px;padding:1.2em 1.4em .5em}
+.box.key{border-top:3px double var(--gold-bright)}
+.box.taller{background:var(--navy);color:var(--navy-ink);border:0;border-radius:2px;padding:1.3em 1.5em .5em}
+.box.taller .box-h{color:#e3b866}
+/* Encargo para el agente: la ficha de la tapa */
+.box.prompt{background:#fbf8f0;color:#26221c;border:1px solid #1f2b44;border-radius:2px;padding:0;box-shadow:6px 6px 0 #c8952e;margin:2em 6px 2.2em 0}
+.box.prompt .box-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0!important;padding:12px 16px;border-bottom:1px solid #1f2b44;color:#1f2b44!important}
+.box.prompt .box-h .no{font-weight:500;letter-spacing:.06em}
+.box.prompt .copy{background:#fff;color:#1f2b44;border-color:#1f2b44}
+.box.prompt pre{margin:0;padding:16px 16px 18px}
+.box.prompt pre code{white-space:pre-wrap;color:#26221c;font-size:.86em}
+.stages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:.8em 0 .6em;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.stage{padding:14px 14px 10px 0;font-size:.82em}
+.stage+.stage{padding-left:14px;border-left:1px solid var(--rule)}
+.stage p{text-align:left!important;margin:6px 0 0!important}
+.stage-n{display:block;font:500 10.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+@media (max-width:600px){.stages{grid-template-columns:minmax(0,1fr)}.stage+.stage{padding-left:0;border-left:0;border-top:1px solid var(--rule)}}
+details.refs{margin-top:2.6em;border-top:1px solid var(--rule);padding-top:1em;font-size:.8em}
+details.refs summary{font:600 1.2em var(--display);cursor:pointer;list-style-position:outside}
+details.refs p{text-align:left!important;padding-left:2em;text-indent:-2em;overflow-wrap:anywhere}
+.suggest{margin:2.4em 0 0!important;text-align:center!important;font:500 12px var(--mono);letter-spacing:.06em;color:var(--ink-soft)}
+
+/* Secciones en construcción */
+.sheet.pending{background:repeating-linear-gradient(-45deg,var(--paper),var(--paper) 18px,var(--paper-2) 18px,var(--paper-2) 19px)}
+.pending .sec-state{color:var(--warn)}
+.pending .plan{text-align:center!important;max-width:30em;margin:0 auto 1.4em;font-style:italic}
+.ghost{max-width:30em;margin:0 auto}
+.ghost span{display:block;height:9px;margin:14px 0;background:var(--rule);border-radius:4px;opacity:.7}
+.ghost span:nth-child(3){width:62%}
+
+/* Colofón */
+.colophon{text-align:center}
+.colophon p{text-align:center!important}
+.mail{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin:6px 0 18px}
+.mail code{font-size:.9em}
+.changes{list-style:none;padding:0;margin:0 auto 28px;max-width:30em;text-align:left;font-size:.85em}
+.changes li{display:flex;gap:14px;padding:8px 0;border-top:1px solid var(--rule)}
+.changes span{font:500 11px/1.9 var(--mono);color:var(--gold);white-space:nowrap}
+.small{font-size:.78em;color:var(--ink-soft)}
+
+/* Índice lateral (escritorio) */
+.side{position:fixed;left:max(16px,calc(50% - 46rem/2 - 230px));top:120px;width:200px;font-size:13.5px;display:none}
+.side p{font:500 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px}
+.side ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--rule)}
+.side a{display:block;padding:5px 0 5px 12px;margin-left:-1px;border-left:2px solid transparent;text-decoration:none;color:var(--ink-soft);line-height:1.35}
+.side a.on{border-left-color:var(--gold-bright);color:var(--ink)}
+.side li.w a::after{content:" ·";color:var(--warn)}
+@media (min-width:1260px){.side.show{display:block}}
+
+/* Panel de contenido (móvil) */
+dialog.drawer{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(360px,88vw);background:var(--paper);color:var(--ink);box-shadow:-20px 0 60px rgba(0,0,0,.3)}
+dialog.drawer::backdrop{background:rgba(10,12,18,.45)}
+.drawer-in{padding:calc(20px + env(safe-area-inset-top,0px)) 22px 30px}
+.drawer-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.drawer-h strong{font:600 22px var(--display)}
+
+a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{.bar,.side,.copy,.cover-spread,.toast{display:none}.sheet{box-shadow:none}}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="bar-in gut">
+  <a class="brand" href="https://laexperienciaeselcodigo.com">La experiencia <em>es el código</em></a>
+  <span class="where">· Capítulo 1 · en construcción · v. 25 de octubre de 2026</span>
+  <span class="sp"></span>
+  <button class="tool" type="button" id="smaller" aria-label="Letra más pequeña">A−</button>
+  <button class="tool" type="button" id="bigger" aria-label="Letra más grande">A+</button>
+  <button class="tool" type="button" id="mode" aria-label="Cambiar modo de lectura">Noche</button>
+  <button class="tool" type="button" id="open-toc">Índice</button>
+  <a class="tool cta hide-s" href="https://laexperienciaeselcodigo.com/#preventa">Precompra</a>
+  <span class="progress" id="progress"></span>
+</div></header>
+
+<section class="cover-spread gut">
+  <div>
+    <div class="book" id="book" role="button" tabindex="0" aria-label="Ver la otra tapa">
+      <div class="book-body">
+                <div class="book-pages"></div>
+        <div class="book-face">
+          <img src="tapa-oscura.webp" alt="Tapa del libro en versión oscura: una huella digital dorada con llaves de código al centro">
+          <img src="tapa-clara.webp" alt="Tapa del libro en versión clara: una ficha de especificación con el sello Aprobado">
+        </div>
+        <div class="stamp">En construcción</div>
+      </div>
+    </div>
+    <div class="cover-cap">
+      <button type="button" aria-label="Tapa oscura" aria-pressed="true" data-i="0"></button>
+      <button type="button" aria-label="Tapa clara" aria-pressed="false" data-i="1"></button>
+      <span>Dos tapas en prueba</span>
+    </div>
+  </div>
+  <div class="title-page">
+    <p class="eyebrow">Daniel Olivares · IA agéntica para profesionales que saben lo que piden</p>
+    <p class="chap-no">Capítulo 1</p>
+    <h1 class="chap-title">Preparar <em>el entorno</em></h1>
+    <blockquote class="epigraph">Tú defines el problema y juzgas el resultado. Un agente de programación hace el resto.<cite>El método del libro</cite></blockquote>
+    <div class="status">
+      <div class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+      <span>3 de 6 secciones escritas. Este libro se escribe en vivo: las partes en construcción se publican por etapas.</span>
+    </div>
+    <div class="actions">
+      <a class="btn solid" href="#sec-1-1">Empezar a leer</a>
+      <a class="btn" href="#contenido">Ver qué falta</a>
+    </div>
+  </div>
+</section>
+
+<section class="sheet" id="contenido">
+  <div class="run"><span>La experiencia es el código</span><span>Contenido</span></div>
+  <h2 class="page-h">Contenido</h2>
+  <p class="lede">Lo que ya puedes leer y lo que todavía estamos escribiendo. Si quieres proponer algo para una parte en construcción, escribe a <code>dolivaresm@fen.uchile.cl</code>.</p>
+  <p class="contents-h">Capítulo 1 · Preparar el entorno</p>
+  <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
+<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+</ol>
+  <p class="contents-h">El libro completo</p>
+  <ol class="contents"><li class="pend"><div class="line"><span class="n">Preliminares</span><span class="t">Prólogo, cómo usar este libro y mapa del lector</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Preliminares">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 0</span><span class="t">Mentalidad: construir agentes con agentes</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%200">En construcción</a></div></li>
+<li class="cur"><a href="#sec-1-1"><span class="n">Módulo 1</span><span class="t">Preparar el entorno</span><span class="lead-dots"></span><span class="s ok">En curso</span></a></li>
+<li class="pend"><div class="line"><span class="n">Módulo 2</span><span class="t">Escribir la especificación</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%202">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 3</span><span class="t">Construir el agente con un solo encargo</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%203">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 4</span><span class="t">Probar en local</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%204">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 5</span><span class="t">Evaluar agentes no deterministas</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%205">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 6</span><span class="t">Desplegar en producción</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%206">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 7</span><span class="t">Operar y mejorar</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%207">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 8</span><span class="t">De un agente a un equipo de agentes</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%208">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 9</span><span class="t">Agentes de voz (opcional)</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%209">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 10</span><span class="t">Proyecto final y entregables</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%2010">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Comunidad</span><span class="t">Metodologías silver, casos por rubro y aprender en comunidad</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Comunidad">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Epílogo</span><span class="t">La experiencia es el código</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Ep%C3%ADlogo">En construcción</a></div></li>
+</ol>
+</section>
+
+<nav class="side" id="side" aria-label="Secciones del capítulo"><p>Capítulo 1</p><ol><li><a href="#sec-1-1">1.1 El stack tecnológico y los proveedores del libro</a></li><li><a href="#sec-1-2">1.2 Instalación guiada</a></li><li><a href="#sec-1-3">1.3 Autenticación</a></li><li class="w"><a href="#sec-1-4">1.4 Las skills</a></li><li class="w"><a href="#sec-1-5">1.5 Primera victoria</a></li><li class="w"><a href="#sec-1-6">1.6 Voz Silver</a></li></ol></nav>
+
+<main class="chapter">
+
+<article class="sheet" id="sec-1-1">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.1</span></div>
+  <header class="sec-head">
+    <p class="sec-no">1.1</p>
+    <h2 class="sec-title">El stack tecnológico y los proveedores del libro</h2>
+    <p class="sec-ver">Versión de trabajo, vigente a octubre de 2026.</p>
+    <span class="sec-state">Versión de trabajo</span>
+  </header>
+  <aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
+<p>Al terminar esta sección podrás:</p>
+<ul><li>Nombrar las capas del stack que usaremos en el libro y explicar qué hace cada una.</li>
+<li>Reconocer qué empresa u organización está detrás de cada herramienta y bajo qué licencia la ofrece.</li>
+<li>Entender por qué el libro parte con un stack comercial y cómo avanzará, por etapas, hacia uno de código abierto.</li>
+<li>Saber dónde verificar nombres, versiones y condiciones, que en este campo cambian varias veces al año.</li>
+</ul>
+</aside>
+<p class="opening">Un carpintero que recibe a un aprendiz no empieza por la primera silla. Empieza por mostrarle el taller: qué herramienta sirve para qué, dónde se compra la madera, qué máquinas son propias y cuáles se arriendan. Este subcapítulo cumple esa función. Antes de construir tu primer agente, conviene que conozcas las herramientas con que vamos a trabajar, quién las fabrica y en qué condiciones las usamos.</p>
+<p>El libro sigue un método que cabe en una frase: tú defines el problema y juzgas el resultado, y un agente de programación hace el resto (Product Faculty, s. f.). Para que ese método funcione hace falta una cadena de herramientas que conecte tu descripción en lenguaje natural con un agente que corre en la nube y que se puede evaluar. Esa cadena es el stack.</p>
+<h3 id="s1-1-1">1.1.1 Qué es un stack y qué es un proveedor</h3>
+<p>En tecnología se llama <em>stack</em> (en inglés, «pila») al conjunto de componentes que se combinan para construir y operar un sistema. Se ordenan en capas porque cada una se apoya en la de abajo: el agente que construyas usará un modelo de lenguaje, ese modelo se consume a través de un servicio en la nube, y todo se instala y se prueba primero en tu computador.</p>
+<p>Un <em>proveedor</em> es la empresa u organización que desarrolla, mantiene o vende un componente. Con algunos proveedores tendrás una relación formal: crearás una cuenta, aceptarás términos de uso y, en ciertos casos, pagarás por consumo. Con otros no tendrás relación alguna, porque su software es de código abierto y basta con descargarlo. Distinguir ambos casos es parte del criterio que este libro quiere desarrollar en ti.</p>
+<h3 id="s1-1-2">1.1.2 Criterios de selección</h3>
+<p>Elegimos el stack con cinco criterios, en este orden de prioridad:</p>
+<ol><li><strong>Baja fricción de entrada.</strong> Una persona sin formación de ingeniería debe poder instalar todo con pocos comandos y tener un agente funcionando en la primera sesión de taller, sin comprar hardware especial.</li>
+<li><strong>Una cadena coherente.</strong> Si el modelo, el framework y la nube vienen del mismo ecosistema, se reducen las cuentas que debes crear y los errores de integración. Por eso el stack inicial se apoya en Google.</li>
+<li><strong>Interfaces abiertas.</strong> Aunque el modelo y la nube sean comerciales, las piezas que conectan todo usan estándares abiertos y código con licencias abiertas, de modo que cambiar de proveedor no obliga a empezar de cero.</li>
+<li><strong>Vigencia profesional.</strong> Herramientas con documentación oficial, actualizaciones frecuentes y uso real en empresas, para que lo que aprendas te sirva fuera del taller.</li>
+<li><strong>Costo controlable.</strong> Pago por uso, sin contratos ni compras anticipadas. Los precios vigentes se publican en el sitio del libro, porque cambian más rápido que una edición impresa.</li>
+</ol>
+<h3 id="s1-1-3">1.1.3 Las capas del stack</h3>
+<p>La figura 1.1 muestra el stack completo, de arriba hacia abajo. La primera capa no es una herramienta: eres tú. Todo lo que está debajo existe para que tu especificación se convierta en un agente que funciona y para que puedas juzgar si lo hace bien.</p>
+<p class="fig-label">Figura 1.1</p>
+<p><em>Las capas del stack del libro y su tipo de licencia</em></p>
+<div class="tbl"><table><tr><th>Capa</th><th>Función</th><th>Componentes del stack inicial</th><th>Tipo</th></tr>
+<tr><td><strong>Tú</strong></td><td>Especificación y juicio</td><td>Defines el problema al inicio y juzgas el resultado al final</td><td><strong>Persona</strong></td></tr>
+<tr><td><strong>Agente de programación</strong></td><td>Constructor y tutor</td><td>Google Antigravity (CLI, IDE y app de escritorio). Alternativas: Claude Code y Codex</td><td><strong>Comercial</strong></td></tr>
+<tr><td><strong>Conocimiento experto</strong></td><td>Lo que sabe el constructor</td><td>Agents CLI y sus siete skills; estándar Agent Skills</td><td><strong>Abierto</strong></td></tr>
+<tr><td><strong>Framework del agente</strong></td><td>Con qué se construye</td><td>Agent Development Kit (ADK)</td><td><strong>Abierto</strong></td></tr>
+<tr><td><strong>Modelo de lenguaje</strong></td><td>El que razona</td><td>Gemini 3.x y Gemini 4, vía Google AI Studio o Gemini Enterprise Agent Platform</td><td><strong>Comercial</strong></td></tr>
+<tr><td><strong>Conexiones</strong></td><td>Con qué se comunica</td><td>MCP (herramientas y datos) y A2A (otros agentes)</td><td><strong>Abierto</strong></td></tr>
+<tr><td><strong>Entorno local</strong></td><td>Tu mesa de trabajo</td><td>Terminal, Python 3.11 o superior, uv, Node.js y Git</td><td><strong>Abierto</strong></td></tr>
+<tr><td><strong>Nube y despliegue</strong></td><td>Dónde vive el agente</td><td>Google Cloud: Agent Runtime y Cloud Run; gcloud; Terraform (opcional)</td><td><strong>Comercial</strong></td></tr>
+<tr><td><strong>Evaluación y observabilidad</strong></td><td>Cómo sabes si funciona</td><td>agents-cli eval, Cloud Trace, Cloud Logging y BigQuery</td><td><strong>Mixto</strong></td></tr>
+<tr><td><strong>Publicación y comunidad</strong></td><td>Cómo lo compartes</td><td>Gemini Enterprise, GitHub y el sitio laexperienciaeselcodigo.com</td><td><strong>Mixto</strong></td></tr>
+</table>
+</div>
+<p><em>Nota.</em> «Abierto»: código o estándar publicado bajo licencia abierta. «Comercial»: servicio o software propietario. «Mixto»: herramienta abierta que opera sobre servicios comerciales. Elaboración propia a partir de la documentación oficial de cada componente, consultada en octubre de 2026.</p>
+<p><strong>El agente de programación.</strong> Es el programa al que le hablas en lenguaje natural y que escribe el código, ejecuta comandos, despliega y corrige por ti. También es tu tutor, porque puedes pedirle que explique cada paso. En este libro usamos Google Antigravity como referencia. Antigravity se presentó en noviembre de 2025 junto con los modelos Gemini 3 y hoy ofrece cuatro formas de uso que comparten el mismo motor: una aplicación de escritorio, una herramienta de línea de comandos (Antigravity CLI), un editor de código y un kit de desarrollo (Google Cloud, s. f.). Los ejemplos funcionan también en Claude Code, de Anthropic, y en Codex, de OpenAI, porque el método no depende del constructor elegido.</p>
+<p>Si ya usabas Gemini CLI, ten en cuenta que en mayo de 2026 Google anunció su integración en Antigravity CLI. Desde el 18 de junio de 2026, Gemini CLI dejó de atender a los usuarios individuales gratuitos y de los planes AI Pro y AI Ultra, aunque sigue funcionando con claves de pago de la API de Gemini (Google for Developers, 2026b). Su código continúa disponible bajo licencia Apache 2.0.</p>
+<p><strong>El conocimiento experto.</strong> Un agente de programación generalista no conoce de memoria los detalles de cada framework. Agents CLI, una herramienta de Google publicada en abril de 2026 bajo licencia Apache 2.0, resuelve ese problema: con un solo comando (uvx google-agents-cli setup) instala en tu agente de programación siete skills que le enseñan a crear, evaluar, desplegar, publicar y observar agentes hechos con ADK en Google Cloud (Google for Developers, 2026a). Agents CLI reemplaza a Agent Starter Pack, que quedó en modo de mantención. Una <em>skill</em> es un paquete de instrucciones y recursos, escrito en archivos de texto, que el agente carga cuando la tarea lo requiere. Su formato es un estándar abierto, Agent Skills, que hoy reconocen la mayoría de los agentes de programación del mercado (Agent Skills, s. f.).</p>
+<p><strong>El framework del agente.</strong> ADK (Agent Development Kit) es el conjunto de piezas de software con que se arma el agente: el modelo que usa, sus instrucciones, sus herramientas y la aplicación que lo envuelve. Es de código abierto (Apache 2.0), está disponible en Python, TypeScript, Go, Java y Kotlin, y no está atado a Gemini: mediante adaptadores puede usar modelos de otros proveedores o modelos abiertos (Google, s. f.-a). Esta propiedad es la que hace posible la ruta abierta descrita en la sección 1.1.6.</p>
+<p><strong>El modelo de lenguaje.</strong> Es el componente que interpreta, razona y decide qué herramienta usar. Usaremos la familia Gemini de Google; en octubre de 2026 conviven los modelos Gemini 3.x y Gemini 4 (Google, 2026). Hay dos formas de acceder: con una clave de API creada en Google AI Studio, la vía más simple para el taller, o con las credenciales de un proyecto de Google Cloud, la vía que usan las empresas. La sección sobre autenticación, más adelante en este módulo, explica ambas.</p>
+<p><strong>Las conexiones.</strong> MCP (Model Context Protocol) es el estándar con que un agente se conecta a herramientas y datos externos, como una planilla, un CRM o una base de datos. A2A (Agent2Agent) es el estándar con que un agente conversa con otros agentes. MCP nació en Anthropic en 2024 y A2A en Google en 2025; hoy ambos los gobierna la Agentic AI Foundation, un fondo de la Linux Foundation creado en diciembre de 2025 (Anthropic, 2025; A2A Project, 2026). Que estas conexiones sean estándares neutrales es la principal garantía de que tu trabajo podrá cambiar de proveedor.</p>
+<p><strong>El entorno local.</strong> Es lo que instalarás en tu computador: la terminal, donde escribirás los pocos comandos necesarios; Python 3.11 o superior, el lenguaje en que se escribe el agente; uv, el programa que instala las librerías de Python; Node.js, que necesitan algunas herramientas de línea de comandos; y Git, que guarda el historial de cambios de tu proyecto. Todos son de código abierto.</p>
+<p><strong>La nube y el despliegue.</strong> Para que otras personas usen tu agente, este debe correr en un servidor. Usaremos Google Cloud con dos destinos: Agent Runtime, un servicio administrado para agentes que hasta abril de 2026 se llamaba Vertex AI Agent Engine, y Cloud Run, que ejecuta contenedores sin que tengas que administrar servidores (Google Cloud, 2026b). La herramienta de línea de comandos gcloud conecta tu computador con tu proyecto en la nube. Terraform, que describe la infraestructura en archivos de texto, es opcional.</p>
+<p><strong>La evaluación y la observabilidad.</strong> Un agente no se prueba como un programa tradicional, porque la misma pregunta puede producir respuestas distintas y todas válidas. Por eso lo evaluaremos con escenarios y criterios, usando el módulo de evaluación de Agents CLI, y lo observaremos en operación con Cloud Trace, Cloud Logging y BigQuery. El módulo 5 del libro está dedicado a este tema.</p>
+<p><strong>La publicación y la comunidad.</strong> Los agentes terminados pueden publicarse en Gemini Enterprise, la plataforma de agentes de Google para empresas (Google Cloud, 2026a). El material complementario del libro (especificaciones, prompts y ejemplos) estará en GitHub y en el sitio laexperienciaeselcodigo.com. Como repositorio de referencia usaremos awesome-llm-apps, una colección abierta de más de cien agentes y aplicaciones mantenida por Shubham Saboo (Saboo, s. f.).</p>
+<p>La figura 1.2 muestra en qué momento del trabajo interviene cada capa. Sigue el ciclo de vida que propone Agents CLI y que recorreremos a lo largo del libro.</p>
+<p class="fig-label">Figura 1.2</p>
+<p><em>Ciclo de vida de un agente: qué haces tú y qué hace el stack</em></p>
+<div class="tbl"><table><tr><th>Fase</th><th>Qué haces tú</th><th>Qué hace el agente de programación</th><th>Componentes que intervienen</th></tr>
+<tr><td><strong>1. Especificar</strong> (módulo 2)</td><td>Describes el problema, los usuarios, las herramientas, los límites y los criterios de éxito</td><td>Ordena tu descripción en un archivo de especificación</td><td>Antigravity y la skill de flujo de trabajo de Agents CLI</td></tr>
+<tr><td><strong>2. Generar la estructura</strong> (módulo 3)</td><td>Apruebas la propuesta</td><td>Crea un proyecto con forma de producción: código, pruebas, evaluaciones y archivos de despliegue</td><td>agents-cli scaffold y ADK</td></tr>
+<tr><td><strong>3. Construir</strong> (módulo 3)</td><td>Revisas y preguntas</td><td>Escribe el agente, sus instrucciones y sus herramientas</td><td>ADK, Gemini y MCP</td></tr>
+<tr><td><strong>4. Probar en local</strong> (módulo 4)</td><td>Conversas con el agente en tu navegador</td><td>Levanta un servidor de prueba en tu computador</td><td>agents-cli playground, Python y uv</td></tr>
+<tr><td><strong>5. Evaluar</strong> (módulo 5)</td><td>Defines el umbral de calidad y lees el informe</td><td>Genera escenarios, mide, corrige y repite</td><td>agents-cli eval, con un modelo como juez</td></tr>
+<tr><td><strong>6. Desplegar</strong> (módulo 6)</td><td>Autorizas el despliegue</td><td>Construye el contenedor y lo pone en marcha en la nube</td><td>agents-cli deploy, Agent Runtime o Cloud Run, y gcloud</td></tr>
+<tr><td><strong>7. Publicar</strong> (módulo 7)</td><td>Decides quién puede usarlo</td><td>Registra el agente para tu organización</td><td>Gemini Enterprise y A2A</td></tr>
+<tr><td><strong>8. Observar</strong> (módulo 7)</td><td>Revisas el uso real</td><td>Reúne trazas y conversaciones para la siguiente evaluación</td><td>Cloud Trace, Cloud Logging y BigQuery</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Adaptado del ciclo de vida descrito en la documentación de Agents CLI (Google, s. f.-b).</p>
+<h3 id="s1-1-4">1.1.4 Los proveedores</h3>
+<p>Detrás de las diez capas hay un número reducido de proveedores. La tabla 1.1 detalla cada componente con su licencia y su dirección oficial, y la tabla 1.2 resume quién es quién y qué relación tendrás con cada uno.</p>
+<p class="fig-label">Tabla 1.1</p>
+<p><em>Componentes del stack inicial: proveedor, licencia y dirección oficial</em></p>
+<div class="tbl"><table><tr><th>Componente</th><th>Proveedor</th><th>Licencia</th><th>Dónde se usa</th><th>Dirección oficial</th></tr>
+<tr><td>Google Antigravity</td><td>Google</td><td>Propietaria</td><td>Todo el libro</td><td><a href="https://antigravity.google" target="_blank" rel="noopener">antigravity.google</a></td></tr>
+<tr><td>Gemini CLI</td><td>Google</td><td>Apache 2.0</td><td>Alternativa, en transición a Antigravity CLI</td><td><a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">github.com/google-gemini/gemini-cli</a></td></tr>
+<tr><td>Claude Code</td><td>Anthropic</td><td>Propietaria</td><td>Alternativa</td><td><a href="https://code.claude.com/docs" target="_blank" rel="noopener">code.claude.com/docs</a></td></tr>
+<tr><td>Codex</td><td>OpenAI</td><td>Apache 2.0 (la CLI)</td><td>Alternativa</td><td><a href="https://developers.openai.com/codex" target="_blank" rel="noopener">developers.openai.com/codex</a></td></tr>
+<tr><td>Agents CLI</td><td>Google</td><td>Apache 2.0</td><td>Módulos 1 a 9</td><td><a href="https://google.github.io/agents-cli/" target="_blank" rel="noopener">google.github.io/agents-cli</a></td></tr>
+<tr><td>Agent Development Kit (ADK)</td><td>Google</td><td>Apache 2.0</td><td>Módulos 3 a 9</td><td><a href="https://adk.dev" target="_blank" rel="noopener">adk.dev</a></td></tr>
+<tr><td>Modelos Gemini</td><td>Google</td><td>Propietaria</td><td>Módulos 1 a 9</td><td><a href="https://ai.google.dev/gemini-api/docs" target="_blank" rel="noopener">ai.google.dev/gemini-api/docs</a></td></tr>
+<tr><td>Google AI Studio</td><td>Google</td><td>Servicio comercial</td><td>Módulo 1</td><td><a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a></td></tr>
+<tr><td>Gemini Enterprise Agent Platform (antes Vertex AI)</td><td>Google</td><td>Servicio comercial</td><td>Módulos 1, 5 y 6</td><td><a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/" target="_blank" rel="noopener">docs.cloud.google.com/gemini-enterprise-agent-platform</a></td></tr>
+<tr><td>Agent Runtime (antes Vertex AI Agent Engine)</td><td>Google</td><td>Servicio comercial</td><td>Módulo 6</td><td><a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime" target="_blank" rel="noopener">docs.cloud.google.com/…/build/runtime</a></td></tr>
+<tr><td>Cloud Run</td><td>Google</td><td>Servicio comercial</td><td>Módulo 6</td><td><a href="https://cloud.google.com/run" target="_blank" rel="noopener">cloud.google.com/run</a></td></tr>
+<tr><td>Google Cloud CLI (gcloud)</td><td>Google</td><td>Descarga gratuita</td><td>Módulos 1 y 6</td><td><a href="https://docs.cloud.google.com/sdk/docs/install-sdk" target="_blank" rel="noopener">docs.cloud.google.com/sdk/docs/install-sdk</a></td></tr>
+<tr><td>Cloud Trace, Cloud Logging y BigQuery</td><td>Google</td><td>Servicio comercial</td><td>Módulos 4 y 7</td><td><a href="https://cloud.google.com" target="_blank" rel="noopener">cloud.google.com</a></td></tr>
+<tr><td>Gemini Enterprise</td><td>Google</td><td>Servicio comercial</td><td>Módulo 7</td><td><a href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">cloud.google.com/gemini-enterprise</a></td></tr>
+<tr><td>Model Context Protocol (MCP)</td><td>Agentic AI Foundation (Linux Foundation)</td><td>Estándar abierto</td><td>Módulo 3</td><td><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontextprotocol.io</a></td></tr>
+<tr><td>Agent2Agent (A2A)</td><td>Agentic AI Foundation (Linux Foundation)</td><td>Apache 2.0</td><td>Módulos 7 y 8</td><td><a href="https://a2a-protocol.org" target="_blank" rel="noopener">a2a-protocol.org</a></td></tr>
+<tr><td>Agent Skills</td><td>Estándar publicado por Anthropic</td><td>Estándar abierto</td><td>Módulos 1 y 3</td><td><a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a></td></tr>
+<tr><td>Python</td><td>Python Software Foundation</td><td>Licencia PSF (abierta)</td><td>Todo el libro</td><td><a href="https://www.python.org" target="_blank" rel="noopener">python.org</a></td></tr>
+<tr><td>uv</td><td>Astral</td><td>MIT o Apache 2.0</td><td>Módulo 1</td><td><a href="https://docs.astral.sh/uv" target="_blank" rel="noopener">docs.astral.sh/uv</a></td></tr>
+<tr><td>Node.js</td><td>OpenJS Foundation</td><td>MIT</td><td>Módulo 1</td><td><a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a></td></tr>
+<tr><td>Git</td><td>Proyecto Git</td><td>GPL 2.0</td><td>Todo el libro</td><td><a href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a></td></tr>
+<tr><td>Terraform</td><td>HashiCorp</td><td>BSL 1.1 (fuente disponible)</td><td>Módulo 6, opcional</td><td><a href="https://developer.hashicorp.com/terraform" target="_blank" rel="noopener">developer.hashicorp.com/terraform</a></td></tr>
+<tr><td>GitHub</td><td>GitHub (Microsoft)</td><td>Servicio comercial con plan gratuito</td><td>Módulos 6 y 10</td><td><a href="https://github.com" target="_blank" rel="noopener">github.com</a></td></tr>
+<tr><td>awesome-llm-apps</td><td>Shubham Saboo</td><td>Apache 2.0</td><td>Módulo 10</td><td><a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener">github.com/Shubhamsaboo/awesome-llm-apps</a></td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Licencias y direcciones verificadas en octubre de 2026. La columna «Dónde se usa» se refiere a los módulos del libro.</p>
+<p class="fig-label">Tabla 1.2</p>
+<p><em>Proveedores y tipo de relación con el lector</em></p>
+<div class="tbl"><table><tr><th>Proveedor</th><th>Qué aporta al stack</th><th>Qué relación tendrás</th></tr>
+<tr><td>Google</td><td>Agente de programación, Agents CLI, ADK, modelos Gemini, nube y publicación</td><td>Una cuenta de Google, una clave de API en AI Studio y, para desplegar, un proyecto de Google Cloud con facturación activa</td></tr>
+<tr><td>Anthropic</td><td>Claude Code como alternativa; creó MCP y el estándar Agent Skills</td><td>Opcional, solo si eliges Claude Code</td></tr>
+<tr><td>OpenAI</td><td>Codex como alternativa; modelos abiertos gpt-oss para la ruta abierta</td><td>Opcional, solo si eliges Codex</td></tr>
+<tr><td>Agentic AI Foundation (Linux Foundation)</td><td>Gobierno de los estándares MCP y A2A</td><td>Ninguna: son estándares que usas libremente</td></tr>
+<tr><td>Python Software Foundation, OpenJS Foundation y proyecto Git</td><td>Python, Node.js y Git</td><td>Ninguna: descargas e instalas</td></tr>
+<tr><td>Astral</td><td>uv</td><td>Ninguna: es una herramienta abierta</td></tr>
+<tr><td>HashiCorp</td><td>Terraform</td><td>Opcional; en la ruta abierta lo reemplaza OpenTofu</td></tr>
+<tr><td>GitHub (Microsoft)</td><td>Repositorio del libro y de tus proyectos</td><td>Una cuenta gratuita, recomendada</td></tr>
+<tr><td>Cloudflare</td><td>Dominio y sitio web del libro</td><td>Ninguna: es infraestructura del autor</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaboración propia.</p>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: cambian los nombres, queda la función</p>
+<p>Solo entre abril y junio de 2026, Google renombró Vertex AI como Gemini Enterprise Agent Platform y Vertex AI Agent Engine como Agent Runtime (Google Cloud, 2026b), integró Gemini CLI en Antigravity CLI (Google for Developers, 2026b) y dejó Agent Starter Pack en mantención para dar paso a Agents CLI. Si una pantalla o un comando de este libro no coincide con lo que ves, busca la función de la capa en la figura 1.1 y el nombre vigente en el sitio del libro. La función de cada capa cambia mucho más lento que su marca.</p>
+</aside>
+<h3 id="s1-1-5">1.1.5 Primero comercial, después abierto</h3>
+<p>Conviene decirlo desde el inicio: en su primera etapa, el stack de este libro no es de código abierto. Tres de sus piezas centrales son propietarias: el agente de programación de referencia (Antigravity), los modelos Gemini y los servicios de Google Cloud. A lo largo del libro iremos nombrando y usando alternativas abiertas para cada capa, y al final tendrás un stack completo de código abierto. El orden es deliberado.</p>
+<p>Empezamos con servicios comerciales por cuatro razones:</p>
+<ul><li><strong>Capacidad sin infraestructura propia.</strong> Para que un agente de programación escriba, pruebe y despliegue un proyecto completo necesita un modelo de gran capacidad. Los modelos comerciales se usan a través de internet; ejecutar un modelo abierto de tamaño comparable exige una tarjeta gráfica de alto rendimiento o un servidor dedicado.</li>
+<li><strong>Instalación guiada.</strong> Un solo comando instala Agents CLI, ADK y las skills, y deja tu agente de programación listo para trabajar.</li>
+<li><strong>Una sola cuenta.</strong> Con una cuenta de Google cubres el modelo, la nube y la publicación.</li>
+<li><strong>Foco en el método.</strong> En las primeras sesiones de taller el objetivo es que aprendas a especificar y a juzgar. Administrar servidores y modelos propios agrega una carga que conviene dejar para más adelante.</li>
+</ul>
+<p>Esta decisión tiene costos que debes conocer:</p>
+<ul><li><strong>Dependencia del proveedor.</strong> Mientras más servicios de un mismo proveedor uses, más trabajo cuesta cambiarte. En inglés se le llama <em>vendor lock-in</em>.</li>
+<li><strong>Costos variables.</strong> El pago por uso es bajo mientras aprendes, pero crece con el número de usuarios y de conversaciones.</li>
+<li><strong>Datos fuera de tu equipo.</strong> Lo que el agente procesa viaja a los servidores del proveedor. Antes de usar datos sensibles de tu empresa o de tus clientes, revisa las condiciones del servicio.</li>
+<li><strong>Condiciones que cambian.</strong> Planes, límites y nombres se modifican sin consultar a los usuarios, como muestra el recuadro anterior.</li>
+</ul>
+<p>Para que esos costos no se vuelvan una trampa, el libro aplica tres reglas de diseño. La primera: tus especificaciones, prompts y evaluaciones se guardan como archivos de texto en tu propio repositorio, no dentro de una plataforma. La segunda: las capas que conectan el sistema (el framework, las conexiones y el formato de las skills) son abiertas desde el primer día. La tercera: cada vez que presentemos un componente comercial, nombraremos su alternativa abierta en un recuadro titulado «Ruta abierta».</p>
+<aside class="box terms"><p class="box-h">Precisión de términos: «abierto» no siempre significa lo mismo</p>
+<ul><li><strong>Código abierto</strong> (<em>open source</em>): software cuya licencia cumple la definición de la Open Source Initiative y permite usarlo, estudiarlo, modificarlo y redistribuirlo, por ejemplo bajo las licencias Apache 2.0 o MIT (Open Source Initiative, s. f.).</li>
+<li><strong>Pesos abiertos</strong> (<em>open weights</em>): modelos de lenguaje cuyos parámetros se pueden descargar y ejecutar en tu equipo. Algunos usan licencias de código abierto, como Gemma 4 y gpt-oss bajo Apache 2.0; otros usan licencias propias con restricciones, como la licencia comunitaria de Llama 4.</li>
+<li><strong>Fuente disponible</strong> (<em>source available</em>): el código se puede leer, pero la licencia limita ciertos usos. Terraform pasó a este régimen en 2023 con la licencia BSL 1.1 (HashiCorp, 2023), y Open WebUI usa una licencia propia desde 2025 (Open WebUI, s. f.).</li>
+</ul>
+<p>Antes de adoptar una herramienta «abierta», lee su licencia. Incluso los proyectos abiertos cambian de dueño: en 2026 se anunciaron las compras de Astral, creadora de uv, y de promptfoo por parte de OpenAI, y la de Langfuse por parte de ClickHouse (ClickHouse, 2026; Security Boulevard, 2026; Willison, 2026).</p>
+</aside>
+<h3 id="s1-1-6">1.1.6 Hoja de ruta hacia un stack abierto</h3>
+<p>La migración será gradual y seguirá la estructura del libro. La figura 1.3 resume las tres etapas, y la tabla 1.3 indica, capa por capa, qué componente abierto reemplaza a cada componente comercial.</p>
+<p class="fig-label">Figura 1.3</p>
+<p><em>Hoja de ruta hacia un stack abierto</em></p>
+<div class="stages"><div class="stage"><span class="stage-n">Etapa 1 · módulos 1 a 5</span><strong>Aprender el método</strong><p>Stack comercial de Google para concentrarse en especificar y juzgar.</p>
+</div>
+<div class="stage"><span class="stage-n">Etapa 2 · módulos 6 a 9</span><strong>Abrir las piezas</strong><p>Modelos abiertos (Gemma 4 con Ollama) y herramientas abiertas de evaluación y observabilidad.</p>
+</div>
+<div class="stage"><span class="stage-n">Etapa 3 · módulo 10</span><strong>Independencia</strong><p>Otro agente de programación, el modelo en tu equipo y publicación en el sitio del libro.</p>
+</div>
+</div>
+<p><em>Nota.</em> Las etapas siguen la estructura prevista del libro y pueden ajustarse a medida que avance la escritura.</p>
+<p>El primer paso de la migración será el modelo, y lo daremos sin salir del ecosistema de Google. Gemma 4, la familia de modelos abiertos de Google publicada en abril de 2026 bajo licencia Apache 2.0, puede ejecutarse en tu computador con Ollama y conectarse a ADK sin cambiar el resto del proyecto (Google, s. f.-d). Después incorporaremos herramientas abiertas de observabilidad, evaluación e infraestructura. En la tercera etapa reemplazaremos el agente de programación y el lugar donde se ejecuta el modelo.</p>
+<p class="fig-label">Tabla 1.3</p>
+<p><em>Equivalencias entre el stack inicial y el stack abierto</em></p>
+<div class="tbl"><table><tr><th>Capa</th><th>Stack inicial</th><th>Alternativa abierta</th><th>Licencia</th><th>Etapa</th></tr>
+<tr><td>Agente de programación</td><td>Google Antigravity</td><td><a href="https://opencode.ai" target="_blank" rel="noopener">OpenCode</a> o <a href="https://aider.chat" target="_blank" rel="noopener">Aider</a></td><td>MIT; Apache 2.0</td><td>3</td></tr>
+<tr><td>Modelo de lenguaje</td><td>Gemini</td><td><a href="https://ai.google.dev/gemma" target="_blank" rel="noopener">Gemma 4</a>, <a href="https://openai.com/open-models/" target="_blank" rel="noopener">gpt-oss</a>, <a href="https://qwen.ai" target="_blank" rel="noopener">Qwen</a>, <a href="https://docs.mistral.ai/models/overview" target="_blank" rel="noopener">Mistral</a> o <a href="https://huggingface.co/deepseek-ai" target="_blank" rel="noopener">DeepSeek</a></td><td>Apache 2.0 en la mayoría; DeepSeek, MIT. Varía por modelo</td><td>2 y 3</td></tr>
+<tr><td>Ejecución del modelo</td><td>API de Google</td><td><a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> en tu equipo; <a href="https://vllm.ai" target="_blank" rel="noopener">vLLM</a> en un servidor</td><td>MIT; Apache 2.0</td><td>2 y 3</td></tr>
+<tr><td>Conector de modelos en ADK</td><td>Conexión nativa a Gemini</td><td><a href="https://docs.litellm.ai" target="_blank" rel="noopener">LiteLLM</a></td><td>MIT</td><td>2</td></tr>
+<tr><td>Infraestructura como código</td><td>Terraform</td><td><a href="https://opentofu.org" target="_blank" rel="noopener">OpenTofu</a></td><td>MPL 2.0</td><td>2</td></tr>
+<tr><td>Trazas y observabilidad</td><td>Cloud Trace y Cloud Logging</td><td><a href="https://opentelemetry.io" target="_blank" rel="noopener">OpenTelemetry</a> y <a href="https://langfuse.com" target="_blank" rel="noopener">Langfuse</a></td><td>Apache 2.0; MIT en sus funciones centrales</td><td>2</td></tr>
+<tr><td>Evaluación</td><td>agents-cli eval</td><td><a href="https://promptfoo.dev" target="_blank" rel="noopener">promptfoo</a></td><td>MIT</td><td>2</td></tr>
+<tr><td>Despliegue</td><td>Agent Runtime</td><td>Contenedor en Cloud Run y, después, en un servidor propio</td><td>No aplica</td><td>3</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Licencias verificadas en octubre de 2026. Las licencias de los modelos cambian entre versiones; verifica la del modelo exacto antes de usarlo.</p>
+<h3 id="s1-1-7">1.1.7 Cómo mantendremos vigente este stack</h3>
+<p>Un libro impreso no puede seguir el ritmo de estas herramientas, por eso adoptamos tres prácticas. Cada capítulo indica la fecha en que se verificaron sus comandos y pantallas. El sitio laexperienciaeselcodigo.com mantendrá una versión actualizada de las tablas 1.1 y 1.3, con los cambios fechados. Y los ejemplos del libro se publicarán en un repositorio de GitHub, donde podrás ver qué cambió entre una versión y la siguiente (módulo 10).</p>
+<aside class="box key"><p class="box-h">Ideas clave</p>
+<ul><li>El stack del libro tiene diez capas, y la primera eres tú, con la especificación y el juicio.</li>
+<li>La cadena inicial se apoya en Google: Antigravity como agente de programación, Agents CLI y ADK para construir, Gemini como modelo y Google Cloud para desplegar.</li>
+<li>El agente de programación, el modelo y la nube son comerciales; el framework, las conexiones y el entorno local son abiertos desde el inicio.</li>
+<li>Empezamos con servicios comerciales para aprender el método sin administrar infraestructura, y avanzaremos por etapas hacia un stack de código abierto.</li>
+<li>Los nombres cambian varias veces al año: aprende la función de cada capa y verifica el nombre vigente en el sitio del libro.</li>
+</ul>
+</aside>
+<aside class="box taller"><p class="box-h">Para el taller</p>
+<p><strong>Para conversar.</strong> ¿Qué herramienta de tu oficio cambió de nombre, de dueño o de proveedor durante tu carrera? ¿Qué parte de lo que sabías siguió sirviendo?</p>
+<p><strong>Para hacer.</strong> Crea una cuenta de Google dedicada al taller y una cuenta en GitHub. Las usarás en la siguiente sección de este módulo.</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>A2A Project. (2026, 27 de agosto). <em>A new chapter for A2A: Joining the Agentic AI Foundation</em>. <a href="https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/" target="_blank" rel="noopener">https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/</a></p>
+<p>Agent Skills. (s. f.). <em>Agent Skills</em> [Especificación del estándar]. Recuperado el 15 de octubre de 2026, de <a href="https://agentskills.io" target="_blank" rel="noopener">https://agentskills.io</a></p>
+<p>Anthropic. (2025, 9 de diciembre). <em>Donating the Model Context Protocol and establishing the Agentic AI Foundation</em>. <a href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation" target="_blank" rel="noopener">https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation</a></p>
+<p>ClickHouse. (2026, enero). <em>ClickHouse welcomes Langfuse: The future of open-source LLM observability</em>. <a href="https://clickhouse.com/blog/clickhouse-acquires-langfuse-open-source-llm-observability" target="_blank" rel="noopener">https://clickhouse.com/blog/clickhouse-acquires-langfuse-open-source-llm-observability</a></p>
+<p>Google. (2026, 13 de octubre). <em>Build with Gemini 4 Argon</em>. <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/</a></p>
+<p>Google. (s. f.-a). <em>Agent Development Kit</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://adk.dev" target="_blank" rel="noopener">https://adk.dev</a></p>
+<p>Google. (s. f.-b). <em>Agents CLI</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://google.github.io/agents-cli/" target="_blank" rel="noopener">https://google.github.io/agents-cli/</a></p>
+<p>Google. (s. f.-c). <em>Google Antigravity</em>. Recuperado el 15 de octubre de 2026, de <a href="https://antigravity.google" target="_blank" rel="noopener">https://antigravity.google</a></p>
+<p>Google. (s. f.-d). <em>Gemma</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://ai.google.dev/gemma" target="_blank" rel="noopener">https://ai.google.dev/gemma</a></p>
+<p>Google Cloud. (s. f.). <em>Choosing your surface: Antigravity 2.0, Antigravity CLI, Antigravity IDE or Antigravity SDK</em>. Recuperado el 15 de octubre de 2026, de <a href="https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk" target="_blank" rel="noopener">https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk</a></p>
+<p>Google Cloud. (2026a, 22 de abril). <em>The new Gemini Enterprise: One platform for agent development</em>. <a href="https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development" target="_blank" rel="noopener">https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development</a></p>
+<p>Google Cloud. (2026b). <em>Gemini Enterprise Agent Platform: Release notes</em>. Recuperado el 15 de octubre de 2026, de <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes" target="_blank" rel="noopener">https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes</a></p>
+<p>Google for Developers. (2026a, 22 de abril). <em>Agents CLI in Agent Platform: Create to production in one CLI</em>. <a href="https://developers.googleblog.com/en/agents-cli-in-agent-platform-create-to-production-in-one-cli/" target="_blank" rel="noopener">https://developers.googleblog.com/en/agents-cli-in-agent-platform-create-to-production-in-one-cli/</a></p>
+<p>Google for Developers. (2026b, 19 de mayo). <em>An important update: Transitioning Gemini CLI to Antigravity CLI</em>. <a href="https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" target="_blank" rel="noopener">https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/</a></p>
+<p>HashiCorp. (2023, 10 de agosto). <em>HashiCorp adopts Business Source License</em>. <a href="https://www.hashicorp.com/en/blog/hashicorp-adopts-business-source-license" target="_blank" rel="noopener">https://www.hashicorp.com/en/blog/hashicorp-adopts-business-source-license</a></p>
+<p>Open Source Initiative. (s. f.). <em>The Open Source Definition</em>. Recuperado el 15 de octubre de 2026, de <a href="https://opensource.org/osd" target="_blank" rel="noopener">https://opensource.org/osd</a></p>
+<p>Open WebUI. (s. f.). <em>License</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://docs.openwebui.com/license/" target="_blank" rel="noopener">https://docs.openwebui.com/license/</a></p>
+<p>Product Faculty. (s. f.). <em>[Sesión de Shubham Saboo sobre el ciclo de vida completo de un agente construido con un agente de programación]</em> [Video]. YouTube. <a href="https://youtu.be/Q08HKdLBBdc" target="_blank" rel="noopener">https://youtu.be/Q08HKdLBBdc</a></p>
+<p>Saboo, S. (s. f.). <em>awesome-llm-apps</em> [Repositorio de GitHub]. Recuperado el 15 de octubre de 2026, de <a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener">https://github.com/Shubhamsaboo/awesome-llm-apps</a></p>
+<p>Security Boulevard. (2026, marzo). <em>OpenAI acquires security startup Promptfoo to fortify AI agents</em>. <a href="https://securityboulevard.com/2026/03/openai-acquires-security-startup-promptfoo-to-fortify-ai-agents" target="_blank" rel="noopener">https://securityboulevard.com/2026/03/openai-acquires-security-startup-promptfoo-to-fortify-ai-agents</a></p>
+<p>Willison, S. (2026, 19 de marzo). <em>OpenAI acquiring Astral</em> [Entrada de blog]. <a href="https://simonwillison.net/2026/mar/19/openai-acquiring-astral/" target="_blank" rel="noopener">https://simonwillison.net/2026/mar/19/openai-acquiring-astral/</a></p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la sección 1.1? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— 1.1 —</p>
+</article>
+<article class="sheet" id="sec-1-2">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.2</span></div>
+  <header class="sec-head">
+    <p class="sec-no">1.2</p>
+    <h2 class="sec-title">Instalación guiada: dos rutas hacia el mismo taller</h2>
+    <p class="sec-ver">Versión de trabajo. Comandos y requisitos verificados el 24 de octubre de 2026 contra la documentación oficial de cada herramienta.</p>
+    <span class="sec-state">Versión de trabajo</span>
+  </header>
+  <aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
+<p>Al terminar esta sección podrás:</p>
+<ul><li>Preparar tu computador con las herramientas del stack inicial: terminal, Git, uv, Python, Node.js, Google Antigravity y Agents CLI.</li>
+<li>Elegir entre dos rutas de instalación: delegar el trabajo en el agente de programación (ruta A) o hacerlo tú, paso a paso (ruta B).</li>
+<li>Supervisar a un agente mientras instala programas en tu equipo, aprobando o rechazando cada acción con criterio.</li>
+<li>Verificar que cada componente quedó instalado y resolver los problemas más frecuentes.</li>
+</ul>
+</aside>
+<p class="opening">Quien ha montado un taller, una oficina o una sala de clases sabe que el orden de instalación importa: primero la electricidad, después las máquinas, al final las herramientas de mano. Con el computador ocurre lo mismo. Cada componente del stack descrito en la sección 1.1 se apoya en otro, y si se instalan en desorden aparecen errores difíciles de interpretar.</p>
+<p>Esta sección ofrece dos rutas que llegan al mismo resultado. En la <strong>ruta A</strong> instalas solo el agente de programación y le encargas el resto, tal como propone el método del libro: tú defines qué quieres y juzgas el resultado. En la <strong>ruta B</strong> instalas cada componente con tus propias manos y entiendes qué hace cada comando. Recomendamos leer la ruta B aunque sigas la ruta A. Saber cómo se hace algo es lo que permite supervisar bien a quien lo hace por ti, y esa es la habilidad que este libro quiere desarrollar.</p>
+<p class="fig-label">Tabla 1.4</p>
+<p><em>Las dos rutas de instalación comparadas</em></p>
+<div class="tbl"><table><tr><th>Criterio</th><th>Ruta A: el agente instala</th><th>Ruta B: paso a paso</th></tr>
+<tr><td>Qué haces tú</td><td>Instalas Antigravity, das un encargo y apruebas cada acción</td><td>Copias y ejecutas cada comando, y verificas el resultado</td></tr>
+<tr><td>Qué aprendes</td><td>A delegar, supervisar y juzgar el trabajo de un agente</td><td>Qué es cada componente y cómo se comprueba</td></tr>
+<tr><td>Ventaja principal</td><td>Menos comandos que escribir; el agente explica y corrige</td><td>Control total; útil si el agente se equivoca o no está disponible</td></tr>
+<tr><td>Riesgo principal</td><td>Aprobar acciones sin leerlas</td><td>Saltarse un paso o una verificación</td></tr>
+<tr><td>Tiempo de referencia</td><td>Entre 45 y 90 minutos</td><td>Entre 60 y 120 minutos</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Los tiempos son estimaciones del autor para un computador con buena conexión a internet; varían según el equipo y la experiencia previa.</p>
+<h3 id="s1-2-1">1.2.1 Antes de empezar</h3>
+<p>Revisa estas condiciones antes de la primera sesión de taller. Resolverlas con anticipación evita la mayor parte de las interrupciones.</p>
+<p class="fig-label">Tabla 1.5</p>
+<p><em>Requisitos mínimos por sistema operativo</em></p>
+<div class="tbl"><table><tr><th>Sistema</th><th>Versión mínima</th><th>Particularidad</th></tr>
+<tr><td>macOS</td><td>macOS 12 (Monterey) o posterior, en procesador Apple Silicon o Intel</td><td>Todo se instala de forma nativa</td></tr>
+<tr><td>Windows</td><td>Windows 10 de 64 bits o posterior</td><td>Agents CLI funciona en Windows a través de WSL 2, un Linux integrado en Windows. Hay que instalarlo primero (sección 1.2.3)</td></tr>
+<tr><td>Linux</td><td>Distribuciones con glibc 2.28 o superior (por ejemplo, Ubuntu 20 o posterior)</td><td>Todo se instala de forma nativa</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaborado a partir de los requisitos publicados en las páginas de descarga de Google Antigravity y de Agents CLI (Google, s. f.-a; Google, s. f.-b).</p>
+<p>Además necesitarás:</p>
+<ul><li><strong>Una cuenta de Google dedicada al taller</strong>, la que creaste al final de la sección 1.1. Con ella iniciarás sesión en Antigravity y crearás tu clave de API en la sección 1.3.</li>
+<li><strong>Permisos de administrador</strong> en el computador. Los equipos de empresa suelen bloquear la instalación de programas; si es tu caso, pide autorización al área de informática o usa un computador personal.</li>
+<li><strong>Espacio libre en disco</strong> de al menos 10 GB y una conexión a internet estable. Varias herramientas se descargan durante la instalación.</li>
+<li><strong>Un lugar donde anotar</strong> el nombre de usuario y la contraseña de Linux si usas Windows (sección 1.2.3). Los necesitarás más de una vez.</li>
+</ul>
+<aside class="box terms"><p class="box-h">Precisión de términos: el vocabulario mínimo de la terminal</p>
+<ul><li><strong>Terminal.</strong> Ventana donde se escriben órdenes de texto al computador. En macOS se llama Terminal; en Windows, después de instalar WSL, usarás la ventana Ubuntu.</li>
+<li><strong>Comando.</strong> Una orden escrita en la terminal. Se ejecuta al presionar Enter.</li>
+<li><strong>Indicador</strong> (<em>prompt</em> de la terminal). El texto que termina en <code>$</code> o <code>%</code> y espera tu siguiente orden. Cuando reaparece, el comando anterior terminó.</li>
+<li><strong>Carpeta de trabajo.</strong> La carpeta en la que está «parada» la terminal. Los comandos actúan sobre ella.</li>
+<li><strong>Variable de entorno.</strong> Un dato con nombre que los programas leen al iniciar, como la clave de API que configurarás en la sección 1.3.</li>
+</ul>
+</aside>
+<h3 id="s1-2-2">1.2.2 Cómo trabajar con la terminal sin miedo</h3>
+<p>La terminal intimida porque no tiene botones, pero sus reglas son pocas y estables. En este libro los comandos aparecen en un recuadro gris con letra de máquina de escribir, como este:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>git --version</code></pre>
+<p>Al trabajar con ellos conviene seguir cinco reglas:</p>
+<ol><li>Copia y ejecuta <strong>una línea a la vez</strong>, salvo que el texto indique lo contrario. Presiona Enter y espera a que reaparezca el indicador.</li>
+<li>Cuando un comando pida tu contraseña, escríbela aunque la pantalla no muestre ningún carácter. Es una medida de seguridad, no una falla. Presiona Enter al terminar.</li>
+<li>Si un comando se queda detenido mucho tiempo sin mostrar avance, puedes interrumpirlo con Control + C.</li>
+<li>Después de instalar un programa nuevo, <strong>cierra la terminal y vuelve a abrirla</strong>. Muchas instalaciones solo se reconocen en una ventana nueva.</li>
+<li>Un mensaje de error es información, no un fracaso. Cópialo completo: lo usarás para buscar la solución en la tabla 1.7 o para mostrárselo al agente de programación.</li>
+</ol>
+<p>Para abrir la terminal en macOS, presiona Comando + barra espaciadora, escribe «Terminal» y presiona Enter. En Windows, después de completar la sección 1.2.3, busca «Ubuntu» en el menú Inicio.</p>
+<h3 id="s1-2-3">1.2.3 Paso previo para Windows: instalar WSL 2</h3>
+<p>Agents CLI, la herramienta que enseña a tu agente de programación a construir agentes, funciona en macOS, en Linux y en Windows a través de WSL 2; Windows sin WSL no tiene soporte oficial (Google, s. f.-b). WSL (<em>Windows Subsystem for Linux</em>) es un componente de Microsoft que ejecuta un Linux completo dentro de Windows. Este paso es necesario en las dos rutas, porque requiere permisos de administrador y un reinicio que el agente no puede hacer por ti. Si usas macOS o Linux, pasa directamente a la sección 1.2.4.</p>
+<ol><li>Abre el menú Inicio, escribe «PowerShell», haz clic derecho sobre <strong>Windows PowerShell</strong> y elige <strong>Ejecutar como administrador</strong>.</li>
+<li>Escribe el siguiente comando y presiona Enter: <code>wsl --install</code></li>
+<li>Cuando termine, <strong>reinicia el computador</strong>.</li>
+<li>Al volver, se abrirá una ventana llamada Ubuntu (si no aparece, búscala en el menú Inicio). Te pedirá crear un nombre de usuario y una contraseña de Linux. Pueden ser distintos de los de Windows. Anótalos.</li>
+<li>Para comprobar la instalación, abre PowerShell (esta vez sin permisos de administrador) y escribe: <code>wsl --list --verbose</code>Deberías ver Ubuntu con el número 2 en la columna VERSION.</li>
+</ol>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: en Windows, todo ocurre dentro de Ubuntu</p>
+<p>Desde este punto, quienes usan Windows escribirán todos los comandos del libro en la ventana Ubuntu, no en PowerShell ni en el símbolo del sistema. Tus proyectos vivirán dentro de Linux, en tu carpeta personal (<code>/home/tu-usuario</code>). Si al instalar WSL aparece un mensaje sobre virtualización, es probable que esté desactivada en la configuración del equipo; la tabla 1.7 indica qué hacer.</p>
+</aside>
+<h3 id="s1-2-4">1.2.4 Ruta A: pedirle al agente que instale todo</h3>
+<p>En esta ruta el agente de programación cumple su doble función de constructor y tutor. Tú escribes un encargo en español, el agente propone los comandos, te pide permiso para ejecutarlos y explica qué hace cada uno. Tu trabajo es leer, aprobar o rechazar, y verificar el resultado.</p>
+<h4>Paso A1. Instalar Google Antigravity</h4>
+<p><strong>En macOS.</strong> Entra a <a href="https://antigravity.google/download" target="_blank" rel="noopener">antigravity.google/download</a>, descarga la versión para tu procesador (Apple Silicon o Intel), abre el archivo descargado y arrastra Antigravity a la carpeta Aplicaciones. Ábrelo e inicia sesión con la cuenta de Google del taller.</p>
+<p><strong>En Windows.</strong> Abre la ventana Ubuntu e instala la versión de línea de comandos de Antigravity, llamada Antigravity CLI, con el comando que publica Google para Linux (Google, s. f.-a):</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>curl -fsSL https://antigravity.google/cli/install.sh | bash</code></pre>
+<p>Cierra y vuelve a abrir Ubuntu. Comprueba la instalación con <code>agy --version</code> y luego escribe <code>agy</code> para iniciarlo. La primera vez te pedirá iniciar sesión con tu cuenta de Google: abrirá el navegador o te mostrará un enlace y un código que debes copiar. La aplicación de escritorio de Antigravity para Windows también existe, pero conectarla con Ubuntu exige pasos adicionales que veremos como lectura avanzada; para el taller basta la versión de línea de comandos.</p>
+<h4>Paso A2. Crear la carpeta del taller</h4>
+<p>Crea una carpeta llamada <code>taller-agentes</code> en tu carpeta personal y ábrela en Antigravity. En la aplicación de escritorio, usa la opción para abrir una carpeta o crear un proyecto. En la terminal, escribe:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>mkdir ~/taller-agentes
+cd ~/taller-agentes
+agy</code></pre>
+<h4>Paso A3. Entregar el encargo de instalación</h4>
+<p>Copia el siguiente encargo en Antigravity. La versión completa, junto con los demás encargos del libro, está en el anexo C (Biblioteca de encargos).</p>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 001</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Actúa como mi tutor de instalación. Uso [macOS / Ubuntu dentro de Windows con WSL 2].
+Quiero preparar mi computador para construir agentes con Agents CLI y ADK de Google.
+Instala, en este orden y solo si falta: herramientas básicas y Git, uv, Python 3.11 o superior (con uv), Node.js en versión LTS y, al final, Agents CLI con el comando oficial: uvx google-agents-cli setup
+Reglas:
+1. Antes de cada comando, explícame en una o dos frases qué hace y por qué hace falta.
+2. Pídeme permiso antes de ejecutar cualquier comando.
+3. Si un comando requiere mi contraseña, avísame: yo la escribiré directamente en la terminal, nunca en este chat.
+4. No configures claves de API ni credenciales; eso lo haré yo después.
+5. Si algo falla, muéstrame el error, explícame la causa probable y propón una sola solución a la vez.
+Al terminar, entrégame una tabla con cada componente, el comando para verificarlo y el resultado que obtuviste.</code></pre>
+</div>
+<h4>Paso A4. Supervisar mientras el agente trabaja</h4>
+<p>Antigravity mostrará cada comando antes de ejecutarlo. Para decidir si lo apruebas, hazte tres preguntas: ¿la explicación coincide con lo que pedí?, ¿el comando instala algo de la lista o algo distinto?, ¿proviene de un sitio oficial? Si la respuesta a alguna es dudosa, pide una aclaración antes de aprobar. La sección 1.2.5 describe los comandos oficiales; puedes compararlos con los que propone el agente.</p>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: delegar no es abdicar</p>
+<p>Configura Antigravity para que pida aprobación antes de ejecutar comandos, al menos durante el taller. La comodidad de la aprobación automática se paga con la pérdida de control. Nunca escribas tu contraseña en el chat del agente: los comandos que la requieren la piden en la terminal, que es el único lugar donde corresponde escribirla.</p>
+</aside>
+<h4>Paso A5. Revisar la tabla de verificación</h4>
+<p>Compara la tabla que entrega el agente con la lista de verificación de la sección 1.2.6. Si algún componente falta o muestra un error, pídele que lo resuelva o sigue el paso correspondiente de la ruta B. Si las skills de Agents CLI aparecen en la lista que muestra el agente (en muchos agentes, con el comando <code>/skills</code>), la instalación está completa.</p>
+<h3 id="s1-2-5">1.2.5 Ruta B: paso a paso</h3>
+<p>Cada paso sigue la misma estructura: qué es el componente, para qué lo usaremos, el comando para macOS y para Ubuntu (Windows y Linux), y cómo verificar que quedó bien. Si sigues la ruta A, usa esta sección como referencia para entender lo que hace el agente.</p>
+<h4>Paso B1. Herramientas básicas y Git</h4>
+<p><strong>Qué es.</strong> Git guarda el historial de cambios de tus proyectos; <code>curl</code> descarga archivos desde internet y lo usan varios instaladores. <strong>Para qué.</strong> Agents CLI crea proyectos con Git y los instaladores de los pasos siguientes usan <code>curl</code>.</p>
+<p>En macOS (abrirá una ventana; acepta la instalación de las herramientas de línea de comandos):</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>xcode-select --install</code></pre>
+<p>En Ubuntu:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>sudo apt update
+sudo apt install -y git curl</code></pre>
+<p><strong>Verificación.</strong> <code>git --version</code> debe mostrar un número de versión.</p>
+<h4>Paso B2. uv</h4>
+<p><strong>Qué es.</strong> Un instalador de programas y librerías de Python, de código abierto (Astral, s. f.). <strong>Para qué.</strong> Instala Python y ejecuta Agents CLI. El mismo comando sirve en macOS y en Ubuntu:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>curl -LsSf https://astral.sh/uv/install.sh | sh</code></pre>
+<p>Cierra y vuelve a abrir la terminal. <strong>Verificación.</strong> <code>uv --version</code> debe mostrar un número de versión.</p>
+<h4>Paso B3. Python 3.11 o superior</h4>
+<p><strong>Qué es.</strong> El lenguaje de programación en que se escriben los agentes de ADK. <strong>Para qué.</strong> Agents CLI requiere Python 3.11 o posterior (Google, s. f.-b). Con uv, la instalación es una sola línea:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>uv python install 3.12</code></pre>
+<p><strong>Verificación.</strong> <code>uv python list</code> debe mostrar una versión 3.12 marcada como instalada.</p>
+<h4>Paso B4. Node.js</h4>
+<p><strong>Qué es.</strong> Un entorno que ejecuta programas escritos en JavaScript. <strong>Para qué.</strong> Agents CLI lo usa para instalar las skills en tu agente de programación (Google, s. f.-b).</p>
+<p>En macOS, descarga el instalador de la versión LTS (de soporte prolongado) desde <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> y ejecútalo como cualquier programa.</p>
+<p>En Ubuntu, instala primero nvm, un administrador de versiones de Node.js, y luego la versión LTS. Después del primer comando, cierra y vuelve a abrir la terminal:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+nvm install --lts</code></pre>
+<p><strong>Verificación.</strong> <code>node --version</code> y <code>npx --version</code> deben mostrar números de versión.</p>
+<h4>Paso B5. Google Antigravity</h4>
+<p>Sigue el paso A1 de la ruta A. En la ruta B, Antigravity se instala antes de Agents CLI porque este último instala las skills en los agentes de programación que encuentra en tu equipo (Google, s. f.-c).</p>
+<h4>Paso B6. Agents CLI y sus skills</h4>
+<p><strong>Qué es.</strong> La herramienta de Google que instala el comando <code>agents-cli</code>, las librerías de ADK y siete skills que convierten a tu agente de programación en un especialista en construir, evaluar y desplegar agentes (Google, s. f.-c). <strong>Para qué.</strong> Es la pieza que conecta el método del libro con el agente de programación. Es el único comando de Agents CLI que se ejecuta directamente; el resto lo usará el agente.</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>uvx google-agents-cli setup</code></pre>
+<p>Si el asistente de instalación pregunta por la autenticación, puedes dejarla pendiente: la configurarás en la sección 1.3. <strong>Verificación.</strong> Abre Antigravity en la carpeta del taller y pídele que liste sus skills, o usa <code>/skills</code> si está disponible. Deberías ver entradas que comienzan con <code>google-agents-cli-</code>, entre ellas <code>google-agents-cli-workflow</code>.</p>
+<h4>Paso B7 (opcional en este módulo). Google Cloud CLI</h4>
+<p><strong>Qué es.</strong> La herramienta <code>gcloud</code>, que conecta tu computador con un proyecto de Google Cloud. <strong>Para qué.</strong> La necesitarás en el módulo 6 para desplegar tu agente. Para el trabajo local de los módulos 1 a 5 no es obligatoria (Google, s. f.-b). Como sus pasos de instalación varían según el sistema, sigue la guía oficial en <a href="https://cloud.google.com/sdk/docs/install" target="_blank" rel="noopener">cloud.google.com/sdk/docs/install</a>. <strong>Verificación.</strong> <code>gcloud --version</code>.</p>
+<aside class="box open"><p class="box-h">Ruta abierta</p>
+<p>Todos los componentes de esta sección, salvo Antigravity, son de código abierto: Git, uv, Python y Node.js. Si prefieres un agente de programación abierto, OpenCode y Aider cumplen la misma función; Agents CLI instala sus skills en cualquier agente compatible con el estándar Agent Skills (Google, s. f.-c). Los ejemplos del libro se verifican con Antigravity.</p>
+</aside>
+<h3 id="s1-2-6">1.2.6 Verificación final</h3>
+<p>Antes de pasar a la sección 1.3, comprueba cada componente. Marca la casilla cuando el comando entregue el resultado esperado.</p>
+<p class="fig-label">Tabla 1.6</p>
+<p><em>Lista de verificación de la instalación</em></p>
+<div class="tbl"><table><tr><th>☐</th><th>Componente</th><th>Comando</th><th>Resultado esperado</th></tr>
+<tr><td>☐</td><td>WSL 2 (solo Windows)</td><td><code>wsl --list --verbose</code> (en PowerShell)</td><td>Ubuntu con VERSION 2</td></tr>
+<tr><td>☐</td><td>Git</td><td><code>git --version</code></td><td>Un número de versión</td></tr>
+<tr><td>☐</td><td>uv</td><td><code>uv --version</code></td><td>Un número de versión</td></tr>
+<tr><td>☐</td><td>Python</td><td><code>uv python list</code></td><td>Una versión 3.11 o superior instalada</td></tr>
+<tr><td>☐</td><td>Node.js</td><td><code>node --version</code></td><td>Una versión LTS, por ejemplo v22 o superior</td></tr>
+<tr><td>☐</td><td>Antigravity CLI (si la usas)</td><td><code>agy --version</code></td><td>Un número de versión</td></tr>
+<tr><td>☐</td><td>Agents CLI</td><td><code>agents-cli --version</code></td><td>Un número de versión</td></tr>
+<tr><td>☐</td><td>Skills</td><td>Pedir al agente la lista de skills o <code>/skills</code></td><td>Entradas <code>google-agents-cli-*</code></td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Los números de versión cambian con frecuencia; lo importante es que el comando responda sin error.</p>
+<h3 id="s1-2-7">1.2.7 Problemas frecuentes</h3>
+<p class="fig-label">Tabla 1.7</p>
+<p><em>Síntomas, causas probables y soluciones</em></p>
+<div class="tbl"><table><tr><th>Síntoma</th><th>Causa probable</th><th>Qué hacer</th></tr>
+<tr><td><code>command not found</code> justo después de instalar algo</td><td>La terminal no ha cargado el programa nuevo</td><td>Cierra la terminal, ábrela de nuevo y repite la verificación</td></tr>
+<tr><td><code>Permission denied</code> o se pide una contraseña</td><td>La acción requiere permisos de administrador</td><td>Escribe tu contraseña en la terminal (no se verá al escribirla). En Ubuntu es la contraseña de Linux que creaste en la sección 1.2.3</td></tr>
+<tr><td>Al instalar WSL aparece un mensaje sobre virtualización</td><td>La virtualización está desactivada en el equipo</td><td>Busca en internet «activar virtualización» junto con la marca de tu computador, o pide ayuda al área de informática</td></tr>
+<tr><td>La descarga falla en un computador de empresa</td><td>La red corporativa bloquea sitios o usa un proxy</td><td>Prueba desde una red personal o solicita a informática acceso a los dominios de las herramientas</td></tr>
+<tr><td><code>uvx google-agents-cli setup</code> falla con un mensaje sobre gcloud</td><td>Algunas versiones verificaban credenciales de Google Cloud durante la instalación</td><td>Instala Google Cloud CLI (paso B7) y repite el comando</td></tr>
+<tr><td>El agente no muestra las skills de Agents CLI</td><td>Antigravity se instaló después de Agents CLI, o no se reinició</td><td>Cierra Antigravity, ejecuta otra vez <code>uvx google-agents-cli setup</code> y vuelve a abrirlo</td></tr>
+<tr><td>Un error que no aparece en esta tabla</td><td>Muchas causas posibles</td><td>Copia el mensaje completo y pídele al agente: «Explícame este error en palabras simples y propón una sola solución»</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> El problema de instalación relacionado con gcloud fue reportado en el repositorio de Agents CLI (google/agents-cli, 2026). La lista se ampliará en el anexo D con los casos que reporten los talleres.</p>
+<aside class="box key"><p class="box-h">Ideas clave</p>
+<ul><li>Hay dos rutas al mismo resultado: delegar la instalación en el agente (ruta A) o hacerla paso a paso (ruta B). Conocer la segunda permite supervisar bien la primera.</li>
+<li>En Windows, Agents CLI funciona a través de WSL 2. Ese paso previo lo haces tú, porque requiere permisos de administrador y un reinicio.</li>
+<li>Al delegar, el agente propone y tú apruebas. La contraseña se escribe en la terminal, nunca en el chat.</li>
+<li>El orden importa: herramientas básicas, uv, Python, Node.js, Antigravity y, al final, Agents CLI.</li>
+<li>Una instalación está terminada cuando cada componente responde a su comando de verificación y el agente muestra las skills de Agents CLI.</li>
+</ul>
+</aside>
+<aside class="box taller"><p class="box-h">Para el taller</p>
+<p><strong>Para conversar.</strong> Recuerda la primera vez que aprendiste a usar una máquina o un sistema nuevo en tu trabajo. ¿Qué te ayudó más: que alguien lo hiciera frente a ti, hacerlo tú con un manual o una combinación de ambos?</p>
+<p><strong>Para hacer.</strong> En parejas, una persona sigue la ruta A y la otra la ruta B. Al terminar, comparen sus tablas de verificación y anoten un problema que hayan resuelto. Esos problemas alimentarán el anexo D.</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>Astral. (s. f.). <em>uv</em> [Documentación]. Recuperado el 24 de octubre de 2026, de https://docs.astral.sh/uv</p>
+<p>google/agents-cli. (2026). <em>Setup crashes with FileNotFoundError if gcloud is not installed</em> (Issue #16) [Reporte en GitHub]. https://github.com/google/agents-cli/issues/16</p>
+<p>Google. (s. f.-a). <em>Download Google Antigravity</em>. Recuperado el 24 de octubre de 2026, de https://antigravity.google/download</p>
+<p>Google. (s. f.-b). <em>Getting started</em> [Documentación de Agents CLI]. Recuperado el 24 de octubre de 2026, de https://google.github.io/agents-cli/guide/getting-started/</p>
+<p>Google. (s. f.-c). <em>Agents CLI</em> [Guía de inicio en la documentación de ADK]. Recuperado el 24 de octubre de 2026, de https://adk.dev/get-started/agents-cli/</p>
+<p>Microsoft. (s. f.). <em>Cómo instalar Linux en Windows con WSL</em>. Recuperado el 24 de octubre de 2026, de https://learn.microsoft.com/es-es/windows/wsl/install</p>
+<p>Product Faculty. (s. f.). <em>[Sesión de Shubham Saboo sobre el ciclo de vida completo de un agente construido con un agente de programación]</em> [Video]. YouTube. https://youtu.be/Q08HKdLBBdc</p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la sección 1.2? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— 1.2 —</p>
+</article>
+<article class="sheet" id="sec-1-3">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.3</span></div>
+  <header class="sec-head">
+    <p class="sec-no">1.3</p>
+    <h2 class="sec-title">Autenticación: tu propia clave y las reglas para cuidarla</h2>
+    <p class="sec-ver">Versión de trabajo. Condiciones y pantallas verificadas el 24 de octubre de 2026 contra la documentación oficial de Agents CLI y de la API de Gemini.</p>
+    <span class="sec-state">Versión de trabajo</span>
+  </header>
+  <aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
+<p>Al terminar esta sección podrás:</p>
+<ul><li>Distinguir los tres niveles de autenticación que intervienen al construir un agente: el del agente de programación, el del modelo y el del despliegue.</li>
+<li>Crear tu propia clave de API en Google AI Studio y entender las condiciones del nivel gratuito y del nivel de pago.</li>
+<li>Guardar la clave en tu proyecto de forma segura, sin exponerla al agente de programación ni a un repositorio público.</li>
+<li>Verificar que la clave funciona y saber qué hacer si se filtra.</li>
+</ul>
+</aside>
+<p class="opening">En una empresa, las llaves no se prestan. Quien tiene la llave de la bodega entra a nombre de quien se la entregó, y si falta algo, la responsabilidad no es del que la usó, sino del dueño. Una clave de API funciona igual: es un código secreto que identifica tu cuenta ante un servicio, y todo lo que se haga con ella queda registrado, consume tu cuota y, si corresponde, se cobra a tu nombre.</p>
+<p>Por eso este libro sigue una regla sin excepciones: <strong>cada lector y cada participante del taller usa su propia clave</strong>. Ni el autor, ni los facilitadores, ni el sitio del libro entregan claves compartidas. La regla protege a todos. Protege tu presupuesto, porque solo pagas lo que tú consumes. Protege tus datos, porque nadie más ve lo que tu agente procesa. Y protege el aprendizaje, porque crear, cuidar y revocar una clave es parte del oficio que el libro enseña.</p>
+<h3 id="s1-3-1">1.3.1 Tres niveles de autenticación</h3>
+<p>Al construir un agente intervienen tres sistemas distintos, y cada uno pide su propia identificación. La documentación de Agents CLI los ordena en tres niveles (Google, s. f.-a). Confundirlos es la causa más común de errores en esta etapa.</p>
+<p class="fig-label">Tabla 1.8</p>
+<p><em>Los tres niveles de autenticación</em></p>
+<div class="tbl"><table><tr><th>Nivel</th><th>Qué se autentica</th><th>Con qué credencial</th><th>Cuándo en el libro</th></tr>
+<tr><td>1. Agente de programación</td><td>Antigravity, el agente que construye por ti</td><td>Tu cuenta de Google</td><td>Sección 1.2 (ya lo hiciste al iniciar sesión)</td></tr>
+<tr><td>2. Modelo</td><td>El agente que tú construyes, cada vez que consulta a Gemini</td><td>Opción A: clave de API de Google AI Studio. Opción B: credenciales de un proyecto de Google Cloud</td><td>Esta sección (opción A); módulo 6 (opción B)</td></tr>
+<tr><td>3. Despliegue</td><td>La publicación del agente en Google Cloud</td><td>Credenciales de Google Cloud y un proyecto con facturación activa</td><td>Módulo 6</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Adaptado de la guía de autenticación de Agents CLI (Google, s. f.-a).</p>
+<p>La distinción entre los niveles 1 y 2 merece atención. Antigravity usa tu cuenta de Google y su propia cuota para escribir código. El agente que construyes es un programa independiente: cuando funcione en tu computador, consultará al modelo Gemini por su cuenta y necesitará una credencial propia. Son dos consumos distintos, aunque ambos ocurran dentro del ecosistema de Google.</p>
+<aside class="box terms"><p class="box-h">Precisión de términos: cuenta, clave y credencial</p>
+<ul><li><strong>Cuenta.</strong> Tu identidad en un servicio (por ejemplo, tu cuenta de Google). Se usa con correo y contraseña.</li>
+<li><strong>Clave de API</strong> (<em>API key</em>). Un código secreto generado dentro de un proyecto, que un programa presenta en cada solicitud. Se cuida como una contraseña, porque quien la tiene puede usarla sin conocer tu contraseña.</li>
+<li><strong>Credencial.</strong> Término general para cualquier prueba de identidad: contraseñas, claves de API o los permisos que Google Cloud entrega a tu computador después de iniciar sesión (llamados <em>Application Default Credentials</em>).</li>
+</ul>
+</aside>
+<h3 id="s1-3-2">1.3.2 Dos formas de dar acceso al modelo</h3>
+<p class="fig-label">Tabla 1.9</p>
+<p><em>Opción A y opción B comparadas</em></p>
+<div class="tbl"><table><tr><th>Criterio</th><th>Opción A: clave de AI Studio</th><th>Opción B: proyecto de Google Cloud</th></tr>
+<tr><td>Requisito</td><td>Cuenta de Google</td><td>Proyecto de Google Cloud con facturación y la herramienta gcloud</td></tr>
+<tr><td>Dificultad</td><td>Baja: se crea en minutos desde el navegador</td><td>Media: requiere configurar proyecto, región y permisos</td></tr>
+<tr><td>Alcance</td><td>Desarrollo local: construir, probar y evaluar</td><td>Desarrollo local, funciones empresariales y despliegue</td></tr>
+<tr><td>Uso en el libro</td><td>Módulos 1 a 5</td><td>Módulos 6 a 9</td></tr>
+<tr><td>Quién la usa</td><td>Personas que aprenden y prototipan</td><td>Empresas y agentes en producción</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> La clave de API permite los comandos de desarrollo local; el despliegue en Google Cloud requiere la opción B (Google, s. f.-a).</p>
+<h3 id="s1-3-3">1.3.3 Paso a paso: crear tu clave en Google AI Studio</h3>
+<ol><li>Abre <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a> e inicia sesión con la <strong>cuenta de Google del taller</strong>. Si es tu primera vez, acepta los términos del servicio.</li>
+<li>Entra a la página de claves de API, en <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> o en la opción <strong>Get API key</strong> del menú. A las cuentas nuevas Google les crea por defecto un proyecto y una clave (Google, s. f.-b).</li>
+<li>Recomendamos crear una clave propia para el taller: presiona <strong>Create API key</strong>, dale un nombre descriptivo, por ejemplo <code>taller-agentes</code>, y asóciala a un proyecto nuevo o al proyecto existente.</li>
+<li>Copia la clave y guárdala en un gestor de contraseñas o en un lugar privado. No la pegues en documentos compartidos ni en mensajes.</li>
+<li>Revisa en la página <strong>Projects</strong> la columna del nivel de facturación (<em>Billing Tier</em>). Para el taller basta con que diga <strong>Free</strong>.</li>
+</ol>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: las pantallas cambian</p>
+<p>Los nombres de los botones de AI Studio se modifican con frecuencia. Si no encuentras una opción, busca la función: «crear clave de API». El sitio del libro mantendrá capturas actualizadas de este procedimiento.</p>
+</aside>
+<h3 id="s1-3-4">1.3.4 Gratis no significa sin condiciones</h3>
+<p>Las cuentas nuevas parten en el nivel gratuito, que da acceso a ciertos modelos dentro de límites de uso por minuto y por día (Google, s. f.-b). Para aprender y prototipar es suficiente. Antes de usarlo, conviene conocer sus condiciones y las del nivel de pago.</p>
+<p class="fig-label">Tabla 1.10</p>
+<p><em>Nivel gratuito y nivel de pago de la API de Gemini</em></p>
+<div class="tbl"><table><tr><th>Aspecto</th><th>Nivel gratuito</th><th>Nivel de pago</th></tr>
+<tr><td>Costo</td><td>Sin costo y sin tarjeta</td><td>Pago por uso. Al activarlo se vincula una cuenta de facturación y, en la mayoría de los casos, se compran créditos por adelantado (mínimo US$ 5)</td></tr>
+<tr><td>Modelos</td><td>Ciertos modelos, con límites de uso</td><td>Más modelos y límites más altos</td></tr>
+<tr><td>Uso de tus datos</td><td>Las solicitudes y respuestas pueden usarse para mejorar los productos de Google</td><td>Las solicitudes y respuestas no se usan para mejorar los productos de Google</td></tr>
+<tr><td>Control de gasto</td><td>No aplica</td><td>Topes de gasto por cuenta y por proyecto; con prepago, el servicio se detiene cuando el saldo llega a cero</td></tr>
+<tr><td>Recomendado para</td><td>Talleres, aprendizaje y datos ficticios</td><td>Datos reales de una empresa o de clientes</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaborado a partir de la página de facturación de la API de Gemini, actualizada el 28 de septiembre de 2026 (Google, s. f.-b). Desde marzo de 2026, el crédito de bienvenida de Google Cloud no puede usarse para pagar la API de Gemini.</p>
+<p>De la tabla se desprende la regla práctica más importante de esta sección: <strong>en el nivel gratuito, trabaja solo con datos ficticios</strong>. Los ejemplos del libro están diseñados para eso. Cuando quieras usar información real de tu empresa o de tus clientes, activa el nivel de pago en un proyecto separado, define un tope de gasto y revisa antes las políticas de tu organización. El nivel gratuito y el de pago están disponibles en Chile, en América Latina y en España, entre muchas otras regiones (Google, s. f.-b).</p>
+<h3 id="s1-3-5">1.3.5 Guardar la clave en tu proyecto</h3>
+<p>Los proyectos que crea Agents CLI incluyen un archivo llamado <code>.env</code>, donde se guardan las variables de entorno del agente. El punto inicial indica que es un archivo oculto; las herramientas lo cargan automáticamente al ejecutar los comandos de desarrollo (Google, s. f.-a). Para usar AI Studio, la documentación indica dejar como comentario las líneas que comienzan con <code>GOOGLE_</code> y activar la línea de la clave:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code># Opción A: clave de Google AI Studio
+GEMINI_API_KEY="pega-aquí-tu-clave"</code></pre>
+<p>La variable <code>GOOGLE_API_KEY</code> también es aceptada. Una línea que comienza con <code>#</code> es un comentario: el programa la ignora.</p>
+<h4>Cómo editar el archivo sin exponer la clave</h4>
+<p>Abre el archivo <code>.env</code> tú mismo, desde el explorador de archivos de Antigravity o desde la terminal con el editor <code>nano</code>:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>nano .env</code></pre>
+<p>Pega la clave, guarda con Control + O, confirma con Enter y sal con Control + X. La clave no debe pasar por el chat del agente de programación: lo que escribes en el chat queda en el historial de la conversación y se envía al proveedor del agente. Si sigues la ruta A, pide al agente que prepare el archivo sin la clave:</p>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 002</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Prepara mi proyecto para usar una clave de Google AI Studio.
+1. En el archivo .env, deja como comentario las líneas GOOGLE_* y agrega la línea GEMINI_API_KEY="" vacía.
+2. Asegúrate de que .env esté incluido en .gitignore, para que nunca se suba a un repositorio.
+3. No me pidas la clave ni intentes leerla. Yo la pegaré directamente en el archivo.
+Al terminar, explícame en tres frases qué hiciste y cómo puedo comprobarlo.</code></pre>
+</div>
+<h4>El archivo que impide publicar la clave por error</h4>
+<p>El archivo <code>.gitignore</code> indica a Git qué archivos no debe guardar en el historial ni subir a GitHub. Comprueba que incluye <code>.env</code>:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>grep -n "\.env" .gitignore</code></pre>
+<p>Si el comando no muestra ninguna línea, agrega <code>.env</code> al final del archivo. Este paso es crítico: una clave publicada en un repositorio público puede ser encontrada y usada por terceros en pocos minutos.</p>
+<h4>Una alternativa temporal</h4>
+<p>Para una prueba rápida, puedes definir la clave solo en la ventana actual de la terminal. Desaparece al cerrarla:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>export GEMINI_API_KEY="pega-aquí-tu-clave"</code></pre>
+<h3 id="s1-3-6">1.3.6 Verificar que la clave funciona</h3>
+<p>Agents CLI ofrece un comando que informa qué método de autenticación está activo (Google, s. f.-a). Ejecútalo dentro de la carpeta del proyecto:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>agents-cli login --status</code></pre>
+<p>También puedes consultar directamente a la API de Gemini la lista de modelos disponibles para tu clave. Esta consulta no genera texto con el modelo; solo confirma que la clave es válida. Si definiste la clave con <code>export</code>, ejecuta:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>curl -s -H "x-goog-api-key: $GEMINI_API_KEY" https://generativelanguage.googleapis.com/v1beta/models | head -20</code></pre>
+<p class="fig-label">Tabla 1.11</p>
+<p><em>Cómo interpretar la respuesta</em></p>
+<div class="tbl"><table><tr><th>Respuesta</th><th>Significado</th><th>Qué hacer</th></tr>
+<tr><td>Una lista de modelos con nombres que empiezan por <code>models/gemini</code></td><td>La clave funciona</td><td>Continúa con el módulo 2</td></tr>
+<tr><td>Mensaje <code>API key not valid</code></td><td>La clave está mal copiada o fue eliminada</td><td>Copia la clave otra vez desde AI Studio, sin espacios ni comillas extra</td></tr>
+<tr><td>Error 429 o <code>RESOURCE_EXHAUSTED</code></td><td>Se alcanzó el límite de uso del proyecto</td><td>Espera unos minutos; crear otra clave en el mismo proyecto no aumenta el límite</td></tr>
+<tr><td>Error 402</td><td>El saldo prepagado llegó a cero (solo nivel de pago)</td><td>Revisa la página de facturación de AI Studio</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Códigos de error según la documentación de la API de Gemini (Google, s. f.-b).</p>
+<h3 id="s1-3-7">1.3.7 Reglas para cuidar tu clave</h3>
+<ol><li><strong>Nunca la escribas en un chat</strong>, ni con el agente de programación ni con otra persona. Tampoco en correos, mensajería o documentos compartidos.</li>
+<li><strong>Nunca la muestres en una captura de pantalla</strong> ni la proyectes en una sesión de taller. Si necesitas demostrar que la tienes, muestra solo los últimos cuatro caracteres.</li>
+<li><strong>Una clave por proyecto.</strong> Si un proyecto se compromete, revocas una sola clave y los demás siguen funcionando.</li>
+<li><strong>Revoca de inmediato una clave expuesta.</strong> En la página de claves de AI Studio, elimínala y crea una nueva. Después actualiza el archivo <code>.env</code>.</li>
+<li><strong>Revisa tu consumo</strong> en la sección de uso de AI Studio de vez en cuando, sobre todo si activas el nivel de pago.</li>
+<li><strong>Define un tope de gasto</strong> por proyecto si activas el nivel de pago.</li>
+<li><strong>En una empresa, la clave pertenece a la organización</strong>, no a una persona. Créala en un proyecto corporativo cuya facturación y acceso administre la empresa.</li>
+</ol>
+<aside class="box facil"><p class="box-h">Para el facilitador: por qué no prestamos una clave del taller</p>
+<p>Entregar una clave común parece ahorrar tiempo, pero produce tres problemas. Todos los participantes comparten el mismo límite de uso, así que el agente de uno deja de responder cuando otro hace muchas pruebas. Nadie sabe quién consumió qué. Y cualquier participante puede llevarse la clave y seguir usándola después del taller a costa de quien la entregó. Reserva los primeros veinte minutos de la sesión para que cada persona cree la suya: es una de las lecciones más útiles del módulo.</p>
+</aside>
+<aside class="box open"><p class="box-h">Ruta abierta</p>
+<p>En la etapa 2 del libro ejecutaremos modelos abiertos, como Gemma 4, en tu propio computador con Ollama. Un modelo local no necesita clave de API, porque no sale de tu equipo; a cambio, exige más memoria y capacidad de cálculo.</p>
+</aside>
+<aside class="box key"><p class="box-h">Ideas clave</p>
+<ul><li>Construir un agente implica tres niveles de autenticación: el agente de programación (tu cuenta de Google), el modelo (tu clave de API) y el despliegue (Google Cloud, en el módulo 6).</li>
+<li>Cada lector usa su propia clave. El libro y los talleres no entregan claves compartidas.</li>
+<li>El nivel gratuito sirve para aprender, pero tus datos pueden usarse para mejorar los productos de Google: trabaja solo con datos ficticios.</li>
+<li>La clave vive en el archivo .env, que nunca se sube a un repositorio y que editas tú, no el agente.</li>
+<li>Una clave expuesta se revoca y se reemplaza de inmediato.</li>
+</ul>
+</aside>
+<aside class="box taller"><p class="box-h">Para el taller</p>
+<p><strong>Para conversar.</strong> ¿Qué llaves, firmas o poderes manejaste en tu vida laboral? ¿Qué reglas seguías para entregarlos, cuidarlos o revocarlos? ¿Cuáles de esas reglas sirven para una clave de API?</p>
+<p><strong>Para hacer.</strong> Crea tu clave en AI Studio, guárdala en el archivo .env de tu carpeta de taller y verifícala con el comando de la sección 1.3.6. Muestra al facilitador solo los últimos cuatro caracteres.</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>Google. (s. f.-a). <em>Authentication</em> [Documentación de Agents CLI]. Recuperado el 24 de octubre de 2026, de https://google.github.io/agents-cli/guide/authentication/</p>
+<p>Google. (s. f.-b). <em>Billing</em> [Documentación de la API de Gemini]. Recuperado el 24 de octubre de 2026, de https://ai.google.dev/gemini-api/docs/billing</p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la sección 1.3? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— 1.3 —</p>
+</article>
+<article class="sheet pending" id="sec-1-4">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.4</span></div>
+  <header class="sec-head">
+    <p class="sec-no">1.4</p>
+    <h2 class="sec-title">Qué son las skills y por qué hacen experto al agente de programación</h2>
+    <span class="sec-state">En construcción</span>
+  </header>
+  <p class="plan">Qué contiene una skill, cómo la carga el agente y cómo revisar las siete skills de Agents CLI que instalaste en la sección 1.2.</p>
+  <div class="ghost" aria-hidden="true"><span></span><span></span><span></span></div>
+  <p class="suggest">¿Qué te gustaría encontrar aquí? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+</article>
+<article class="sheet pending" id="sec-1-5">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.5</span></div>
+  <header class="sec-head">
+    <p class="sec-no">1.5</p>
+    <h2 class="sec-title">Primera victoria: conversar con un agente en tu navegador</h2>
+    <span class="sec-state">En construcción</span>
+  </header>
+  <p class="plan">El cierre práctico del módulo: levantar un agente de ejemplo en tu computador y conversar con él antes de pasar a la especificación.</p>
+  <div class="ghost" aria-hidden="true"><span></span><span></span><span></span></div>
+  <p class="suggest">¿Qué te gustaría encontrar aquí? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+</article>
+<article class="sheet pending" id="sec-1-6">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.6</span></div>
+  <header class="sec-head">
+    <p class="sec-no">1.6</p>
+    <h2 class="sec-title">Voz Silver: aprender una herramienta nueva después de los 50</h2>
+    <span class="sec-state">En construcción</span>
+  </header>
+  <p class="plan">Entrevista a una persona de más de 50 años sobre cómo aprendió una herramienta nueva en su trabajo, traducida a consejos para este módulo.</p>
+  <div class="ghost" aria-hidden="true"><span></span><span></span><span></span></div>
+  <p class="suggest">¿Qué te gustaría encontrar aquí? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+</article>
+
+</main>
+
+<section class="sheet colophon">
+  <div class="run"><span>La experiencia es el código</span><span>Colofón</span></div>
+  <p class="fleuron" aria-hidden="true">⁂</p>
+  <h2 class="page-h">Este libro se escribe contigo</h2>
+  <p>Cada sección se publica primero aquí, en versión de trabajo. Si algo no se entiende, si un comando falló en tu computador o si tu oficio tiene un caso que debería estar en el libro, escríbeme.</p>
+  <div class="mail"><code>dolivaresm@fen.uchile.cl</code><button class="copy" type="button" data-copy="dolivaresm@fen.uchile.cl">Copiar correo</button></div>
+  <p><a class="btn solid" href="https://laexperienciaeselcodigo.com/#preventa">Reservar el libro impreso</a></p>
+  <p class="contents-h" style="margin-top:40px">Registro de cambios</p>
+  <ul class="changes"><li><span>25 oct 2026</span>Primera versión pública del capítulo: secciones 1.1, 1.2 y 1.3.</li><li><span>24 oct 2026</span>Se escriben 1.2 Instalación guiada y 1.3 Autenticación.</li><li><span>15 oct 2026</span>Se escribe 1.1 El stack tecnológico.</li></ul>
+  <p class="small">© 2026 Daniel Olivares. Todos los derechos reservados. Puedes citar fragmentos breves indicando la fuente. Compuesto en Literata, Playfair Display e IBM Plex Mono.</p>
+</section>
+
+<dialog class="drawer" id="drawer">
+  <div class="drawer-in">
+    <div class="drawer-h"><strong>Contenido</strong><button class="tool" type="button" id="close-toc">Cerrar</button></div>
+    <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
+<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+</ol>
+    <p><a class="tool" href="#contenido" id="all-toc">Ver el libro completo</a></p>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+  // Tamaño de letra
+  var sizes=[16,17,18,19,20,22,24], si=sizes.indexOf(+(store('lec-fs')||19)); if(si<0) si=3;
+  function setSize(){root.style.setProperty('--fs',sizes[si]+'px');store('lec-fs',sizes[si])}
+  setSize();
+  document.getElementById('smaller').onclick=function(){if(si>0){si--;setSize()}};
+  document.getElementById('bigger').onclick=function(){if(si<sizes.length-1){si++;setSize()}};
+
+  // Modo de lectura: papel o noche
+  var modeBtn=document.getElementById('mode');
+  function isDark(){return root.classList.contains('noche')||(!root.classList.contains('papel')&&window.matchMedia('(prefers-color-scheme: dark)').matches)}
+  function paintMode(){modeBtn.textContent=isDark()?'Papel':'Noche'}
+  var saved=store('lec-modo'); if(saved==='noche'||saved==='papel') root.classList.add(saved);
+  paintMode();
+  modeBtn.onclick=function(){var dark=isDark();root.classList.remove('noche','papel');root.classList.add(dark?'papel':'noche');store('lec-modo',dark?'papel':'noche');paintMode()};
+
+  // Tapas
+  var book=document.getElementById('book'), dots=[].slice.call(document.querySelectorAll('.cover-cap button')), alt=false, timer;
+  function showCover(b){alt=b;book.classList.toggle('alt',b);dots.forEach(function(d,k){d.setAttribute('aria-pressed',String(k===(b?1:0)))})}
+  function auto(){clearInterval(timer);if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(function(){showCover(!alt)},6000)}
+  book.addEventListener('click',function(){showCover(!alt);auto()});
+  book.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();showCover(!alt);auto()}});
+  dots.forEach(function(d){d.addEventListener('click',function(){showCover(d.dataset.i==='1');auto()})});
+  auto();
+
+  // Copiar: portapapeles, con respaldo para navegadores que no lo permiten
+  var toast=document.getElementById('toast'), tt;
+  function say(t){toast.textContent=t;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},1800)}
+  function selectNode(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+  function fallback(text,node){
+    var ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    var ok=false;try{ok=document.execCommand('copy')}catch(e){}
+    document.body.removeChild(ta);
+    if(!ok&&node){selectNode(node);say('Texto seleccionado: usa Copiar de tu teléfono o Ctrl+C')}
+    return ok;
+  }
+  function copy(text,node,btn){
+    var done=function(){say('Copiado');if(btn){btn.classList.add('ok');var o=btn.textContent;btn.textContent='Copiado';setTimeout(function(){btn.classList.remove('ok');btn.textContent=o},1600)}};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done,function(){if(fallback(text,node))done()})}
+    else if(fallback(text,node)) done();
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.copy');
+    if(b){var node=b.dataset.copy?null:(b.closest('.box')||b.closest('pre')).querySelector('pre code, code');copy(b.dataset.copy||node.innerText.replace(/\n$/,''),node,b);return}
+    var c=e.target.closest('p code, li code, td code');
+    if(c){copy(c.innerText,c,null)}
+  });
+
+  // Contenido (panel) e índice lateral
+  var drawer=document.getElementById('drawer');
+  document.getElementById('open-toc').onclick=function(){if(drawer.showModal)drawer.showModal();else location.hash='contenido'};
+  document.getElementById('close-toc').onclick=function(){drawer.close()};
+  drawer.addEventListener('click',function(e){if(e.target===drawer||e.target.closest('a'))drawer.close()});
+
+  var side=document.getElementById('side'), links=[].slice.call(side.querySelectorAll('a')), first=document.getElementById('sec-1-1'), bar=document.getElementById('progress'), main=document.querySelector('main');
+  function onScroll(){
+    var y=window.scrollY, top=main.offsetTop, h=main.offsetHeight-window.innerHeight;
+    bar.style.width=Math.max(0,Math.min(100,(y-top)/h*100))+'%';
+    side.classList.toggle('show',y>first.offsetTop-200&&y<top+main.offsetHeight-window.innerHeight/2);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)})})},{rootMargin:'-35% 0px -60% 0px'});
+    document.querySelectorAll('main .sheet').forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+<!--
+  Medición de Agentario → libro, para pegar en laexperienciaeselcodigo.com
+  justo antes de </body>. Usa la misma cuenta de GoatCounter que Agentario
+  (agentario.goatcounter.com), así todo el recorrido queda en un solo panel.
+
+  Qué registra (todo aparece en el panel con el prefijo "libro/"):
+  - libro/visita/<origen>/<caso>     llegada al sitio del libro desde Agentario
+  - libro/ve-preventa/<origen>/<caso> la persona llegó a ver la sección #preventa
+  - libro/clic-pagar/<nivel>/<origen>/<caso> clic en un botón o enlace de pago
+  - libro/compra/<origen>/<caso>     llegada a una página de gracias (ver nota)
+
+  <origen> y <caso> salen de las marcas utm_medium y utm_content que pone
+  Agentario en cada enlace. Si la visita no viene de Agentario, se anota "directo".
+
+  Nota: para medir compras reales, configura en Mercado Pago la URL de retorno
+  de pago aprobado hacia una página de tu sitio cuya dirección contenga "gracias"
+  (por ejemplo https://laexperienciaeselcodigo.com/gracias).
+-->
+<script>
+(function () {
+  var GC = 'https://agentario.goatcounter.com/count';
+  var KEY = 'agentario-origen';
+  var p = new URLSearchParams(location.search);
+  var o = null;
+  try {
+    if (p.get('utm_source') === 'agentario') {
+      o = { medio: p.get('utm_medium') || 'otro', caso: p.get('utm_content') || 'sin-caso' };
+      sessionStorage.setItem(KEY, JSON.stringify(o));
+    } else {
+      o = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    }
+  } catch (e) {}
+  var etiqueta = o ? o.medio + '/' + o.caso : 'directo';
+  var cola = [];
+  function contar(path, title, evento) {
+    var d = { path: path, title: title, event: !!evento };
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(d); else cola.push(d);
+  }
+  var s = document.createElement('script');
+  s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.dataset.goatcounter = GC;
+  s.dataset.goatcounterSettings = '{"no_onload":true}';
+  s.onload = function () { while (cola.length) window.goatcounter.count(cola.shift()); };
+  document.head.appendChild(s);
+
+  // Visita al sitio del libro (como página) y, si viene de Agentario, también como evento
+  contar('/sitio-libro' + location.pathname, 'Sitio del libro: ' + document.title);
+  if (o) contar('libro/visita/' + etiqueta, 'Llegó al libro desde Agentario · ' + etiqueta, true);
+
+  // Compra: página de gracias tras el pago
+  if (/gracias/i.test(location.pathname + location.hash)) contar('libro/compra/' + etiqueta, 'Compra del libro · ' + etiqueta, true);
+
+  // Vio la sección de preventa
+  function observarPreventa() {
+    var sec = document.getElementById('preventa');
+    if (!sec || !('IntersectionObserver' in window)) return;
+    var visto = false;
+    new IntersectionObserver(function (es, obs) {
+      if (!visto && es.some(function (x) { return x.isIntersecting; })) {
+        visto = true; obs.disconnect();
+        contar('libro/ve-preventa/' + etiqueta, 'Vio la preventa · ' + etiqueta, true);
+      }
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(sec);
+  }
+
+  // Clic en pagar: enlaces o botones dentro de #preventa, o cualquier enlace a Mercado Pago
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('a,button'); if (!t) return;
+    var href = t.getAttribute('href') || '';
+    var enPreventa = !!t.closest('#preventa');
+    if (!enPreventa && !/mercadopago|mpago\.la|checkout|pago/i.test(href)) return;
+    var nivel = (t.closest('[data-nivel]') && t.closest('[data-nivel]').getAttribute('data-nivel')) ||
+      (t.textContent || 'boton').trim().toLowerCase().replace(/[^a-z0-9áéíóúñ ]/g, '').replace(/\s+/g, '-').slice(0, 30);
+    contar('libro/clic-pagar/' + nivel + '/' + etiqueta, 'Clic en pagar: ' + nivel + ' · ' + etiqueta, true);
+  }, true);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observarPreventa); else observarPreventa();
+})();
+</script>
+
+</body>
+</html>

@@ -479,7 +479,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
       <div class="band">
         <div>
           <h2>Lee gratis el capítulo 1 del libro</h2>
-          <p><em>Tu experiencia es el 90 %</em>: por qué lo que sabes de tu trabajo es lo más valioso para crear un agente. Te lo enviamos junto con los 10 prompts más copiados.</p>
+          <p><em>Preparar el entorno</em>: instala tu taller de agentes paso a paso, con tu propia clave y los comandos listos para copiar. Te lo enviamos junto con los 10 prompts más copiados.</p>
         </div>
         <button class="btn ink-b" type="button" data-news data-origen="franja">Quiero el capítulo 1</button>
       </div>
@@ -564,15 +564,19 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
 
     <section class="block" aria-labelledby="lbChT">
       <h2 id="lbChT">Qué aprendes</h2>
-      <p class="sub">Siete capítulos. Los digitales se liberan a medida que se escriben.</p>
-      <ol class="lb-chapters">
-        <li><strong>Tu experiencia es el 90 %</strong><span>Por qué lo que sabes de tu trabajo es la parte más difícil de un agente.</span></li>
-        <li><strong>Saber pedir: escribir la especificación</strong><span>Cómo describir tu trabajo para que la IA lo entienda.</span></li>
-        <li><strong>Un agente que construye agentes</strong><span>Deja que la IA escriba el código a partir de tus instrucciones.</span></li>
-        <li><strong>Probar antes de confiar</strong><span>Cómo poner a prueba al agente antes de dejarlo trabajar solo.</span></li>
-        <li><strong>Cómo saber si el agente lo hace bien</strong><span>Criterios para evaluar sus resultados como lo haría un experto.</span></li>
-        <li><strong>Del escritorio al mundo real</strong><span>Llevar el agente al trabajo diario, con sus datos y sus personas.</span></li>
+      <p class="sub">Once módulos, del 0 al 10. Los digitales se liberan a medida que se escriben.</p>
+      <ol class="lb-chapters" start="0" style="counter-reset:ch -1">
+        <li><strong>Mentalidad: construir agentes con agentes</strong><span>Por qué lo que sabes de tu trabajo es la parte más difícil de un agente.</span></li>
+        <li><strong>Preparar el entorno</strong><span>Instala tu taller paso a paso, con tu propia clave. <a href="https://laexperienciaeselcodigo.com/capitulo-1/?utm_source=agentario&amp;utm_medium=pagina-libro" target="_blank" rel="noopener" data-libro="indice-capitulo1">Lee el avance</a></span></li>
+        <li><strong>Escribir la especificación</strong><span>Cómo describir tu trabajo para que la IA lo entienda.</span></li>
+        <li><strong>Construir el agente con un solo encargo</strong><span>Deja que la IA escriba el código a partir de tus instrucciones.</span></li>
+        <li><strong>Probar en local</strong><span>Pon a prueba al agente en tu computador antes de confiar en él.</span></li>
+        <li><strong>Evaluar agentes no deterministas</strong><span>Criterios para evaluar sus resultados como lo haría un experto.</span></li>
+        <li><strong>Desplegar en producción</strong><span>Llevar el agente al trabajo diario, con sus datos y sus personas.</span></li>
+        <li><strong>Operar y mejorar</strong><span>Observar cómo trabaja y mejorarlo con cada caso.</span></li>
         <li><strong>De un agente a un equipo de agentes</strong><span>Coordinar varios agentes para procesos completos.</span></li>
+        <li><strong>Agentes de voz (opcional)</strong><span>Agentes que atienden y hacen llamadas.</span></li>
+        <li><strong>Proyecto final y entregables</strong><span>Tu propio agente, terminado y publicado.</span></li>
       </ol>
     </section>
 
@@ -772,7 +776,7 @@ dialog.news[open] .news-card{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
     <button type="button" class="news-x" id="newsClose" aria-label="Cerrar">×</button>
     <div id="newsFormWrap">
       <h2 id="newsT">Recibe gratis el capítulo 1</h2>
-      <p class="lead"><strong>Tu experiencia es el 90 %</strong>, el primer capítulo de <em>La experiencia es el código</em>, más los 10 prompts más copiados de Agentario.</p>
+      <p class="lead"><strong>Preparar el entorno</strong>, el avance del capítulo 1 de <em>La experiencia es el código</em>, más los 10 prompts más copiados de Agentario.</p>
       <form class="news-form" id="newsForm" novalidate>
         <label for="newsEmail">Tu correo</label>
         <input id="newsEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="nombre@empresa.com" required>
@@ -812,7 +816,7 @@ const CONTACTO = "dolivaresm@fen.uchile.cl";
 const MP_LINK = "https://link.mercadopago.cl/danielolivares";
 const LIBRO_URL = "https://laexperienciaeselcodigo.com/#preventa";
 /* Enlace de descarga del capítulo 1 (PDF o página). Si está vacío, se avisa que llegará por correo. */
-const CAPITULO1_URL = "";
+const CAPITULO1_URL = "https://laexperienciaeselcodigo.com/capitulo-1/?utm_source=agentario&utm_medium=capitulo1";
 /* Los 10 prompts que se regalan en el pop-up: actualiza los ids según los más copiados en GoatCounter */
 const TOP_PROMPTS = ["whatsapp-agenda-registro","newsletters-a-podcast","resumen-antes-reunion-ventas","conciliar-mercado-pago","cuenta-clinica-negociar","comparar-cotizaciones-pdf","minuta-reunion","clasificar-facturas-correo","apelar-seguro-viaje","prospeccion-b2b"];
 /* Precio del lector fundador según la fecha (tramos publicados en laexperienciaeselcodigo.com) */
@@ -1617,8 +1621,8 @@ function tarjetaLibro(li, id){
 }
 function llenarRegalo(){
   $('#newsCap').innerHTML = CAPITULO1_URL
-    ? `<a href="${esc(CAPITULO1_URL)}" target="_blank" rel="noopener" data-libro="descarga-capitulo1">Descarga aquí el capítulo 1: <strong>Tu experiencia es el 90 %</strong></a>`
-    : 'Te enviaremos el capítulo 1, <strong>Tu experiencia es el 90 %</strong>, a tu correo apenas se libere. Mientras, aquí tienes los prompts.';
+    ? `<a href="${esc(CAPITULO1_URL)}" target="_blank" rel="noopener" data-libro="descarga-capitulo1">Lee aquí el avance del capítulo 1: <strong>Preparar el entorno</strong></a>`
+    : 'Te enviaremos el capítulo 1, <strong>Preparar el entorno</strong>, a tu correo apenas se libere. Mientras, aquí tienes los prompts.';
   $('#newsPrompts').innerHTML = TOP_PROMPTS.map(id => CASOS.find(c=>c.id===id)).filter(Boolean)
     .map(c => `<li><span>${esc(c.t)}</span><button type="button" data-copy="${esc(c.id)}">Copiar</button></li>`).join('');
 }
@@ -1712,7 +1716,7 @@ $('#newsForm').addEventListener('submit', async e => {
       caso_copiado: ultimoCaso ? tituloCaso(ultimoCaso) : '(ninguno)', kit: kitTexto || '(no armó kit)', fecha: datos.fecha, pagina: datos.origen,
       _autoresponse: '¡Gracias por sumarte a La experiencia es el código! ' +
         (kitTexto ? 'Tu kit de agentes: ' + kitTexto + ' ' : '') +
-        (CAPITULO1_URL ? 'Descarga el capítulo 1 aquí: ' + CAPITULO1_URL + ' ' : 'Te enviaremos el capítulo 1 apenas se libere. ') +
+        (CAPITULO1_URL ? 'Lee el avance del capítulo 1 aquí: ' + CAPITULO1_URL + ' ' : 'Te enviaremos el capítulo 1 apenas se libere. ') +
         'Si quieres el libro completo, la preventa está abierta: ' + preventa
     }); } catch(err) { ok = false; }
   }
