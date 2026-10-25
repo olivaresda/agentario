@@ -49,9 +49,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .bar-in{max-width:1180px;margin:0 auto;height:52px;display:flex;align-items:center;gap:10px}
 .bar .brand{font:600 16px/1 var(--display);text-decoration:none;white-space:nowrap}
 .bar .brand em{color:var(--gold);font-weight:500}
-.bar .where{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .where{min-width:0;flex:0 1 auto;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar .sp{flex:1}
-.tool{font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:999px;height:32px;min-width:32px;padding:0 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap}
+.tool{flex-shrink:0;font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:999px;height:32px;min-width:32px;padding:0 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap}
 .tool:hover{border-color:var(--gold)}
 .tool.cta{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
 .progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--gold-bright)}
@@ -99,11 +99,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* Índice con líneas de puntos */
 .contents{list-style:none;margin:0 0 34px;padding:0}
-.contents li a,.contents li>.line{display:flex;align-items:baseline;gap:10px;padding:9px 0;text-decoration:none}
-.contents .n{font:500 13px var(--mono);color:var(--gold);min-width:5.2em}
-.contents .t{flex:0 1 auto}
-.contents .lead-dots{flex:1;border-bottom:1px dotted var(--ink-soft);opacity:.55;transform:translateY(-5px);min-width:20px}
-.contents .s{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.contents li>a,.contents li>.line{display:grid;grid-template-columns:6.8rem minmax(0,1fr) auto;column-gap:14px;align-items:end;padding:10px 0;text-decoration:none}
+.contents .n{font:500 12px var(--mono);color:var(--gold);white-space:nowrap;align-self:start;padding-top:.55em}
+.contents .s{padding-bottom:.35em}
+.contents .t{display:flex;align-items:flex-end;gap:8px;min-width:0}
+.contents .tt{flex:0 1 auto;min-width:0}
+.contents .lead-dots{flex:1 1 24px;min-width:24px;border-bottom:1px dotted var(--ink-soft);opacity:.55;margin-bottom:.5em}
+.contents .s{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;justify-self:end}
+@media (max-width:600px){
+  .contents li>a,.contents li>.line{align-items:baseline;grid-template-columns:minmax(0,1fr) auto;row-gap:3px;padding:12px 0;border-bottom:1px dotted var(--rule)}
+  .contents .n{grid-column:1;grid-row:1}.contents .s{grid-column:2;grid-row:1}.contents .t{grid-column:1/-1;grid-row:2}
+  .contents .lead-dots{display:none}.contents .n{padding-top:0}.contents .s{padding-bottom:0}
+}
 .contents .ok{color:var(--open)}
 .contents .wip{color:var(--warn)}
 .contents li.pend .t{color:var(--ink-soft)}
@@ -275,28 +282,28 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
   <h2 class="page-h">Contenido</h2>
   <p class="lede">Lo que ya puedes leer y lo que todavía estamos escribiendo. Si quieres proponer algo para una parte en construcción, escribe a <code>dolivaresm@fen.uchile.cl</code>.</p>
   <p class="contents-h">Capítulo 1 · Preparar el entorno</p>
-  <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
-<li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
-<li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
-<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+  <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t"><span class="tt">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t"><span class="tt">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t"><span class="tt">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t"><span class="tt">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t"><span class="tt">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t"><span class="tt">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
 </ol>
   <p class="contents-h">El libro completo</p>
-  <ol class="contents"><li class="pend"><div class="line"><span class="n">Preliminares</span><span class="t">Prólogo, cómo usar este libro y mapa del lector</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Preliminares">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 0</span><span class="t">Mentalidad: construir agentes con agentes</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%200">En construcción</a></div></li>
-<li class="cur"><a href="#sec-1-1"><span class="n">Módulo 1</span><span class="t">Preparar el entorno</span><span class="lead-dots"></span><span class="s ok">En curso</span></a></li>
-<li class="pend"><div class="line"><span class="n">Módulo 2</span><span class="t">Escribir la especificación</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%202">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 3</span><span class="t">Construir el agente con un solo encargo</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%203">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 4</span><span class="t">Probar en local</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%204">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 5</span><span class="t">Evaluar agentes no deterministas</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%205">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 6</span><span class="t">Desplegar en producción</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%206">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 7</span><span class="t">Operar y mejorar</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%207">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 8</span><span class="t">De un agente a un equipo de agentes</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%208">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 9</span><span class="t">Agentes de voz (opcional)</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%209">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Módulo 10</span><span class="t">Proyecto final y entregables</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%2010">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Comunidad</span><span class="t">Metodologías silver, casos por rubro y aprender en comunidad</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Comunidad">En construcción</a></div></li>
-<li class="pend"><div class="line"><span class="n">Epílogo</span><span class="t">La experiencia es el código</span><span class="lead-dots"></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Ep%C3%ADlogo">En construcción</a></div></li>
+  <ol class="contents"><li class="pend"><div class="line"><span class="n">Preliminares</span><span class="t"><span class="tt">Prólogo, cómo usar este libro y mapa del lector</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Preliminares">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 0</span><span class="t"><span class="tt">Mentalidad: construir agentes con agentes</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%200">En construcción</a></div></li>
+<li class="cur"><a href="#sec-1-1"><span class="n">Módulo 1</span><span class="t"><span class="tt">Preparar el entorno</span><span class="lead-dots"></span></span><span class="s ok">En curso</span></a></li>
+<li class="pend"><div class="line"><span class="n">Módulo 2</span><span class="t"><span class="tt">Escribir la especificación</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%202">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 3</span><span class="t"><span class="tt">Construir el agente con un solo encargo</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%203">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 4</span><span class="t"><span class="tt">Probar en local</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%204">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 5</span><span class="t"><span class="tt">Evaluar agentes no deterministas</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%205">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 6</span><span class="t"><span class="tt">Desplegar en producción</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%206">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 7</span><span class="t"><span class="tt">Operar y mejorar</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%207">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 8</span><span class="t"><span class="tt">De un agente a un equipo de agentes</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%208">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 9</span><span class="t"><span class="tt">Agentes de voz (opcional)</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%209">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Módulo 10</span><span class="t"><span class="tt">Proyecto final y entregables</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%2010">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Comunidad</span><span class="t"><span class="tt">Metodologías silver, casos por rubro y aprender en comunidad</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Comunidad">En construcción</a></div></li>
+<li class="pend"><div class="line"><span class="n">Epílogo</span><span class="t"><span class="tt">La experiencia es el código</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Ep%C3%ADlogo">En construcción</a></div></li>
 </ol>
 </section>
 
@@ -901,6 +908,7 @@ Al terminar, explícame en tres frases qué hiciste y cómo puedo comprobarlo.</
   <p>Cada sección se publica primero aquí, en versión de trabajo. Si algo no se entiende, si un comando falló en tu computador o si tu oficio tiene un caso que debería estar en el libro, escríbeme.</p>
   <div class="mail"><code>dolivaresm@fen.uchile.cl</code><button class="copy" type="button" data-copy="dolivaresm@fen.uchile.cl">Copiar correo</button></div>
   <p><a class="btn solid" href="https://laexperienciaeselcodigo.com/#preventa">Reservar el libro impreso</a></p>
+  <p class="small">¿Tienes una librería? Queremos que este libro también esté en tu tienda. <a href="https://laexperienciaeselcodigo.com/#librerias">Conoce las condiciones para librerías</a>.</p>
   <p class="contents-h" style="margin-top:40px">Registro de cambios</p>
   <ul class="changes"><li><span>25 oct 2026</span>Primera versión pública del capítulo: secciones 1.1, 1.2 y 1.3.</li><li><span>24 oct 2026</span>Se escriben 1.2 Instalación guiada y 1.3 Autenticación.</li><li><span>15 oct 2026</span>Se escribe 1.1 El stack tecnológico.</li></ul>
   <p class="small">© 2026 Daniel Olivares. Todos los derechos reservados. Puedes citar fragmentos breves indicando la fuente. Compuesto en Literata, Playfair Display e IBM Plex Mono.</p>
@@ -909,12 +917,12 @@ Al terminar, explícame en tres frases qué hiciste y cómo puedo comprobarlo.</
 <dialog class="drawer" id="drawer">
   <div class="drawer-in">
     <div class="drawer-h"><strong>Contenido</strong><button class="tool" type="button" id="close-toc">Cerrar</button></div>
-    <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
-<li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
-<li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span><span class="s ok">Disponible</span></a></li>
-<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span><span class="s wip">En construcción</span></a></li>
+    <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t"><span class="tt">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t"><span class="tt">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t"><span class="tt">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t"><span class="tt">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t"><span class="tt">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
+<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t"><span class="tt">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
 </ol>
     <p><a class="tool" href="#contenido" id="all-toc">Ver el libro completo</a></p>
   </div>
