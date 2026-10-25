@@ -85,7 +85,7 @@ const salida = [];
 for (const n of NEGOCIOS) {
   const dir = join('propuestas', n.slug);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, 'index.html'), pagina(n));
+  if (!n.custom) writeFileSync(join(dir, 'index.html'), pagina(n)); // custom = página hecha a mano, no se sobrescribe
   const url = BASE + n.slug + '/';
   const wa = n.tel && esMovil(n.tel) ? `https://wa.me/${digitos(n.tel)}?text=${encodeURIComponent(mensaje(n))}` : null;
   salida.push({ id: n.id, nombre: n.nombre, url, wa, tel: n.tel });
