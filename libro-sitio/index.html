@@ -195,6 +195,10 @@
   .ficha .ficha-acciones { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; }
   .ficha .ficha-acciones .btn { padding: .65rem 1rem; }
   .ficha .msg { font-size: .95rem; margin-top: .6rem; }
+  .ficha .msg:empty { display: none; }
+  .ficha .encargo { margin-top: .8rem; font-size: .95rem; }
+  .ficha .encargo summary { cursor: pointer; color: var(--muted); }
+  .ficha .encargo pre { white-space: pre-wrap; font: 400 .95rem/1.5 "Literata", Georgia, serif; background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: .75rem; margin: .5rem 0 0; max-height: 14rem; overflow: auto; }
 
   /* Bloques */
   section.block { padding: 4.5rem 0; border-top: 1px solid var(--line); }
@@ -385,9 +389,12 @@
           <p class="firma sans" id="ficha-firma">Con esto, un agente ya sabe qué hacer. El código lo escribe la IA.</p>
           <div class="ficha-acciones sans">
             <button class="btn" type="button" id="ficha-editar">Escribir mi ficha</button>
-            <button class="btn primary" type="button" id="ficha-copiar" hidden>Copiar como encargo</button>
+            <a class="btn primary" id="ficha-claude" href="https://claude.ai/new" target="_blank" rel="noopener" hidden>Construirlo en Claude</a>
+            <a class="btn" id="ficha-chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener" hidden>En ChatGPT</a>
+            <button class="btn" type="button" id="ficha-copiar" hidden>Copiar el encargo</button>
           </div>
           <p class="msg sans" id="ficha-msg" role="status" aria-live="polite"></p>
+          <details class="encargo sans" id="ficha-encargo" hidden><summary>Ver el encargo que se envía</summary><pre id="ficha-encargo-txt"></pre></details>
         </aside>
       </section>
     </main>
@@ -788,24 +795,52 @@
     });
     $(".ficha h2").textContent = "Tu ficha de especificación";
     $("#ficha-firma").textContent = "Escribe lo que sabes de tu oficio, con tus palabras. Eso es el 90 % del agente.";
-    btnEditar.hidden = true; btnCopiar.hidden = false;
+    btnEditar.hidden = true;
+    [btnClaude, btnChatgpt, btnCopiar, $("#ficha-encargo")].forEach(el => el.hidden = false);
+    document.querySelectorAll(".ficha textarea").forEach(t => t.addEventListener("input", () => { actualizar(); if (fichaMsg.classList.contains("err")) fichaMsg.textContent = ""; }));
+    actualizar();
     document.querySelector(".ficha textarea").focus();
     contarEvento("libro/ficha-editar", "Empezó a escribir su ficha");
   });
+
+  /* El encargo se arma mientras escribe: se ve, se abre en el asistente con el texto ya escrito o se copia */
+  const btnClaude = $("#ficha-claude"), btnChatgpt = $("#ficha-chatgpt");
+  const etiquetas = ["Lo que sé hacer mejor que nadie", "Lo que nunca se debe hacer", "Cómo sé que salió bien"];
+  const valores = () => [...document.querySelectorAll(".ficha textarea")].map(t => t.value.trim());
+  const armar = v => "Quiero construir un agente de IA que me ayude en mi trabajo. Esta es mi ficha de especificación:\n\n" +
+    v.map((x, k) => `- ${etiquetas[k]}: ${x || "(por definir)"}`).join("\n") +
+    "\n\nAntes de construir nada, hazme las preguntas que necesites para entender bien la tarea. Después, explícame en lenguaje simple cómo funcionaría el agente, paso a paso.";
+  function actualizar() {
+    const e = armar(valores());
+    $("#ficha-encargo-txt").textContent = e;
+    btnClaude.href = "https://claude.ai/new?q=" + encodeURIComponent(e);
+    btnChatgpt.href = "https://chatgpt.com/?q=" + encodeURIComponent(e);
+  }
+  const fichaLista = () => {
+    if (valores()[0]) return true;
+    fichaMsg.textContent = "Escribe al menos lo que sabes hacer mejor que nadie.";
+    fichaMsg.className = "msg sans err";
+    document.querySelector(".ficha textarea").focus();
+    return false;
+  };
+  [[btnClaude, "claude"], [btnChatgpt, "chatgpt"]].forEach(([a, destino]) => a.addEventListener("click", ev => {
+    if (!fichaLista()) { ev.preventDefault(); return; }
+    actualizar();
+    fichaMsg.textContent = "Se abrió una pestaña nueva con tu encargo ya escrito. Envíalo y responde las preguntas del asistente.";
+    fichaMsg.className = "msg sans ok";
+    contarEvento("libro/ficha-abrir/" + destino, "Abrió su ficha en " + destino);
+  }));
   btnCopiar.addEventListener("click", async () => {
-    const v = [...document.querySelectorAll(".ficha textarea")].map(t => t.value.trim());
-    if (!v[0]) { fichaMsg.textContent = "Escribe al menos lo que sabes hacer mejor que nadie."; fichaMsg.className = "msg sans err"; document.querySelector(".ficha textarea").focus(); return; }
-    const etiquetas = ["Lo que sé hacer mejor que nadie", "Lo que nunca se debe hacer", "Cómo sé que salió bien"];
-    const encargo = "Quiero construir un agente de IA que me ayude en mi trabajo. Esta es mi ficha de especificación:\n\n" +
-      v.map((x, k) => `- ${etiquetas[k]}: ${x || "(por definir)"}`).join("\n") +
-      "\n\nAntes de construir nada, hazme las preguntas que necesites para entender bien la tarea. Después, explícame en lenguaje simple cómo funcionaría el agente, paso a paso.";
+    if (!fichaLista()) return;
+    actualizar();
     try {
-      await navigator.clipboard.writeText(encargo);
-      fichaMsg.textContent = "Encargo copiado. Pégalo en Claude, ChatGPT o Gemini y responde sus preguntas.";
+      await navigator.clipboard.writeText(armar(valores()));
+      fichaMsg.textContent = "Encargo copiado. Pégalo en el asistente de IA que uses.";
       fichaMsg.className = "msg sans ok";
       contarEvento("libro/ficha-copiada", "Copió su ficha como encargo");
     } catch (e) {
-      fichaMsg.textContent = "No pudimos copiar automáticamente. Selecciona el texto de cada campo y cópialo a mano.";
+      $("#ficha-encargo").open = true;
+      fichaMsg.textContent = "No pudimos copiar automáticamente. Selecciona el encargo de abajo y cópialo a mano.";
       fichaMsg.className = "msg sans err";
     }
   });
