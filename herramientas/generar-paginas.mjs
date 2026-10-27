@@ -192,6 +192,7 @@ for (const c of CASOS) {
   <p class="lead">${esc(c.d)}</p>
   <p class="meta">Agente: ${agenteHTML(c.a)}<a href="${urlCat(c.c)}">${esc(cat)}</a><span>Publicado el ${fecha(c.f)}</span></p>
   ${c.r ? `<p class="res"><strong>Resultado real:</strong> ${esc(c.r)}</p>` : ''}
+  ${c.np ? `<p class="res np"><strong>Sin probar todavía:</strong> nadie de la comunidad ha probado este caso. Si lo haces, <a href="/#/aporta">cuéntanos cómo te fue</a> y lo actualizamos con tu resultado.</p>` : ''}
   <h2>El prompt</h2>
   <p class="tip">${/^claude/i.test(c.a) ? 'Cópialo o ábrelo directo en Claude' : `Cópialo en ${esc(c.a)} o ábrelo directo en Claude`}, y reemplaza lo que está entre [corchetes] con tus datos.</p>
   <div class="acciones">

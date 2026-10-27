@@ -46,6 +46,8 @@ h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800}
 .meta a.agent{color:var(--ink)}
 .res{margin:18px 0 0;border-left:3px solid var(--new);padding-left:12px;max-width:68ch}
 .res strong{color:var(--new)}
+.res.np{border-left-color:var(--sun)}
+.res.np strong{color:var(--ink)}
 .caso h2{font-size:1.5rem;margin:34px 0 6px}
 .tip{color:var(--ink-soft);margin:0 0 12px}
 .prompt{margin:0 0 14px;background:var(--sky-soft);border-left:4px solid var(--sky);border-radius:0 12px 12px 0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:inherit;font-size:.98rem;line-height:1.6}
