@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>La experiencia es el código: libro de IA agéntica para profesionales</title>
 <meta name="description" content="Aprende a crear agentes de inteligencia artificial sin programar. Un libro en español que se escribe en vivo con profesionales con trayectoria. Preventa abierta; libro impreso el 5 de abril de 2027.">
-<meta name="keywords" content="IA agéntica, agentes de IA, crear agentes de IA sin programar, inteligencia artificial para profesionales, inteligencia artificial para mayores de 50, libro de inteligencia artificial en español, casos de uso de agentes de IA, automatizar tareas con IA, taller de agentes de IA online, Claude Code, prompts en español">
+<meta name="keywords" content="IA agéntica, agentes de IA, crear agentes de IA sin programar, inteligencia artificial para profesionales, inteligencia artificial para mayores de 50, libro de inteligencia artificial en español, casos de uso de agentes de IA, automatizar tareas con IA, taller de agentes de IA online, prompts en español">
 <meta name="author" content="Daniel Olivares Martínez">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://laexperienciaeselcodigo.com/">
@@ -389,12 +389,11 @@
           <p class="firma sans" id="ficha-firma">Con esto, un agente ya sabe qué hacer. El código lo escribe la IA.</p>
           <div class="ficha-acciones sans">
             <button class="btn" type="button" id="ficha-editar">Escribir mi ficha</button>
-            <a class="btn primary" id="ficha-claude" href="https://claude.ai/new" target="_blank" rel="noopener" hidden>Construirlo en Claude</a>
-            <a class="btn" id="ficha-chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener" hidden>En ChatGPT</a>
-            <button class="btn" type="button" id="ficha-copiar" hidden>Copiar el encargo</button>
+            <button class="btn primary" type="button" id="ficha-copiar" hidden>Copiar mi encargo</button>
+            <button class="btn" type="button" id="ficha-compartir" hidden>Compartir</button>
           </div>
           <p class="msg sans" id="ficha-msg" role="status" aria-live="polite"></p>
-          <details class="encargo sans" id="ficha-encargo" hidden><summary>Ver el encargo que se envía</summary><pre id="ficha-encargo-txt"></pre></details>
+          <details class="encargo sans" id="ficha-encargo" hidden><summary>Ver mi encargo</summary><pre id="ficha-encargo-txt"></pre></details>
         </aside>
       </section>
     </main>
@@ -796,15 +795,16 @@
     $(".ficha h2").textContent = "Tu ficha de especificación";
     $("#ficha-firma").textContent = "Escribe lo que sabes de tu oficio, con tus palabras. Eso es el 90 % del agente.";
     btnEditar.hidden = true;
-    [btnClaude, btnChatgpt, btnCopiar, $("#ficha-encargo")].forEach(el => el.hidden = false);
+    [btnCopiar, $("#ficha-encargo")].forEach(el => el.hidden = false);
+    if (navigator.share) btnCompartir.hidden = false;
     document.querySelectorAll(".ficha textarea").forEach(t => t.addEventListener("input", () => { actualizar(); if (fichaMsg.classList.contains("err")) fichaMsg.textContent = ""; }));
     actualizar();
     document.querySelector(".ficha textarea").focus();
     contarEvento("libro/ficha-editar", "Empezó a escribir su ficha");
   });
 
-  /* El encargo se arma mientras escribe: se ve, se abre en el asistente con el texto ya escrito o se copia */
-  const btnClaude = $("#ficha-claude"), btnChatgpt = $("#ficha-chatgpt");
+  /* El encargo se arma mientras escribe: se ve, se copia o se comparte (sin nombrar ningún asistente) */
+  const btnCompartir = $("#ficha-compartir");
   const etiquetas = ["Lo que sé hacer mejor que nadie", "Lo que nunca se debe hacer", "Cómo sé que salió bien"];
   const valores = () => [...document.querySelectorAll(".ficha textarea")].map(t => t.value.trim());
   const armar = v => "Quiero construir un agente de IA que me ayude en mi trabajo. Esta es mi ficha de especificación:\n\n" +
@@ -813,8 +813,7 @@
   function actualizar() {
     const e = armar(valores());
     $("#ficha-encargo-txt").textContent = e;
-    btnClaude.href = "https://claude.ai/new?q=" + encodeURIComponent(e);
-    btnChatgpt.href = "https://chatgpt.com/?q=" + encodeURIComponent(e);
+    btnCopiar.textContent = "Copiar mi encargo";
   }
   const fichaLista = () => {
     if (valores()[0]) return true;
@@ -823,19 +822,21 @@
     document.querySelector(".ficha textarea").focus();
     return false;
   };
-  [[btnClaude, "claude"], [btnChatgpt, "chatgpt"]].forEach(([a, destino]) => a.addEventListener("click", ev => {
-    if (!fichaLista()) { ev.preventDefault(); return; }
-    actualizar();
-    fichaMsg.textContent = "Se abrió una pestaña nueva con tu encargo ya escrito. Envíalo y responde las preguntas del asistente.";
-    fichaMsg.className = "msg sans ok";
-    contarEvento("libro/ficha-abrir/" + destino, "Abrió su ficha en " + destino);
-  }));
+  btnCompartir.addEventListener("click", async () => {
+    if (!fichaLista()) return;
+    try {
+      await navigator.share({ title: "Mi ficha de especificación", text: armar(valores()) });
+      contarEvento("libro/ficha-compartida", "Compartió su ficha");
+    } catch (e) {}
+  });
   btnCopiar.addEventListener("click", async () => {
     if (!fichaLista()) return;
     actualizar();
     try {
       await navigator.clipboard.writeText(armar(valores()));
-      fichaMsg.textContent = "Encargo copiado. Pégalo en el asistente de IA que uses.";
+      btnCopiar.textContent = "Encargo copiado";
+      $("#ficha-encargo").open = true;
+      fichaMsg.textContent = "Ahora abre el asistente de IA que uses, pega el encargo y responde sus preguntas. Así empieza tu agente.";
       fichaMsg.className = "msg sans ok";
       contarEvento("libro/ficha-copiada", "Copió su ficha como encargo");
     } catch (e) {
