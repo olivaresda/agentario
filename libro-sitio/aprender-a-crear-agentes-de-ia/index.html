@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cómo aprender a crear agentes de IA sin saber programar: guía en 6 pasos</title>
+<meta name="description" content="Guía en español para aprender a crear agentes de inteligencia artificial sin programar: qué es un agente, cómo elegir la tarea, escribir su ficha de especificación, construirlo con ayuda de la IA y evaluarlo.">
+<meta name="author" content="Daniel Olivares Martínez">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://laexperienciaeselcodigo.com/aprender-a-crear-agentes-de-ia/">
+<meta name="theme-color" content="#E9EEF2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101B2C" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="La experiencia es el código">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Cómo aprender a crear agentes de IA sin saber programar">
+<meta property="og:description" content="Una ruta en 6 pasos para profesionales: tu experiencia es el 90 % del agente. Con ejemplo de ficha de especificación.">
+<meta property="og:url" content="https://laexperienciaeselcodigo.com/aprender-a-crear-agentes-de-ia/">
+<meta property="og:image" content="https://laexperienciaeselcodigo.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-10-27">
+<meta property="article:author" content="Daniel Olivares Martínez">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo aprender a crear agentes de IA sin saber programar">
+<meta name="twitter:description" content="Una ruta en 6 pasos para profesionales: tu experiencia es el 90 % del agente.">
+<meta name="twitter:image" content="https://laexperienciaeselcodigo.com/og.png">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://laexperienciaeselcodigo.com/aprender-a-crear-agentes-de-ia/#guia",
+      "headline": "Cómo aprender a crear agentes de IA sin saber programar",
+      "description": "Guía en 6 pasos para aprender a crear agentes de inteligencia artificial sin programar.",
+      "inLanguage": "es",
+      "datePublished": "2026-10-27",
+      "dateModified": "2026-10-27",
+      "author": { "@type": "Person", "@id": "https://laexperienciaeselcodigo.com/#autor", "name": "Daniel Olivares Martínez", "url": "https://www.linkedin.com/in/dolivares/" },
+      "publisher": { "@type": "Organization", "name": "La experiencia es el código", "url": "https://laexperienciaeselcodigo.com/" },
+      "image": "https://laexperienciaeselcodigo.com/og.png",
+      "mainEntityOfPage": "https://laexperienciaeselcodigo.com/aprender-a-crear-agentes-de-ia/",
+      "about": ["Agentes de inteligencia artificial", "IA agéntica", "Aprender inteligencia artificial sin programar"],
+      "isPartOf": { "@id": "https://laexperienciaeselcodigo.com/#sitio" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "La experiencia es el código", "item": "https://laexperienciaeselcodigo.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Aprender a crear agentes de IA", "item": "https://laexperienciaeselcodigo.com/aprender-a-crear-agentes-de-ia/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Necesito saber programar para crear un agente de IA?", "acceptedAnswer": { "@type": "Answer", "text": "No. Hoy el código lo puede escribir un agente de programación a partir de tus instrucciones. Lo que necesitas es saber explicar con detalle la tarea, sus reglas y cómo se reconoce un buen resultado." } },
+        { "@type": "Question", "name": "¿Cuál es la diferencia entre un chatbot y un agente de IA?", "acceptedAnswer": { "@type": "Answer", "text": "Un chatbot responde preguntas. Un agente de IA ejecuta una tarea de varios pasos: usa herramientas, como leer un archivo o consultar una planilla, toma decisiones dentro de las reglas que le diste y entrega un resultado." } },
+        { "@type": "Question", "name": "¿Cuánto cuesta empezar?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros pasos, elegir la tarea, escribir la ficha y probarla conversando con un asistente de IA, se pueden hacer con planes gratuitos. Para construir y usar el agente se necesita una clave de API propia, que se paga por uso; en las pruebas iniciales suele ser un monto bajo." } },
+        { "@type": "Question", "name": "¿Sirve si tengo más de 50 años y poca experiencia con tecnología?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Construir un agente depende sobre todo de conocer bien un oficio y saber pedir con precisión, algo que los profesionales con trayectoria dominan. La parte técnica se aprende paso a paso." } },
+        { "@type": "Question", "name": "¿Cuánto tiempo toma crear el primer agente?", "acceptedAnswer": { "@type": "Answer", "text": "Elegir la tarea, escribir la ficha y probarla toma una tarde. Preparar el entorno y construir una primera versión del agente toma algunas sesiones más, según la complejidad de la tarea." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --paper: #E9EEF2;
+    --card: #FBFCFD;
+    --ink: #14233A;
+    --muted: #4E5E72;
+    --line: #C3CDD7;
+    --pencil: #C9962B;
+    --pencil-soft: #F2E4C2;
+    --on-pencil: #14233A;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101B2C;
+      --card: #172538;
+      --ink: #E6ECF2;
+      --muted: #A3B1C2;
+      --line: #2C3D55;
+      --pencil: #E0B04A;
+      --pencil-soft: #3A3220;
+      --on-pencil: #101B2C;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Literata", Georgia, "Times New Roman", serif;
+    font-size: 1.1875rem; line-height: 1.7;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  a { color: inherit; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--pencil); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+  .sans { font-family: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 1rem; top: 1rem; background: var(--card); padding: .5rem 1rem; z-index: 10; }
+
+  header.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: calc(1.25rem + env(safe-area-inset-top, 0px)) 0 1.25rem; font-size: 1rem; }
+  header.top .marca { text-decoration: none; font-weight: 600; }
+  header.top nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+  header.top nav a { text-decoration: none; }
+  header.top nav a:hover { text-decoration: underline; }
+  header.top nav a.nav-cta { background: var(--ink); color: var(--paper); padding: .45rem .9rem; border-radius: 3px; font-weight: 600; }
+
+  .btn { display: inline-block; padding: .8rem 1.25rem; font: 600 1rem/1.2 "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; text-decoration: none; border-radius: 3px; border: 2px solid var(--ink); background: transparent; color: var(--ink); }
+  .btn.primary { background: var(--pencil); border-color: var(--pencil); color: var(--on-pencil); }
+  .btn:hover { filter: brightness(1.06); }
+
+  /* Cabeza de la guía */
+  .migas { font-size: .95rem; color: var(--muted); margin: 1.5rem 0 1rem; }
+  .migas a { color: var(--muted); }
+  h1 { font-size: clamp(2.2rem, 5.2vw, 3.9rem); line-height: 1.06; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 1.25rem; max-width: 20ch; font-variation-settings: "opsz" 72; }
+  .respuesta { font-size: clamp(1.2rem, 2.2vw, 1.4rem); line-height: 1.55; max-width: 40rem; margin: 0 0 1rem; }
+  .autor { font-size: 1rem; color: var(--muted); margin: 0 0 3rem; }
+
+  /* Cuerpo: índice lateral y texto */
+  .cuerpo { display: grid; grid-template-columns: 14rem minmax(0, 42rem); gap: 4rem; align-items: start; padding-bottom: 4rem; }
+  .toc { position: sticky; top: 1.5rem; font-size: 1rem; border-top: 2px solid var(--pencil); padding-top: .75rem; }
+  .toc p { margin: 0 0 .5rem; font-weight: 600; }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc li { padding: .3rem 0; line-height: 1.35; }
+  .toc a { text-decoration: none; color: var(--muted); }
+  .toc a:hover { color: var(--ink); text-decoration: underline; }
+
+  article h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.2; margin: 3.5rem 0 1rem; font-weight: 700; letter-spacing: -0.01em; }
+  article h2:first-child { margin-top: 0; }
+  article h3 { font-size: 1.3rem; line-height: 1.3; margin: 0 0 .4rem; }
+  article p { margin: 0 0 1.1rem; }
+  article ul { margin: 0 0 1.25rem; padding-left: 1.2rem; }
+  article li { margin-bottom: .45rem; }
+
+  .contraste { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin: 1.5rem 0 1.25rem; }
+  .contraste > div { background: var(--card); padding: 1.1rem 1.25rem; }
+  .contraste h3 { font-size: 1.05rem; margin-bottom: .35rem; }
+  .contraste p { margin: 0; font-size: 1.05rem; line-height: 1.55; color: var(--muted); }
+  .contraste .agente h3 { color: var(--ink); }
+  .contraste .agente { border-top: 3px solid var(--pencil); }
+
+  /* La ruta: es una secuencia real, por eso va numerada */
+  ol.ruta { list-style: none; margin: 1.5rem 0 0; padding: 0; counter-reset: paso; }
+  ol.ruta > li { counter-increment: paso; display: grid; grid-template-columns: 3.25rem 1fr; gap: 0 1rem; padding: 1.4rem 0; border-bottom: 1px dotted var(--line); }
+  ol.ruta > li:first-child { padding-top: .25rem; }
+  ol.ruta > li::before { content: counter(paso); font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--pencil); }
+  ol.ruta p { margin: 0 0 .6rem; }
+  ol.ruta p:last-child { margin-bottom: 0; }
+  ol.ruta .dato { font-size: 1rem; color: var(--muted); }
+
+  /* La ficha: el elemento propio del sitio */
+  .ficha { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1.6rem 1.75rem 1.4rem; margin: 1.75rem 0 1.5rem; transform: rotate(-.8deg);
+    box-shadow: 10px 12px 0 -2px color-mix(in srgb, var(--pencil) 35%, transparent); }
+  .ficha .f-titulo { font-size: 1.05rem; font-weight: 600; margin: 0 0 1rem; padding-bottom: .6rem; border-bottom: 2px solid var(--pencil); }
+  .ficha dl { margin: 0; }
+  .ficha dt { font-size: .95rem; color: var(--muted); font-weight: 500; }
+  .ficha dd { margin: 0 0 .9rem; padding-bottom: .9rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; line-height: 1.45; }
+  .ficha dd:last-of-type { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+
+  .errores { margin: 1rem 0 0; padding: 0; list-style: none; }
+  .errores li { padding: .9rem 0; border-bottom: 1px dotted var(--line); margin: 0; }
+  .errores strong { display: block; }
+  .errores span { color: var(--muted); }
+
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { cursor: pointer; list-style: none; padding: 1.05rem 2rem 1.05rem 0; font-size: 1.15rem; font-weight: 500; position: relative; line-height: 1.4; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: .25rem; top: .9rem; font-size: 1.5rem; line-height: 1; color: var(--muted); }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { color: var(--muted); }
+
+  ul.casos { list-style: none; padding: 0; margin: 1rem 0 1.5rem; }
+  ul.casos li { border-bottom: 1px dotted var(--line); margin: 0; }
+  ul.casos a { display: block; padding: .85rem 0; text-decoration: none; }
+  ul.casos a:hover { text-decoration: underline; }
+
+  .sigue { background: var(--card); border-left: 6px solid var(--pencil); padding: 1.5rem 1.6rem; margin: 3.5rem 0 0; border-radius: 0 4px 4px 0; }
+  .sigue h2 { margin-top: 0; }
+  .sigue .acciones { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+
+  footer { padding: 3rem 0 calc(4rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); font-size: 1rem; color: var(--muted); }
+  footer p { margin: 0 0 .4rem; }
+  footer a { color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .cuerpo { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .toc { position: static; }
+    .ficha { transform: none; }
+  }
+  @media (max-width: 600px) {
+    header.top { flex-direction: column; align-items: flex-start; }
+    header.top nav { gap: .9rem 1.1rem; }
+    .contraste { grid-template-columns: 1fr; }
+    ol.ruta > li { grid-template-columns: 2.4rem 1fr; }
+    ol.ruta > li::before { font-size: 2.1rem; }
+  }
+</style>
+</head>
+<body>
+  <a class="skip sans" href="#contenido">Saltar al contenido</a>
+  <div class="wrap">
+    <header class="top sans">
+      <a class="marca" href="/">La experiencia es el código</a>
+      <nav aria-label="Secciones">
+        <a href="/#como-funciona">El libro</a>
+        <a href="https://agentario.laexperienciaeselcodigo.com/">Agentario</a>
+        <a href="/capitulo-1/">Capítulo 1</a>
+        <a class="nav-cta" href="/#preventa">Precomprar</a>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <p class="migas sans"><a href="/">Inicio</a> / Guía</p>
+      <h1>Cómo aprender a crear agentes de IA sin saber programar</h1>
+      <p class="respuesta">Aprender a crear un agente de IA hoy es, ante todo, aprender a explicar bien una tarea. El código lo puede escribir otro agente a partir de tus instrucciones. Esta guía te muestra la ruta en seis pasos, con un ejemplo real.</p>
+      <p class="autor sans">Por <a href="https://www.linkedin.com/in/dolivares/" rel="author">Daniel Olivares Martínez</a>. Actualizada el 27 de octubre de 2026</p>
+
+      <div class="cuerpo">
+        <nav class="toc sans" aria-label="En esta guía">
+          <p>En esta guía</p>
+          <ol>
+            <li><a href="#que-es">Qué es un agente de IA</a></li>
+            <li><a href="#ruta">La ruta en seis pasos</a></li>
+            <li><a href="#ficha">Un ejemplo de ficha</a></li>
+            <li><a href="#errores">Errores comunes</a></li>
+            <li><a href="#casos">Ideas para tu primer agente</a></li>
+            <li><a href="#preguntas">Preguntas frecuentes</a></li>
+          </ol>
+        </nav>
+
+        <article>
+          <h2 id="que-es">Qué es un agente de IA</h2>
+          <p>Un agente de IA es un programa que recibe un encargo y lo ejecuta en varios pasos: usa herramientas, como leer un archivo, revisar el correo o consultar una planilla, toma decisiones dentro de las reglas que le diste y entrega un resultado.</p>
+          <div class="contraste">
+            <div>
+              <h3>Un chatbot</h3>
+              <p>Responde lo que le preguntas. Tú haces el resto del trabajo con su respuesta.</p>
+            </div>
+            <div class="agente">
+              <h3>Un agente</h3>
+              <p>Hace la tarea completa: revisa, compara, decide según tus reglas y te entrega el resultado listo.</p>
+            </div>
+          </div>
+          <p>Por eso la parte más difícil de un agente no es técnica. Es saber exactamente qué debe hacer, qué nunca debe hacer y cómo reconocer que lo hizo bien. Eso lo sabe quien domina el oficio.</p>
+
+          <h2 id="ruta">La ruta en seis pasos</h2>
+          <p>Los pasos van en orden. Los tres primeros no requieren instalar nada.</p>
+          <ol class="ruta">
+            <li>
+              <div>
+                <h3>Elige una tarea que dominas</h3>
+                <p>Busca algo que haces seguido, que sigue reglas claras y en que sabes distinguir un buen resultado de uno malo. Revisar facturas, preparar una minuta o priorizar cobranzas son buenos comienzos.</p>
+                <p class="dato sans">Evita para empezar las tareas que dependen de una sola decisión delicada y sin vuelta atrás.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Escribe la ficha de especificación</h3>
+                <p>Responde tres preguntas con tus palabras: qué sabes hacer mejor que nadie, qué nunca se debe hacer y cómo sabes que salió bien. Después agrega qué recibe el agente, qué entrega y qué herramientas necesita.</p>
+                <p class="dato sans">Esta ficha es el 90 % del agente. Puedes escribir la tuya en la <a href="/">portada del sitio</a>.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Prueba la ficha conversando con un asistente de IA</h3>
+                <p>Pega tu ficha en el asistente que uses y pídele que haga la tarea con un ejemplo real. Cada vez que se equivoque, no corrijas el resultado: corrige la ficha. Así descubres las reglas que dabas por obvias.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Prepara tu entorno</h3>
+                <p>Para que el agente trabaje por su cuenta necesitas un computador con algunas herramientas instaladas y una clave de API propia, que se paga por uso. La instalación se hace una sola vez, guiada paso a paso.</p>
+                <p class="dato sans">El <a href="/capitulo-1/">capítulo 1 del libro</a> explica esta preparación y se puede leer gratis.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Pide a un agente que construya tu agente</h3>
+                <p>Entrega tu ficha a un agente de programación y pídele que construya el agente en un solo encargo. Tú revisas, preguntas y decides; él escribe el código, las pruebas y la documentación.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Evalúa con casos reales y mejora</h3>
+                <p>Un agente de IA no responde siempre igual, así que no basta con probarlo una vez. Arma un conjunto de casos de tu trabajo, con la respuesta correcta para cada uno, y mide cuántos resuelve bien. Mejora la ficha hasta que el resultado te deje tranquilo.</p>
+              </div>
+            </li>
+          </ol>
+
+          <h2 id="ficha">Un ejemplo de ficha</h2>
+          <p>Esta es la ficha de una profesional de cuentas por pagar. Con ella, un agente ya sabe qué revisar en cada factura antes de aprobar un pago.</p>
+          <div class="ficha" role="figure" aria-label="Ejemplo de ficha de especificación">
+            <p class="f-titulo sans">Ficha de especificación</p>
+            <dl>
+              <dt class="sans">Lo que sé hacer mejor que nadie</dt>
+              <dd>Revisar una factura y saber, en un minuto, si algo no cuadra.</dd>
+              <dt class="sans">Lo que nunca se debe hacer</dt>
+              <dd>Aprobar un pago sin la orden de compra, aunque el cliente apure.</dd>
+              <dt class="sans">Cómo sé que salió bien</dt>
+              <dd>Cero pagos duplicados en el mes y respuesta al proveedor en menos de un día.</dd>
+              <dt class="sans">Qué recibe y qué entrega</dt>
+              <dd>Recibe las facturas que llegan al correo y la planilla de órdenes de compra. Entrega una lista de facturas listas para pagar y otra con las observaciones de cada una.</dd>
+            </dl>
+          </div>
+          <p>Fíjate en que no hay una sola palabra técnica. Todo lo que hace falta es criterio de oficio.</p>
+
+          <h2 id="errores">Errores comunes al empezar</h2>
+          <ul class="errores">
+            <li><strong>Empezar por la herramienta y no por la tarea.</strong><span>Elegir primero la plataforma lleva a buscar un problema para ella. Primero la tarea, después la herramienta.</span></li>
+            <li><strong>Escribir instrucciones vagas.</strong><span>«Revisa bien las facturas» no le dice nada a un agente. «Compara el monto con la orden de compra y marca cualquier diferencia» sí.</span></li>
+            <li><strong>Probar con un solo ejemplo.</strong><span>Que funcione una vez no significa que funcione siempre. Prueba con casos fáciles, difíciles y raros.</span></li>
+            <li><strong>Querer un agente que lo haga todo.</strong><span>Un agente que hace bien una tarea vale más que uno que hace diez a medias. Después se pueden sumar más agentes.</span></li>
+          </ul>
+
+          <h2 id="casos">Ideas para tu primer agente</h2>
+          <p>El <a href="https://agentario.laexperienciaeselcodigo.com/">Agentario</a> reúne más de 130 casos de uso de agentes de IA en español, cada uno con su encargo listo para copiar. Algunos buenos para empezar:</p>
+          <ul class="casos">
+            <li><a href="https://agentario.laexperienciaeselcodigo.com/casos/clasificar-facturas-correo/">Clasificar correos con facturas y guardarlas en carpetas</a></li>
+            <li><a href="https://agentario.laexperienciaeselcodigo.com/casos/comparar-cotizaciones-pdf/">Comparar cotizaciones de proveedores en PDF</a></li>
+            <li><a href="https://agentario.laexperienciaeselcodigo.com/casos/minuta-reunion/">Convertir una reunión grabada en minuta y tareas</a></li>
+            <li><a href="https://agentario.laexperienciaeselcodigo.com/casos/entrevistar-candidatos-cv/">Hacer la primera entrevista a candidatos a partir de su CV</a></li>
+            <li><a href="https://agentario.laexperienciaeselcodigo.com/casos/agente-cobranza-amable/">Un agente de voz que recuerda vencimientos con amabilidad</a></li>
+          </ul>
+
+          <h2 id="preguntas">Preguntas frecuentes</h2>
+          <div class="faq">
+            <details><summary>¿Necesito saber programar para crear un agente de IA?</summary><p>No. Hoy el código lo puede escribir un agente de programación a partir de tus instrucciones. Lo que necesitas es saber explicar con detalle la tarea, sus reglas y cómo se reconoce un buen resultado.</p></details>
+            <details><summary>¿Cuál es la diferencia entre un chatbot y un agente de IA?</summary><p>Un chatbot responde preguntas. Un agente de IA ejecuta una tarea de varios pasos: usa herramientas, como leer un archivo o consultar una planilla, toma decisiones dentro de las reglas que le diste y entrega un resultado.</p></details>
+            <details><summary>¿Cuánto cuesta empezar?</summary><p>Los primeros pasos, elegir la tarea, escribir la ficha y probarla conversando con un asistente de IA, se pueden hacer con planes gratuitos. Para construir y usar el agente se necesita una clave de API propia, que se paga por uso; en las pruebas iniciales suele ser un monto bajo.</p></details>
+            <details><summary>¿Sirve si tengo más de 50 años y poca experiencia con tecnología?</summary><p>Sí. Construir un agente depende sobre todo de conocer bien un oficio y saber pedir con precisión, algo que los profesionales con trayectoria dominan. La parte técnica se aprende paso a paso.</p></details>
+            <details><summary>¿Cuánto tiempo toma crear el primer agente?</summary><p>Elegir la tarea, escribir la ficha y probarla toma una tarde. Preparar el entorno y construir una primera versión del agente toma algunas sesiones más, según la complejidad de la tarea.</p></details>
+          </div>
+
+          <section class="sigue" aria-labelledby="sigue-t">
+            <h2 id="sigue-t">Sigue aprendiendo con el libro</h2>
+            <p><em>La experiencia es el código</em> desarrolla esta ruta capítulo por capítulo, con casos reales de profesionales con trayectoria. Se escribe en vivo: el capítulo 1 ya se puede leer y el libro impreso sale el 5 de abril de 2027.</p>
+            <div class="acciones">
+              <a class="btn primary" href="/capitulo-1/">Leer gratis el capítulo 1</a>
+              <a class="btn" href="/#preventa">Ver la preventa del libro</a>
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <p>Una guía de <a href="https://www.linkedin.com/in/dolivares/" rel="author">Daniel Olivares Martínez</a>, autor de <a href="/"><em>La experiencia es el código</em></a>, escrita desde Santiago de Chile.</p>
+      <p>Explora los casos de uso en el <a href="https://agentario.laexperienciaeselcodigo.com/">Agentario</a>.</p>
+      <p>© 2026 La experiencia es el código</p>
+    </div>
+  </footer>
+<!--
+  Medición de Agentario → libro, para pegar en laexperienciaeselcodigo.com
+  justo antes de </body>. Usa la misma cuenta de GoatCounter que Agentario
+  (agentario.goatcounter.com), así todo el recorrido queda en un solo panel.
+
+  Qué registra (todo aparece en el panel con el prefijo "libro/"):
+  - libro/visita/<origen>/<caso>     llegada al sitio del libro desde Agentario
+  - libro/ve-preventa/<origen>/<caso> la persona llegó a ver la sección #preventa
+  - libro/clic-pagar/<nivel>/<origen>/<caso> clic en un botón o enlace de pago
+  - libro/compra/<origen>/<caso>     llegada a una página de gracias (ver nota)
+
+  <origen> y <caso> salen de las marcas utm_medium y utm_content que pone
+  Agentario en cada enlace. Si la visita no viene de Agentario, se anota "directo".
+
+  Nota: para medir compras reales, configura en Mercado Pago la URL de retorno
+  de pago aprobado hacia una página de tu sitio cuya dirección contenga "gracias"
+  (por ejemplo https://laexperienciaeselcodigo.com/gracias).
+-->
+<script>
+(function () {
+  var GC = 'https://agentario.goatcounter.com/count';
+  var KEY = 'agentario-origen';
+  var p = new URLSearchParams(location.search);
+  var o = null;
+  try {
+    if (p.get('utm_source') === 'agentario') {
+      o = { medio: p.get('utm_medium') || 'otro', caso: p.get('utm_content') || 'sin-caso' };
+      sessionStorage.setItem(KEY, JSON.stringify(o));
+    } else {
+      o = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    }
+  } catch (e) {}
+  var etiqueta = o ? o.medio + '/' + o.caso : 'directo';
+  var cola = [];
+  function contar(path, title, evento) {
+    var d = { path: path, title: title, event: !!evento };
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(d); else cola.push(d);
+  }
+  var s = document.createElement('script');
+  s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.dataset.goatcounter = GC;
+  s.dataset.goatcounterSettings = '{"no_onload":true}';
+  s.onload = function () { while (cola.length) window.goatcounter.count(cola.shift()); };
+  document.head.appendChild(s);
+
+  // Visita al sitio del libro (como página) y, si viene de Agentario, también como evento
+  contar('/sitio-libro' + location.pathname, 'Sitio del libro: ' + document.title);
+  if (o) contar('libro/visita/' + etiqueta, 'Llegó al libro desde Agentario · ' + etiqueta, true);
+
+  // Compra: página de gracias tras el pago
+  if (/gracias/i.test(location.pathname + location.hash)) contar('libro/compra/' + etiqueta, 'Compra del libro · ' + etiqueta, true);
+
+  // Vio la sección de preventa
+  function observarPreventa() {
+    var sec = document.getElementById('preventa');
+    if (!sec || !('IntersectionObserver' in window)) return;
+    var visto = false;
+    new IntersectionObserver(function (es, obs) {
+      if (!visto && es.some(function (x) { return x.isIntersecting; })) {
+        visto = true; obs.disconnect();
+        contar('libro/ve-preventa/' + etiqueta, 'Vio la preventa · ' + etiqueta, true);
+      }
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(sec);
+  }
+
+  // Clic en pagar: enlaces o botones dentro de #preventa, o cualquier enlace a Mercado Pago
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('a,button'); if (!t) return;
+    var href = t.getAttribute('href') || '';
+    var enPreventa = !!t.closest('#preventa');
+    if (!enPreventa && !/mercadopago|mpago\.la|checkout|pago/i.test(href)) return;
+    var nivel = (t.closest('[data-nivel]') && t.closest('[data-nivel]').getAttribute('data-nivel')) ||
+      (t.textContent || 'boton').trim().toLowerCase().replace(/[^a-z0-9áéíóúñ ]/g, '').replace(/\s+/g, '-').slice(0, 30);
+    contar('libro/clic-pagar/' + nivel + '/' + etiqueta, 'Clic en pagar: ' + nivel + ' · ' + etiqueta, true);
+  }, true);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observarPreventa); else observarPreventa();
+})();
+</script>
+</body>
+</html>
