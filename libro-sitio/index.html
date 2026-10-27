@@ -99,10 +99,9 @@
       "mainEntity": [
         { "@type": "Question", "name": "¿Necesito saber programar para crear un agente de IA?", "acceptedAnswer": { "@type": "Answer", "text": "No. El libro parte de una idea simple: si sabes explicar con detalle cómo haces tu trabajo, ya tienes el 90 % de lo necesario. El código lo escribe un agente de IA a partir de tus instrucciones." } },
         { "@type": "Question", "name": "¿Qué es la IA agéntica?", "acceptedAnswer": { "@type": "Answer", "text": "Es inteligencia artificial que no solo responde preguntas: ejecuta tareas de varios pasos, usa herramientas y entrega un resultado, como conciliar pagos, preparar una minuta o responder clientes." } },
+        { "@type": "Question", "name": "¿Para quién es este libro?", "acceptedAnswer": { "@type": "Answer", "text": "Para profesionales con trayectoria, especialmente mayores de 50 años, que conocen su oficio a fondo y quieren aprovechar la inteligencia artificial sin convertirse en programadores." } },
         { "@type": "Question", "name": "¿Cuándo recibo el libro?", "acceptedAnswer": { "@type": "Answer", "text": "El libro impreso se lanza el 5 de abril de 2027. Los capítulos digitales se liberan desde ahora, a medida que se escriben." } },
-        { "@type": "Question", "name": "¿Cuánto cuesta el envío?", "acceptedAnswer": { "@type": "Answer", "text": "En Chile, el envío está incluido en el precio. En España, el libro se despacha desde Málaga con un recargo de envío que se informa al confirmar la reserva. Para otros países, el envío se coordina con cada lector." } },
-        { "@type": "Question", "name": "¿Los talleres son presenciales?", "acceptedAnswer": { "@type": "Answer", "text": "Los talleres incluidos en la preventa son en línea y en vivo. Solo el nivel para empresas puede ser presencial." } },
-        { "@type": "Question", "name": "¿Puedo pedir la devolución de mi precompra?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado." } }
+        { "@type": "Question", "name": "¿Puedo tener el libro en mi librería?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Buscamos librerías en Chile y España que quieran tener el libro en su tienda. Las condiciones se piden desde la sección Librerías de la preventa." } }
       ]
     }
   ]
@@ -139,12 +138,13 @@
     }
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
     margin: 0; background: var(--paper); color: var(--ink);
     font-family: "Literata", Georgia, "Times New Roman", serif;
-    font-size: 1.125rem; line-height: 1.65;
+    font-size: 1.1875rem; line-height: 1.7;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   a { color: inherit; text-underline-offset: 3px; }
@@ -186,7 +186,15 @@
   .ficha dl { margin: 0; }
   .ficha dt { font-size: .85rem; color: var(--muted); font-weight: 500; }
   .ficha dd { margin: 0 0 .9rem; font-size: 1.02rem; line-height: 1.45; }
-  .ficha .firma { font-size: .85rem; color: var(--muted); margin: .5rem 0 0; }
+  .ficha .firma { font-size: .95rem; color: var(--muted); margin: .5rem 0 0; }
+  .ficha dt { font-size: .95rem; }
+  /* La ficha se escribe en vivo al cargar (una sola vez) y luego se puede editar */
+  .ficha .tipo.escribiendo::after { content: ""; display: inline-block; width: 2px; height: 1.05em; background: var(--pencil); margin-left: 2px; vertical-align: -.15em; animation: cursor 900ms steps(1) infinite; }
+  @keyframes cursor { 50% { opacity: 0; } }
+  .ficha textarea { width: 100%; font: 400 1.05rem/1.45 "Literata", Georgia, serif; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: .5rem .6rem; resize: vertical; min-height: 3.6rem; }
+  .ficha .ficha-acciones { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; }
+  .ficha .ficha-acciones .btn { padding: .65rem 1rem; }
+  .ficha .msg { font-size: .95rem; margin-top: .6rem; }
 
   /* Bloques */
   section.block { padding: 4.5rem 0; border-top: 1px solid var(--line); }
@@ -218,6 +226,14 @@
   ol.indice .estado { font-size: .95rem; color: var(--muted); white-space: nowrap; }
   ol.indice .estado.vivo { color: var(--ink); font-weight: 600; }
   ol.indice .estado.vivo::before { content: ""; display: inline-block; width: .55rem; height: .55rem; border-radius: 50%; background: var(--pencil); margin-right: .45rem; vertical-align: .1rem; }
+  ol.indice li.pendiente .titulo { color: var(--muted); }
+  ol.indice li.vivo { background: var(--card); border-left: 6px solid var(--pencil); padding-left: 1rem; padding-right: 1rem; margin: 0 -1rem; }
+  /* Avance del libro: un segmento por capítulo */
+  .avance { max-width: 46rem; margin: 0 0 1.75rem; }
+  .avance .barra { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; height: .7rem; margin-bottom: .55rem; }
+  .avance .barra span { background: var(--line); border-radius: 2px; }
+  .avance .barra span.hecho { background: var(--pencil); }
+  .avance p { margin: 0; font-size: 1rem; color: var(--muted); }
 
   /* Preventa: lista de precios con forma de catálogo de librería */
   .precios { list-style: none; margin: 0 0 3rem; padding: 0; border-top: 2px solid var(--ink); }
@@ -234,6 +250,12 @@
   .precios > li.destacado { background: var(--card); border-left: 6px solid var(--pencil); padding-left: 1.4rem; padding-right: 1.4rem; margin: 0 -1.4rem; }
   .precios .etapa { display: inline-block; margin-bottom: .5rem; font-size: .9rem; font-weight: 600; background: var(--pencil-soft); padding: .15rem .55rem; border-radius: 2px; }
 
+  /* Organizaciones: fuera de la lista de precios personales */
+  .organizaciones { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: -1.25rem 0 3.5rem; padding: 0; }
+  .organizaciones h3 { font-size: 1.25rem; margin: 0 0 .4rem; }
+  .organizaciones p { margin: 0 0 1rem; color: var(--muted); }
+  .organizaciones .titulo-org { grid-column: 1 / -1; margin: 0; font-size: 1.05rem; color: var(--ink); }
+
   .etapas-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   .etapas-wrap h3 { font-size: 1.3rem; margin: 0 0 1rem; }
   ol.etapas { list-style: none; margin: 0; padding: 0; position: relative; }
@@ -244,7 +266,7 @@
   ol.etapas li.pasada { color: var(--muted); }
   ol.etapas .fecha { display: block; font-size: .95rem; color: var(--muted); }
   ol.etapas .p { font-weight: 600; }
-  ol.etapas li.actual .p::after { content: " Etapa actual"; font-family: "IBM Plex Sans Condensed", Arial, sans-serif; font-weight: 600; font-size: .85rem; background: var(--pencil-soft); padding: .1rem .45rem; margin-left: .5rem; border-radius: 2px; }
+  ol.etapas li.actual .p::after { content: " Etapa actual"; font-family: "IBM Plex Sans Condensed", Arial, sans-serif; font-weight: 600; font-size: .92rem; background: var(--pencil-soft); padding: .1rem .45rem; margin-left: .5rem; border-radius: 2px; }
   dl.condiciones { margin: 0; }
   dl.condiciones dt { font-weight: 700; margin-top: 1rem; }
   dl.condiciones dt:first-child { margin-top: 0; }
@@ -266,7 +288,7 @@
   .check { display: flex; gap: .6rem; align-items: flex-start; margin: .45rem 0; font-size: 1rem; }
   .check input { width: 1.15rem; height: 1.15rem; margin-top: .25rem; accent-color: var(--pencil); flex: none; }
   .honey { position: absolute; left: -9999px; }
-  .nota { font-size: .9rem; color: var(--muted); margin: .75rem 0 0; }
+  .nota { font-size: .95rem; color: var(--muted); margin: .75rem 0 0; }
   .msg { margin: .9rem 0 0; font-size: 1rem; min-height: 1.4em; }
   .msg.ok { color: var(--ok); }
   .msg.err { color: var(--err); }
@@ -295,7 +317,8 @@
   footer a { color: var(--ink); }
 
   @media (max-width: 900px) {
-    .hero, .agentario, .comunidad, .etapas-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero, .agentario, .comunidad, .etapas-wrap, .organizaciones { grid-template-columns: 1fr; gap: 2.5rem; }
+    .organizaciones { gap: 1.5rem; }
     .hero { padding-top: 1.5rem; }
     .ficha { transform: none; }
     ol.pasos { grid-template-columns: 1fr; }
@@ -312,12 +335,8 @@
     ol.indice li { grid-template-columns: 2rem 1fr; }
     ol.indice .estado { grid-column: 2; }
   }
-  @media (prefers-reduced-motion: no-preference) {
-    .ficha { animation: llega 700ms ease-out both; }
-    @keyframes llega { from { opacity: 0; transform: rotate(-4deg) translateY(12px); } to { opacity: 1; transform: rotate(-1.2deg); } }
-  }
-  @media (prefers-reduced-motion: no-preference) and (max-width: 900px) {
-    @keyframes llega { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .ficha .tipo.escribiendo::after { animation: none; }
   }
 </style>
 </head>
@@ -355,15 +374,20 @@
 
         <aside class="ficha" aria-label="Ejemplo de ficha de especificación de un agente de IA">
           <h2 class="sans">Ficha de especificación</h2>
-          <dl>
-            <dt class="sans">Lo que sé hacer mejor que nadie</dt>
-            <dd>Revisar una factura y saber, en un minuto, si algo no cuadra.</dd>
-            <dt class="sans">Lo que nunca se debe hacer</dt>
-            <dd>Aprobar un pago sin la orden de compra, aunque el cliente apure.</dd>
-            <dt class="sans">Cómo sé que salió bien</dt>
-            <dd>Cero pagos duplicados en el mes y respuesta al proveedor en menos de un día.</dd>
+          <dl id="ficha-dl">
+            <dt class="sans" id="f1-t">Lo que sé hacer mejor que nadie</dt>
+            <dd><span class="tipo">Revisar una factura y saber, en un minuto, si algo no cuadra.</span></dd>
+            <dt class="sans" id="f2-t">Lo que nunca se debe hacer</dt>
+            <dd><span class="tipo">Aprobar un pago sin la orden de compra, aunque el cliente apure.</span></dd>
+            <dt class="sans" id="f3-t">Cómo sé que salió bien</dt>
+            <dd><span class="tipo">Cero pagos duplicados en el mes y respuesta al proveedor en menos de un día.</span></dd>
           </dl>
-          <p class="firma sans">Con esto, un agente ya sabe qué hacer. El código lo escribe la IA.</p>
+          <p class="firma sans" id="ficha-firma">Con esto, un agente ya sabe qué hacer. El código lo escribe la IA.</p>
+          <div class="ficha-acciones sans">
+            <button class="btn" type="button" id="ficha-editar">Escribir mi ficha</button>
+            <button class="btn primary" type="button" id="ficha-copiar" hidden>Copiar como encargo</button>
+          </div>
+          <p class="msg sans" id="ficha-msg" role="status" aria-live="polite"></p>
         </aside>
       </section>
     </main>
@@ -414,20 +438,25 @@
     <div class="wrap">
       <h2 id="capitulos-t">Capítulos del libro</h2>
       <p class="intro">El índice crece con cada entrevista. Esta es la ruta de trabajo actual. Quienes precompran reciben cada capítulo digital apenas se libera.</p>
+      <div class="avance sans" aria-hidden="true">
+        <div class="barra" id="avance-barra"></div>
+        <p id="avance-texto"></p>
+      </div>
+      <!-- Para publicar un capítulo: quita la clase "pendiente", agrégale "vivo" y enlázalo. La barra de avance se calcula sola. -->
       <ol class="indice" start="0" style="counter-reset:cap -1">
-        <li><span class="titulo">Mentalidad: construir agentes con agentes</span><span class="estado sans">En construcción</span></li>
-        <li><a href="/capitulo-1/"><span class="titulo">Preparar el entorno</span></a><span class="estado vivo sans"><a href="/capitulo-1/">Lee el avance</a></span></li>
-        <li><span class="titulo">Escribir la especificación</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">Construir el agente con un solo encargo</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">Probar en local</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">Evaluar agentes no deterministas</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">Desplegar en producción</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">Operar y mejorar</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">De un agente a un equipo de agentes</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">Agentes de voz (opcional)</span><span class="estado sans">En construcción</span></li>
-        <li><span class="titulo">Proyecto final y entregables</span><span class="estado sans">En construcción</span></li>
+        <li class="pendiente"><span class="titulo">Mentalidad: construir agentes con agentes</span></li>
+        <li class="vivo"><a href="/capitulo-1/"><span class="titulo">Preparar el entorno</span></a><span class="estado vivo sans"><a href="/capitulo-1/">Leer el avance</a></span></li>
+        <li class="pendiente"><span class="titulo">Escribir la especificación</span></li>
+        <li class="pendiente"><span class="titulo">Construir el agente con un solo encargo</span></li>
+        <li class="pendiente"><span class="titulo">Probar en local</span></li>
+        <li class="pendiente"><span class="titulo">Evaluar agentes no deterministas</span></li>
+        <li class="pendiente"><span class="titulo">Desplegar en producción</span></li>
+        <li class="pendiente"><span class="titulo">Operar y mejorar</span></li>
+        <li class="pendiente"><span class="titulo">De un agente a un equipo de agentes</span></li>
+        <li class="pendiente"><span class="titulo">Agentes de voz (opcional)</span></li>
+        <li class="pendiente"><span class="titulo">Proyecto final y entregables</span></li>
       </ol>
-      <p class="intro" style="margin-top:2rem"><a class="btn" href="/capitulo-1/">Lee gratis el avance del capítulo 1</a></p>
+      <p class="intro" style="margin-top:2rem"><a class="btn" href="/capitulo-1/">Leer gratis el avance del capítulo 1</a></p>
     </div>
   </section>
 
@@ -462,23 +491,21 @@
           <div class="monto"><span class="ahora" data-precio="mecenas">USD 450</span><span class="clp" data-clp="mecenas">$450.000 CLP</span></div>
           <div class="accion"><button class="btn" type="button" data-nivel="mecenas">Precomprar</button></div>
         </li>
-        <li>
-          <div>
-            <h3>Empresas</h3>
-            <ul><li>Diez ejemplares impresos firmados</li><li>Un taller para tu equipo, presencial o en línea</li><li>El caso de tu empresa, si quieres contarlo</li></ul>
-          </div>
-          <div class="monto"><span class="ahora">A cotizar</span><span class="clp">Según equipo y ciudad</span></div>
-          <div class="accion"><button class="btn" type="button" data-nivel="empresas">Pedir cotización</button></div>
-        </li>
-        <li id="librerias">
-          <div>
-            <h3>Librerías</h3>
-            <ul><li>Ejemplares del libro impreso para tu tienda</li><li>Condiciones especiales para librerías de Chile y España</li><li>La posibilidad de presentar el libro en tu local</li></ul>
-          </div>
-          <div class="monto"><span class="ahora">Conversemos</span><span class="clp">Condiciones por librería</span></div>
-          <div class="accion"><button class="btn" type="button" data-nivel="librerias">Contactar</button></div>
-        </li>
       </ul>
+
+      <div class="organizaciones">
+        <p class="titulo-org"><strong>¿Compras para una organización?</strong></p>
+        <div>
+          <h3>Empresas</h3>
+          <p>Diez ejemplares impresos firmados, un taller para tu equipo, presencial o en línea, y el caso de tu empresa si quieres contarlo. Precio según equipo y ciudad.</p>
+          <button class="btn" type="button" data-nivel="empresas">Pedir cotización</button>
+        </div>
+        <div id="librerias">
+          <h3>Librerías</h3>
+          <p>Ejemplares del libro impreso para tu tienda, con condiciones especiales en Chile y España y la posibilidad de presentar el libro en tu local.</p>
+          <button class="btn" type="button" data-nivel="librerias">Pedir condiciones</button>
+        </div>
+      </div>
 
       <div class="etapas-wrap">
         <div>
@@ -491,7 +518,7 @@
           </ol>
         </div>
         <div>
-          <h3>Condiciones</h3>
+          <h3 id="condiciones">Condiciones</h3>
           <dl class="condiciones">
             <dt>Garantía de devolución</dt>
             <dd>Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado.</dd>
@@ -550,11 +577,9 @@
         <details><summary>¿Qué es la IA agéntica?</summary><p>Es inteligencia artificial que no solo responde preguntas: ejecuta tareas de varios pasos, usa herramientas y entrega un resultado, como conciliar pagos, preparar una minuta o responder clientes.</p></details>
         <details><summary>¿Para quién es este libro?</summary><p>Para profesionales con trayectoria, especialmente mayores de 50 años, que conocen su oficio a fondo y quieren aprovechar la inteligencia artificial sin convertirse en programadores.</p></details>
         <details><summary>¿Cuándo recibo el libro?</summary><p>El libro impreso se lanza el 5 de abril de 2027. Los capítulos digitales se liberan desde ahora, a medida que se escriben.</p></details>
-        <details><summary>¿Cuánto cuesta el envío?</summary><p>En Chile, el envío está incluido en el precio. En España, el libro se despacha desde Málaga con un recargo de envío que te informamos al confirmar la reserva. Para otros países, coordinamos el envío contigo.</p></details>
-        <details><summary>¿Los talleres son presenciales?</summary><p>Los talleres incluidos en la preventa son en línea y en vivo. Solo el nivel para empresas puede ser presencial.</p></details>
         <details><summary>¿Puedo tener el libro en mi librería?</summary><p>Sí. Buscamos librerías en Chile y España que quieran tener el libro en su tienda. Escríbenos desde la sección <a href="#librerias">Librerías</a> de la preventa y te enviamos las condiciones.</p></details>
-        <details><summary>¿Puedo pedir la devolución de mi precompra?</summary><p>Sí. Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado.</p></details>
       </div>
+      <p class="intro" style="margin-top:1.75rem">Envío, pago, talleres y garantía de devolución están en las <a href="#condiciones">condiciones de la preventa</a>.</p>
     </div>
   </section>
 
@@ -579,11 +604,11 @@
         <div class="campo" id="p-empresa-campo" hidden><label for="p-empresa">Empresa y tamaño del equipo</label><input id="p-empresa" name="empresa" placeholder="Ej.: Distribuidora Sur, 25 personas"></div>
         <div class="campo"><label for="p-nota">Comentario (opcional)</label><textarea id="p-nota" name="nota" placeholder="Por ejemplo, si es un regalo y para quién"></textarea></div>
         <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn primary" type="submit" id="p-btn">Reservar mi ejemplar</button>
+        <button class="btn primary" type="submit" id="p-btn">Precomprar mi ejemplar</button>
         <p class="msg" role="status" aria-live="polite"></p>
       </form>
       <div class="paso2" id="paso2" hidden>
-        <h3>Reserva recibida</h3>
+        <h3 id="paso2-t">Precompra registrada</h3>
         <div id="paso2-cuerpo"></div>
       </div>
     </div>
@@ -672,7 +697,8 @@
     $("#p-empresa-campo").hidden = n.usd !== null;
     $("#p-empresa-campo label").textContent = lib ? "Librería y ciudad" : "Empresa y tamaño del equipo";
     $("#p-empresa").placeholder = lib ? "Ej.: Librería del Puerto, Valparaíso" : "Ej.: Distribuidora Sur, 25 personas";
-    $("#p-btn").textContent = nivelActual === "empresas" ? "Pedir cotización" : lib ? "Enviar" : "Reservar mi ejemplar";
+    $("#p-btn").textContent = nivelActual === "empresas" ? "Pedir cotización" : lib ? "Pedir condiciones" : "Precomprar mi ejemplar";
+    $("#paso2-t").textContent = nivelActual === "empresas" ? "Cotización pedida" : lib ? "Condiciones pedidas" : "Precompra registrada";
     fp.hidden = false; paso2.hidden = true; fp.querySelector(".msg").textContent = "";
     if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
     $("#p-nombre").focus();
@@ -685,10 +711,10 @@
     const msg = fp.querySelector(".msg"), btn = $("#p-btn");
     if (fp._honey.value) return;
     const nombre = fp.nombre.value.trim(), email = fp.email.value.trim().toLowerCase(), pais = fp.pais.value;
-    if (!nombre) { msg.textContent = "Escribe tu nombre para registrar la reserva."; msg.className = "msg err"; fp.nombre.focus(); return; }
+    if (!nombre) { msg.textContent = "Escribe tu nombre para registrar la precompra."; msg.className = "msg err"; fp.nombre.focus(); return; }
     if (!correoValido(email)) { msg.textContent = "Revisa el correo: parece que falta algo."; msg.className = "msg err"; fp.email.focus(); return; }
     const n = NIVELES[nivelActual];
-    btn.disabled = true; msg.textContent = "Enviando tu reserva…"; msg.className = "msg";
+    btn.disabled = true; msg.textContent = nivelActual === "empresas" || nivelActual === "librerias" ? "Enviando…" : "Registrando tu precompra…"; msg.className = "msg";
     try {
       await enviar(n.usd ? `Precompra: ${n.nombre} (${nombre})` : `${n.nombre}: ${nombre}`, {
         nivel: n.nombre, precio: n.usd ? `USD ${n.usd} / ${pesos(n.clp)} CLP` : "A cotizar",
@@ -712,9 +738,76 @@
           <p>En menos de 24 horas te enviaremos a <strong>${email}</strong> un enlace de pago internacional${nivelActual === "digital" ? "" : " y coordinaremos contigo el envío del libro"}.</p>`;
       }
     } catch (err) {
-      msg.innerHTML = `No pudimos enviar la reserva. Escríbenos a <a href="mailto:${CORREO}?subject=${encodeURIComponent("Precompra: " + n.nombre)}">${CORREO}</a> y te respondemos con tu cupo.`;
+      msg.innerHTML = `No pudimos registrar la precompra. Escríbenos a <a href="mailto:${CORREO}?subject=${encodeURIComponent("Precompra: " + n.nombre)}">${CORREO}</a> y te respondemos con tu cupo.`;
       msg.className = "msg err";
     } finally { btn.disabled = false; }
+  });
+
+  /* Avance del libro: un segmento por capítulo, calculado desde el índice */
+  const caps = document.querySelectorAll("ol.indice > li");
+  const vivos = document.querySelectorAll("ol.indice > li.vivo").length;
+  const barra = $("#avance-barra");
+  if (barra) {
+    caps.forEach(li => { const s = document.createElement("span"); if (li.classList.contains("vivo")) s.className = "hecho"; barra.appendChild(s); });
+    $("#avance-texto").textContent = `${vivos} de ${caps.length} capítulos con avance publicado. Los demás se escriben ahora, con cada entrevista.`;
+  }
+
+  /* Ficha de especificación: se escribe en vivo una vez y luego el visitante escribe la suya */
+  const tipos = [...document.querySelectorAll(".ficha .tipo")];
+  let editando = false;
+  const quieto = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!quieto && tipos.length) {
+    const textos = tipos.map(t => t.textContent);
+    tipos.forEach(t => { t.parentElement.style.minHeight = t.parentElement.offsetHeight + "px"; t.textContent = ""; });
+    let i = 0, j = 0;
+    const paso = () => {
+      if (editando) return;
+      if (i >= tipos.length) { tipos[tipos.length - 1].classList.remove("escribiendo"); tipos.forEach(t => t.parentElement.style.minHeight = ""); return; }
+      const t = tipos[i];
+      t.classList.add("escribiendo");
+      t.textContent = textos[i].slice(0, ++j);
+      if (j >= textos[i].length) { if (i < tipos.length - 1) t.classList.remove("escribiendo"); i++; j = 0; setTimeout(paso, 380); }
+      else setTimeout(paso, 22);
+    };
+    tipos.forEach((t, k) => t.dataset.texto = textos[k]);
+    setTimeout(paso, 500);
+  }
+
+  const fichaMsg = $("#ficha-msg"), btnEditar = $("#ficha-editar"), btnCopiar = $("#ficha-copiar");
+  const ejemplos = ["Ej.: Revisar una factura y saber, en un minuto, si algo no cuadra.", "Ej.: Aprobar un pago sin la orden de compra.", "Ej.: Cero pagos duplicados en el mes."];
+  const contarEvento = (path, title) => { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title, event: true }); } catch (e) {} };
+  btnEditar.addEventListener("click", () => {
+    if (editando) return;
+    editando = true;
+    tipos.forEach((t, k) => {
+      const dd = t.parentElement;
+      dd.style.minHeight = "";
+      const ta = document.createElement("textarea");
+      ta.rows = 2; ta.placeholder = ejemplos[k]; ta.setAttribute("aria-labelledby", `f${k + 1}-t`);
+      dd.replaceChildren(ta);
+    });
+    $(".ficha h2").textContent = "Tu ficha de especificación";
+    $("#ficha-firma").textContent = "Escribe lo que sabes de tu oficio, con tus palabras. Eso es el 90 % del agente.";
+    btnEditar.hidden = true; btnCopiar.hidden = false;
+    document.querySelector(".ficha textarea").focus();
+    contarEvento("libro/ficha-editar", "Empezó a escribir su ficha");
+  });
+  btnCopiar.addEventListener("click", async () => {
+    const v = [...document.querySelectorAll(".ficha textarea")].map(t => t.value.trim());
+    if (!v[0]) { fichaMsg.textContent = "Escribe al menos lo que sabes hacer mejor que nadie."; fichaMsg.className = "msg sans err"; document.querySelector(".ficha textarea").focus(); return; }
+    const etiquetas = ["Lo que sé hacer mejor que nadie", "Lo que nunca se debe hacer", "Cómo sé que salió bien"];
+    const encargo = "Quiero construir un agente de IA que me ayude en mi trabajo. Esta es mi ficha de especificación:\n\n" +
+      v.map((x, k) => `- ${etiquetas[k]}: ${x || "(por definir)"}`).join("\n") +
+      "\n\nAntes de construir nada, hazme las preguntas que necesites para entender bien la tarea. Después, explícame en lenguaje simple cómo funcionaría el agente, paso a paso.";
+    try {
+      await navigator.clipboard.writeText(encargo);
+      fichaMsg.textContent = "Encargo copiado. Pégalo en Claude, ChatGPT o Gemini y responde sus preguntas.";
+      fichaMsg.className = "msg sans ok";
+      contarEvento("libro/ficha-copiada", "Copió su ficha como encargo");
+    } catch (e) {
+      fichaMsg.textContent = "No pudimos copiar automáticamente. Selecciona el texto de cada campo y cópialo a mano.";
+      fichaMsg.className = "msg sans err";
+    }
   });
 
   /* Comunidad */
