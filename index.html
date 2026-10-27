@@ -859,8 +859,28 @@ const CATS = {
 };
 
 /* Casos de la alianza: src (página en agentusecases.ai), fo (fuente original {n,u}), r (resultado real) */
-/* Casos: id, t (título), d (descripción), a (agente), c (categoría), f (fecha AAAA-MM-DD), p (prompt), s (patrocinado, opcional) */
+/* Casos: id, t (título), d (descripción), a (agente), c (categoría), f (fecha AAAA-MM-DD), p (prompt), s (patrocinado, opcional), np (sin probar por la comunidad, opcional) */
 const CASOS = [
+{id:"recortar-gasto-software-haggle-bot",f:"2026-10-27",c:"ops",a:"Grok Bot",np:true,
+ fo:{n:"Haggle Bot en el Bot Marketplace de Grok",u:"https://x.ai/bot/marketplace/bots/haggle-bot"},
+ t:"Encontrar lo que sobra en el gasto en software de tu empresa y negociar con el proveedor",
+ d:"Haggle Bot revisa lo que tu empresa paga en software, detecta licencias sin usar, herramientas duplicadas y alternativas más baratas, y redacta la contraoferta para cada proveedor. No paga, no firma ni envía nada sin tu aprobación.",
+ p:"Revisa el gasto en software de mi empresa con [exportación de la tarjeta corporativa o facturas de los últimos 12 meses] y arma una planilla con cada herramienta: proveedor, costo mensual, cantidad de licencias, quién la usa y fecha de renovación. Marca las licencias sin uso, las herramientas que hacen lo mismo y las que tienen una alternativa más barata, con la evidencia de cada ahorro. Para las renovaciones de los próximos [120] días, redacta una contraoferta para el proveedor. No envíes ningún correo, no firmes ni pagues nada sin mi aprobación."},
+{id:"senales-compra-crm-signal-prospector",f:"2026-10-27",c:"ventas",a:"Grok Bot",np:true,
+ fo:{n:"Signal Prospector en el Bot Marketplace de Grok",u:"https://x.ai/bot/marketplace/bots/signal-prospector"},
+ t:"Detectar en tu CRM quién está listo para comprar y redactarle el primer correo",
+ d:"Signal Prospector busca en tu CRM y en los datos de tu producto las cuentas y personas que acaban de mostrar interés, las ordena, explica cada señal y redacta el primer contacto. Corre solo cada cierto tiempo y no envía nada sin tu visto bueno.",
+ p:"Revisa mi CRM [HubSpot, Pipedrive u otro] y [datos de uso de mi producto o sitio] y encuentra las cuentas que mostraron interés de compra en los últimos [7] días: [visitas a precios, pruebas gratis, más usuarios, cambio de cargo, etc.]. Ordénalas por separado entre clientes nuevos, ampliaciones y renovaciones, y explica la señal de cada una. Para las 10 mejores, identifica a quién conviene escribirle y redacta un primer correo corto que mencione esa señal. Excluye las cuentas con una oportunidad abierta. No envíes nada, no las inscribas en secuencias ni cambies datos del CRM."},
+{id:"campanas-anuncios-distro-bot",f:"2026-10-27",c:"marketing",a:"Grok Bot",np:true,
+ fo:{n:"Distro Bot en el Bot Marketplace de Grok",u:"https://x.ai/bot/marketplace/bots/distro-bot"},
+ t:"Delegar tus campañas de anuncios con un tope de gasto que tú defines",
+ d:"Distro Bot aprende de tus campañas anteriores, propone anuncios nuevos, analiza qué canal funciona y sugiere publicaciones según lo que se está conversando. Te pide aprobación antes de cambiar el gasto, publicar o enviar algo.",
+ p:"Revisa mis campañas de los últimos [3] meses en [Meta Ads, Google Ads u otro] y dime qué funcionó y qué no, por canal, con costo por resultado. Propón [3] anuncios nuevos para [producto o servicio] dirigidos a [público], con texto e idea de imagen, y un reparto del presupuesto dentro de un tope de [monto] al mes. Sugiere también [2] publicaciones según temas del momento en mi rubro. No cambies el gasto, no publiques ni envíes nada sin mi aprobación, y no toques medios de pago ni accesos."},
+{id:"reels-desde-grabaciones-video-editor",f:"2026-10-27",c:"marketing",a:"Grok Bot",np:true,
+ fo:{n:"Video Editor en el Bot Marketplace de Grok",u:"https://x.ai/bot/marketplace/bots/video-editor"},
+ t:"Convertir lo que grabaste hablando a cámara en reels con subtítulos",
+ d:"Le pasas tus grabaciones en bruto y Video Editor elige las mejores tomas, pone subtítulos con lo que realmente dijiste y agrega imágenes de apoyo y música. Antes de cortar te manda un plan de edición para que lo apruebes, y nunca publica.",
+ p:"Edita mis grabaciones en [carpeta o enlace] para armar [número] videos verticales de [30 a 60] segundos para Reels, TikTok y Shorts. Primero mándame un plan: qué tomas usarás, el gancho de los primeros segundos y dónde irían imágenes de apoyo y música. Cuando lo apruebe, edita con subtítulos de lo que dije, revisa que audio y subtítulos estén sincronizados y no haya cortes bruscos. No borres ni cambies las grabaciones originales, no uses [lo que no quiero] y no publiques nada."},
 {id:"requisitos-licitacion-excel-cowork",f:"2026-10-27",c:"ops",a:"Claude Cowork",
  src:"https://agentusecases.ai/use-case/extract-rfq-and-boq-requirements-into-excel",fo:{n:"Reddit r/ClaudeAI",u:"https://www.reddit.com/r/ClaudeAI/comments/1qbqfpp/claude_cowork_use_cases"},
  t:"Pasar los requisitos de una licitación y su itemizado a un Excel",
