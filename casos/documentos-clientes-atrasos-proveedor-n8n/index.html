@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Perseguir documentos de clientes y avisar cuando un proveedor se atrasa | Agentario</title>
+<meta name="description" content="Un flujo en n8n pide automáticamente a tus clientes los documentos que faltan y, si un proveedor cambia la fecha de entrega, redacta el aviso a los…">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://agentario.laexperienciaeselcodigo.com/casos/documentos-clientes-atrasos-proveedor-n8n/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agentario">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Perseguir documentos de clientes y avisar cuando un proveedor se atrasa | Agentario">
+<meta property="og:description" content="Un flujo en n8n pide automáticamente a tus clientes los documentos que faltan y, si un proveedor cambia la fecha de entrega, redacta el aviso a los…">
+<meta property="og:url" content="https://agentario.laexperienciaeselcodigo.com/casos/documentos-clientes-atrasos-proveedor-n8n/">
+<meta property="og:image" content="https://agentario.laexperienciaeselcodigo.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/recursos/paginas.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Perseguir documentos de clientes y avisar cuando un proveedor se atrasa","description":"Un flujo en n8n pide automáticamente a tus clientes los documentos que faltan y, si un proveedor cambia la fecha de entrega, redacta el aviso a los clientes que esperan su pedido.","inLanguage":"es","datePublished":"2026-10-27","dateModified":"2026-10-27","image":"https://agentario.laexperienciaeselcodigo.com/og.png","mainEntityOfPage":"https://agentario.laexperienciaeselcodigo.com/casos/documentos-clientes-atrasos-proveedor-n8n/","articleSection":"Operaciones y PYME","about":{"@type":"SoftwareApplication","name":"n8n","applicationCategory":"AI agent"},"author":{"@type":"Person","@id":"https://laexperienciaeselcodigo.com/#autor","name":"Daniel Olivares Martínez"},"publisher":{"@type":"Person","@id":"https://laexperienciaeselcodigo.com/#autor","name":"Daniel Olivares Martínez"},"isPartOf":{"@type":"WebSite","@id":"https://agentario.laexperienciaeselcodigo.com/#sitio","name":"Agentario","url":"https://agentario.laexperienciaeselcodigo.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agentario","item":"https://agentario.laexperienciaeselcodigo.com/"},{"@type":"ListItem","position":2,"name":"Operaciones y PYME","item":"https://agentario.laexperienciaeselcodigo.com/categoria/operaciones-y-pyme/"},{"@type":"ListItem","position":3,"name":"Perseguir documentos de clientes y avisar cuando un proveedor se atrasa","item":"https://agentario.laexperienciaeselcodigo.com/casos/documentos-clientes-atrasos-proveedor-n8n/"}]}</script>
+</head>
+<body data-caso="documentos-clientes-atrasos-proveedor-n8n">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="dot" aria-hidden="true"></span>Agentario</a>
+    <nav class="main" aria-label="Principal">
+      <a href="/casos/">Todos los casos</a>
+      <a class="libro" href="https://laexperienciaeselcodigo.com/" data-libro="menu">El libro</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<nav class="migas" aria-label="Ruta"><ol><li><a href="/">Agentario</a></li><li><a href="/categoria/operaciones-y-pyme/">Operaciones y PYME</a></li><li aria-current="page">Perseguir documentos de clientes y avisar cuando un proveedor se atrasa</li></ol></nav>
+<article class="caso">
+  <h1>Perseguir documentos de clientes y avisar cuando un proveedor se atrasa</h1>
+  <p class="lead">Un flujo en n8n pide automáticamente a tus clientes los documentos que faltan y, si un proveedor cambia la fecha de entrega, redacta el aviso a los clientes que esperan su pedido.</p>
+  <p class="meta">Agente: <a class="agent" href="/agente/n8n/">n8n</a><a href="/categoria/operaciones-y-pyme/">Operaciones y PYME</a><span>Publicado el 27 de octubre de 2026</span></p>
+  <p class="res"><strong>Resultado real:</strong> Una oficina contable dice que se ahorra unas 600 horas al año y que podría cuadruplicar su cartera sin contratar, aunque parte del logro vino de cambiar también su software contable. El aviso de atrasos recién partía y no tiene cifras.</p>
+  <h2>El prompt</h2>
+  <p class="tip">Cópialo en n8n o ábrelo directo en Claude, y reemplaza lo que está entre [corchetes] con tus datos.</p>
+  <div class="acciones">
+    <button class="btn copiar" type="button" data-copiar="prompt">Copiar prompt</button>
+    <a class="btn sec" href="https://claude.ai/new?q=Arma%20un%20flujo%20en%20n8n%20para%20mi%20%5Btipo%20de%20negocio%5D%20que%20se%20encargue%20de%20%5Btarea%20repetitiva%2C%20por%20ejemplo%20pedir%20a%20los%20clientes%20los%20documentos%20que%20faltan%20y%20recordar%20facturas%20pendientes%5D.%20Agrega%20otro%20flujo%20que%20revise%20%5Bplanilla%20o%20correo%20del%20proveedor%5D%20y%2C%20si%20cambia%20una%20fecha%20de%20entrega%2C%20redacte%20un%20correo%20para%20los%20clientes%20afectados.%20Deja%20los%20correos%20como%20borrador%20para%20que%20yo%20los%20apruebe%20antes%20de%20enviarlos.%20Est%C3%A1%20listo%20cuando%20ambos%20flujos%20funcionen%20con%20datos%20de%20prueba%20y%20me%20digas%20cu%C3%A1nto%20tiempo%20semanal%20ahorran." target="_blank" rel="noopener" data-abrir="claude">Abrir en Claude</a>
+  </div>
+  <pre class="prompt" id="prompt">Arma un flujo en n8n para mi [tipo de negocio] que se encargue de [tarea repetitiva, por ejemplo pedir a los clientes los documentos que faltan y recordar facturas pendientes]. Agrega otro flujo que revise [planilla o correo del proveedor] y, si cambia una fecha de entrega, redacte un correo para los clientes afectados. Deja los correos como borrador para que yo los apruebe antes de enviarlos. Está listo cuando ambos flujos funcionen con datos de prueba y me digas cuánto tiempo semanal ahorran.</pre>
+  <p class="oferta" id="oferta" hidden>¿Te sirvió? <a href="/#/kit" data-kit-origen="caso-copiar">Arma tu kit con 5 casos para tu trabajo</a> o <a href="/#novedades" data-capitulo="caso-copiar">recibe gratis el capítulo 1</a>.</p>
+  <p class="fuentes"><a class="fo" href="https://www.reddit.com/r/n8n/comments/1ncjqju/has_anyone_actually_automated_a_real_business" target="_blank" rel="noopener">Fuente original: Reddit r/n8n</a><a class="via" href="https://agentusecases.ai/use-case/automate-bookkeeping-workflows-and-supplier-delay-emails" target="_blank" rel="noopener">Vía Agent Use Cases</a></p>
+</article>
+<aside class="band">
+  <div>
+    <h2>Tu experiencia vale más que el código</h2>
+    <p>Este caso es parte de <em>La experiencia es el código</em>, un libro para profesionales que quieren crear sus propios agentes de IA sin programar.</p>
+  </div>
+  <a class="btn" href="https://laexperienciaeselcodigo.com/#preventa" data-libro="caso-pagina">Conocer el libro</a>
+</aside>
+<section class="block">
+  <h2>Más casos de operaciones y pyme</h2>
+  <ol class="cases"><li class="case">
+    <h3><a href="/casos/conciliar-facturas-proveedores-fletes/">Cuadrar las facturas de proveedores con tus órdenes de compra</a></h3>
+    <p class="desc">El agente revisa las facturas de tus proveedores contra lo que pediste y te muestra cambios de precio, costos de flete y cobros que no calzan o vienen duplicados.</p>
+    <p class="meta"><a class="agent" href="/agente/claude-cowork/">Claude Cowork</a><span>27 de octubre de 2026</span></p>
+  </li><li class="case">
+    <h3><a href="/casos/ventas-sucursales-a-planilla-n8n/">Juntar en una planilla las ventas diarias que mandan tus locales</a></h3>
+    <p class="desc">Cada local manda su venta del día por mensaje y n8n, con ayuda de IA, saca el nombre del local y el total y los anota en Google Sheets. De paso, te avisa por SMS si tu página web se cae.</p>
+    <p class="meta"><a class="agent" href="/agente/n8n/">n8n</a><span>27 de octubre de 2026</span></p>
+  </li><li class="case">
+    <h3><a href="/casos/requisitos-licitacion-excel-cowork/">Pasar los requisitos de una licitación y su itemizado a un Excel</a></h3>
+    <p class="desc">Claude Cowork lee las bases, el itemizado y todos sus anexos en PDF, Word y Excel, y deja cada requisito en una planilla ordenada para preparar tu oferta.</p>
+    <p class="meta"><a class="agent" href="/agente/claude-cowork/">Claude Cowork</a><span>27 de octubre de 2026</span></p>
+  </li><li class="case">
+    <h3><a href="/casos/tramites-oficina-dots/">Despachar el papeleo de la oficina: correos, preguntas del contador y formularios</a></h3>
+    <p class="desc">Le das acceso a tu correo y tus documentos, y el agente trabaja en segundo plano mientras haces otra cosa: rechaza invitaciones, redacta correos, responde las preguntas del contador y llena formularios buscando los datos en tus archivos, como el contrato de arriendo o el presupuesto.</p>
+    <p class="meta"><a class="agent" href="/agente/openai-dots/">OpenAI Dots</a><span>22 de octubre de 2026</span></p>
+  </li><li class="case">
+    <h3><a href="/casos/proyecto-cliente-gmail-notion-openclaw/">Llevar el proyecto de un cliente entre tu correo, tu agenda y Notion</a></h3>
+    <p class="desc">Conectas el agente a Gmail, Google Calendar y Notion. Ordena tu correo en urgente, por revisar e informativo, detecta reuniones repetidas del mismo proyecto y propone juntarlas, y reparte un informe grande entre varios subagentes que investigan, analizan cifras y redactan.</p>
+    <p class="meta"><a class="agent" href="/agente/openclaw/">OpenClaw</a><span>22 de octubre de 2026</span></p>
+  </li></ol>
+  <p class="ver-row"><a class="ver" href="/categoria/operaciones-y-pyme/">Ver los 26 casos de operaciones y pyme</a><a class="ver kit" href="/#/kit" data-kit-origen="caso">Arma tu kit de 5 casos</a></p>
+</section>
+<nav class="sig" aria-label="Siguiente caso">
+  <a href="/casos/tramites-oficina-dots/" data-siguiente="tramites-oficina-dots"><span>Siguiente en operaciones y pyme</span><strong>Despachar el papeleo de la oficina: correos, preguntas del contador y formularios</strong><b aria-hidden="true">→</b></a>
+</nav>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Agentario es curado por <a href="https://www.linkedin.com/in/dolivares/" target="_blank" rel="noopener">Daniel Olivares</a> y es el adelanto abierto del libro <a href="https://laexperienciaeselcodigo.com/" data-libro="pie">La experiencia es el código</a>. Los casos son ideas para probar: revisa siempre lo que hace el agente antes de enviar, pagar o firmar.</p>
+    <p><a href="/">Inicio</a> · <a href="/casos/">Todos los casos</a> · <a href="/#/aporta">Aporta tu caso</a></p>
+  </div>
+</footer>
+<script src="/recursos/paginas.js" defer></script>
+</body>
+</html>
