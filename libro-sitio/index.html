@@ -196,6 +196,12 @@
   .ficha .ficha-acciones .btn { padding: .65rem 1rem; }
   .ficha .msg { font-size: .95rem; margin-top: .6rem; }
   .ficha .msg:empty { display: none; }
+  .ficha-gracias { margin-top: 1.25rem; padding-top: 1.1rem; border-top: 2px solid var(--pencil); }
+  .ficha-gracias .g-titulo { margin: 0; font-weight: 700; font-size: 1.1rem; }
+  .ficha-gracias .g-texto { margin: .2rem 0 .9rem; color: var(--muted); font-size: 1rem; line-height: 1.5; }
+  .ficha-gracias .campo { margin-bottom: .7rem; }
+  .ficha-gracias .check { margin: 0 0 1rem; font-size: .95rem; line-height: 1.4; }
+  .ficha-gracias.listo .g-texto { color: var(--ink); }
   .ficha .encargo { margin-top: .8rem; font-size: .95rem; }
   .ficha .encargo summary { cursor: pointer; color: var(--muted); }
   .ficha .encargo pre { white-space: pre-wrap; font: 400 .95rem/1.5 "Literata", Georgia, serif; background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: .75rem; margin: .5rem 0 0; max-height: 14rem; overflow: auto; }
@@ -394,6 +400,16 @@
           </div>
           <p class="msg sans" id="ficha-msg" role="status" aria-live="polite"></p>
           <details class="encargo sans" id="ficha-encargo" hidden><summary>Ver mi encargo</summary><pre id="ficha-encargo-txt"></pre></details>
+          <form class="ficha-gracias" id="ficha-gracias" novalidate hidden>
+            <p class="g-titulo">Gracias por escribir tu ficha.</p>
+            <p class="g-texto">¿Quieres recibir los capítulos a medida que se liberan?</p>
+            <div class="campo"><label for="g-email" class="sans">Correo</label><input id="g-email" name="email" type="email" autocomplete="email" required></div>
+            <label class="check sans"><input type="checkbox" name="compartir"> Comparto mi ficha para el libro; pueden contactarme para una entrevista</label>
+            <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn primary" type="submit">Avísame del avance</button>
+            <p class="msg sans" role="status" aria-live="polite"></p>
+            <p class="nota sans">Usamos tu correo solo para escribirte sobre el libro. Tu ficha se envía solo si marcas la casilla.</p>
+          </form>
         </aside>
       </section>
     </main>
@@ -827,7 +843,37 @@
     try {
       await navigator.share({ title: "Mi ficha de especificación", text: armar(valores()) });
       contarEvento("libro/ficha-compartida", "Compartió su ficha");
+      mostrarGracias();
     } catch (e) {}
+  });
+
+  /* Cierre: gracias e invitación a seguir el avance; la ficha se envía solo con permiso */
+  const fg = $("#ficha-gracias");
+  function mostrarGracias() {
+    if (!fg.hidden) return;
+    fg.hidden = false;
+    contarEvento("libro/ficha-gracias", "Vio la invitación tras su ficha");
+  }
+  fg.addEventListener("submit", async e => {
+    e.preventDefault();
+    const msg = fg.querySelector(".msg"), btn = fg.querySelector("button[type=submit]");
+    if (fg._honey.value) return;
+    const email = fg.email.value.trim().toLowerCase(), comparte = fg.compartir.checked;
+    if (!correoValido(email)) { msg.textContent = "Revisa el correo: parece que falta algo."; msg.className = "msg sans err"; fg.email.focus(); return; }
+    btn.disabled = true; msg.textContent = "Enviando…"; msg.className = "msg sans";
+    const v = valores();
+    const campos = { email, comparte_ficha: comparte ? "Sí" : "No", fecha: hoy };
+    if (comparte) etiquetas.forEach((t, k) => campos[t] = v[k] || "(sin completar)");
+    try {
+      await enviar(comparte ? `Ficha compartida: ${email}` : `Avance del libro: ${email}`, campos);
+      fg.classList.add("listo");
+      fg.replaceChildren(Object.assign(document.createElement("p"), { className: "g-titulo", textContent: "Listo. Te escribiremos cuando se libere un capítulo nuevo." }));
+      if (comparte) fg.appendChild(Object.assign(document.createElement("p"), { className: "g-texto", textContent: "Gracias por compartir tu ficha. Si tu caso calza con un capítulo, te escribiremos para conversar." }));
+      contarEvento(comparte ? "libro/ficha-suscrito/compartio" : "libro/ficha-suscrito/solo-correo", "Se suscribió desde la ficha");
+    } catch (err) {
+      msg.innerHTML = `No pudimos enviar tus datos. Escríbenos a <a href="mailto:${CORREO}">${CORREO}</a>.`;
+      msg.className = "msg sans err";
+    } finally { btn.disabled = false; }
   });
   btnCopiar.addEventListener("click", async () => {
     if (!fichaLista()) return;
@@ -839,10 +885,12 @@
       fichaMsg.textContent = "Ahora abre el asistente de IA que uses, pega el encargo y responde sus preguntas. Así empieza tu agente.";
       fichaMsg.className = "msg sans ok";
       contarEvento("libro/ficha-copiada", "Copió su ficha como encargo");
+      mostrarGracias();
     } catch (e) {
       $("#ficha-encargo").open = true;
       fichaMsg.textContent = "No pudimos copiar automáticamente. Selecciona el encargo de abajo y cópialo a mano.";
       fichaMsg.className = "msg sans err";
+      mostrarGracias();
     }
   });
 
