@@ -54,6 +54,7 @@
       "name": "Daniel Olivares Martínez",
       "jobTitle": "Director de IA",
       "homeLocation": { "@type": "Place", "name": "Santiago de Chile" },
+      "image": "https://laexperienciaeselcodigo.com/autor.webp",
       "sameAs": ["https://www.linkedin.com/in/dolivares/"]
     },
     {
@@ -203,8 +204,8 @@
 
   /* Autor */
   .autor { display: grid; grid-template-columns: 11rem minmax(0, 40rem); gap: 2.5rem; align-items: start; }
-  .autor .retrato { width: 11rem; height: 11rem; border-radius: 50%; object-fit: cover; display: grid; place-items: center; background: #14233A; color: #E0B04A;
-    font: 700 3.2rem/1 "Playfair Display", Georgia, serif; box-shadow: 8px 10px 0 -2px color-mix(in srgb, var(--pencil) 35%, transparent); }
+  .autor .retrato { width: 11rem; height: auto; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 3px; background: var(--card);
+    box-shadow: 8px 10px 0 -2px color-mix(in srgb, var(--pencil) 35%, transparent); }
   .autor p { margin: 0 0 1rem; }
   .autor .enlaces { font-size: 1rem; }
   .subtitle { font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.35; color: var(--muted); margin: 0 0 1.5rem; max-width: 30ch; }
@@ -373,7 +374,7 @@
     .hero, .agentario, .comunidad, .etapas-wrap, .organizaciones, .prueba .in, .autor { grid-template-columns: 1fr; gap: 2.5rem; }
     .libro .tapa { transform: none; width: min(13rem, 60vw); }
     .autor { gap: 1.5rem; }
-    .autor .retrato { width: 7.5rem; height: 7.5rem; font-size: 2.2rem; }
+    .autor .retrato { width: 8rem; }
     .organizaciones { gap: 1.5rem; }
     .hero { padding-top: 1rem; gap: 2rem; }
     .prueba, .cita { padding: 3.5rem 0; }
@@ -397,7 +398,7 @@
     ol.pasos li { display: grid; grid-template-columns: 2.4rem 1fr; column-gap: .75rem; }
     ol.pasos li::before { grid-row: span 2; font-size: 2.2rem; margin: 0; }
     ul.roles { display: none; }
-    .autor .retrato { width: 5.5rem; height: 5.5rem; font-size: 1.7rem; }
+    .autor .retrato { width: 7rem; }
     .etapas-wrap { gap: 0; }
     details.pliegue { border-top: 1px solid var(--line); }
     details.pliegue:last-child { border-bottom: 1px solid var(--line); }
@@ -575,8 +576,7 @@
 
   <section class="block" id="autor" aria-labelledby="autor-t">
     <div class="wrap autor">
-      <!-- Cuando llegue la foto: reemplaza este div por <img class="retrato" src="/autor.webp" alt="Daniel Olivares Martínez" width="352" height="352"> -->
-      <div class="retrato" aria-hidden="true">DO</div>
+      <img class="retrato" src="/autor.webp" alt="Retrato de Daniel Olivares Martínez" width="356" height="445" loading="lazy">
       <div>
         <h2 id="autor-t">Quién escribe este libro</h2>
         <p>Daniel Olivares Martínez es Director de IA en AidToGrow, donde construye agentes conversacionales de voz que atienden y hacen llamadas para empresas.</p>
