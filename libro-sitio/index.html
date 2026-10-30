@@ -35,7 +35,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=Playfair+Display:ital,wght@0,700;1,600&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -118,6 +118,7 @@
     --pencil: #C9962B;
     --pencil-soft: #F2E4C2;
     --on-pencil: #14233A;
+    --pencil-ink: #8F6519;
     --ok: #2F6B4F;
     --err: #A33A2B;
     color-scheme: light;
@@ -132,6 +133,7 @@
       --pencil: #E0B04A;
       --pencil-soft: #3A3220;
       --on-pencil: #101B2C;
+      --pencil-ink: #E0B04A;
       --ok: #7FC4A0;
       --err: #F0907F;
       color-scheme: dark;
@@ -170,8 +172,41 @@
   .btn[disabled] { opacity: .6; cursor: wait; }
 
   /* Portada */
-  .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3.5rem; align-items: center; padding: 3rem 0 4.5rem; }
-  h1 { font-size: clamp(2.75rem, 7vw, 5.25rem); line-height: 1.02; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 1.1rem; font-variation-settings: "opsz" 72; }
+  .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 3rem; align-items: center; padding: 2.5rem 0 4.5rem; }
+  /* Títulos con la misma letra de la tapa del libro */
+  h1, section.block h2, .prueba h2.t, .cita blockquote { font-family: "Playfair Display", Georgia, "Times New Roman", serif; }
+  h1 { font-size: clamp(3rem, 6.6vw, 5.4rem); line-height: .98; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 1.1rem; }
+  h1 .cursiva { display: block; font-style: italic; font-weight: 600; color: var(--pencil-ink); }
+  .plazo { margin: 1rem 0 0; font-size: 1rem; color: var(--muted); }
+  .plazo strong { color: var(--ink); }
+  .libro { margin: 0; display: grid; justify-items: center; gap: 1rem; perspective: 1400px; }
+  .libro .tapa { width: min(21rem, 78vw); height: auto; display: block; border-radius: 2px 6px 6px 2px; background: var(--card);
+    transform: rotateY(-14deg) rotateX(2deg); transform-origin: left center;
+    box-shadow: inset 6px 0 8px -4px rgba(0,0,0,.35), 22px 26px 40px -14px rgba(16,27,44,.45), 2px 2px 0 rgba(0,0,0,.08); }
+  @media (prefers-color-scheme: dark) { .libro .tapa { box-shadow: 0 0 0 1px rgba(255,255,255,.14), inset 6px 0 8px -4px rgba(0,0,0,.5), 22px 26px 40px -14px rgba(0,0,0,.7); } }
+  .libro figcaption { font-size: .95rem; color: var(--muted); text-align: center; }
+  .libro button { font: 600 .95rem "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; background: none; border: 0; padding: 0; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  /* Pruébalo: la ficha en su propia sección */
+  .prueba { padding: 4.5rem 0; border-top: 1px solid var(--line); }
+  .prueba .in { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3.5rem; align-items: center; }
+  .prueba h2.t { font-size: clamp(1.9rem, 3.6vw, 2.6rem); line-height: 1.12; font-weight: 700; margin: 0 0 1rem; }
+  .prueba .in > div > p { color: var(--muted); max-width: 30rem; margin: 0 0 1rem; }
+
+  /* Cita */
+  .cita { padding: 4rem 0; border-top: 1px solid var(--line); }
+  .cita figure { margin: 0; max-width: 50rem; border-left: 6px solid var(--pencil); padding-left: 1.75rem; }
+  .cita blockquote { margin: 0 0 1.25rem; font-style: italic; font-weight: 600; font-size: clamp(1.45rem, 2.8vw, 2rem); line-height: 1.3; }
+  .cita blockquote p { margin: 0 0 .6rem; }
+  .cita figcaption { font-size: 1rem; color: var(--muted); line-height: 1.5; }
+  .cita figcaption strong { color: var(--ink); }
+
+  /* Autor */
+  .autor { display: grid; grid-template-columns: 11rem minmax(0, 40rem); gap: 2.5rem; align-items: start; }
+  .autor .retrato { width: 11rem; height: 11rem; border-radius: 50%; object-fit: cover; display: grid; place-items: center; background: #14233A; color: #E0B04A;
+    font: 700 3.2rem/1 "Playfair Display", Georgia, serif; box-shadow: 8px 10px 0 -2px color-mix(in srgb, var(--pencil) 35%, transparent); }
+  .autor p { margin: 0 0 1rem; }
+  .autor .enlaces { font-size: 1rem; }
   .subtitle { font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.35; color: var(--muted); margin: 0 0 1.5rem; max-width: 30ch; }
   .lede { max-width: 38rem; margin: 0 0 1.5rem; }
   .hechos { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin: 0 0 2rem; padding: 0; list-style: none; font-size: 1rem; }
@@ -238,6 +273,8 @@
   ol.indice .estado.vivo::before { content: ""; display: inline-block; width: .55rem; height: .55rem; border-radius: 50%; background: var(--pencil); margin-right: .45rem; vertical-align: .1rem; }
   ol.indice li.pendiente .titulo { color: var(--muted); }
   ol.indice li.vivo { background: var(--card); border-left: 6px solid var(--pencil); padding-left: 1rem; padding-right: 1rem; margin: 0 -1rem; }
+  ol.indice.plegado > li:nth-child(n+4) { display: none; }
+  .ver-indice { margin: 1rem 0 0; }
   /* Avance del libro: un segmento por capítulo */
   .avance { max-width: 46rem; margin: 0 0 1.75rem; }
   .avance .barra { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; height: .7rem; margin-bottom: .55rem; }
@@ -245,6 +282,10 @@
   .avance .barra span.hecho { background: var(--pencil); }
   .avance p { margin: 0; font-size: 1rem; color: var(--muted); }
 
+  /* Preventa: con el azul de la tapa oscura */
+  #preventa { --paper: #14233A; --card: #1B2E4A; --ink: #EEF2F6; --muted: #B3C0CF; --line: #34496A; --pencil: #E0B04A; --pencil-soft: #3D3522; --on-pencil: #14233A;
+    background: var(--paper); color: var(--ink); border-top: 0; }
+  @media (prefers-color-scheme: dark) { #preventa { --paper: #0B1422; --card: #15233A; --line: #2C3D55; } }
   /* Preventa: lista de precios con forma de catálogo de librería */
   .precios { list-style: none; margin: 0 0 3rem; padding: 0; border-top: 2px solid var(--ink); }
   .precios > li { display: grid; grid-template-columns: 1fr 11rem 11.5rem; gap: 1.5rem; align-items: center; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
@@ -277,6 +318,8 @@
   ol.etapas .fecha { display: block; font-size: .95rem; color: var(--muted); }
   ol.etapas .p { font-weight: 600; }
   ol.etapas li.actual .p::after { content: " Etapa actual"; font-family: "IBM Plex Sans Condensed", Arial, sans-serif; font-weight: 600; font-size: .92rem; background: var(--pencil-soft); padding: .1rem .45rem; margin-left: .5rem; border-radius: 2px; }
+  details.pliegue > summary { list-style: none; cursor: default; }
+  details.pliegue > summary::-webkit-details-marker { display: none; }
   dl.condiciones { margin: 0; }
   dl.condiciones dt { font-weight: 700; margin-top: 1rem; }
   dl.condiciones dt:first-child { margin-top: 0; }
@@ -327,9 +370,13 @@
   footer a { color: var(--ink); }
 
   @media (max-width: 900px) {
-    .hero, .agentario, .comunidad, .etapas-wrap, .organizaciones { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero, .agentario, .comunidad, .etapas-wrap, .organizaciones, .prueba .in, .autor { grid-template-columns: 1fr; gap: 2.5rem; }
+    .libro .tapa { transform: none; width: min(13rem, 60vw); }
+    .autor { gap: 1.5rem; }
+    .autor .retrato { width: 7.5rem; height: 7.5rem; font-size: 2.2rem; }
     .organizaciones { gap: 1.5rem; }
-    .hero { padding-top: 1.5rem; }
+    .hero { padding-top: 1rem; gap: 2rem; }
+    .prueba, .cita { padding: 3.5rem 0; }
     .ficha { transform: none; }
     ol.pasos { grid-template-columns: 1fr; }
     .precios > li { grid-template-columns: 1fr auto; gap: 1rem 1.5rem; }
@@ -344,6 +391,21 @@
     .precios > li.destacado { margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
     ol.indice li { grid-template-columns: 2rem 1fr; }
     ol.indice .estado { grid-column: 2; }
+    /* Celular: menos largo */
+    ul.casos li:nth-child(n+4) { display: none; }
+    ol.pasos { gap: 1.5rem; }
+    ol.pasos li { display: grid; grid-template-columns: 2.4rem 1fr; column-gap: .75rem; }
+    ol.pasos li::before { grid-row: span 2; font-size: 2.2rem; margin: 0; }
+    ul.roles { display: none; }
+    .autor .retrato { width: 5.5rem; height: 5.5rem; font-size: 1.7rem; }
+    .etapas-wrap { gap: 0; }
+    details.pliegue { border-top: 1px solid var(--line); }
+    details.pliegue:last-child { border-bottom: 1px solid var(--line); }
+    details.pliegue > summary { cursor: pointer; position: relative; padding: 1rem 2rem 1rem 0; }
+    details.pliegue > summary h3 { margin: 0; font-size: 1.2rem; }
+    details.pliegue > summary::after { content: "+"; position: absolute; right: .25rem; top: .85rem; font-size: 1.5rem; line-height: 1; color: var(--muted); }
+    details.pliegue[open] > summary::after { content: "−"; }
+    details.pliegue[open] { padding-bottom: 1.25rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     .ficha .tipo.escribiendo::after { animation: none; }
@@ -357,9 +419,9 @@
       <a class="marca" href="/">La experiencia es el código</a>
       <nav aria-label="Secciones">
         <a href="#como-funciona">Cómo funciona</a>
-        <a href="#agentario">Agentario</a>
         <a href="#capitulos">Capítulos</a>
-        <a href="/capitulo-1/">Capítulo 1</a>
+        <a href="/aprender-a-crear-agentes-de-ia/">Guía</a>
+        <a href="#agentario">Agentario</a>
         <a href="#comunidad">Comunidad</a>
         <a class="nav-cta" href="#preventa">Precomprar</a>
       </nav>
@@ -368,7 +430,7 @@
     <main id="contenido">
       <section class="hero" aria-labelledby="titulo">
         <div>
-          <h1 id="titulo">La experiencia es el código</h1>
+          <h1 id="titulo">La experiencia <span class="cursiva">es el código</span></h1>
           <p class="subtitle">IA agéntica para profesionales que saben lo que piden</p>
           <p class="lede">Un libro para aprender a crear agentes de inteligencia artificial sin programar, escrito en vivo junto a profesionales con trayectoria. Cada capítulo y cada entrevista se publica aquí a medida que avanza.</p>
           <ul class="hechos sans">
@@ -380,45 +442,72 @@
             <a class="btn primary" href="#preventa" data-cta-precio>Precomprar el libro</a>
             <a class="btn" href="#comunidad">Unirme a la comunidad</a>
           </div>
+          <p class="plazo sans" id="plazo" hidden></p>
         </div>
 
-        <aside class="ficha" aria-label="Ejemplo de ficha de especificación de un agente de IA">
-          <h2 class="sans">Ficha de especificación</h2>
-          <dl id="ficha-dl">
-            <dt class="sans" id="f1-t">Lo que sé hacer mejor que nadie</dt>
-            <dd><span class="tipo">Revisar una factura y saber, en un minuto, si algo no cuadra.</span></dd>
-            <dt class="sans" id="f2-t">Lo que nunca se debe hacer</dt>
-            <dd><span class="tipo">Aprobar un pago sin la orden de compra, aunque el cliente apure.</span></dd>
-            <dt class="sans" id="f3-t">Cómo sé que salió bien</dt>
-            <dd><span class="tipo">Cero pagos duplicados en el mes y respuesta al proveedor en menos de un día.</span></dd>
-          </dl>
-          <p class="firma sans" id="ficha-firma">Con esto, un agente ya sabe qué hacer. El código lo escribe la IA.</p>
-          <div class="ficha-acciones sans">
-            <button class="btn" type="button" id="ficha-editar">Escribir mi ficha</button>
-            <button class="btn primary" type="button" id="ficha-copiar" hidden>Copiar mi encargo</button>
-            <button class="btn" type="button" id="ficha-compartir" hidden>Compartir</button>
-          </div>
-          <p class="msg sans" id="ficha-msg" role="status" aria-live="polite"></p>
-          <details class="encargo sans" id="ficha-encargo" hidden><summary>Ver mi encargo</summary><pre id="ficha-encargo-txt"></pre></details>
-          <form class="ficha-gracias" id="ficha-gracias" novalidate hidden>
-            <p class="g-titulo">Gracias por escribir tu ficha.</p>
-            <p class="g-texto">¿Quieres recibir los capítulos a medida que se liberan?</p>
-            <div class="campo"><label for="g-email" class="sans">Correo</label><input id="g-email" name="email" type="email" autocomplete="email" required></div>
-            <label class="check sans"><input type="checkbox" name="compartir"> Comparto mi ficha para el libro; pueden contactarme para una entrevista</label>
-            <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <button class="btn primary" type="submit">Avísame del avance</button>
-            <p class="msg sans" role="status" aria-live="polite"></p>
-            <p class="nota sans">Usamos tu correo solo para escribirte sobre el libro. Tu ficha se envía solo si marcas la casilla.</p>
-          </form>
-        </aside>
+        <figure class="libro">
+          <img class="tapa" id="tapa" src="/capitulo-1/tapa-oscura.webp" alt="Tapa del libro La experiencia es el código, de Daniel Olivares" width="400" height="600" fetchpriority="high">
+          <figcaption class="sans">Estamos eligiendo la tapa. <button type="button" id="otra-tapa">Ver la otra versión</button></figcaption>
+        </figure>
       </section>
     </main>
   </div>
 
+  <section class="prueba" id="prueba" aria-labelledby="prueba-t">
+    <div class="wrap in">
+      <div>
+        <h2 class="t" id="prueba-t">Escribe tu ficha y verás que el agente ya está a medio camino</h2>
+        <p>Tres respuestas sobre tu oficio, con tus palabras. Eso es el 90 % de un agente de IA. El otro 10 % lo escribe la máquina.</p>
+        <p>Pruébalo con una tarea que hagas todas las semanas.</p>
+      </div>
+      <aside class="ficha" aria-label="Ejemplo de ficha de especificación de un agente de IA">
+        <h2 class="sans">Ficha de especificación</h2>
+        <dl id="ficha-dl">
+          <dt class="sans" id="f1-t">Lo que sé hacer mejor que nadie</dt>
+          <dd><span class="tipo">Revisar una factura y saber, en un minuto, si algo no cuadra.</span></dd>
+          <dt class="sans" id="f2-t">Lo que nunca se debe hacer</dt>
+          <dd><span class="tipo">Aprobar un pago sin la orden de compra, aunque el cliente apure.</span></dd>
+          <dt class="sans" id="f3-t">Cómo sé que salió bien</dt>
+          <dd><span class="tipo">Cero pagos duplicados en el mes y respuesta al proveedor en menos de un día.</span></dd>
+        </dl>
+        <p class="firma sans" id="ficha-firma">Con esto, un agente ya sabe qué hacer. El código lo escribe la IA.</p>
+        <div class="ficha-acciones sans">
+          <button class="btn" type="button" id="ficha-editar">Escribir mi ficha</button>
+          <button class="btn primary" type="button" id="ficha-copiar" hidden>Copiar mi encargo</button>
+          <button class="btn" type="button" id="ficha-compartir" hidden>Compartir</button>
+        </div>
+        <p class="msg sans" id="ficha-msg" role="status" aria-live="polite"></p>
+        <details class="encargo sans" id="ficha-encargo" hidden><summary>Ver mi encargo</summary><pre id="ficha-encargo-txt"></pre></details>
+        <form class="ficha-gracias" id="ficha-gracias" novalidate hidden>
+          <p class="g-titulo">Gracias por escribir tu ficha.</p>
+          <p class="g-texto">¿Quieres recibir los capítulos a medida que se liberan?</p>
+          <div class="campo"><label for="g-email" class="sans">Correo</label><input id="g-email" name="email" type="email" autocomplete="email" required></div>
+          <label class="check sans"><input type="checkbox" name="compartir"> Comparto mi ficha para el libro; pueden contactarme para una entrevista</label>
+          <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn primary" type="submit">Avísame del avance</button>
+          <p class="msg sans" role="status" aria-live="polite"></p>
+          <p class="nota sans">Usamos tu correo solo para escribirte sobre el libro. Tu ficha se envía solo si marcas la casilla.</p>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cita" aria-label="Cita">
+    <div class="wrap">
+      <figure>
+        <blockquote>
+          <p>«Mi sensación es que los grandes ganadores de la inteligencia artificial somos nosotros, lo que ellos llaman los boomers».</p>
+          <p>«Hay un conjunto de contenidos míos, son 20 años de contenidos, que usa la inteligencia artificial».</p>
+        </blockquote>
+        <figcaption class="sans"><strong>Óscar Landerretche</strong>, decano de la Facultad de Economía y Negocios de la Universidad de Chile, en <a href="https://youtu.be/8t_8cLfW5e8" rel="noopener" target="_blank">Exponencial, el podcast de TVN y CENIA</a>.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="block" id="como-funciona" aria-labelledby="como-t">
     <div class="wrap">
       <h2 id="como-t">Un libro de IA escrito con su comunidad</h2>
-      <p class="intro">Tu experiencia es el 90 % del trabajo para construir un agente de inteligencia artificial. El otro 10 % lo hace la máquina. Este libro lo demuestra con casos reales, contados por quienes los viven, en finanzas, recursos humanos, salud, logística, educación y atención al cliente.</p>
+      <p class="intro">Cada capítulo nace de una entrevista con alguien que domina su oficio. Son casos reales, contados por quienes los viven, en finanzas, recursos humanos, salud, logística, educación y atención al cliente.</p>
       <ol class="pasos">
         <li>
           <h3>Entrevistamos</h3>
@@ -441,7 +530,7 @@
     <div class="wrap agentario">
       <div>
         <h2 id="agentario-t">Agentario: la prueba de que ya es posible</h2>
-        <p class="rol">El Agentario es el adelanto abierto y masivo de este libro: más de 50 casos de uso de agentes de IA en español, en siete áreas. Mientras los capítulos se escriben con calma, el Agentario publica todos los días casos concretos de lo que ya puedes delegar a un agente, cada uno con el prompt listo para copiar.</p>
+        <p class="rol">El Agentario es el adelanto abierto y masivo de este libro: más de 130 casos de uso de agentes de IA en español, en siete áreas. Mientras los capítulos se escriben con calma, el Agentario publica todos los días casos concretos de lo que ya puedes delegar a un agente, cada uno con el prompt listo para copiar.</p>
         <p class="rol">Su trabajo es mostrar lo fácil y accesible que es empezar: no hace falta saber programar ni comprar software caro. Hace falta saber pedir, y eso es justo lo que un profesional con trayectoria domina.</p>
         <a class="btn" href="https://agentario.laexperienciaeselcodigo.com/">Explorar los casos del Agentario</a>
       </div>
@@ -479,7 +568,21 @@
         <li class="pendiente"><span class="titulo">Agentes de voz (opcional)</span></li>
         <li class="pendiente"><span class="titulo">Proyecto final y entregables</span></li>
       </ol>
-      <p class="intro" style="margin-top:2rem"><a class="btn" href="/capitulo-1/">Leer gratis el avance del capítulo 1</a></p>
+      <p class="ver-indice sans"><button class="btn" type="button" id="ver-indice" hidden>Ver los 11 capítulos</button></p>
+      <p class="intro" style="margin-top:2rem"><a class="btn primary" href="/capitulo-1/">Leer gratis el avance del capítulo 1</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="autor" aria-labelledby="autor-t">
+    <div class="wrap autor">
+      <!-- Cuando llegue la foto: reemplaza este div por <img class="retrato" src="/autor.webp" alt="Daniel Olivares Martínez" width="352" height="352"> -->
+      <div class="retrato" aria-hidden="true">DO</div>
+      <div>
+        <h2 id="autor-t">Quién escribe este libro</h2>
+        <p>Daniel Olivares Martínez es Director de IA en AidToGrow, donde construye agentes conversacionales de voz que atienden y hacen llamadas para empresas.</p>
+        <p>Viene del mundo de la cobranza y las finanzas operativas, el ciclo Order to Cash, y escribe en LinkedIn la newsletter «Order to Cash · IA aplicada». Su primer libro, sobre cómo construir agentes, está publicado en Amazon. Este es el segundo, y lo escribe en vivo con su comunidad desde Santiago de Chile.</p>
+        <p class="enlaces sans"><a href="https://www.linkedin.com/in/dolivares/" rel="author">Ver su perfil en LinkedIn</a></p>
+      </div>
     </div>
   </section>
 
@@ -531,17 +634,17 @@
       </div>
 
       <div class="etapas-wrap">
-        <div>
-          <h3>Cómo sube el precio del lector fundador</h3>
+        <details class="pliegue" open>
+          <summary><h3>Cómo sube el precio del lector fundador</h3></summary>
           <ol class="etapas" id="etapas">
             <li data-desde="2026-10-01" data-hasta="2026-11-17"><span class="p">USD 55</span> <span class="fecha">Fundadores: hasta el 17 de noviembre de 2026 o hasta completar 100 cupos</span></li>
             <li data-desde="2026-11-18" data-hasta="2026-12-14"><span class="p">USD 65</span> <span class="fecha">Regalo de Navidad: del 18 de noviembre al 14 de diciembre. Durante Black Friday, del 27 al 30 de noviembre, baja a USD 59</span></li>
             <li data-desde="2026-12-15" data-hasta="2027-04-04"><span class="p">USD 69</span> <span class="fecha">Del 15 de diciembre de 2026 al 4 de abril de 2027</span></li>
             <li data-desde="2027-04-05" data-hasta="2099-12-31"><span class="p">USD 85</span> <span class="fecha">Desde el lanzamiento del libro impreso, el 5 de abril de 2027</span></li>
           </ol>
-        </div>
-        <div>
-          <h3 id="condiciones">Condiciones</h3>
+        </details>
+        <details class="pliegue" id="condiciones" open>
+          <summary><h3>Condiciones</h3></summary>
           <dl class="condiciones">
             <dt>Garantía de devolución</dt>
             <dd>Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado.</dd>
@@ -552,7 +655,7 @@
             <dt>Envío del libro impreso</dt>
             <dd>En Chile, el envío está incluido. En España, el libro se despacha desde Málaga con un recargo de envío que te informamos al confirmar tu reserva. Para otros países, coordinamos el envío contigo.</dd>
           </dl>
-        </div>
+        </details>
       </div>
     </div>
   </section>
@@ -575,14 +678,8 @@
         <div class="campo"><label for="c-email">Correo</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
         <div class="campo"><label for="c-pais">País</label>
           <select id="c-pais" name="pais"><option>Chile</option><option>Argentina</option><option>Colombia</option><option>México</option><option>Perú</option><option>Uruguay</option><option>España</option><option>Otro país</option></select></div>
-        <fieldset>
-          <legend>Cómo quieres participar</legend>
-          <label class="check"><input type="checkbox" name="rol" value="Voz del libro"> Quiero contar mi oficio en una entrevista</label>
-          <label class="check"><input type="checkbox" name="rol" value="Lector beta"> Quiero leer los borradores</label>
-          <label class="check"><input type="checkbox" name="rol" value="Embajador"> Quiero recomendar el libro</label>
-          <label class="check"><input type="checkbox" name="rol" value="Empresa aliada"> Represento a una empresa</label>
-          <label class="check"><input type="checkbox" name="rol" value="Librería"> Tengo una librería</label>
-        </fieldset>
+        <div class="campo"><label for="c-rol">Cómo quieres participar</label>
+          <select id="c-rol" name="rol"><option value="Voz del libro">Quiero contar mi oficio en una entrevista</option><option value="Lector beta">Quiero leer los borradores</option><option value="Embajador">Quiero recomendar el libro</option><option value="Empresa aliada">Represento a una empresa</option><option value="Librería">Tengo una librería</option></select></div>
         <div class="campo"><label for="c-oficio">Tu oficio, en una línea (opcional)</label><input id="c-oficio" name="oficio" placeholder="Ej.: 25 años en cobranza de una distribuidora"></div>
         <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn primary" type="submit">Sumarme a la comunidad</button>
@@ -652,10 +749,10 @@
   /* Precios por nivel. El lector fundador cambia por etapa; los demás, solo al lanzamiento. */
   const LANZAMIENTO = "2027-04-05";
   const ETAPAS = [
-    { desde: "2026-10-01", hasta: "2026-11-17", usd: 55, clp: 52000, nombre: "Precio de fundador, hasta el 17 de noviembre" },
-    { desde: "2026-11-27", hasta: "2026-11-30", usd: 59, clp: 56000, nombre: "Precio de Black Friday, hasta el 30 de noviembre" },
-    { desde: "2026-11-18", hasta: "2026-12-14", usd: 65, clp: 62000, nombre: "Precio de Navidad, hasta el 14 de diciembre" },
-    { desde: "2026-12-15", hasta: "2027-04-04", usd: 69, clp: 65000, nombre: "Precio de preventa, hasta el 4 de abril" },
+    { desde: "2026-10-01", hasta: "2026-11-17", usd: 55, clp: 52000, nombre: "Precio de fundador, hasta el 17 de noviembre", corto: "Precio de fundador" },
+    { desde: "2026-11-27", hasta: "2026-11-30", usd: 59, clp: 56000, nombre: "Precio de Black Friday, hasta el 30 de noviembre", corto: "Precio de Black Friday" },
+    { desde: "2026-11-18", hasta: "2026-12-14", usd: 65, clp: 62000, nombre: "Precio de Navidad, hasta el 14 de diciembre", corto: "Precio de Navidad" },
+    { desde: "2026-12-15", hasta: "2027-04-04", usd: 69, clp: 65000, nombre: "Precio de preventa, hasta el 4 de abril", corto: "Precio de preventa" },
     { desde: "2027-04-05", hasta: "2099-12-31", usd: 85, clp: 80000, nombre: "Precio de lanzamiento" }
   ];
   const hoy = (() => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); })();
@@ -693,6 +790,20 @@
   });
   const et = document.querySelector("[data-etapa-nombre]"); if (et) et.textContent = etapa.nombre;
   const cta = document.querySelector("[data-cta-precio]"); if (cta) cta.textContent = `Precomprar desde USD ${NIVELES.digital.usd}`;
+  /* Plazo real del precio actual, calculado con la fecha (solo en los últimos 30 días de cada etapa) */
+  const plazo = $("#plazo");
+  if (plazo && etapa.corto && !lanzado) {
+    const dia = s => Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10));
+    const quedan = Math.round((dia(etapa.hasta) - dia(hoy)) / 864e5);
+    const sig = new Date(dia(etapa.hasta) + 864e5).toISOString().slice(0, 10);
+    const despues = ETAPAS.find(e => sig >= e.desde && sig <= e.hasta);
+    const fecha = new Date(dia(sig)).toLocaleDateString("es-CL", { day: "numeric", month: "long", timeZone: "UTC" });
+    if (quedan <= 30 && despues) {
+      plazo.innerHTML = `<strong>${etapa.corto}: ${quedan === 0 ? "hoy es el último día" : quedan === 1 ? "queda 1 día" : `quedan ${quedan} días`}.</strong> ${despues.usd > etapa.usd ? "Sube" : "Cambia"} a USD ${despues.usd} el ${fecha}.`;
+      plazo.hidden = false;
+    }
+  }
+
   document.querySelectorAll("#etapas li").forEach(li => {
     if (hoy > li.dataset.hasta) li.classList.add("pasada");
     else if (hoy >= li.dataset.desde) li.classList.add("actual");
@@ -767,6 +878,37 @@
     } finally { btn.disabled = false; }
   });
 
+  /* Tapa: se alterna entre visitas y se puede ver la otra */
+  const tapa = $("#tapa"), otraTapa = $("#otra-tapa");
+  if (tapa && otraTapa) {
+    const TAPAS = ["/capitulo-1/tapa-oscura.webp", "/capitulo-1/tapa-clara.webp"];
+    let t = 0;
+    try { t = (parseInt(localStorage.getItem("libro-tapa") || "1", 10) + 1) % 2; localStorage.setItem("libro-tapa", String(t)); } catch (e) { t = Math.round(Math.random()); }
+    tapa.src = TAPAS[t];
+    otraTapa.addEventListener("click", () => {
+      t = 1 - t; tapa.src = TAPAS[t];
+      try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "libro/tapa-ver/" + (t ? "clara" : "oscura"), title: "Vio la otra tapa", event: true }); } catch (e) {}
+    });
+  }
+
+  /* Índice compacto: muestra los primeros capítulos y se despliega completo */
+  const indice = $("ol.indice"), verIndice = $("#ver-indice");
+  if (indice && verIndice) {
+    indice.classList.add("plegado"); verIndice.hidden = false;
+    verIndice.textContent = `Ver los ${indice.children.length} capítulos`;
+    verIndice.addEventListener("click", () => { indice.classList.remove("plegado"); verIndice.parentElement.hidden = true; });
+  }
+
+  /* Escala de precios y condiciones: plegadas en celular */
+  const pliegues = document.querySelectorAll("details.pliegue");
+  const esCelular = window.matchMedia && window.matchMedia("(max-width: 600px)");
+  const ajustarPliegues = () => pliegues.forEach(d => d.open = !(esCelular && esCelular.matches));
+  ajustarPliegues();
+  pliegues.forEach(d => d.querySelector("summary").addEventListener("click", e => { if (!(esCelular && esCelular.matches)) e.preventDefault(); }));
+  const abrirCondiciones = () => { if (location.hash === "#condiciones") $("#condiciones").open = true; };
+  window.addEventListener("hashchange", abrirCondiciones); abrirCondiciones();
+  document.querySelectorAll('a[href="#condiciones"]').forEach(a => a.addEventListener("click", () => { $("#condiciones").open = true; }));
+
   /* Avance del libro: un segmento por capítulo, calculado desde el índice */
   const caps = document.querySelectorAll("ol.indice > li");
   const vivos = document.querySelectorAll("ol.indice > li.vivo").length;
@@ -794,7 +936,11 @@
       else setTimeout(paso, 22);
     };
     tipos.forEach((t, k) => t.dataset.texto = textos[k]);
-    setTimeout(paso, 500);
+    /* Empieza a escribirse cuando la ficha aparece en pantalla */
+    const fichaEl = document.querySelector(".ficha");
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((es, obs) => { if (es.some(x => x.isIntersecting)) { obs.disconnect(); setTimeout(paso, 300); } }, { threshold: .35 }).observe(fichaEl);
+    } else setTimeout(paso, 500);
   }
 
   const fichaMsg = $("#ficha-msg"), btnEditar = $("#ficha-editar"), btnCopiar = $("#ficha-copiar");
@@ -903,12 +1049,12 @@
     const msg = fc.querySelector(".msg"), btn = fc.querySelector("button[type=submit]");
     if (fc._honey.value) return;
     const nombre = fc.nombre.value.trim(), email = fc.email.value.trim().toLowerCase();
-    const roles = [...fc.querySelectorAll("input[name=rol]:checked")].map(i => i.value);
+    const rol = fc.rol.value;
     if (!nombre) { msg.textContent = "Escribe tu nombre para sumarte."; msg.className = "msg err"; fc.nombre.focus(); return; }
     if (!correoValido(email)) { msg.textContent = "Revisa el correo: parece que falta algo."; msg.className = "msg err"; fc.email.focus(); return; }
     btn.disabled = true; msg.textContent = "Enviando…"; msg.className = "msg";
     try {
-      await enviar(`Comunidad: ${nombre}`, { nombre, email, pais: fc.pais.value, roles: roles.join(", ") || "Sin especificar", oficio: fc.oficio.value.trim(), fecha: hoy });
+      await enviar(`Comunidad: ${nombre}`, { nombre, email, pais: fc.pais.value, roles: rol, oficio: fc.oficio.value.trim(), fecha: hoy });
       fc.reset();
       msg.textContent = `¡Listo, ${nombre.split(" ")[0]}! Ya eres parte de la comunidad fundadora. Te escribiremos pronto.`;
       msg.className = "msg ok";
