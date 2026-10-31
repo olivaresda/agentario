@@ -10,7 +10,7 @@
   Mientras un valor no sea numérico, ese píxel no se carga.
 */
 (function () {
-  var META_PIXEL_ID = 'PEGAR_ID_META';
+  var META_PIXEL_ID = '1759700455330503';
   var LINKEDIN_PARTNER_ID = 'PEGAR_ID_LINKEDIN';
 
   function valido(id) { return /^\d+$/.test(id); }
