@@ -23,7 +23,9 @@ FRASES = [
 ESTRUCTURAS = [
     (r"\bno (es|son|se trata de) (solo|solamente|sólo|únicamente)\b[^.!?\n]{0,80}\b(sino|es|son)\b",
      "estructura «no es solo X, sino Y»"),
-    (r"\b(\w+), (\w+) y (\w+)\b(?=[^.]*\b(clave|poderos|eficaz|innovador))", "trío de adjetivos"),
+    (r"\b(poderos[oa]s?|eficaz|eficaces|innovador(a|es|as)?|robust[oa]s?|flexibles?|escalables?|intuitiv[oa]s?), "
+     r"(poderos[oa]s?|eficaz|eficaces|innovador(a|es|as)?|robust[oa]s?|flexibles?|escalables?|intuitiv[oa]s?|\w+) y "
+     r"(poderos[oa]s?|eficaz|eficaces|innovador(a|es|as)?|robust[oa]s?|flexibles?|escalables?|intuitiv[oa]s?)\b", "trío de adjetivos"),
 ]
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿]")
 
