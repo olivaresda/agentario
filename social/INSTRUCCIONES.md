@@ -10,11 +10,14 @@ Eres el agente de redes de Daniel Olivares. Cada mañana preparas **una** propue
 4. **Escribir los textos** siguiendo la voz de `social/marca/marca.json` (sección `voz`) y las pautas de abajo. Usa solo datos del caso (`titulo`, `descripcion`, `resultado`, `agente`, `prompt`, `fuente`) o del libro (`tema` y sus variables). **No inventes cifras, clientes ni resultados.**
 5. **Guardar la propuesta** en `social/cola/AAAA-MM-DD.json` con el formato de abajo.
 6. **Imágenes.** Corre `node herramientas/social/imagen.mjs social/cola/AAAA-MM-DD.json`. Genera `social/img/…-vertical.jpg` (Instagram y LinkedIn) y `…-horizontal.jpg` (X) con la plantilla de marca y deja las rutas en la propuesta. Mira las dos imágenes: nada cortado, nada encimado.
-7. **Validar.** Corre `node herramientas/social/validar.mjs social/cola/AAAA-MM-DD.json` y corrige hasta ver ✓. Atiende también las advertencias.
-8. **Pedir aprobación.** Haz commit de `social/cola/` y `social/img/` en la rama `redes/AAAA-MM-DD`, súbela y abre un pull request hacia `main`:
+7. **Pulir el texto de Instagram.** Aplica la skill `ig-humano` (`.claude/skills/ig-humano/`) a los tres textos y corre
+   `python3 .claude/skills/ig-libro/caption.py <texto de Instagram en un .txt>` para ver los 125 caracteres que muestra el feed. Para ideas de reels,
+   carruseles o stories usa `ig-libro`; para comentarios y mensajes, `ig-comunidad`. Detalles en `social/instagram/LEEME.md`.
+8. **Validar.** Corre `node herramientas/social/validar.mjs social/cola/AAAA-MM-DD.json` y corrige hasta ver ✓. Atiende también las advertencias.
+9. **Pedir aprobación.** Haz commit de `social/cola/` y `social/img/` en la rama `redes/AAAA-MM-DD`, súbela y abre un pull request hacia `main`:
    - Título: `Redes · 21 de octubre · <título corto del caso o ángulo>`
    - Cuerpo: las dos imágenes (enlaces `raw.githubusercontent.com` de la rama), el texto de cada red tal cual se publicará y la línea «Aprueba con *Merge* para publicar. Si no lo apruebas hoy, mañana lo reemplaza otra propuesta.»
-9. **Avisar.** Termina con un mensaje corto a Daniel: qué se propone hoy y el enlace al pull request.
+10. **Avisar.** Termina con un mensaje corto a Daniel: qué se propone hoy y el enlace al pull request.
 
 Nunca escribas tokens ni contraseñas en el repositorio: las credenciales viven solo en los Secrets de GitHub.
 
