@@ -1,0 +1,42 @@
+{
+  "fecha": "2026-11-01",
+  "tipo": "libro",
+  "id": "cap1-llaves",
+  "motivo": "primer contenido del capítulo 1 (sección 1.3), pedido por Daniel; solo Instagram",
+  "enlace": "https://laexperienciaeselcodigo.com/capitulo-1/",
+  "enlaces": {
+    "instagram": "https://laexperienciaeselcodigo.com/capitulo-1/?utm_source=instagram&utm_medium=social&utm_campaign=agente-redes&utm_content=cap1-llaves"
+  },
+  "imagen": {
+    "plantilla": "libro",
+    "campos": {
+      "antetitulo": "La experiencia es el código · capítulo 1",
+      "titular": "Las llaves no se prestan",
+      "bajada": "Tampoco la clave de tu agente. Cada lector usa la suya.",
+      "ficha": [
+        {
+          "etiqueta": "Tu presupuesto",
+          "valor": "Solo pagas lo que tú consumes."
+        },
+        {
+          "etiqueta": "Tus datos",
+          "valor": "Nadie más ve lo que procesa tu agente."
+        },
+        {
+          "etiqueta": "Tu aprendizaje",
+          "valor": "Crear, cuidar y revocar una clave es parte del oficio."
+        }
+      ],
+      "dato": "Capítulo 1 · el libro se escribe en vivo",
+      "url": "laexperienciaeselcodigo.com"
+    }
+  },
+  "redes": {
+    "instagram": {
+      "texto": "Las llaves no se prestan. Tampoco la clave de tu agente.\n\nEn una empresa, quien tiene la llave de la bodega entra a nombre de quien se la entregó. Una clave de API funciona igual: todo lo que se haga con ella queda a tu nombre y, si corresponde, se cobra a tu cuenta.\n\nPor eso en mi libro hay una regla sin excepciones: cada lector usa su propia clave. Ni yo, ni quienes dan los talleres, ni el sitio del libro entregamos claves compartidas.\n\nAsí proteges tu presupuesto, tus datos y tu aprendizaje, porque crear, cuidar y revocar una clave es parte del oficio.\n\nEstá en el capítulo 1 de La experiencia es el código, que se escribe en vivo y ya puedes leer.\n\nEl capítulo está en el link de mi bio.\nGuárdalo para cuando crees tu primera clave.\n\n#AgentesDeIA #IAenEspañol #LaExperienciaEsElCodigo #IAparaProfesionales #ClaveAPI #LibroEnVivo #Agentario",
+      "alt": "Tarjeta del libro La experiencia es el código con el título «Las llaves no se prestan» y tres razones para usar tu propia clave: presupuesto, datos y aprendizaje.",
+      "estado": "pendiente",
+      "imagen": "social/img/2026-11-01-cap1-llaves-vertical.jpg"
+    }
+  }
+}
