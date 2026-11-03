@@ -861,6 +861,18 @@ const CATS = {
 /* Casos de la alianza: src (página en agentusecases.ai), fo (fuente original {n,u}), r (resultado real) */
 /* Casos: id, t (título), d (descripción), a (agente), c (categoría), f (fecha AAAA-MM-DD), p (prompt), s (patrocinado, opcional), np (sin probar por la comunidad, opcional) */
 const CASOS = [
+{id:"resumen-diario-correo-whatsapp-recordatorios",f:"2026-11-03",c:"vida",a:"Claude Code",
+ fo:{n:"Reddit r/AI_Agents",u:"https://www.reddit.com/r/AI_Agents/comments/1xmxovs/whats_been_the_most_useful_thing_youve_done_with/19s379kouq3s3/"},
+ t:"Que un agente lea tu correo, WhatsApp y calendario y te recuerde lo importante",
+ d:"El agente revisa tus correos, calendarios y mensajes de WhatsApp y Telegram, te avisa lo importante y te manda cada día un resumen de lo que viene hoy, mañana y en la semana. Nunca le escribe a nadie más que a ti.",
+ r:"Un papá que olvidaba citas, fechas especiales y las cosas del colegio de su hijo lo armó con Claude Code y lo usa hace un mes. Dice que le hizo la vida un poco más fácil. Le escribe solo a él: si hay que contestarle a alguien, se lo recuerda.",
+ p:"Ayúdame a armar un asistente que lea mis [correos, calendarios y mensajes de WhatsApp y Telegram] y me avise lo importante: citas, fechas especiales, actividades del colegio de [nombre] y plazos. Cada mañana a las [hora] mándame un resumen de lo que viene hoy, mañana y en la semana, y crea recordatorios para mí. Solo puede leer: nunca le escribas ni respondas a nadie más que a mí. Si tengo que contestarle a alguien, recuérdamelo. Explícame paso a paso cómo conectar cada fuente."},
+{id:"carpeta-compartida-varios-agentes",f:"2026-11-03",c:"ops",a:"Claude Code",
+ fo:{n:"Reddit r/AI_Agents",u:"https://www.reddit.com/r/AI_Agents/comments/1xhtp7v/grok_bot_muse_dots_gemini_duet_five_bigtech/19rthpk9v37s4/"},
+ t:"Que todos tus agentes trabajen con la misma memoria del negocio",
+ d:"En vez de volver a explicarle todo a cada agente nuevo, guardas en una carpeta de archivos de texto las instrucciones de inicio, las reglas del negocio y las lecciones de lo que salió mal. Cada agente la lee antes de partir.",
+ r:"El dueño de un negocio pequeño trabaja con Claude Code, Codex y un agente de oficina que leen la misma carpeta. Uno hace de jefe, revisa el trabajo de los otros y solo lo interrumpe cuando necesita una decisión. Dice que casi no tiene que volver a enseñarles nada.",
+ p:"Ayúdame a armar una carpeta de memoria para mi negocio [tipo de negocio] que puedan leer todos mis agentes. Crea tres archivos de texto: uno de inicio con quiénes somos, qué hacemos y cómo trabajamos; uno de reglas que solo cambia cuando yo lo digo, con lo que un agente puede y no puede hacer sin preguntarme; y uno de lecciones donde cada agente anote lo que salió mal para que el siguiente no repita el error. Hazme preguntas de a una para llenarlos y muéstrame los tres archivos antes de guardarlos."},
 {id:"cobranza-facturas-vencidas-n8n",f:"2026-11-03",c:"ventas",a:"n8n",
  src:"https://agentusecases.ai/use-case/draft-overdue-invoice-follow-ups-from-payment-status",fo:{n:"Reddit r/AiForSmallBusiness",u:"https://www.reddit.com/r/AiForSmallBusiness/comments/1s8k6ld/how_to_automate_client_invoicing_and_payment"},
  t:"Redactar los recordatorios de cobro según los días de atraso de cada factura",
