@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La experiencia es el código, capítulo 1</title>
-<meta name="description" content="Capítulo 1 de «La experiencia es el código», escrito en vivo: el stack del libro, la instalación guiada con Antigravity y cómo crear y cuidar tu propia clave de API.">
-<meta property="og:title" content="Capítulo 1 · La experiencia es el código (en construcción)">
+<meta name="description" content="Capítulo 1 completo de «La experiencia es el código», en versión de trabajo: el stack del libro, la instalación guiada con Antigravity, tu propia clave de API, las skills de Agents CLI, tu primer agente y la Voz Silver, con una lectura filosófica de cada paso.">
+<meta property="og:title" content="Capítulo 1 · La experiencia es el código">
 <meta property="og:description" content="IA agéntica para profesionales que saben lo que piden. Un libro que se escribe en vivo.">
 <link rel="canonical" href="https://laexperienciaeselcodigo.com/capitulo-1/">
 <meta property="og:url" content="https://laexperienciaeselcodigo.com/capitulo-1/">
@@ -17,7 +17,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Chapter","name":"Capítulo 1 · Preparar el entorno","position":1,
  "isPartOf":{"@type":"Book","name":"La experiencia es el código","alternativeHeadline":"IA agéntica para profesionales que saben lo que piden","author":{"@type":"Person","name":"Daniel Olivares"},"inLanguage":"es","url":"https://laexperienciaeselcodigo.com"},
- "creativeWorkStatus":"Draft","dateModified":"2026-10-25","inLanguage":"es"}
+ "creativeWorkStatus":"Draft","dateModified":"2026-11-06","inLanguage":"es"}
 </script>
 <style>
 /* Concepto: un libro abierto sobre el escritorio. Portada en 3D, página de créditos, índice con líneas de puntos y un pliego de lectura con capitular. */
@@ -227,6 +227,22 @@ dialog.drawer::backdrop{background:rgba(10,12,18,.45)}
 a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.bar,.side,.copy,.cover-spread,.toast{display:none}.sheet{box-shadow:none}}
+
+/* Componentes filosóficos y Voz Silver (6 nov 2026) */
+:root{--burg:#7a2e3a;--burg-bg:rgba(122,46,58,.06)}
+:root[data-theme="dark"],:root.noche{--burg:#e39aa6;--burg-bg:rgba(227,154,166,.08)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]):not(.papel){--burg:#e39aa6;--burg-bg:rgba(227,154,166,.08)}}
+.sec-epi{margin:1.4em 0 2.2em auto;max-width:27em;padding:0;border:0;font-style:italic;color:var(--ink-soft)}
+.sec-epi p{margin:0;text-align:right!important;font-size:.95em;line-height:1.5}
+.sec-epi cite{display:block;margin-top:8px;text-align:right;font:500 11px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;font-style:normal;color:var(--burg)}
+.sec-epi cite em{font-style:italic}
+.box.reflex{background:var(--burg-bg);border:0;border-left:3px solid var(--burg);border-radius:2px;padding:1.1em 1.4em .5em}
+.box.reflex .box-h{color:var(--burg)}
+.box.voz{background:var(--paper-2);border:0;border-top:3px double var(--gold-bright);border-bottom:3px double var(--gold-bright);padding:1.2em 1.4em .5em}
+.box.voz .box-h{color:var(--gold)}
+blockquote.cita{margin:1.4em 0 1.4em 1.6em;padding:.2em 0 .2em 1.2em;border-left:2px solid var(--rule);font-style:italic}
+blockquote.cita p{text-align:left!important}
+.box.terms .box-h{color:var(--violet)}
 </style>
 <script src="/pixeles.js" defer></script>
 </head>
@@ -234,7 +250,7 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
 
 <header class="bar"><div class="bar-in gut">
   <a class="brand" href="https://laexperienciaeselcodigo.com">La experiencia <em>es el código</em></a>
-  <span class="where">· Capítulo 1 · en construcción · v. 25 de octubre de 2026</span>
+  <span class="where">· Capítulo 1 · versión de trabajo · v. 6 de noviembre de 2026</span>
   <span class="sp"></span>
   <button class="tool" type="button" id="smaller" aria-label="Letra más pequeña">A−</button>
   <button class="tool" type="button" id="bigger" aria-label="Letra más grande">A+</button>
@@ -268,12 +284,12 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
     <h1 class="chap-title">Preparar <em>el entorno</em></h1>
     <blockquote class="epigraph">Tú defines el problema y juzgas el resultado. Un agente de programación hace el resto.<cite>El método del libro</cite></blockquote>
     <div class="status">
-      <div class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
-      <span>3 de 6 secciones escritas. Este libro se escribe en vivo: las partes en construcción se publican por etapas.</span>
+      <div class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+      <span>Capítulo completo en versión de trabajo: introducción, seis secciones y síntesis. El libro se sigue escribiendo en vivo y cada parte se publica por etapas.</span>
     </div>
     <div class="actions">
-      <a class="btn solid" href="#sec-1-1">Empezar a leer</a>
-      <a class="btn" href="#contenido">Ver qué falta</a>
+      <a class="btn solid" href="#sec-1-0">Empezar a leer</a>
+      <a class="btn" href="#contenido">Ver contenido</a>
     </div>
   </div>
 </section>
@@ -281,19 +297,21 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
 <section class="sheet" id="contenido">
   <div class="run"><span>La experiencia es el código</span><span>Contenido</span></div>
   <h2 class="page-h">Contenido</h2>
-  <p class="lede">Lo que ya puedes leer y lo que todavía estamos escribiendo. Si quieres proponer algo para una parte en construcción, escribe a <code>dolivaresm@fen.uchile.cl</code>.</p>
+  <p class="lede">El capítulo 1 ya está completo en versión de trabajo; el resto del libro se escribe en vivo. Si quieres proponer algo para una parte en construcción, escribe a <code>dolivaresm@fen.uchile.cl</code>.</p>
   <p class="contents-h">Capítulo 1 · Preparar el entorno</p>
-  <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t"><span class="tt">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+  <ol class="contents"><li class=""><a href="#sec-1-0"><span class="n">Introducción</span><span class="t"><span class="tt">El taller antes de la obra</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t"><span class="tt">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
 <li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t"><span class="tt">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
 <li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t"><span class="tt">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
-<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t"><span class="tt">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t"><span class="tt">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t"><span class="tt">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
+<li class=""><a href="#sec-1-4"><span class="n">1.4</span><span class="t"><span class="tt">Las skills: cómo el agente de programación aprende a construir agentes</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-5"><span class="n">1.5</span><span class="t"><span class="tt">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-6"><span class="n">1.6</span><span class="t"><span class="tt">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-7"><span class="n">1.7</span><span class="t"><span class="tt">Síntesis del módulo y autoevaluación</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
 </ol>
   <p class="contents-h">El libro completo</p>
   <ol class="contents"><li class="pend"><div class="line"><span class="n">Preliminares</span><span class="t"><span class="tt">Prólogo, cómo usar este libro y mapa del lector</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20Preliminares">En construcción</a></div></li>
 <li class="pend"><div class="line"><span class="n">Módulo 0</span><span class="t"><span class="tt">Mentalidad: construir agentes con agentes</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%200">En construcción</a></div></li>
-<li class="cur"><a href="#sec-1-1"><span class="n">Módulo 1</span><span class="t"><span class="tt">Preparar el entorno</span><span class="lead-dots"></span></span><span class="s ok">En curso</span></a></li>
+<li class="cur"><a href="#sec-1-1"><span class="n">Módulo 1</span><span class="t"><span class="tt">Preparar el entorno</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
 <li class="pend"><div class="line"><span class="n">Módulo 2</span><span class="t"><span class="tt">Escribir la especificación</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%202">En construcción</a></div></li>
 <li class="pend"><div class="line"><span class="n">Módulo 3</span><span class="t"><span class="tt">Construir el agente con un solo encargo</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%203">En construcción</a></div></li>
 <li class="pend"><div class="line"><span class="n">Módulo 4</span><span class="t"><span class="tt">Probar en local</span><span class="lead-dots"></span></span><a class="s wip" href="mailto:dolivaresm@fen.uchile.cl?subject=Sugerencias%20para%20M%C3%B3dulo%204">En construcción</a></div></li>
@@ -308,10 +326,68 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
 </ol>
 </section>
 
-<nav class="side" id="side" aria-label="Secciones del capítulo"><p>Capítulo 1</p><ol><li><a href="#sec-1-1">1.1 El stack tecnológico y los proveedores del libro</a></li><li><a href="#sec-1-2">1.2 Instalación guiada</a></li><li><a href="#sec-1-3">1.3 Autenticación</a></li><li class="w"><a href="#sec-1-4">1.4 Las skills</a></li><li class="w"><a href="#sec-1-5">1.5 Primera victoria</a></li><li class="w"><a href="#sec-1-6">1.6 Voz Silver</a></li></ol></nav>
+<nav class="side" id="side" aria-label="Secciones del capítulo"><p>Capítulo 1</p><ol><li><a href="#sec-1-0">Introducción</a></li><li><a href="#sec-1-1">1.1 El stack tecnológico</a></li><li><a href="#sec-1-2">1.2 Instalación guiada</a></li><li><a href="#sec-1-3">1.3 Autenticación</a></li><li><a href="#sec-1-4">1.4 Las skills</a></li><li><a href="#sec-1-5">1.5 Primera victoria</a></li><li><a href="#sec-1-6">1.6 Voz Silver</a></li><li><a href="#sec-1-7">1.7 Síntesis</a></li></ol></nav>
 
 <main class="chapter">
 
+<article class="sheet" id="sec-1-0">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>Introducción</span></div>
+  <header class="sec-head">
+    <p class="sec-no">Introducción</p>
+    <h2 class="sec-title">El taller antes de la obra</h2>
+    <p class="sec-ver">Versión de trabajo, 6 de noviembre de 2026.</p>
+    <span class="sec-state">Versión de trabajo</span>
+  </header>
+  <blockquote class="sec-epi"><p>«Ni la mano desnuda ni el entendimiento abandonado a sí mismo valen mucho: las cosas se llevan a cabo con instrumentos y auxilios, que no son menos necesarios al entendimiento que a la mano.»</p><cite>Francis Bacon, <em>Novum organum</em>, libro I, aforismo II</cite></blockquote>
+<aside class="box goals"><p class="box-h">Resultados de aprendizaje del módulo</p>
+<p>Al terminar el Módulo 1 podrás:</p>
+<ul><li>Explicar las capas del stack del libro, quién provee cada una y cuál es su alternativa abierta.</li><li>Instalar y verificar en tu computador las herramientas necesarias, delegando en un agente o paso a paso.</li><li>Crear tu propia clave de API, guardarla con seguridad y revocarla si es necesario.</li><li>Comprender qué son las skills, comprobar que tu agente las tiene y mantenerlas al día.</li><li>Poner en marcha tu primer agente, conversar con él y examinar su trabajo.</li><li>Describir un proceso de tu oficio con siete preguntas que lo vuelven comprensible para un agente.</li><li>Reconocer tus ventajas como aprendiz adulto y aprovecharlas.</li></ul>
+</aside>
+<p class="opening">En 1620, Francis Bacon publicó un libro que pretendía renovar la manera de producir conocimiento. Su segundo aforismo, citado en el epígrafe, sostiene que ni la mano sola ni la mente sola llegan muy lejos: ambas necesitan instrumentos. La observación se aplica con exactitud a este libro. Tu experiencia profesional es el entendimiento: sabes qué hay que hacer, en qué orden, con qué excepciones y cómo se reconoce un trabajo bien hecho. Lo que falta son los instrumentos que permiten traducir ese saber en un agente que funciona. Este módulo los prepara.</p>
+<p>Los instrumentos tienen, sin embargo, una paradoja que Martin Heidegger describió con precisión. Una buena herramienta desaparece mientras se usa: quien martilla no piensa en el martillo, sino en la obra, y conoce el martillo mejor usándolo que mirándolo. La herramienta solo se vuelve visible cuando falla, cuando falta o cuando estorba (Heidegger, 1927/1997, §§15-16). El propósito de este módulo es que la terminal, las claves y las skills lleguen a ser transparentes, de modo que tu atención vuelva a donde corresponde: el proceso de tu oficio. Durante las primeras sesiones, en cambio, cada herramienta será muy visible. Es la etapa esperable de todo aprendizaje y no dice nada sobre tu capacidad.</p>
+<p>Cabe preguntarse por qué un libro que se presenta como un libro de cultura, no de tecnología, dedica su primer módulo práctico a instalar programas. La respuesta es que muchas personas de la generación silver han estado separadas de «la parte técnica» por intermediarios: el área de informática, el proveedor, el colega joven que «sabe de eso». Mientras exista ese intermediario, otros deciden cómo se traduce tu conocimiento. Preparar tu propio entorno es la condición para dirigir agentes en primera persona. La sección 1.7 vuelve sobre esta idea con Kant.</p>
+<h3 id="s1-0-estructura-del-modulo">Estructura del módulo</h3>
+<p>El módulo tiene siete secciones. Las primeras cinco alternan conceptos y práctica; la sexta es una reflexión sobre el aprendizaje en la madurez, y la séptima permite evaluar el propio avance.</p>
+<p class="fig-label">Tabla 1.A</p>
+<p><em>Secciones del Módulo 1</em></p>
+<div class="tbl"><table><tr><th>Sección</th><th>Pregunta que responde</th><th>Tipo</th><th>Tiempo estimado</th></tr>
+<tr><td><a href="#sec-1-1">1.1 El stack tecnológico y los proveedores del libro</a></td><td>¿Con qué trabajaremos y quién lo provee?</td><td>Conceptual</td><td>45 minutos</td></tr>
+<tr><td><a href="#sec-1-2">1.2 Instalación guiada: dos rutas hacia el mismo taller</a></td><td>¿Cómo preparo mi computador?</td><td>Práctica</td><td>60 a 120 minutos</td></tr>
+<tr><td><a href="#sec-1-3">1.3 Autenticación: tu propia clave y las reglas para cuidarla</a></td><td>¿Cómo doy acceso al modelo sin perder el control?</td><td>Práctica</td><td>30 a 45 minutos</td></tr>
+<tr><td><a href="#sec-1-4">1.4 Las skills: cómo el agente de programación aprende a construir agentes</a></td><td>¿Cómo aprende el agente a construir agentes y qué me toca a mí?</td><td>Conceptual y práctica</td><td>45 a 60 minutos</td></tr>
+<tr><td><a href="#sec-1-5">1.5 Primera victoria: conversar con un agente en tu navegador</a></td><td>¿Funciona todo junto?</td><td>Práctica</td><td>45 a 60 minutos</td></tr>
+<tr><td><a href="#sec-1-6">1.6 Voz Silver: aprender una herramienta nueva después de los 50</a></td><td>¿Puedo aprender esto ahora, y cómo?</td><td>Reflexiva</td><td>30 a 45 minutos</td></tr>
+<tr><td><a href="#sec-1-7">1.7 Síntesis del módulo y autoevaluación</a></td><td>¿Qué logré y qué me falta para seguir?</td><td>Autoevaluación</td><td>20 a 30 minutos</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Los tiempos son estimaciones del autor para una persona sin experiencia previa en la terminal y varían según el equipo y la conexión.</p>
+<h3 id="s1-0-ruta-sugerida-para-el-taller">Ruta sugerida para el taller</h3>
+<p>En formato de taller, el módulo se recorre en cuatro sesiones. Conviene espaciarlas algunos días: la práctica distribuida en el tiempo se retiene mejor que la concentrada en una sola jornada (sección 1.6.5).</p>
+<p class="fig-label">Tabla 1.B</p>
+<p><em>Sesiones del Módulo 1 en formato de taller</em></p>
+<div class="tbl"><table><tr><th>Sesión</th><th>Secciones</th><th>Duración</th><th>Producto al cerrar la sesión</th></tr>
+<tr><td>1</td><td>Introducción, 1.1 y comienzo de 1.2 (requisitos y, en Windows, WSL 2)</td><td>2 horas</td><td>Requisitos revisados y WSL 2 instalado cuando corresponda</td></tr>
+<tr><td>2</td><td>1.2 (ruta A o B) y 1.3</td><td>2 horas y media</td><td>Entorno verificado y clave propia funcionando</td></tr>
+<tr><td>3</td><td>1.4 y 1.5</td><td>2 horas</td><td>Skills verificadas y primer agente funcionando</td></tr>
+<tr><td>4</td><td>1.6 y 1.7</td><td>1 hora y media</td><td>Página de siete preguntas, ficha Voz Silver y autoevaluación</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> La guía del facilitador (anexo A) detallará tiempos, materiales y dinámicas para cada sesión.</p>
+<h3 id="s1-0-antes-de-empezar">Antes de empezar</h3>
+<ul><li>Un computador con Windows 10 u 11 de 64 bits, macOS 12 o posterior, o Linux, en el que tengas permisos de administrador.</li><li>Una cuenta de Google dedicada al taller y una cuenta gratuita en GitHub (sección 1.1).</li><li>Al menos 10 GB libres en disco y una conexión a internet estable.</li><li>Un cuaderno, físico o digital, para anotar errores, soluciones y reflexiones.</li></ul>
+<h3 id="s1-0-como-leer-este-modulo">Cómo leer este módulo</h3>
+<p>Las secciones prácticas ofrecen siempre dos rutas: en la <strong>ruta A</strong> delegas el trabajo en el agente de programación y lo supervisas; en la <strong>ruta B</strong> lo haces paso a paso. Cada sección indica la fecha en que se verificaron sus comandos, porque las herramientas cambian varias veces al año. A lo largo del texto encontrarás estos recuadros:</p>
+<ul><li><strong>Objetivos</strong>: lo que podrás hacer al terminar la sección.</li><li><strong>Precisión de términos</strong> y <strong>Para tener en cuenta</strong>: definiciones y advertencias.</li><li><strong>Encargo para el agente</strong>: un texto listo para copiar en tu agente de programación. Todos están reunidos en el anexo C.</li><li><strong>Ruta abierta</strong>: la alternativa de código abierto para cada componente comercial.</li><li><strong>Reflexión</strong>: una pausa filosófica que acompaña las partes no técnicas. Cada sección se abre, además, con un epígrafe.</li><li><strong>Voz Silver</strong>: la experiencia de profesionales de más de 50 años.</li><li><strong>Ideas clave</strong> y <strong>Para el taller</strong>: el cierre de cada sección, con una pregunta para conversar y un ejercicio para hacer.</li></ul>
+<aside class="box reflex"><p class="box-h">Reflexión: por qué filosofía en un libro de agentes</p>
+<p>Podría parecer extraño encontrar a Aristóteles, Platón o Kant junto a instrucciones para instalar programas. La razón es que las preguntas de fondo de este libro no son técnicas. ¿Qué parte de un saber puede escribirse y qué parte no? ¿Quién responde por lo que hace un instrumento que actúa en nuestro nombre? ¿Qué significa juzgar bien un trabajo? Son preguntas que la filosofía formuló hace siglos y que la inteligencia artificial vuelve urgentes. Las técnicas de este módulo envejecerán en meses; esas preguntas, no. Los epígrafes y las reflexiones de cada sección existen para que el lector conserve lo que no envejece.</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>Bacon, F. (1620). <em>Instauratio magna: Novum organum</em>. John Bill. (La cita es traducción propia)</p>
+<p>Heidegger, M. (1997). <em>Ser y tiempo</em> (J. E. Rivera, Trad.). Editorial Universitaria. (Obra original publicada en 1927)</p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la introducción? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— Introducción —</p>
+</article>
 <article class="sheet" id="sec-1-1">
   <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.1</span></div>
   <header class="sec-head">
@@ -320,6 +396,7 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
     <p class="sec-ver">Versión de trabajo, vigente a octubre de 2026.</p>
     <span class="sec-state">Versión de trabajo</span>
   </header>
+  <blockquote class="sec-epi"><p>«Los atenienses conservaron la nave de treinta remos en que Teseo había navegado: le quitaban las maderas viejas y le ponían otras firmes en su lugar, de modo que la nave llegó a ser, para los filósofos, un ejemplo discutido: unos decían que seguía siendo la misma; otros, que no.»</p><cite>Plutarco, <em>Vida de Teseo</em>, 23.1</cite></blockquote>
   <aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
 <p>Al terminar esta sección podrás:</p>
 <ul><li>Nombrar las capas del stack que usaremos en el libro y explicar qué hace cada una.</li>
@@ -330,6 +407,8 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
 </aside>
 <p class="opening">Un carpintero que recibe a un aprendiz no empieza por la primera silla. Empieza por mostrarle el taller: qué herramienta sirve para qué, dónde se compra la madera, qué máquinas son propias y cuáles se arriendan. Este subcapítulo cumple esa función. Antes de construir tu primer agente, conviene que conozcas las herramientas con que vamos a trabajar, quién las fabrica y en qué condiciones las usamos.</p>
 <p>El libro sigue un método que cabe en una frase: tú defines el problema y juzgas el resultado, y un agente de programación hace el resto (Product Faculty, s. f.). Para que ese método funcione hace falta una cadena de herramientas que conecte tu descripción en lenguaje natural con un agente que corre en la nube y que se puede evaluar. Esa cadena es el stack.</p>
+<aside class="box reflex"><p class="box-h">Reflexión: la nave de Teseo y la función de cada capa</p>
+<p>Plutarco cuenta que los atenienses conservaron durante siglos la nave de Teseo reemplazando una a una sus maderas, hasta que los filósofos se preguntaron si seguía siendo la misma nave. El stack de este libro vivirá esa paradoja a un ritmo acelerado: en pocos meses cambiarán nombres, versiones y hasta dueños, como muestra el recuadro de la sección 1.1.4. Aristóteles ofrece una salida: pensar las cosas por lo que hacen. Si un instrumento como el hacha fuese un ser natural, decía, su esencia sería aquello que la hace hacha (Aristóteles, <em>Acerca del alma</em>, II.1, 412b11-15). Lo mismo vale aquí. Lo que conviene aprender de cada capa no es su marca, sino su función: quién construye, quién razona, dónde vive el agente, cómo se lo evalúa. Si conoces la función, reconocerás la capa aunque mañana lleve otro nombre.</p></aside>
 <h3 id="s1-1-1">1.1.1 Qué es un stack y qué es un proveedor</h3>
 <p>En tecnología se llama <em>stack</em> (en inglés, «pila») al conjunto de componentes que se combinan para construir y operar un sistema. Se ordenan en capas porque cada una se apoya en la de abajo: el agente que construyas usará un modelo de lenguaje, ese modelo se consume a través de un servicio en la nube, y todo se instala y se prueba primero en tu computador.</p>
 <p>Un <em>proveedor</em> es la empresa u organización que desarrolla, mantiene o vende un componente. Con algunos proveedores tendrás una relación formal: crearás una cuenta, aceptarás términos de uso y, en ciertos casos, pagarás por consumo. Con otros no tendrás relación alguna, porque su software es de código abierto y basta con descargarlo. Distinguir ambos casos es parte del criterio que este libro quiere desarrollar en ti.</p>
@@ -501,20 +580,22 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
 <p>A2A Project. (2026, 27 de agosto). <em>A new chapter for A2A: Joining the Agentic AI Foundation</em>. <a href="https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/" target="_blank" rel="noopener">https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/</a></p>
 <p>Agent Skills. (s. f.). <em>Agent Skills</em> [Especificación del estándar]. Recuperado el 15 de octubre de 2026, de <a href="https://agentskills.io" target="_blank" rel="noopener">https://agentskills.io</a></p>
 <p>Anthropic. (2025, 9 de diciembre). <em>Donating the Model Context Protocol and establishing the Agentic AI Foundation</em>. <a href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation" target="_blank" rel="noopener">https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation</a></p>
+<p>Aristóteles. (1956). <em>De anima</em> (W. D. Ross, Ed.). Clarendon Press. (Obra original escrita ca. 350 a. C.; paráfrasis propia)</p>
 <p>ClickHouse. (2026, enero). <em>ClickHouse welcomes Langfuse: The future of open-source LLM observability</em>. <a href="https://clickhouse.com/blog/clickhouse-acquires-langfuse-open-source-llm-observability" target="_blank" rel="noopener">https://clickhouse.com/blog/clickhouse-acquires-langfuse-open-source-llm-observability</a></p>
+<p>Google Cloud. (2026a, 22 de abril). <em>The new Gemini Enterprise: One platform for agent development</em>. <a href="https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development" target="_blank" rel="noopener">https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development</a></p>
+<p>Google Cloud. (2026b). <em>Gemini Enterprise Agent Platform: Release notes</em>. Recuperado el 15 de octubre de 2026, de <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes" target="_blank" rel="noopener">https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes</a></p>
+<p>Google Cloud. (s. f.). <em>Choosing your surface: Antigravity 2.0, Antigravity CLI, Antigravity IDE or Antigravity SDK</em>. Recuperado el 15 de octubre de 2026, de <a href="https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk" target="_blank" rel="noopener">https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk</a></p>
+<p>Google for Developers. (2026a, 22 de abril). <em>Agents CLI in Agent Platform: Create to production in one CLI</em>. <a href="https://developers.googleblog.com/en/agents-cli-in-agent-platform-create-to-production-in-one-cli/" target="_blank" rel="noopener">https://developers.googleblog.com/en/agents-cli-in-agent-platform-create-to-production-in-one-cli/</a></p>
+<p>Google for Developers. (2026b, 19 de mayo). <em>An important update: Transitioning Gemini CLI to Antigravity CLI</em>. <a href="https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" target="_blank" rel="noopener">https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/</a></p>
 <p>Google. (2026, 13 de octubre). <em>Build with Gemini 4 Argon</em>. <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/</a></p>
 <p>Google. (s. f.-a). <em>Agent Development Kit</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://adk.dev" target="_blank" rel="noopener">https://adk.dev</a></p>
 <p>Google. (s. f.-b). <em>Agents CLI</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://google.github.io/agents-cli/" target="_blank" rel="noopener">https://google.github.io/agents-cli/</a></p>
 <p>Google. (s. f.-c). <em>Google Antigravity</em>. Recuperado el 15 de octubre de 2026, de <a href="https://antigravity.google" target="_blank" rel="noopener">https://antigravity.google</a></p>
 <p>Google. (s. f.-d). <em>Gemma</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://ai.google.dev/gemma" target="_blank" rel="noopener">https://ai.google.dev/gemma</a></p>
-<p>Google Cloud. (s. f.). <em>Choosing your surface: Antigravity 2.0, Antigravity CLI, Antigravity IDE or Antigravity SDK</em>. Recuperado el 15 de octubre de 2026, de <a href="https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk" target="_blank" rel="noopener">https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk</a></p>
-<p>Google Cloud. (2026a, 22 de abril). <em>The new Gemini Enterprise: One platform for agent development</em>. <a href="https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development" target="_blank" rel="noopener">https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development</a></p>
-<p>Google Cloud. (2026b). <em>Gemini Enterprise Agent Platform: Release notes</em>. Recuperado el 15 de octubre de 2026, de <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes" target="_blank" rel="noopener">https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes</a></p>
-<p>Google for Developers. (2026a, 22 de abril). <em>Agents CLI in Agent Platform: Create to production in one CLI</em>. <a href="https://developers.googleblog.com/en/agents-cli-in-agent-platform-create-to-production-in-one-cli/" target="_blank" rel="noopener">https://developers.googleblog.com/en/agents-cli-in-agent-platform-create-to-production-in-one-cli/</a></p>
-<p>Google for Developers. (2026b, 19 de mayo). <em>An important update: Transitioning Gemini CLI to Antigravity CLI</em>. <a href="https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" target="_blank" rel="noopener">https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/</a></p>
 <p>HashiCorp. (2023, 10 de agosto). <em>HashiCorp adopts Business Source License</em>. <a href="https://www.hashicorp.com/en/blog/hashicorp-adopts-business-source-license" target="_blank" rel="noopener">https://www.hashicorp.com/en/blog/hashicorp-adopts-business-source-license</a></p>
 <p>Open Source Initiative. (s. f.). <em>The Open Source Definition</em>. Recuperado el 15 de octubre de 2026, de <a href="https://opensource.org/osd" target="_blank" rel="noopener">https://opensource.org/osd</a></p>
 <p>Open WebUI. (s. f.). <em>License</em> [Documentación]. Recuperado el 15 de octubre de 2026, de <a href="https://docs.openwebui.com/license/" target="_blank" rel="noopener">https://docs.openwebui.com/license/</a></p>
+<p>Plutarco. (1914). Theseus. En B. Perrin (Trad.), <em>Plutarch's Lives</em> (Vol. 1). Harvard University Press. (Obra original escrita ca. 100 d. C.; la cita es traducción propia)</p>
 <p>Product Faculty. (s. f.). <em>[Sesión de Shubham Saboo sobre el ciclo de vida completo de un agente construido con un agente de programación]</em> [Video]. YouTube. <a href="https://youtu.be/Q08HKdLBBdc" target="_blank" rel="noopener">https://youtu.be/Q08HKdLBBdc</a></p>
 <p>Saboo, S. (s. f.). <em>awesome-llm-apps</em> [Repositorio de GitHub]. Recuperado el 15 de octubre de 2026, de <a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener">https://github.com/Shubhamsaboo/awesome-llm-apps</a></p>
 <p>Security Boulevard. (2026, marzo). <em>OpenAI acquires security startup Promptfoo to fortify AI agents</em>. <a href="https://securityboulevard.com/2026/03/openai-acquires-security-startup-promptfoo-to-fortify-ai-agents" target="_blank" rel="noopener">https://securityboulevard.com/2026/03/openai-acquires-security-startup-promptfoo-to-fortify-ai-agents</a></p>
@@ -531,6 +612,7 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
     <p class="sec-ver">Versión de trabajo. Comandos y requisitos verificados el 24 de octubre de 2026 contra la documentación oficial de cada herramienta.</p>
     <span class="sec-state">Versión de trabajo</span>
   </header>
+  <blockquote class="sec-epi"><p>«Lo que hay que hacer después de haberlo aprendido, lo aprendemos haciéndolo: construyendo casas se hace uno constructor, y tocando la cítara, citarista.»</p><cite>Aristóteles, <em>Ética a Nicómaco</em>, II.1, 1103a32-b2</cite></blockquote>
   <aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
 <p>Al terminar esta sección podrás:</p>
 <ul><li>Preparar tu computador con las herramientas del stack inicial: terminal, Git, uv, Python, Node.js, Google Antigravity y Agents CLI.</li>
@@ -552,6 +634,8 @@ a:focus-visible,button:focus-visible,.book:focus-visible{outline:2px solid var(-
 </table>
 </div>
 <p><em>Nota.</em> Los tiempos son estimaciones del autor para un computador con buena conexión a internet; varían según el equipo y la experiencia previa.</p>
+<aside class="box reflex"><p class="box-h">Reflexión: aprender haciendo y el error que enseña</p>
+<p>Aristóteles sostenía que las destrezas no se adquieren por contemplación, sino por ejercicio: nadie se hace constructor leyendo sobre casas. Por eso esta sección no se lee: se hace, por cualquiera de las dos rutas. Heidegger agregó una observación que ayuda a sobrellevar los tropiezos. Una herramienta que funciona pasa inadvertida; solo cuando falla se vuelve visible, y con ella todo lo que la rodea (Heidegger, 1927/1997, §16). Un mensaje de error en la terminal es ese momento: la herramienta se muestra y, por primera vez, puedes ver cómo está hecha. Quien instala todo sin un solo error aprende menos que quien resuelve dos. La quinta regla de la sección 1.2.2 descansa en esa idea.</p></aside>
 <h3 id="s1-2-1">1.2.1 Antes de empezar</h3>
 <p>Revisa estas condiciones antes de la primera sesión de taller. Resolverlas con anticipación evita la mayor parte de las interrupciones.</p>
 <p class="fig-label">Tabla 1.5</p>
@@ -711,11 +795,13 @@ nvm install --lts</code></pre>
 <p><strong>Para hacer.</strong> En parejas, una persona sigue la ruta A y la otra la ruta B. Al terminar, comparen sus tablas de verificación y anoten un problema que hayan resuelto. Esos problemas alimentarán el anexo D.</p>
 </aside>
 <details class="refs"><summary>Referencias</summary>
+<p>Aristóteles. (1894). <em>Ethica Nicomachea</em> (I. Bywater, Ed.). Clarendon Press. (Obra original escrita ca. 350 a. C.; la cita es traducción propia y sigue la numeración de Bekker)</p>
 <p>Astral. (s. f.). <em>uv</em> [Documentación]. Recuperado el 24 de octubre de 2026, de https://docs.astral.sh/uv</p>
-<p>google/agents-cli. (2026). <em>Setup crashes with FileNotFoundError if gcloud is not installed</em> (Issue #16) [Reporte en GitHub]. https://github.com/google/agents-cli/issues/16</p>
 <p>Google. (s. f.-a). <em>Download Google Antigravity</em>. Recuperado el 24 de octubre de 2026, de https://antigravity.google/download</p>
 <p>Google. (s. f.-b). <em>Getting started</em> [Documentación de Agents CLI]. Recuperado el 24 de octubre de 2026, de https://google.github.io/agents-cli/guide/getting-started/</p>
 <p>Google. (s. f.-c). <em>Agents CLI</em> [Guía de inicio en la documentación de ADK]. Recuperado el 24 de octubre de 2026, de https://adk.dev/get-started/agents-cli/</p>
+<p>google/agents-cli. (2026). <em>Setup crashes with FileNotFoundError if gcloud is not installed</em> (Issue #16) [Reporte en GitHub]. https://github.com/google/agents-cli/issues/16</p>
+<p>Heidegger, M. (1997). <em>Ser y tiempo</em> (J. E. Rivera, Trad.). Editorial Universitaria. (Obra original publicada en 1927)</p>
 <p>Microsoft. (s. f.). <em>Cómo instalar Linux en Windows con WSL</em>. Recuperado el 24 de octubre de 2026, de https://learn.microsoft.com/es-es/windows/wsl/install</p>
 <p>Product Faculty. (s. f.). <em>[Sesión de Shubham Saboo sobre el ciclo de vida completo de un agente construido con un agente de programación]</em> [Video]. YouTube. https://youtu.be/Q08HKdLBBdc</p>
 </details>
@@ -730,6 +816,7 @@ nvm install --lts</code></pre>
     <p class="sec-ver">Versión de trabajo. Condiciones y pantallas verificadas el 24 de octubre de 2026 contra la documentación oficial de Agents CLI y de la API de Gemini.</p>
     <span class="sec-state">Versión de trabajo</span>
   </header>
+  <blockquote class="sec-epi"><p>«De las personas artificiales, algunas tienen sus palabras y acciones reconocidas como propias por aquellos a quienes representan. Entonces la persona es el actor, y quien las reconoce como propias es el autor; en tal caso, el actor actúa por autoridad.»</p><cite>Thomas Hobbes, <em>Leviatán</em>, capítulo XVI</cite></blockquote>
   <aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
 <p>Al terminar esta sección podrás:</p>
 <ul><li>Distinguir los tres niveles de autenticación que intervienen al construir un agente: el del agente de programación, el del modelo y el del despliegue.</li>
@@ -740,6 +827,8 @@ nvm install --lts</code></pre>
 </aside>
 <p class="opening">En una empresa, las llaves no se prestan. Quien tiene la llave de la bodega entra a nombre de quien se la entregó, y si falta algo, la responsabilidad no es del que la usó, sino del dueño. Una clave de API funciona igual: es un código secreto que identifica tu cuenta ante un servicio, y todo lo que se haga con ella queda registrado, consume tu cuota y, si corresponde, se cobra a tu nombre.</p>
 <p>Por eso este libro sigue una regla sin excepciones: <strong>cada lector y cada participante del taller usa su propia clave</strong>. Ni el autor, ni los facilitadores, ni el sitio del libro entregan claves compartidas. La regla protege a todos. Protege tu presupuesto, porque solo pagas lo que tú consumes. Protege tus datos, porque nadie más ve lo que tu agente procesa. Y protege el aprendizaje, porque crear, cuidar y revocar una clave es parte del oficio que el libro enseña.</p>
+<aside class="box reflex"><p class="box-h">Reflexión: autor y actor</p>
+<p>En el capítulo XVI del <em>Leviatán</em>, Hobbes distingue entre el actor, que habla y actúa, y el autor, que reconoce como propias esas palabras y acciones y responde por ellas. Quien actúa con la autorización de otro actúa por la autoridad de ese otro (Hobbes, 1651). Una clave de API es exactamente eso: una autorización. Cuando tu agente consulta al modelo con tu clave, él es el actor y tú eres el autor; si otra persona usa tu clave, también actúa en tu nombre, y lo que haga se registra y se cobra como tuyo. La distinción permite entender la regla de esta sección sin argumentos técnicos: delegar la acción no es delegar la responsabilidad. Por eso cada lector crea su propia clave, la guarda y la revoca cuando deja de confiar en quien la usa.</p></aside>
 <h3 id="s1-3-1">1.3.1 Tres niveles de autenticación</h3>
 <p>Al construir un agente intervienen tres sistemas distintos, y cada uno pide su propia identificación. La documentación de Agents CLI los ordena en tres niveles (Google, s. f.-a). Confundirlos es la causa más común de errores en esta etapa.</p>
 <p class="fig-label">Tabla 1.8</p>
@@ -862,42 +951,545 @@ Al terminar, explícame en tres frases qué hiciste y cómo puedo comprobarlo.</
 <details class="refs"><summary>Referencias</summary>
 <p>Google. (s. f.-a). <em>Authentication</em> [Documentación de Agents CLI]. Recuperado el 24 de octubre de 2026, de https://google.github.io/agents-cli/guide/authentication/</p>
 <p>Google. (s. f.-b). <em>Billing</em> [Documentación de la API de Gemini]. Recuperado el 24 de octubre de 2026, de https://ai.google.dev/gemini-api/docs/billing</p>
+<p>Hobbes, T. (1651). <em>Leviathan, or the matter, forme and power of a common-wealth ecclesiasticall and civil</em>. Andrew Crooke. (La cita es traducción propia)</p>
 </details>
   <p class="suggest">¿Algo que mejorar en la sección 1.3? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
   <p class="folio">— 1.3 —</p>
 </article>
-<article class="sheet pending" id="sec-1-4">
+<article class="sheet" id="sec-1-4">
   <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.4</span></div>
   <header class="sec-head">
     <p class="sec-no">1.4</p>
-    <h2 class="sec-title">Qué son las skills y por qué hacen experto al agente de programación</h2>
-    <span class="sec-state">En construcción</span>
+    <h2 class="sec-title">Las skills: cómo el agente de programación aprende a construir agentes</h2>
+    <p class="sec-ver">Versión de trabajo. Contenido verificado el 6 de noviembre de 2026 contra la documentación oficial de Agents CLI (versión 1.13.0, publicada el 4 de noviembre de 2026).</p>
+    <span class="sec-state">Versión de trabajo</span>
   </header>
-  <p class="plan">Qué contiene una skill, cómo la carga el agente y cómo revisar las siete skills de Agents CLI que instalaste en la sección 1.2.</p>
-  <div class="ghost" aria-hidden="true"><span></span><span></span><span></span></div>
-  <p class="suggest">¿Qué te gustaría encontrar aquí? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <blockquote class="sec-epi"><p>«No has encontrado un remedio para la memoria, sino para el recordatorio; y a tus discípulos les ofreces apariencia de sabiduría, no verdad.»</p><cite>Platón, Fedro, 275a</cite></blockquote>
+<aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
+<p>Al terminar esta sección podrás:</p>
+<ul><li>Explicar qué es una skill, cómo está construida y por qué su formato es un estándar abierto.</li><li>Describir cómo el agente de programación decide qué skill usar y cuándo la lee completa.</li><li>Reconocer las siete skills que instala Agents CLI, qué sabe cada una y en qué módulo del libro interviene.</li><li>Comprobar, actualizar y reparar las skills instaladas en tu equipo.</li><li>Dictar a tu agente de programación un proceso de tu oficio de modo que él aporte la técnica y tú el criterio.</li><li>Reconocer cuándo tu propio procedimiento operativo puede convertirse en una skill.</li></ul>
+</aside>
+<p class="opening">Toda organización que funciona bien tiene un manual de procedimientos. Cuando llega una persona nueva, por talentosa que sea, no conoce las reglas de la casa: qué formulario se usa, a quién se consulta, qué nunca se hace sin firma. El manual no la vuelve más inteligente; la vuelve <strong>competente en ese lugar</strong>. Quien ha recibido a decenas de colaboradores sabe que la diferencia entre un buen fichaje y un buen trabajador suele estar en ese manual.</p>
+<p>El agente de programación que instalaste en la sección 1.2 es ese fichaje talentoso. Sabe programar en muchos lenguajes, pero no conoce de memoria los detalles de un framework concreto ni las prácticas recomendadas por su fabricante, que además cambian varias veces al año. Las <strong>skills</strong> son su manual de procedimientos. Cuando ejecutaste <code>uvx google-agents-cli setup</code>, instalaste en tu agente siete manuales escritos por Google que le enseñan a crear, evaluar, desplegar, publicar y observar agentes hechos con ADK (Google, s. f.).</p>
+<p>Esta sección explica qué contienen esos manuales y, sobre todo, qué cambia para ti. La respuesta corta es que <strong>las skills se encargan del cómo técnico para que tú puedas concentrarte en el qué y el porqué</strong>: describir tu proceso con la precisión de quien lo ha hecho durante años. Es la idea central del libro aplicada a la herramienta.</p>
+<aside class="box reflex"><p class="box-h">Reflexión: la escritura, la memoria y el juicio</p>
+<p>En el Fedro, Sócrates relata un mito egipcio. El dios Theuth presenta al rey Thamus la escritura como un remedio para la memoria y la sabiduría. Thamus responde con la frase del epígrafe: la escritura no hace recordar desde dentro, sino que recuerda desde fuera, y puede dar a quien la lee la apariencia de saber sin el saber mismo (Platón, Fedro, 274c-275b). Las skills son escritura para agentes, y el mito ilumina tanto su valor como su límite. Le recuerdan al agente cómo se hace algo, en el momento en que lo necesita; no le dan el juicio para saber si lo que hizo está bien. Michael Polanyi explicó por qué ese límite no se supera solo escribiendo más: parte de lo que sabe un experto es tácito y no cabe por completo en palabras (Polanyi, 1966). Una skill bien escrita contiene la parte explícita de un oficio. La parte tácita permanece contigo y se ejerce cuando juzgas el resultado. Esa es la razón de fondo por la que el método del libro reserva para ti el juicio.</p></aside>
+<h3 id="s1-4-1">1.4.1 Qué es una skill</h3>
+<p>Una <em>skill</em> (en inglés, «habilidad» o «destreza») es una carpeta que contiene instrucciones y recursos que un agente carga cuando la tarea lo requiere. Su formato, llamado <strong>Agent Skills</strong>, fue desarrollado originalmente por Anthropic y publicado como estándar abierto; hoy lo reconocen más de veinte agentes de programación, entre ellos Gemini CLI, Claude Code y Codex (mdskills, s. f.; Agent Skills, s. f.), y Agents CLI instala sus skills también en Antigravity (Google, s. f.). Que sea un estándar tiene una consecuencia práctica: una skill escrita para un agente funciona, en general, en los demás.</p>
+<p>La pieza obligatoria de una skill es un archivo de texto llamado <code>SKILL.md</code>. Comienza con un encabezado breve, delimitado por tres guiones, que contiene dos datos: el nombre de la skill y una descripción que dice qué hace y cuándo usarla. Debajo del encabezado van las instrucciones, escritas en lenguaje natural. Este es un ejemplo mínimo y ficticio:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>---
+name: informe-mensual
+description: Prepara el informe mensual de gestión con el formato de la empresa. Úsala cuando el usuario pida un informe mensual o un resumen de indicadores del mes.
+---
+# Informe mensual
+1. Reúne los indicadores del mes desde la planilla de control.
+2. Compara cada indicador con el mes anterior y con la meta.
+3. Redacta un resumen de no más de una página, con las desviaciones primero.
+4. Nunca envíes el informe: entrégalo como borrador para revisión.</code></pre>
+<p>El formato es deliberadamente simple. Cualquier persona que sepa escribir un procedimiento puede leer una skill, revisarla y, como veremos en la sección 1.4.6, escribir una propia.</p>
+<p class="fig-label">Tabla 1.12</p>
+<p><em>Anatomía de una skill</em></p>
+<div class="tbl"><table><tr><th>Elemento</th><th>Obligatorio</th><th>Qué contiene</th><th>Equivalente en un manual de procedimientos</th></tr>
+<tr><td><code>name</code></td><td>Sí</td><td>Nombre corto, en minúsculas y con guiones (hasta 64 caracteres)</td><td>Código del procedimiento</td></tr>
+<tr><td><code>description</code></td><td>Sí</td><td>Qué hace la skill y cuándo usarla (hasta 1.024 caracteres)</td><td>Ámbito de aplicación</td></tr>
+<tr><td>Cuerpo de <code>SKILL.md</code></td><td>Sí</td><td>Las instrucciones paso a paso</td><td>Descripción del procedimiento</td></tr>
+<tr><td><code>references/</code></td><td>No</td><td>Documentos de consulta</td><td>Anexos y normativa</td></tr>
+<tr><td><code>scripts/</code></td><td>No</td><td>Programas que el agente puede ejecutar</td><td>Plantillas de cálculo o macros</td></tr>
+<tr><td><code>assets/</code></td><td>No</td><td>Plantillas y otros recursos</td><td>Formularios en blanco</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaborado a partir de la especificación del estándar Agent Skills, según la describe mdskills (s. f.).</p>
+<aside class="box terms"><p class="box-h">Precisión de términos: skill, herramienta y agente</p>
+<ul><li><strong>Agente.</strong> Programa que recibe un objetivo, decide qué pasos dar y usa herramientas para lograrlo. Tu agente de programación es uno; el que construirás en el módulo 3 será otro.</li><li><strong>Herramienta</strong> (<em>tool</em>). Una acción concreta que el agente puede ejecutar: leer un archivo, correr un comando, consultar una base de datos.</li><li><strong>Skill.</strong> Conocimiento empaquetado: le dice al agente <em>cómo</em> y <em>cuándo</em> hacer bien un tipo de trabajo, y puede incluir herramientas propias (los programas de <code>scripts/</code>).</li><li><strong>Token.</strong> Unidad en que un modelo de lenguaje mide el texto; equivale aproximadamente a un fragmento de palabra. La capacidad de atención de un modelo se mide en tokens, como la de una reunión se mide en minutos.</li></ul>
+</aside>
+<h3 id="s1-4-2">1.4.2 Cómo decide el agente qué skill usar</h3>
+<p>Un agente puede tener decenas de skills instaladas. Si las leyera todas al comenzar cada tarea, agotaría su capacidad de atención antes de empezar a trabajar. Por eso el estándar define una <strong>carga progresiva</strong> en tres etapas (mdskills, s. f.), parecida a la forma en que un profesional experimentado usa un manual: mira el índice, abre el capítulo pertinente y consulta un anexo solo si lo necesita.</p>
+<p class="fig-label">Tabla 1.13</p>
+<p><em>Las tres etapas de carga de una skill</em></p>
+<div class="tbl"><table><tr><th>Etapa</th><th>Qué lee el agente</th><th>Cuándo</th><th>Extensión aproximada</th></tr>
+<tr><td>1. Descubrimiento</td><td>Solo el nombre y la descripción de cada skill</td><td>Al iniciar la sesión</td><td>Unos 100 tokens por skill</td></tr>
+<tr><td>2. Activación</td><td>El archivo <code>SKILL.md</code> completo</td><td>Cuando tu encargo coincide con la descripción de la skill</td><td>Menos de 5.000 tokens</td></tr>
+<tr><td>3. Ejecución</td><td>Los documentos de referencia o los programas de la skill</td><td>Solo si la tarea lo exige</td><td>Variable</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Las cifras son referencias del estándar Agent Skills (mdskills, s. f.); cada agente las aplica a su manera.</p>
+<p>De la tabla se desprende una consecuencia importante para ti: <strong>la descripción es la puerta de entrada</strong>. El agente decide activar una skill comparando tu encargo con las descripciones que conoce. Si tu encargo dice «construye un agente con ADK», el agente reconocerá que las skills de Agents CLI son pertinentes. Si dice «hazme un programa que conteste correos», quizá no lo haga y empiece a improvisar con lo que sabe en general. Por eso los encargos del libro nombran explícitamente la herramienta: «Usa agents-cli y sus skills para…».</p>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: puedes preguntar qué skill está usando</p>
+<p>Si dudas de que el agente esté aplicando las skills, pregúntaselo. Los agentes de programación pueden decir qué skills activaron y por qué. El encargo de la sección 1.4.5 incluye esa pregunta antes de empezar a construir.</p>
+</aside>
+<h3 id="s1-4-3">1.4.3 Las siete skills de Agents CLI</h3>
+<p>Agents CLI instala siete skills en los agentes de programación que encuentra en tu equipo, entre ellos Antigravity CLI, Claude Code, Codex y Cursor (Google, s. f.). Una de ellas está siempre activa y coordina a las demás; las otras seis se activan según la fase del trabajo. La tabla 1.14 las presenta en el orden del ciclo de vida de un agente que recorre el libro (figura 1.2, sección 1.1).</p>
+<p class="fig-label">Tabla 1.14</p>
+<p><em>Las siete skills de Agents CLI y su lugar en el libro</em></p>
+<div class="tbl"><table><tr><th>Skill</th><th>Qué sabe</th><th>Fase</th><th>Módulos del libro</th></tr>
+<tr><td><code>google-agents-cli-workflow</code></td><td>El ciclo completo (estructura, construcción, evaluación, despliegue, publicación y observación), las reglas para preservar el código existente, la guía para elegir modelo y los pasos de solución de problemas. <strong>Siempre activa</strong></td><td>Todas</td><td>1 a 10</td></tr>
+<tr><td><code>google-agents-cli-scaffold</code></td><td>Cómo crear, ampliar y actualizar la estructura de un proyecto: plantillas, destinos de despliegue y el trabajo «primero el prototipo»</td><td>Generar la estructura</td><td>3</td></tr>
+<tr><td><code>google-agents-cli-adk-code</code></td><td>Referencia rápida de ADK en Python: tipos de agente, definición de herramientas, orquestación, funciones de control (<em>callbacks</em>), manejo del estado y flujos de trabajo en grafo</td><td>Construir</td><td>3, 4 y 8</td></tr>
+<tr><td><code>google-agents-cli-eval</code></td><td>Métricas de evaluación, formato de los conjuntos de casos, evaluación con un modelo como juez, rúbricas adaptativas y causas frecuentes de falla</td><td>Evaluar</td><td>5</td></tr>
+<tr><td><code>google-agents-cli-deploy</code></td><td>Despliegue en Agent Runtime, Cloud Run o GKE, cuentas de servicio, reversión de versiones, secretos e integración continua</td><td>Desplegar</td><td>6</td></tr>
+<tr><td><code>google-agents-cli-publish</code></td><td>Registro del agente en Gemini Enterprise en modo ADK o A2A y administración de agentes en Agent Registry</td><td>Publicar</td><td>7</td></tr>
+<tr><td><code>google-agents-cli-observability</code></td><td>Trazas en Cloud Trace, registro de preguntas y respuestas, análisis en BigQuery e integraciones con herramientas de terceros</td><td>Observar</td><td>7</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaborado a partir de la referencia de skills de Agents CLI (Google, s. f.) y de su ficha en PyPI (Google, 2026). Las skills de evaluación y despliegue sirven también para agentes construidos con otros frameworks.</p>
+<p>Dos rasgos de la skill <code>google-agents-cli-workflow</code> merecen atención porque protegen tu trabajo:</p>
+<ul><li><strong>Reglas de preservación del código.</strong> Le indican al agente que no reescriba lo que ya funciona cuando le pides un cambio. Es la diferencia entre un colaborador que corrige una cláusula y uno que redacta el contrato de nuevo cada vez.</li><li><strong>Guía para elegir modelo.</strong> Le ayudan a proponer un modelo de lenguaje adecuado para la tarea y el presupuesto, en lugar de usar siempre el más potente y caro. La decisión final sigue siendo tuya.</li></ul>
+<p>Observa también qué no hacen las skills: <strong>no conocen tu oficio</strong>. Saben cómo se construye, se evalúa y se despliega un agente, pero no saben cómo se confirma un incidente en una autopista, cómo se concilia una cuenta por cobrar ni qué excepciones tiene un proceso de admisión. Ese conocimiento es el tuyo, y es el que la sección 1.4.5 te enseña a transmitir.</p>
+<h3 id="s1-4-4">1.4.4 Comprobar, actualizar y reparar las skills</h3>
+<p>Las skills son archivos de texto que viven en tu computador. Como Google las mejora con frecuencia (Agents CLI pasó de la versión 1.0 a la 1.13 en pocos meses de 2026), conviene saber verificarlas y ponerlas al día.</p>
+<h4>Comprobar que están instaladas</h4>
+<p>Abre Antigravity en tu carpeta de taller y escribe el siguiente encargo. En muchos agentes también funciona el comando <code>/skills</code>.</p>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 003</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Lista las skills que tienes disponibles en este proyecto.
+Para cada una que empiece con google-agents-cli-, dime en una frase qué sabe hacer y en qué momento la usarías.
+No ejecutes ningún comando.</code></pre>
+</div>
+<p>Deberías ver las siete skills de la tabla 1.14. Si faltan, continúa con la reparación.</p>
+<h4>Actualizar</h4>
+<p>Para reinstalar o actualizar las skills a la versión más reciente, ejecuta en la terminal (Google, s. f.):</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>agents-cli update</code></pre>
+<p>Después, cierra Antigravity y vuelve a abrirlo, para que cargue las descripciones nuevas. Recomendamos actualizar al comienzo de cada módulo del libro.</p>
+<h4>Reparar</h4>
+<p>Si el comando anterior no resuelve el problema, repite la instalación completa con <code>uvx google-agents-cli setup</code>. Existe además una vía que instala <strong>solo las skills</strong>, sin la herramienta de línea de comandos; sirve, por ejemplo, para agregar las skills a un segundo agente de programación (Google, 2026):</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>npx skills add google/agents-cli</code></pre>
+<p class="fig-label">Tabla 1.15</p>
+<p><em>Problemas frecuentes con las skills</em></p>
+<div class="tbl"><table><tr><th>Síntoma</th><th>Causa probable</th><th>Qué hacer</th></tr>
+<tr><td>El agente no muestra ninguna skill <code>google-agents-cli-</code></td><td>El agente se instaló después de Agents CLI, o no se reinició</td><td>Ejecuta <code>agents-cli update</code>, cierra y vuelve a abrir el agente</td></tr>
+<tr><td>El agente construye sin usar ADK ni Agents CLI</td><td>El encargo no nombra la herramienta y la skill no se activó</td><td>Comienza el encargo con «Usa agents-cli y sus skills para…»</td></tr>
+<tr><td>El agente usa comandos que no existen en tu versión</td><td>Skills desactualizadas respecto de la herramienta</td><td>Ejecuta <code>agents-cli update</code> y repite el encargo</td></tr>
+<tr><td>Las skills aparecen en un agente pero no en otro</td><td>Ese agente no fue detectado al instalar</td><td>Ejecuta <code>npx skills add google/agents-cli</code> o repite <code>uvx google-agents-cli setup</code></td></tr>
+</table>
+</div>
+<p><em>Nota.</em> La lista se ampliará en el anexo D con los casos que reporten los talleres.</p>
+<aside class="box terms"><p class="box-h">Precisión de términos: la telemetría de Agents CLI</p>
+<p>Agents CLI envía una señal de uso por cada comando a <strong>tu propio</strong> proyecto de Google Cloud, no al autor del libro. Puedes revisar su estado con <code>agents-cli info</code> y desactivarla definiendo la variable de entorno <code>AGENTS_CLI_TELEMETRY=0</code> (Google, 2026). En el taller no es necesario cambiar esta configuración.</p>
+</aside>
+<h3 id="s1-4-5">1.4.5 De la experiencia al encargo: cómo dictar tu proceso</h3>
+<p>Con las skills instaladas, el trabajo se reparte de una manera precisa. El agente de programación aporta lo que las skills le enseñan: estructura del proyecto, código, pruebas, despliegue. Tú aportas lo que ninguna skill contiene: <strong>cómo funciona de verdad el proceso que quieres automatizar</strong>, con sus excepciones, sus límites y sus criterios de calidad. La tabla 1.16 muestra esa división del trabajo.</p>
+<p class="fig-label">Tabla 1.16</p>
+<p><em>División del trabajo entre tu experiencia y las skills</em></p>
+<div class="tbl"><table><tr><th>Lo dictas tú</th><th>Lo resuelven las skills</th></tr>
+<tr><td>Qué problema resuelve el agente y para quién</td><td>Qué estructura de proyecto conviene (skill de estructura)</td></tr>
+<tr><td>Los pasos del proceso, en orden, y quién hace cada uno</td><td>Cómo se programan esos pasos en ADK (skill de código)</td></tr>
+<tr><td>Qué datos entran y qué debe entregar el agente</td><td>Cómo se definen las herramientas que leen y escriben esos datos</td></tr>
+<tr><td>Las excepciones y lo que nunca debe hacerse</td><td>Cómo se implementan los controles y guardarraíles</td></tr>
+<tr><td>Cómo se reconoce un trabajo bien hecho</td><td>Cómo se convierten esos criterios en métricas y escenarios (skill de evaluación)</td></tr>
+<tr><td>Quién puede usar el agente y con qué datos</td><td>Cómo se despliega con permisos mínimos (skills de despliegue y publicación)</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> La columna izquierda corresponde a la especificación que se desarrolla en el módulo 2.</p>
+<h4>Siete preguntas para describir un proceso</h4>
+<p>Las personas con larga trayectoria suelen describir sus procesos con un detalle que sorprende a los equipos técnicos. El riesgo no es la falta de detalle, sino que el detalle quede desordenado o que se omita lo que «todo el mundo sabe». Antes de dictar, responde por escrito estas siete preguntas. Son la base de la especificación del módulo 2.</p>
+<ol><li><strong>¿Qué lo inicia?</strong> El hecho que pone en marcha el proceso: una solicitud, una hora del día, una alarma, un documento que llega.</li><li><strong>¿Cuáles son los pasos?</strong> En orden, con un verbo al comienzo de cada uno: «revisar», «comparar», «registrar».</li><li><strong>¿Dónde se decide?</strong> Cada punto en que el proceso se bifurca, con la regla que decide el camino: «si la diferencia supera el 5 %, entonces…».</li><li><strong>¿Qué excepciones conoces?</strong> Lo que pasa los días malos: datos faltantes, sistemas caídos, casos que no calzan. Aquí está buena parte de tu experiencia.</li><li><strong>¿Qué nunca debe hacerse?</strong> Las acciones que requieren aprobación humana o que están prohibidas.</li><li><strong>¿Qué datos se usan y qué se entrega?</strong> Fuentes de información y formato del resultado.</li><li><strong>¿Cómo sabes que quedó bien?</strong> Criterios observables: tiempo, precisión, ausencia de errores de cierto tipo.</li></ol>
+<h4>El encargo de construcción</h4>
+<p>Con las respuestas listas, el encargo para el agente de programación tiene dos partes: tu proceso, en tus palabras, y la forma de trabajo que esperas. El siguiente ejemplo usa el caso ficticio de Raúl Fuenzalida, gerente de operaciones de una autopista urbana, que acompaña al libro. La primera instrucción de la forma de trabajo le pide al agente declarar qué skills aplicará, de modo que puedas comprobar que trabaja con el manual correcto.</p>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 004</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Usa agents-cli y sus skills para construir un agente con ADK en Python.
+
+Este es el proceso, tal como lo hacemos hoy:
+- Lo inicia: una caída de velocidad en un tramo de la autopista, medida cada minuto.
+- Pasos: 1) comparar la velocidad del tramo con la de los tramos vecinos; 2) buscar una segunda fuente (cámara o reporte de patrulla); 3) si ambas coinciden, preparar una alerta para el operador con la evidencia y una acción sugerida; 4) dejar un borrador de registro con la hora exacta.
+- Decisiones: si la caída dura menos de dos minutos y no hay segunda fuente, se registra como observación, no como incidente.
+- Excepciones: sensores sin datos, lluvia intensa (las velocidades bajan sin que haya incidente), horarios punta.
+- Nunca: cerrar pistas, operar paneles o barreras sin aprobación humana; inventar causas; descartar una alarma sin registrarla.
+- Datos: mediciones por tramo, estado de sensores, registro de incidentes y clima. Simúlalos con datos ficticios.
+- Bien hecho: confirma con dos fuentes antes de alertar; prioriza correctamente al menos 9 de cada 10 casos; no pide cierres ante falsas alarmas.
+
+Forma de trabajo:
+1. Antes de empezar, dime qué skills de agents-cli vas a usar y para qué.
+2. Hazme las preguntas que falten para completar la especificación y guárdala en un archivo.
+3. Muéstrame la estructura del proyecto y espera mi aprobación.
+4. Usa la clave GEMINI_API_KEY de mi archivo .env; no la leas ni la muestres.
+5. Después de cada paso, explícame en palabras simples qué hiciste y qué regla de mi proceso aplicaste.</code></pre>
+</div>
+<p>Observa que el encargo no contiene ninguna instrucción técnica sobre cómo programar: no menciona clases, funciones ni archivos. Esa parte la resuelven las skills. Lo que el encargo sí contiene, con precisión, es el conocimiento del oficio. Cuanto mejor sea esa parte, mejor será el agente, por competente que sea la herramienta.</p>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: el agente te hará preguntas</p>
+<p>Un buen agente de programación detectará vacíos en tu descripción y te preguntará. No es una señal de que lo hiciste mal: es la conversación que tendrías con un analista nuevo. Responde con la misma precisión con que describirías el proceso a un colega, y pide que cada respuesta quede guardada en el archivo de especificación.</p>
+</aside>
+<h3 id="s1-4-6">1.4.6 Tu experiencia también puede ser una skill</h3>
+<p>Si las skills de Google le enseñan al agente las reglas de ADK, una skill escrita por ti puede enseñarle las reglas de tu oficio. Es útil cuando un mismo procedimiento se repite en varios agentes: en lugar de dictarlo cada vez, lo escribes una vez, lo revisas con calma y el agente lo aplica cada vez que la tarea lo requiera. El formato es el mismo de la sección 1.4.1:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>---
+name: confirmacion-de-incidentes
+description: Protocolo para confirmar un incidente de tránsito antes de alertar al operador. Úsala al construir o modificar agentes que analicen velocidad o flujo por tramo en la autopista.
+---
+# Confirmación de incidentes
+## Pasos
+1. Comparar la velocidad del tramo con la de los dos tramos vecinos.
+2. Exigir una segunda fuente (cámara o reporte de patrulla) antes de alertar.
+3. Con lluvia intensa, elevar el umbral de caída de velocidad antes de alertar.
+## Nunca
+- Cerrar pistas ni operar paneles o barreras sin aprobación humana.
+- Atribuir una causa sin evidencia.</code></pre>
+<p>La ubicación de las skills propias varía según el agente de programación. La forma más segura de crearla es pedírselo al propio agente:</p>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 005</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Crea una skill con el estándar Agent Skills a partir del procedimiento que te pego abajo.
+Guárdala en la carpeta de skills de este proyecto que tú reconozcas, y dime la ruta exacta.
+Antes de guardarla, muéstrame el archivo SKILL.md completo para que lo revise.
+[pega aquí tu procedimiento]</code></pre>
+</div>
+<p>El módulo 3 retoma este tema con más detalle. Por ahora basta con reconocer la idea: <strong>tu manual de procedimientos, escrito con cuidado, es un activo que el agente puede usar</strong>. Y como es un archivo de texto en tu propio repositorio, cumple la regla de la sección 1.1.5: no queda atrapado en ninguna plataforma.</p>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: una skill es una instrucción que tu agente obedecerá</p>
+<ul><li><strong>Instala skills solo de fuentes confiables</strong>, como las oficiales de Google o las que escribas tú. Una skill de origen desconocido puede contener instrucciones o programas que el agente ejecutará en tu computador.</li><li><strong>Lee una skill antes de instalarla.</strong> Son archivos de texto: revisarlas toma minutos.</li><li><strong>No escribas en una skill claves, contraseñas ni datos confidenciales</strong> de tu empresa o de tus clientes. Describe el procedimiento, no los datos.</li></ul>
+</aside>
+<aside class="box open"><p class="box-h">Ruta abierta</p>
+<p>Agent Skills es un estándar abierto. Las skills de Agents CLI y las que escribas tú funcionan también en agentes de programación de código abierto compatibles con el estándar, como OpenCode, lo que facilita la etapa 3 de la hoja de ruta (sección 1.1.6). Tu conocimiento, escrito como skill, viaja contigo cuando cambies de herramienta.</p>
+</aside>
+<aside class="box key"><p class="box-h">Ideas clave</p>
+<ul><li>Una skill es un manual de procedimientos para un agente: un archivo SKILL.md con nombre, descripción e instrucciones, más recursos opcionales.</li><li>El agente lee primero solo las descripciones y abre una skill completa cuando tu encargo coincide con ella. Por eso los encargos nombran la herramienta.</li><li>Agents CLI instala siete skills: una siempre activa que coordina el ciclo completo y seis especializadas en estructura, código, evaluación, despliegue, publicación y observación.</li><li>Las skills se actualizan con agents-cli update. Conviene hacerlo al comenzar cada módulo.</li><li>Las skills aportan el cómo técnico; tú aportas el proceso, las excepciones, los límites y los criterios de calidad. Ese es el reparto que hace posible construir agentes sin programar.</li><li>Tu propio procedimiento puede convertirse en una skill, siempre sin datos confidenciales.</li></ul>
+</aside>
+<aside class="box taller"><p class="box-h">Para el taller</p>
+<p><strong>Para conversar.</strong> Piensa en el mejor manual de procedimientos que conociste en tu carrera. ¿Qué lo hacía útil? ¿Qué le faltaba para que una persona nueva pudiera aplicarlo sin preguntar?</p>
+<p><strong>Para hacer.</strong> Elige un proceso de tu oficio que conozcas en detalle y responde por escrito las siete preguntas de la sección 1.4.5, en no más de una página. Después pide a tu agente que liste sus skills y que te diga cuáles usaría para construir un agente con esa descripción. Guarda tu página: será el punto de partida del módulo 2.</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>Agent Skills. (s. f.). <em>Agent Skills</em> [Especificación del estándar]. Recuperado el 6 de noviembre de 2026, de https://agentskills.io</p>
+<p>Google. (2026, 4 de noviembre). <em>google-agents-cli 1.13.0</em> [Paquete de software]. PyPI. https://pypi.org/project/google-agents-cli/</p>
+<p>Google. (s. f.). <em>Skills</em> [Referencia de Agents CLI]. Recuperado el 6 de noviembre de 2026, de https://google.github.io/agents-cli/reference/skills/</p>
+<p>mdskills. (s. f.). <em>What are skills?</em> [Documentación]. Recuperado el 6 de noviembre de 2026, de https://www.mdskills.ai/docs/what-are-skills</p>
+<p>Platón. (1901). Fedro. En J. Burnet (Ed.), <em>Platonis opera</em> (Vol. 2). Clarendon Press. (Obra original escrita ca. 370 a. C.; la cita es traducción propia)</p>
+<p>Polanyi, M. (1966). <em>The tacit dimension</em>. Doubleday.</p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la sección 1.4? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— 1.4 —</p>
 </article>
-<article class="sheet pending" id="sec-1-5">
+<article class="sheet" id="sec-1-5">
   <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.5</span></div>
   <header class="sec-head">
     <p class="sec-no">1.5</p>
     <h2 class="sec-title">Primera victoria: conversar con un agente en tu navegador</h2>
-    <span class="sec-state">En construcción</span>
+    <p class="sec-ver">Versión de trabajo. Comandos verificados el 6 de noviembre de 2026 contra la documentación oficial de Agents CLI (versión 1.13.0).</p>
+    <span class="sec-state">Versión de trabajo</span>
   </header>
-  <p class="plan">El cierre práctico del módulo: levantar un agente de ejemplo en tu computador y conversar con él antes de pasar a la especificación.</p>
-  <div class="ghost" aria-hidden="true"><span></span><span></span><span></span></div>
-  <p class="suggest">¿Qué te gustaría encontrar aquí? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <blockquote class="sec-epi"><p>«Por el asombro comenzaron los hombres a filosofar, hoy como en el principio.»</p><cite>Aristóteles, <em>Metafísica</em>, I.2, 982b12-13</cite></blockquote>
+<aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
+<p>Al terminar esta sección podrás:</p>
+<ul><li>Crear tu primer agente con Agents CLI, delegando el trabajo en el agente de programación (ruta A) o paso a paso (ruta B).</li><li>Poner en marcha el entorno de prueba local, llamado <em>playground</em>, y conversar con tu agente en el navegador.</li><li>Reconocer en pantalla la conversación y el registro de lo que el agente hace en cada turno.</li><li>Probar tu agente con tres conversaciones: una normal, una ambigua y una trampa.</li><li>Pedir un cambio al agente de programación y comprobar el resultado sin escribir código.</li></ul>
+</aside>
+<p class="opening">Aristóteles abre su <em>Metafísica</em> con la observación del epígrafe: el conocimiento comienza con el asombro. No se refiere a la sorpresa pasajera, sino a la experiencia de encontrarse ante algo que funciona y que todavía no se comprende del todo. Quien ha visto arrancar por primera vez una máquina que ayudó a instalar conoce esa experiencia. En ese momento una idea abstracta se vuelve real y, por eso mismo, se vuelve digna de ser pensada.</p>
+<p>La psicología del aprendizaje ofrece una razón complementaria para detenerse aquí. Albert Bandura identificó cuatro fuentes de la confianza en la propia capacidad, a la que llamó <strong>autoeficacia</strong>: haber logrado algo uno mismo, ver a otros lograrlo, recibir ánimo de los demás e interpretar las propias reacciones físicas. De las cuatro, la más poderosa es la primera, las <strong>experiencias de dominio</strong> (Bandura, 1977). Por eso el módulo no termina con más teoría, sino con una conversación con un agente que tú mismo pusiste en marcha.</p>
+<p>Conviene precisar el alcance de esta victoria. El agente que crearás vivirá solo en tu computador: nadie más podrá verlo ni usarlo, y se apagará cuando cierres la terminal. No usará datos reales. Publicarlo para que otras personas lo usen es tarea del módulo 6. Aquí el objetivo es más modesto y más importante: comprobar que la cadena completa funciona, de tu encargo en español a un agente que responde.</p>
+<h3 id="s1-5-1">1.5.1 Qué vas a construir</h3>
+<p>Tu primer agente será un <strong>entrevistador de procesos</strong>: un agente que te hace, una por una, las siete preguntas de la sección 1.4.5 sobre un proceso de tu oficio y, al final, te entrega un resumen ordenado. Lo elegimos por tres razones. No necesita herramientas externas ni datos de terceros, de modo que se puede construir con lo instalado hasta ahora. Usa tu experiencia como materia prima desde el primer día. Y su resultado, una descripción de una página, es el punto de partida del módulo 2.</p>
+<p class="fig-label">Tabla 1.17</p>
+<p><em>Ficha del primer agente</em></p>
+<div class="tbl"><table><tr><th>Elemento</th><th>Definición</th></tr>
+<tr><td>Nombre del proyecto</td><td><code>entrevistador-de-procesos</code></td></tr>
+<tr><td>Propósito</td><td>Ayudar a una persona con experiencia a describir un proceso de su oficio con orden y precisión</td></tr>
+<tr><td>Usuario</td><td>Tú, durante el taller</td></tr>
+<tr><td>Entrada</td><td>Tus respuestas, en lenguaje natural</td></tr>
+<tr><td>Salida</td><td>Un resumen de no más de una página, ordenado en siete apartados</td></tr>
+<tr><td>Herramientas</td><td>Ninguna</td></tr>
+<tr><td>Límites</td><td>No inventa información del proceso, no pide datos personales ni confidenciales y no se aparta de su propósito</td></tr>
+<tr><td>Criterio de éxito</td><td>Hace las siete preguntas en orden, pide un ejemplo cuando la respuesta es vaga y su resumen refleja fielmente lo que dijiste</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> La ficha sigue la estructura de especificación que se desarrolla en el módulo 2.</p>
+<h3 id="s1-5-2">1.5.2 Antes de empezar</h3>
+<p>Comprueba estas condiciones. Si alguna falla, vuelve a la sección indicada antes de continuar.</p>
+<ul><li>La lista de verificación de la instalación está completa (tabla 1.6, sección 1.2.6).</li><li>Tu clave de API responde correctamente (sección 1.3.6).</li><li>Tu agente de programación muestra las siete skills de Agents CLI (sección 1.4.4).</li><li>Tienes la carpeta <code>~/taller-agentes</code> y entre 45 y 60 minutos sin interrupciones.</li></ul>
+<h3 id="s1-5-3">1.5.3 Ruta A: el agente de programación construye tu agente</h3>
+<p>Google ofrece un encargo genérico para crear un primer agente, con el cual el agente de programación te pregunta qué debe hacer tu agente, qué herramientas necesita y cómo juzgar su éxito (Google, s. f.-a). En este libro usamos un encargo más preciso, que ya contiene la ficha de la tabla 1.17. Sigue estos pasos:</p>
+<ol><li>Abre Antigravity en la carpeta <code>~/taller-agentes</code>.</li><li>Copia el encargo que aparece a continuación.</li><li>Cuando el agente te avise, pega tu clave en el archivo <code>.env</code> tú mismo, como aprendiste en la sección 1.3.5, y confírmale que lo hiciste.</li><li>Abre en tu navegador la dirección que te entregue el agente.</li></ol>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 006</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Usa agents-cli y sus skills para crear mi primer agente con ADK en Python, a partir de la plantilla de prototipo, sin despliegue.
+Nombre del proyecto: entrevistador-de-procesos.
+
+Qué debe hacer el agente: entrevistarme sobre un proceso de mi trabajo. Hace una pregunta a la vez, en español y con trato respetuoso, en este orden: 1) qué inicia el proceso; 2) cuáles son los pasos; 3) dónde se decide y con qué regla; 4) qué excepciones conozco; 5) qué nunca debe hacerse; 6) qué datos se usan y qué se entrega; 7) cómo se sabe que quedó bien.
+Al terminar, entrega un resumen de no más de una página con esos siete apartados y pregúntame si quiero corregir algo.
+Límites: no inventa información del proceso; si una respuesta es vaga, pide un ejemplo concreto; no pide datos personales ni confidenciales; no se aparta de su propósito.
+No necesita herramientas: elimina las herramientas de ejemplo de la plantilla.
+
+Forma de trabajo:
+1. Dime qué skills de agents-cli vas a usar y para qué.
+2. Configura el proyecto para usar GEMINI_API_KEY en el archivo .env, con las líneas GOOGLE_* como comentario. No me pidas la clave ni la leas: yo la pegaré.
+3. Cuando te confirme que pegué la clave, instala las dependencias y pon en marcha el playground local. Dame la dirección para abrirla en el navegador.
+4. Explícame en palabras simples en qué archivo quedaron las instrucciones del agente.</code></pre>
+</div>
+<p>Si algo falla durante el proceso, usa el encargo C.7 del anexo C para pedir una explicación del error antes de aprobar una solución.</p>
+<h3 id="s1-5-4">1.5.4 Ruta B: paso a paso</h3>
+<p>En esta ruta crearás el proyecto a partir de la plantilla de Google y conversarás primero con el agente de ejemplo que trae. Al final, le pedirás al agente de programación que lo convierta en el entrevistador de procesos.</p>
+<h4>Paso B1. Crear el proyecto</h4>
+<p>En la terminal (en Windows, la ventana Ubuntu), escribe:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>cd ~/taller-agentes
+agents-cli create primer-agente --prototype --yes</code></pre>
+<p>La opción <code>--prototype</code> crea un proyecto mínimo, sin los archivos de despliegue ni de integración continua que veremos en el módulo 6; <code>--yes</code> acepta los valores por defecto (Google, s. f.-b). <strong>Verificación.</strong> Debe existir la carpeta <code>primer-agente</code>, con un archivo <code>app/agent.py</code> en su interior.</p>
+<h4>Paso B2. Configurar tu clave</h4>
+<p>Entra a la carpeta y abre el archivo <code>.env</code>:</p>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>cd primer-agente
+nano .env</code></pre>
+<p>Deja como comentario las líneas que comienzan con <code>GOOGLE_</code> (agrega <code>#</code> al inicio), agrega la línea <code>GEMINI_API_KEY</code> con tu clave y guarda, tal como se explicó en la sección 1.3.5 (Google, s. f.-a). Comprueba también que <code>.env</code> figure en el archivo <code>.gitignore</code>.</p>
+<h4>Paso B3. Instalar las dependencias</h4>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>agents-cli install</code></pre>
+<p>Este comando descarga las librerías que necesita el proyecto. La primera vez puede tardar algunos minutos.</p>
+<h4>Paso B4. Poner en marcha el playground</h4>
+<pre class="cmd"><button class="copy" type="button" aria-label="Copiar">Copiar</button><code>agents-cli playground</code></pre>
+<p>La terminal mostrará una dirección local, por defecto en el puerto 8080, de la forma <code>http://127.0.0.1:8080/dev-ui/?app=app</code> (Google, s. f.-b; Google, s. f.-c). <strong>No cierres la terminal</strong>: mientras esté abierta, tu agente está encendido. Para apagarlo, presiona Control + C.</p>
+<h4>Paso B5. Abrir el navegador</h4>
+<p>Copia la dirección completa y ábrela en tu navegador. Si usas Ubuntu dentro de Windows, ábrela en el navegador de Windows: WSL 2 comparte con Windows las direcciones locales de los programas que corren en Linux (Microsoft, s. f.).</p>
+<h4>Paso B6. Conversar con el agente de ejemplo</h4>
+<p>La plantilla de prototipo trae un agente de ejemplo. En la versión verificada, ese agente tiene dos herramientas simuladas, una que informa el clima y otra la hora, que devuelven datos de práctica y no datos reales (Google, s. f.-c). Escribe, por ejemplo, «¿Qué hora es en Santiago?» y observa en el panel lateral cómo el agente decide usar una herramienta antes de responder.</p>
+<p>Si prefieres probar sin navegador, puedes enviar un mensaje único desde la terminal con <code>agents-cli run "Hola, ¿qué sabes hacer?"</code> (Google, s. f.-b).</p>
+<h4>Paso B7. Convertirlo en tu entrevistador de procesos</h4>
+<p>Con el playground encendido, abre Antigravity en la carpeta <code>primer-agente</code> y entrega este encargo. Gracias a la recarga automática, los cambios se reflejan en el playground sin reiniciarlo; basta con abrir una sesión nueva en el navegador.</p>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 007</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Usa agents-cli y sus skills para transformar el agente de este proyecto en un entrevistador de procesos.
+Elimina las herramientas de ejemplo y reemplaza sus instrucciones por estas: [pega aquí las secciones «Qué debe hacer el agente» y «Límites» del encargo de la ruta A].
+No cambies la configuración de la clave. Al terminar, explícame qué archivos modificaste y qué hace cada cambio.</code></pre>
+</div>
+<h3 id="s1-5-5">1.5.5 Qué verás en pantalla</h3>
+<p>El playground muestra la interfaz web de desarrollo de ADK, la misma que usan los equipos técnicos para probar sus agentes (Google, s. f.-a). Los nombres de algunas pestañas están en inglés y pueden variar entre versiones, pero su función es estable.</p>
+<p class="fig-label">Tabla 1.18</p>
+<p><em>Elementos de la interfaz del playground</em></p>
+<div class="tbl"><table><tr><th>Elemento</th><th>Qué muestra</th><th>Por qué te importa</th></tr>
+<tr><td>Conversación</td><td>Tus mensajes y las respuestas del agente</td><td>Es lo que verá el usuario final</td></tr>
+<tr><td>Eventos y trazas</td><td>Cada paso del agente en un turno: la consulta al modelo, el uso de una herramienta y la respuesta</td><td>Es la bitácora que te permite juzgar <em>cómo</em> llegó a su respuesta, no solo <em>qué</em> respondió</td></tr>
+<tr><td>Sesiones</td><td>Cada conversación como una unidad separada</td><td>Para probar desde cero, abre una sesión nueva</td></tr>
+<tr><td>Estado</td><td>Los datos que el agente guarda durante una sesión</td><td>Lo usarás en el módulo 3, cuando el agente deba recordar información</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaboración propia a partir de la documentación de Agents CLI. Los módulos 4 y 7 profundizan en la lectura de trazas.</p>
+<aside class="box reflex"><p class="box-h">Reflexión: un agente sin examen no merece confianza</p>
+<p>En la <em>Apología</em>, Sócrates afirma ante el tribunal que una vida sin examen no es digna de ser vivida por un ser humano (Platón, <em>Apología</em>, 38a). La frase admite una traslación modesta a nuestro tema: un agente cuyo trabajo nadie examina no merece confianza, por bien que respondan sus primeras conversaciones. El panel de eventos y trazas existe para eso. La tradición contable, la auditoría y la ingeniería conocen el mismo principio con otros nombres: un resultado vale lo que vale su trazabilidad. Mira ese panel desde el primer día. Ahí está el trabajo, no solo su apariencia.</p>
+</aside>
+<h3 id="s1-5-6">1.5.6 Tres conversaciones de prueba</h3>
+<p>Antes de confiar en tu agente, ponlo a prueba con tres conversaciones de distinto tipo. Abre una sesión nueva para cada una y anota lo que observes. Esta tríada (un caso normal, uno difícil y uno trampa) es la misma que usa la guía de entrevista Voz Silver y la que el módulo 5 convertirá en una evaluación sistemática.</p>
+<p class="fig-label">Tabla 1.19</p>
+<p><em>Guía para las tres conversaciones de prueba</em></p>
+<div class="tbl"><table><tr><th>Conversación</th><th>Qué haces tú</th><th>Qué debería hacer el agente</th></tr>
+<tr><td><strong>1. Normal</strong></td><td>Describes un proceso sencillo de tu oficio, por ejemplo, aprobar una solicitud o cerrar una caja diaria</td><td>Hace las siete preguntas en orden, una a la vez, y entrega un resumen fiel</td></tr>
+<tr><td><strong>2. Ambigua</strong></td><td>Respondes de manera vaga: «depende», «lo normal», «como siempre»</td><td>Te pide un ejemplo concreto antes de avanzar</td></tr>
+<tr><td><strong>3. Trampa</strong></td><td>Le pides que invente los pasos que faltan o que haga algo fuera de su propósito, como redactar un correo para tu jefatura</td><td>No inventa información y vuelve con amabilidad a su tarea</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Usa solo datos ficticios o generales. Recuerda que en el nivel gratuito tus solicitudes pueden usarse para mejorar los productos de Google (sección 1.3.4).</p>
+<h3 id="s1-5-7">1.5.7 Pedir un cambio sin escribir código</h3>
+<p>Es probable que alguna conversación no te deje conforme: preguntas demasiado largas, un tono muy formal o un resumen que omite algo. Ese es el momento de ejercer el segundo punto del método, el juicio. No necesitas modificar el código: describe al agente de programación lo que observaste y lo que esperas.</p>
+<div class="box prompt"><div class="box-h"><span>Encargo para el agente <span class="no">Nº 008</span></span><button class="copy" type="button">Copiar</button></div>
+<pre><code>Probé el entrevistador de procesos y observé esto: [describe lo que pasó].
+Quiero que [describe el comportamiento esperado; por ejemplo: cada pregunta tenga como máximo dos líneas e incluya un ejemplo].
+Haz el cambio mínimo necesario, muéstrame qué cambiaste y explícame por qué ese cambio debería resolverlo.</code></pre>
+</div>
+<p>Después, abre una sesión nueva en el playground y repite la conversación que falló. Si el agente mejoró, completaste un ciclo entero del método: especificaste, el agente construyó, juzgaste y corregiste. El resto del libro repite ese ciclo con agentes cada vez más útiles.</p>
+<h3 id="s1-5-8">1.5.8 Problemas frecuentes</h3>
+<p class="fig-label">Tabla 1.20</p>
+<p><em>Síntomas, causas probables y soluciones al poner en marcha el playground</em></p>
+<div class="tbl"><table><tr><th>Síntoma</th><th>Causa probable</th><th>Qué hacer</th></tr>
+<tr><td>Un mensaje indica que la dirección o el puerto ya están en uso</td><td>Otro programa, o un playground anterior, ocupa el puerto 8080</td><td>Cierra el playground anterior o usa otro puerto: <code>agents-cli playground --port 8081</code></td></tr>
+<tr><td>Error de clave no válida o de credenciales faltantes</td><td>El archivo <code>.env</code> no tiene la clave, o las líneas <code>GOOGLE_*</code> siguen activas</td><td>Revisa el archivo como en la sección 1.3.5 y reinicia el playground</td></tr>
+<tr><td>Error 429 o <code>RESOURCE_EXHAUSTED</code></td><td>Se alcanzó el límite de uso del nivel gratuito</td><td>Espera unos minutos y vuelve a intentar (tabla 1.11)</td></tr>
+<tr><td>Error de modelo no encontrado o no disponible</td><td>El modelo configurado en la plantilla no está disponible para tu clave</td><td>Pide al agente de programación: «Cambia el modelo por uno disponible en el nivel gratuito de la API de Gemini y explícame cuál elegiste»</td></tr>
+<tr><td>El navegador no abre la dirección</td><td>El playground se detuvo o la dirección quedó incompleta</td><td>Verifica que la terminal siga abierta y copia la dirección completa. En Windows, usa el navegador de Windows</td></tr>
+<tr><td>La página abre, pero no aparece tu agente</td><td>El playground se inició fuera de la carpeta del proyecto</td><td>Detén el playground, entra a la carpeta del proyecto con <code>cd</code> y vuelve a iniciarlo</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> La lista se ampliará en el anexo D con los casos que reporten los talleres.</p>
+<aside class="box warn"><p class="box-h">Para tener en cuenta: tu agente vive en tu computador</p>
+<ul><li>Mientras la terminal esté abierta, tu agente consume tu cuota de la API cada vez que conversas con él. Al terminar, apágalo con Control + C.</li><li>La dirección <code>127.0.0.1</code> solo funciona en tu propio equipo. Si la envías a otra persona, no podrá abrirla.</li><li>Usa solo información ficticia o general. Las reglas de la sección 1.3.7 siguen vigentes.</li></ul>
+</aside>
+<aside class="box open"><p class="box-h">Ruta abierta</p>
+<p>El agente que construiste no depende de Gemini. En la etapa 2 de la hoja de ruta (sección 1.1.6) lo conectaremos a un modelo abierto, como Gemma 4, ejecutado en tu propio computador con Ollama y conectado a ADK mediante LiteLLM. La especificación y las instrucciones serán las mismas: solo cambiará el modelo.</p>
+</aside>
+<aside class="box key"><p class="box-h">Ideas clave</p>
+<ul><li>La primera victoria tiene una función pedagógica: las experiencias de dominio son la fuente más poderosa de confianza en la propia capacidad.</li><li>Tu primer agente, el entrevistador de procesos, no necesita herramientas ni datos externos y usa tu experiencia como materia prima.</li><li>Agents CLI crea el proyecto, <code>agents-cli install</code> prepara sus dependencias y <code>agents-cli playground</code> lo pone en marcha en tu navegador.</li><li>El panel de eventos y trazas muestra cómo trabajó el agente; mirarlo es el primer ejercicio de juicio.</li><li>Tres conversaciones (normal, ambigua y trampa) bastan para una primera evaluación. Un cambio pedido en lenguaje natural cierra el ciclo del método.</li></ul>
+</aside>
+<aside class="box taller"><p class="box-h">Para el taller</p>
+<p><strong>Para conversar.</strong> ¿Recuerdas la primera vez que una máquina o un sistema hizo exactamente lo que le pediste? ¿Qué sentiste y qué aprendiste de ese momento?</p>
+<p><strong>Para hacer.</strong> Completa las tres conversaciones de prueba con un proceso real de tu oficio, sin datos confidenciales. Guarda el resumen que entregó el agente y compáralo con la página que escribiste en el ejercicio de la sección 1.4. ¿Qué agregó el agente con sus preguntas? ¿Qué se le escapó?</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>Aristóteles. (1924). <em>Aristotle's Metaphysics</em> (W. D. Ross, Ed.). Clarendon Press. (Obra original escrita ca. 350 a. C.; la cita es traducción propia y sigue la numeración de Bekker)</p>
+<p>Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. <em>Psychological Review, 84</em>(2), 191-215. https://doi.org/10.1037/0033-295X.84.2.191</p>
+<p>Google. (s. f.-a). <em>Getting started</em> [Documentación de Agents CLI]. Recuperado el 6 de noviembre de 2026, de https://google.github.io/agents-cli/guide/getting-started/</p>
+<p>Google. (s. f.-b). <em>CLI reference</em> [Documentación de Agents CLI]. Recuperado el 6 de noviembre de 2026, de https://google.github.io/agents-cli/cli/</p>
+<p>Google. (s. f.-c). <em>Agents CLI in Agent Platform: From development to production</em> [Codelab]. Recuperado el 6 de noviembre de 2026, de https://codelabs.developers.google.com/agents-cli-agent-platform/agents-cli-agent-platform</p>
+<p>Microsoft. (s. f.). <em>Acceso a aplicaciones de red con WSL</em>. Recuperado el 6 de noviembre de 2026, de https://learn.microsoft.com/es-es/windows/wsl/networking</p>
+<p>Platón. (1900). Apología de Sócrates. En J. Burnet (Ed.), <em>Platonis opera</em> (Vol. 1). Clarendon Press. (Obra original escrita ca. 399-390 a. C.; paráfrasis propia)</p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la sección 1.5? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— 1.5 —</p>
 </article>
-<article class="sheet pending" id="sec-1-6">
+<article class="sheet" id="sec-1-6">
   <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.6</span></div>
   <header class="sec-head">
     <p class="sec-no">1.6</p>
     <h2 class="sec-title">Voz Silver: aprender una herramienta nueva después de los 50</h2>
-    <span class="sec-state">En construcción</span>
+    <p class="sec-ver">Versión de trabajo, 6 de noviembre de 2026. Sección reflexiva: no requiere computador.</p>
+    <span class="sec-state">Versión de trabajo</span>
   </header>
-  <p class="plan">Entrevista a una persona de más de 50 años sobre cómo aprendió una herramienta nueva en su trabajo, traducida a consejos para este módulo.</p>
-  <div class="ghost" aria-hidden="true"><span></span><span></span><span></span></div>
-  <p class="suggest">¿Qué te gustaría encontrar aquí? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <blockquote class="sec-epi"><p>«Vemos a Solón gloriarse en sus versos de que envejece aprendiendo algo cada día; y yo mismo aprendí las letras griegas ya viejo.»</p><cite>Cicerón, <em>Catón el Viejo o sobre la vejez</em>, VIII.26</cite></blockquote>
+<aside class="box goals"><p class="box-h">Objetivos del subcapítulo</p>
+<p>Al terminar esta sección podrás:</p>
+<ul><li>Reconocer que aprender en la madurez es una tradición antigua y respetable, no una excepción.</li><li>Distinguir, a partir de la investigación, qué capacidades cambian con la edad y cuáles se mantienen o crecen.</li><li>Comprender por qué la ansiedad y la confianza influyen tanto como la habilidad en la adopción de una tecnología.</li><li>Valorar el conocimiento tácito de tu oficio y la responsabilidad de hacerlo explícito.</li><li>Aplicar diez prácticas para aprender una herramienta nueva a tu propio ritmo.</li></ul>
+</aside>
+<p class="opening">Cada módulo de este libro incluye una sección <strong>Voz Silver</strong>. Su propósito es dar voz a profesionales de más de 50 años y reflexionar sobre la dimensión humana del paso técnico que el módulo acaba de dar. Esta primera Voz Silver acompaña el momento que muchos lectores describen como el más difícil: enfrentar una terminal por primera vez, sentir que la máquina habla un idioma ajeno y preguntarse si este aprendizaje llegó demasiado tarde.</p>
+<p>La sección no exige computador. Puede leerse después de las secciones 1.2 y 1.5, para dar sentido a lo vivido, o antes de ellas, si la sola idea de instalar programas genera inquietud. Su tesis es simple: la tradición, la investigación y la experiencia de otros profesionales coinciden en que aprender una herramienta nueva después de los 50 no solo es posible, sino que tiene ventajas propias.</p>
+<h3 id="s1-6-1">1.6.1 Una tradición antigua: aprender en la madurez</h3>
+<p>Hacia el año 44 a. C., con más de sesenta años, Cicerón escribió un diálogo sobre la vejez. En él pone en boca de Catón el Viejo, de ochenta y cuatro años, una defensa de la edad madura frente a sus detractores. Uno de sus argumentos es que la vejez no excluye el aprendizaje: Catón recuerda que el legislador Solón se preciaba de envejecer aprendiendo algo cada día, y cuenta que él mismo aprendió griego siendo ya viejo (Cicerón, <em>Sobre la vejez</em>, 26).</p>
+<p>Un siglo después, Séneca relata a su amigo Lucilio que, siendo anciano, lleva varios días asistiendo a las lecciones de un filósofo. Anticipa la objeción de quienes encuentran impropio que un viejo vaya a la escuela y responde con una frase que vale la pena citar: «Hay que aprender mientras se ignore algo; y, si creemos al proverbio, mientras se viva» (Séneca, <em>Epístolas morales a Lucilio</em>, 76.3).</p>
+<p>Dos observaciones se desprenden de estos textos. La primera es que la incomodidad de aprender tarde no es nueva: hace dos mil años ya había quien miraba con extrañeza a un adulto mayor con su libro de estudiante. La segunda es que los mejores pensadores de la Antigüedad consideraron esa incomodidad un prejuicio, no un argumento. Lo que sí es nuevo es la velocidad con que cambian hoy las herramientas. El aprendizaje ya no es una etapa de la vida profesional que termina con el título: es una condición permanente del oficio.</p>
+<aside class="box reflex"><p class="box-h">Reflexión: la dignidad de preguntar</p>
+<p>En la <em>Apología</em>, Sócrates cuenta que, tras interrogar a un hombre reputado por sabio, concluyó que era un poco más sabio que él en una sola cosa: él no creía saber lo que no sabía (Platón, <em>Apología</em>, 21d). Esa forma de ignorancia consciente es la condición de todo aprendizaje. En un taller, la persona que levanta la mano para decir «no entendí» no está mostrando una carencia: está haciendo exactamente lo que hacía Sócrates. Quien finge entender, en cambio, se cierra la puerta. Con los años, preguntar suele costar más, porque hay un prestigio que cuidar. Este libro propone lo contrario: que la experiencia sea la razón para preguntar mejor, no para dejar de preguntar.</p>
+</aside>
+<h3 id="s1-6-2">1.6.2 Lo que dice la investigación</h3>
+<p>La psicología del envejecimiento confirma la intuición de los clásicos, aunque con matices que conviene conocer. Tres líneas de investigación son especialmente pertinentes para este libro.</p>
+<p><strong>Dos clases de inteligencia.</strong> John Horn y Raymond Cattell distinguieron entre la <strong>inteligencia fluida</strong>, que permite razonar con información nueva, resolver problemas desconocidos y procesar con rapidez, y la <strong>inteligencia cristalizada</strong>, que corresponde al conocimiento acumulado, el vocabulario y el juicio en dominios conocidos. Sus datos mostraron que la primera tiende a disminuir desde la adultez temprana, mientras la segunda se mantiene o aumenta hasta edades avanzadas (Horn y Cattell, 1967). Aprender a usar una terminal exige inteligencia fluida y, por eso, puede tomar más tiempo. Especificar un proceso y juzgar un resultado, las dos tareas que este libro te asigna, descansan sobre todo en la inteligencia cristalizada.</p>
+<p><strong>La pericia compensa la velocidad.</strong> Timothy Salthouse estudió a mecanógrafos de distintas edades. Los mayores tenían tiempos de reacción más lentos en tareas simples y, sin embargo, escribían tan rápido como los jóvenes con igual nivel de destreza. La explicación estaba en la anticipación: los expertos mayores miraban más adelante en el texto que estaban copiando y preparaban los movimientos con antelación (Salthouse, 1984). La experiencia no elimina los cambios de la edad, pero desarrolla estrategias que los compensan.</p>
+<p><strong>La ansiedad pesa tanto como la habilidad.</strong> El estudio del centro CREATE, realizado con una amplia muestra de adultos de distintas edades, encontró que las personas mayores usaban menos la tecnología. Pero la edad no explicaba esa diferencia por sí sola: la confianza en la propia capacidad para usar computadores, la ansiedad frente a ellos y las capacidades cognitivas mediaban la relación (Czaja et al., 2006). En otras palabras, buena parte de la brecha no está en lo que una persona puede aprender, sino en lo que cree que puede aprender y en el temor que le produce intentarlo.</p>
+<p class="fig-label">Tabla 1.21</p>
+<p><em>Hallazgos de la investigación y sus consecuencias para este libro</em></p>
+<div class="tbl"><table><tr><th>Hallazgo</th><th>Fuente</th><th>Consecuencia para el libro</th></tr>
+<tr><td>La inteligencia cristalizada se mantiene o crece con la edad</td><td>Horn y Cattell (1967)</td><td>El método reserva para ti la especificación y el juicio, que se apoyan en ella</td></tr>
+<tr><td>La pericia compensa la menor velocidad</td><td>Salthouse (1984)</td><td>No compites en rapidez con la terminal: compites en anticipación y criterio</td></tr>
+<tr><td>La ansiedad y la autoeficacia median el uso de tecnología</td><td>Czaja et al. (2006)</td><td>El módulo ofrece dos rutas, explica cada error y termina con una victoria temprana</td></tr>
+<tr><td>Las experiencias de dominio son la fuente más fuerte de autoeficacia</td><td>Bandura (1977)</td><td>Cada módulo termina con un resultado que funciona y que hiciste tú</td></tr>
+<tr><td>Los adultos aprenden mejor desde su experiencia y orientados a problemas reales</td><td>Knowles (1980)</td><td>Los ejercicios usan procesos de tu propio oficio, no ejemplos abstractos</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaboración propia. Los estudios citados describen tendencias de grupo: cada persona puede apartarse de ellas en cualquier dirección.</p>
+<p>Malcolm Knowles, uno de los fundadores de la educación de adultos, sistematizó lo que la tabla resume en su última fila. A diferencia de los niños, los adultos tienden a dirigir su propio aprendizaje, traen una experiencia que funciona como recurso, aprenden cuando la materia responde a tareas reales de su vida y prefieren organizar el aprendizaje en torno a problemas antes que a temas (Knowles, 1980). Este libro está construido sobre esos principios: no te pide olvidar lo que sabes para aprender algo nuevo, sino usarlo como punto de apoyo.</p>
+<h3 id="s1-6-3">1.6.3 La prudencia y el conocimiento que no está escrito</h3>
+<p>Aristóteles distinguía entre distintas formas de saber. Una de ellas, la <em>phrónesis</em>, que suele traducirse como prudencia o sabiduría práctica, es la capacidad de deliberar bien sobre lo que conviene hacer en situaciones concretas. A diferencia del saber matemático, la prudencia no se adquiere solo estudiando:</p>
+<blockquote class="cita"><p><em>«Los jóvenes pueden llegar a ser geómetras y matemáticos, y sabios en cosas semejantes, pero no parece que lleguen a ser prudentes. La causa es que la prudencia se refiere también a lo particular, que se conoce por la experiencia, y el joven no tiene experiencia, porque es la cantidad de tiempo la que la produce.»</em> (Aristóteles, <em>Ética a Nicómaco</em>, VI.8, 1142a12-16)</p></blockquote>
+<p>Este pasaje, escrito hace más de dos mil trescientos años, contiene la apuesta central del libro. Las herramientas que instalaste en este módulo pueden aprenderse en semanas. La prudencia que necesita un agente para operar bien en tu oficio, en cambio, no tiene atajo: es la que tú ya tienes.</p>
+<p>El filósofo y químico Michael Polanyi añadió a esta idea una observación decisiva. Buena parte de lo que sabe un experto es <strong>conocimiento tácito</strong>: lo usa con seguridad, pero no puede expresarlo por completo en palabras. Su ejemplo más conocido es el rostro de una persona, que reconocemos entre miles sin poder explicar cómo lo hacemos (Polanyi, 1966). Lo mismo ocurre con el inspector que «huele» una irregularidad, la jefa de turno que intuye que algo anda mal antes de que suene la alarma o el contador que sabe qué partida revisar primero.</p>
+<p>De ahí se siguen dos consecuencias. La primera es práctica: describir tu proceso a un agente, con las siete preguntas de la sección 1.4.5, es un ejercicio de hacer explícito lo que sabías de manera tácita, y suele revelarte reglas que nunca habías escrito. La segunda es casi moral. Una parte enorme del conocimiento de las organizaciones vive en personas que se acercan a la jubilación y que nunca lo pusieron por escrito. Cuando se van, ese saber se va con ellas. Escribir especificaciones, procedimientos y skills es también una forma de legado.</p>
+<h3 id="s1-6-4">1.6.4 Voz Silver: un testimonio</h3>
+<aside class="box voz"><p class="box-h">Voz Silver · Óscar Landerretche, economista</p>
+<p><strong>Persona y oficio.</strong> Economista, académico y columnista de prensa; decano de la Facultad de Economía y Negocios de la Universidad de Chile y expresidente del directorio de Codelco.</p>
+<p><strong>Idea central.</strong> En una entrevista pública, Landerretche sostuvo que, paradójicamente, las personas de su generación podrían ser las grandes ganadoras de la inteligencia artificial. Su razón es concreta. Cuando escribe sus columnas, entrega a la herramienta la idea que quiere desarrollar, un párrafo propio y referencias a cosas que ha dicho antes. El borrador resultante, afirma, «suena como yo», porque se nutre de unos veinte años de textos suyos. Aun así, debe editarlo y corregir el rumbo cada vez que quiere decir algo nuevo y no repetirse. A los jóvenes que recién comienzan, en cambio, los ve más expuestos: sin una obra previa de la cual nutrirse, la herramienta tiende a sugerirles una imitación de lo que ya existe (Exponencial, s. f.).</p>
+<p><strong>Qué nos enseña para este módulo.</strong> La herramienta amplifica una trayectoria; no la reemplaza. Lo que vuelve valioso el resultado es lo que el profesional aporta antes (sus ideas y su obra) y después (la edición y el giro que solo él puede decidir). Son los dos puntos del método de este libro: especificación y juicio. En la misma entrevista, Landerretche señaló que las instituciones deben ayudar a sus profesionales con trayectoria a hacer la transición tecnológica y reducir sus costos. Este módulo intenta exactamente eso, a escala de un lector.</p>
+<p><em>Nota.</em> Las secciones Voz Silver se nutren de entrevistas realizadas para el libro con la guía del anexo G. Este testimonio proviene de una entrevista pública y se cita como tal.</p>
+</aside>
+<h3 id="s1-6-5">1.6.5 Diez prácticas para aprender una herramienta nueva</h3>
+<p>Las siguientes prácticas traducen lo anterior en hábitos concretos. No son reglas: son puntos de apoyo que puedes adoptar según tu estilo.</p>
+<ol><li><strong>Parte de un problema real.</strong> Aprende la herramienta para resolver algo que te importa, no para «estar al día». Los adultos aprenden mejor orientados a problemas (Knowles, 1980).</li><li><strong>Usa tu oficio como puente.</strong> Busca la analogía con lo que ya sabes: la skill como manual de procedimientos, la clave como llave de bodega, la traza como libro de obra. Tu experiencia es un recurso, no un estorbo.</li><li><strong>Busca una victoria temprana.</strong> Termina cada sesión con algo que funcione, por pequeño que sea. Es la fuente más poderosa de confianza (Bandura, 1977).</li><li><strong>Practica en sesiones cortas y espaciadas.</strong> Ya en el siglo XIX, Hermann Ebbinghaus observó que las repeticiones distribuidas en el tiempo se retienen mejor que las concentradas en una sola sesión (Ebbinghaus, 1885). Tres sesiones de 40 minutos rinden más que una de dos horas.</li><li><strong>Lleva un cuaderno de errores.</strong> Anota cada error, su causa y la solución. En pocas semanas tendrás tu propio manual de problemas frecuentes y verás tu progreso con evidencia.</li><li><strong>Reconoce la ansiedad como algo esperable.</strong> Sentir temor frente a una herramienta nueva es frecuente y no dice nada sobre tu capacidad (Czaja et al., 2006). Reconocerlo ayuda a separar la emoción de la evaluación de lo que sí puedes hacer.</li><li><strong>Aprende acompañado.</strong> Trabaja en pareja y, si puedes, con alguien de otra generación. Tú aportas el conocimiento del dominio; la otra persona, la soltura con la herramienta. Ambos aprenden.</li><li><strong>Enseña lo que aprendes.</strong> «Los hombres, mientras enseñan, aprenden», escribió Séneca (<em>Epístolas morales a Lucilio</em>, 7.8). Explicar un paso a otra persona es la mejor prueba de que lo comprendiste.</li><li><strong>Respeta tu propio ritmo.</strong> La velocidad depende de la inteligencia fluida; el criterio, de la cristalizada. No compitas donde no importa: en este método, lo que cuenta es la calidad de lo que especificas y juzgas.</li><li><strong>Conserva el juicio.</strong> El agente propone; tú decides. Ninguna herramienta, por avanzada que sea, te exime de examinar su trabajo.</li></ol>
+<h3 id="s1-6-6">1.6.6 Para el facilitador: talleres con personas de más de 50 años</h3>
+<p>Quien facilita un taller con este público tiene una responsabilidad particular: reducir los costos de la transición sin infantilizar a personas que han liderado equipos, firmado balances y tomado decisiones difíciles durante décadas. Estas recomendaciones se apoyan en la investigación citada y se ajustarán con la experiencia de los talleres del libro.</p>
+<p class="fig-label">Tabla 1.22</p>
+<p><em>Recomendaciones para facilitar el Módulo 1</em></p>
+<div class="tbl"><table><tr><th>Recomendación</th><th>Cómo aplicarla</th></tr>
+<tr><td>Evitar «es fácil» y «es solo»</td><td>Si a alguien le cuesta, esas frases lo hacen sentir torpe. Di «es un paso más» o «a muchos les cuesta al principio»</td></tr>
+<tr><td>Cuidar la legibilidad</td><td>Aumenta el tamaño de letra de la terminal y de las diapositivas antes de empezar; verifica el contraste</td></tr>
+<tr><td>Un paso a la vez</td><td>Muestra, luego cada participante lo hace, luego verifican juntos. No avances hasta que todos hayan verificado</td></tr>
+<tr><td>Normalizar el error</td><td>Provoca un error a propósito durante la demostración y resuélvelo en voz alta con la tabla de problemas frecuentes</td></tr>
+<tr><td>Manos del participante</td><td>Nunca tomes el teclado ni el mouse de otra persona. Guía con palabras; el aprendizaje ocurre en sus manos</td></tr>
+<tr><td>Conectar con el oficio</td><td>Pide a cada participante una analogía de su propia experiencia para cada concepto nuevo</td></tr>
+<tr><td>Cerrar con la victoria del día</td><td>Al final de cada sesión, cada persona dice en una frase qué logró hacer</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Elaboración propia. El anexo A desarrollará estas recomendaciones con tiempos y materiales por sesión.</p>
+<aside class="box key"><p class="box-h">Ideas clave</p>
+<ul><li>Aprender en la madurez es una tradición antigua: Solón, Catón y Séneca la defendieron frente a los prejuicios de su tiempo.</li><li>Con la edad tiende a disminuir la velocidad de procesamiento, pero el conocimiento acumulado y el juicio se mantienen o crecen; la pericia, además, compensa.</li><li>La ansiedad y la confianza explican buena parte de la brecha en el uso de tecnología. Por eso el módulo ofrece dos rutas y una victoria temprana.</li><li>La prudencia, que nace de la experiencia, no tiene atajo. Es la contribución que un agente no puede aportar por sí mismo.</li><li>Describir tu proceso a un agente es hacer explícito tu conocimiento tácito y, también, una forma de legado.</li></ul>
+</aside>
+<aside class="box taller"><p class="box-h">Para el taller</p>
+<p><strong>Para conversar.</strong> ¿Qué te dio la edad que un joven brillante todavía no tiene? ¿Qué te da miedo o pereza de la inteligencia artificial, y qué te entusiasma?</p>
+<p><strong>Para hacer.</strong> Escribe tu propia ficha Voz Silver en cinco líneas: tu oficio y tus años en él; una regla tuya que no está en ningún manual; qué parte de tu trabajo delegarías a un agente; qué parte no delegarías jamás, y una frase para el libro. Si quieres que tu ficha forme parte de la Galería de metodologías silver, envíala a dolivaresm@fen.uchile.cl.</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>Aristóteles. (1894). <em>Ethica Nicomachea</em> (I. Bywater, Ed.). Clarendon Press. (Obra original escrita ca. 350 a. C.; la cita es traducción propia y sigue la numeración de Bekker)</p>
+<p>Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. <em>Psychological Review, 84</em>(2), 191-215. https://doi.org/10.1037/0033-295X.84.2.191</p>
+<p>Cicerón. (1923). Cato Maior de senectute. En W. A. Falconer (Trad.), <em>Cicero: De senectute, De amicitia, De divinatione</em>. Harvard University Press. (Obra original escrita en 44 a. C.; la cita es traducción propia)</p>
+<p>Czaja, S. J., Charness, N., Fisk, A. D., Hertzog, C., Nair, S. N., Rogers, W. A., y Sharit, J. (2006). Factors predicting the use of technology: Findings from the Center for Research and Education on Aging and Technology Enhancement (CREATE). <em>Psychology and Aging, 21</em>(2), 333-352. https://doi.org/10.1037/0882-7974.21.2.333</p>
+<p>Ebbinghaus, H. (1885). <em>Über das Gedächtnis: Untersuchungen zur experimentellen Psychologie</em>. Duncker &amp; Humblot.</p>
+<p>Exponencial, el podcast. (s. f.). <em>[Entrevista a Óscar Landerretche, decano de la Facultad de Economía y Negocios de la Universidad de Chile]</em> [Video]. YouTube. TVN y CENIA. https://youtu.be/8t_8cLfW5e8</p>
+<p>Horn, J. L., y Cattell, R. B. (1967). Age differences in fluid and crystallized intelligence. <em>Acta Psychologica, 26</em>, 107-129.</p>
+<p>Knowles, M. S. (1980). <em>The modern practice of adult education: From pedagogy to andragogy</em> (Ed. rev.). Cambridge Adult Education.</p>
+<p>Platón. (1900). Apología de Sócrates. En J. Burnet (Ed.), <em>Platonis opera</em> (Vol. 1). Clarendon Press. (Obra original escrita ca. 399-390 a. C.; paráfrasis propia)</p>
+<p>Polanyi, M. (1966). <em>The tacit dimension</em>. Doubleday.</p>
+<p>Salthouse, T. A. (1984). Effects of age and skill in typing. <em>Journal of Experimental Psychology: General, 113</em>(3), 345-371. https://doi.org/10.1037/0096-3445.113.3.345</p>
+<p>Séneca. (1917-1925). <em>Ad Lucilium epistulae morales</em> (R. M. Gummere, Trad.; Vols. 1-3). Harvard University Press. (Obra original escrita ca. 62-65 d. C.; las citas son traducción propia)</p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la sección 1.6? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— 1.6 —</p>
+</article>
+<article class="sheet" id="sec-1-7">
+  <div class="run"><span>Capítulo 1 · Preparar el entorno</span><span>1.7</span></div>
+  <header class="sec-head">
+    <p class="sec-no">1.7</p>
+    <h2 class="sec-title">Síntesis del módulo y autoevaluación</h2>
+    <p class="sec-ver">Versión de trabajo, 6 de noviembre de 2026.</p>
+    <span class="sec-state">Versión de trabajo</span>
+  </header>
+  <blockquote class="sec-epi"><p>«La Ilustración es la salida del ser humano de su minoría de edad, de la cual él mismo es culpable. Minoría de edad es la incapacidad de servirse del propio entendimiento sin la guía de otro. […] ¡Sapere aude! ¡Ten el valor de servirte de tu propio entendimiento!»</p><cite>Immanuel Kant, <em>Respuesta a la pregunta: ¿qué es la Ilustración?</em>, 1784</cite></blockquote>
+<aside class="box goals"><p class="box-h">Propósito de esta sección</p>
+<p>Esta sección cierra el módulo. Te permite:</p>
+<ul><li>Recorrer de nuevo, en una página, lo aprendido y las ideas que lo acompañaron.</li><li>Evaluar tu propio avance con una rúbrica de seis competencias.</li><li>Comprobar que tienes los entregables necesarios para comenzar el módulo 2.</li></ul>
+</aside>
+<h3 id="s1-7-1">1.7.1 Lo que recorrimos</h3>
+<p class="opening">El módulo comenzó con una afirmación de Francis Bacon: ni la mano desnuda ni el entendimiento abandonado a sí mismo logran mucho, porque las cosas se hacen con instrumentos. En seis secciones preparaste esos instrumentos. La tabla 1.23 resume cada paso junto con la idea filosófica que lo acompañó, porque en este libro la técnica y la reflexión avanzan juntas.</p>
+<p class="fig-label">Tabla 1.23</p>
+<p><em>Recorrido del Módulo 1</em></p>
+<div class="tbl"><table><tr><th>Sección</th><th>Pregunta que respondió</th><th>Idea que la acompañó</th><th>Qué te llevas</th></tr>
+<tr><td>1.1 El stack</td><td>¿Con qué trabajaremos y quién lo provee?</td><td>La nave de Teseo: lo que permanece a través del cambio es la función (Plutarco; Aristóteles)</td><td>Un mapa de diez capas y el hábito de verificar nombres y versiones</td></tr>
+<tr><td>1.2 Instalación</td><td>¿Cómo preparo mi computador?</td><td>Lo que hay que hacer se aprende haciéndolo (Aristóteles); la herramienta se muestra cuando falla (Heidegger)</td><td>Un entorno instalado y verificado, por dos rutas</td></tr>
+<tr><td>1.3 Autenticación</td><td>¿Cómo doy acceso al modelo sin perder el control?</td><td>Autor y actor: quien autoriza responde por lo que se hace en su nombre (Hobbes)</td><td>Tu propia clave, guardada fuera del chat y fuera del repositorio</td></tr>
+<tr><td>1.4 Skills</td><td>¿Cómo aprende el agente a construir agentes?</td><td>La escritura como recordatorio, no como sabiduría (Platón); el conocimiento tácito (Polanyi)</td><td>Skills verificadas y siete preguntas para dictar tu proceso</td></tr>
+<tr><td>1.5 Primera victoria</td><td>¿Funciona todo junto?</td><td>El asombro como origen del conocimiento (Aristóteles); el examen como condición de la confianza (Sócrates)</td><td>Tu primer agente y tres conversaciones de prueba</td></tr>
+<tr><td>1.6 Voz Silver</td><td>¿Puedo aprender esto ahora?</td><td>Aprender mientras se viva (Solón, Cicerón, Séneca); la prudencia nace de la experiencia (Aristóteles)</td><td>Diez prácticas de aprendizaje y tu ficha Voz Silver</td></tr>
+</table>
+</div>
+<p><em>Nota.</em> Las referencias completas de cada idea se encuentran en la sección correspondiente.</p>
+<h3 id="s1-7-2">1.7.2 La idea que une el módulo</h3>
+<p>Kant definió la Ilustración como la salida de una minoría de edad que uno mismo se impone: la costumbre de pensar y actuar siempre bajo la guía de otro. No acusaba con ello a quienes no saben, sino a quienes, pudiendo saber, prefieren delegar en un tutor por comodidad o por temor. Su consigna, tomada de Horacio, fue <em>sapere aude</em>: atrévete a saber.</p>
+<p>Leído a la luz de ese texto, este módulo no trataba de instalar programas. Trataba de que no necesites un intermediario para dirigir agentes. Instalaste tu entorno en lugar de pedir que te lo instalaran; creaste tu propia clave en lugar de usar una prestada; aprendiste qué saben las skills y qué no saben; y examinaste el trabajo de tu primer agente con tu propio criterio. Esa es la forma contemporánea de servirse del propio entendimiento frente a la tecnología.</p>
+<p>Kant añadía, sin embargo, que la Ilustración avanza por el uso público de la razón, es decir, compartiendo el propio juicio con otros. La autonomía que propone este libro tampoco es soledad: los talleres, la comunidad de lectores y las entrevistas Voz Silver existen para que cada persona aprenda con otras y, a su vez, enseñe lo que sabe.</p>
+<h3 id="s1-7-3">1.7.3 Conceptos del módulo</h3>
+<p>La tabla 1.24 reúne los conceptos centrales del módulo. Puedes usarla como repaso o como guía para completar el glosario del anexo B.</p>
+<p class="fig-label">Tabla 1.24</p>
+<p><em>Conceptos centrales del Módulo 1</em></p>
+<div class="tbl"><table><tr><th>Concepto</th><th>Definición breve</th><th>Sección</th></tr>
+<tr><td>Stack</td><td>Conjunto de componentes, ordenados en capas, que se combinan para construir y operar un sistema</td><td>1.1</td></tr>
+<tr><td>Proveedor</td><td>Empresa u organización que desarrolla, mantiene o vende un componente</td><td>1.1</td></tr>
+<tr><td>Agente de programación</td><td>Programa al que le hablas en lenguaje natural y que escribe código, ejecuta comandos y explica lo que hace</td><td>1.1</td></tr>
+<tr><td>Terminal</td><td>Ventana donde se escriben órdenes de texto al computador</td><td>1.2</td></tr>
+<tr><td>WSL 2</td><td>Componente de Microsoft que ejecuta Linux dentro de Windows</td><td>1.2</td></tr>
+<tr><td>Agents CLI</td><td>Herramienta de Google que instala skills para construir, evaluar y desplegar agentes con ADK</td><td>1.2 y 1.4</td></tr>
+<tr><td>Clave de API</td><td>Código secreto que identifica tu cuenta ante un servicio; quien la usa actúa en tu nombre</td><td>1.3</td></tr>
+<tr><td>Archivo .env</td><td>Archivo oculto del proyecto donde se guardan las variables de entorno, como la clave</td><td>1.3</td></tr>
+<tr><td>Archivo .gitignore</td><td>Lista de archivos que Git no debe guardar ni publicar</td><td>1.3</td></tr>
+<tr><td>Nivel gratuito</td><td>Acceso sin costo a la API de Gemini, con límites de uso y uso de datos para mejorar productos</td><td>1.3</td></tr>
+<tr><td>Skill</td><td>Carpeta con un archivo SKILL.md que enseña a un agente cómo y cuándo hacer bien un tipo de trabajo</td><td>1.4</td></tr>
+<tr><td>Carga progresiva</td><td>Forma en que el agente lee primero las descripciones de las skills y solo después la skill completa que necesita</td><td>1.4</td></tr>
+<tr><td>Playground</td><td>Entorno local de prueba donde conversas con tu agente en el navegador</td><td>1.5</td></tr>
+<tr><td>Traza</td><td>Registro de los pasos que dio el agente en un turno</td><td>1.5</td></tr>
+<tr><td>Autoeficacia</td><td>Confianza en la propia capacidad para lograr algo; crece sobre todo con experiencias de dominio</td><td>1.5 y 1.6</td></tr>
+<tr><td>Conocimiento tácito</td><td>Saber que se usa con seguridad pero no puede expresarse por completo en palabras</td><td>1.4 y 1.6</td></tr>
+<tr><td>Prudencia (<em>phrónesis</em>)</td><td>Capacidad de deliberar bien sobre lo que conviene hacer en situaciones concretas; nace de la experiencia</td><td>1.6</td></tr>
+</table>
+</div>
+<h3 id="s1-7-4">1.7.4 Autoevaluación</h3>
+<p>Para cada competencia, marca el nivel que mejor describe tu situación actual. No se trata de una calificación, sino de una orientación: si alguna competencia queda en nivel inicial, vuelve a la sección indicada antes de comenzar el módulo 2.</p>
+<p class="fig-label">Tabla 1.25</p>
+<p><em>Rúbrica de autoevaluación del Módulo 1</em></p>
+<div class="tbl"><table><tr><th>Competencia</th><th>☐ Inicial</th><th>☐ En desarrollo</th><th>☐ Logrado</th></tr>
+<tr><td>Explicar el stack (1.1)</td><td>Reconozco algunos nombres, pero no su función</td><td>Explico la mayoría de las capas con ayuda de la figura 1.1</td><td>Explico cada capa, su proveedor y su alternativa abierta sin mirar el texto</td></tr>
+<tr><td>Instalar y verificar el entorno (1.2)</td><td>Aún no completo la instalación</td><td>Completé la instalación con ayuda de otra persona</td><td>Completé y verifiqué la instalación, y resolví al menos un error por mi cuenta</td></tr>
+<tr><td>Gestionar mi clave (1.3)</td><td>No tengo clave propia o no sé dónde está</td><td>Tengo clave propia, pero no verifiqué que esté protegida</td><td>Mi clave está en .env, .env está en .gitignore y sé cómo revocarla</td></tr>
+<tr><td>Comprender y mantener las skills (1.4)</td><td>No sé si mi agente tiene las skills</td><td>Veo las skills, pero no sé cuál hace qué</td><td>Explico las siete skills, sé actualizarlas y sé qué no saben</td></tr>
+<tr><td>Probar un agente (1.5)</td><td>No logré abrir el playground</td><td>Conversé con mi agente, pero no revisé las trazas</td><td>Hice las tres conversaciones de prueba, revisé las trazas y pedí un cambio</td></tr>
+<tr><td>Describir un proceso de mi oficio (1.4 y 1.6)</td><td>Me cuesta ordenar el proceso por escrito</td><td>Respondí las siete preguntas, con algunos vacíos</td><td>Respondí las siete preguntas con reglas, excepciones y criterios de éxito concretos</td></tr>
+</table>
+</div>
+<h3 id="s1-7-5">1.7.5 Lista de salida del módulo</h3>
+<p>Antes de pasar al módulo 2, comprueba que tienes estos cinco entregables. El sexto es opcional.</p>
+<ul><li>☐ La lista de verificación de la instalación completa (tabla 1.6).</li><li>☐ Tu clave de API funcionando, guardada en .env y protegida por .gitignore (sección 1.3.6).</li><li>☐ Las siete skills de Agents CLI visibles y actualizadas (sección 1.4.4).</li><li>☐ Tu entrevistador de procesos funcionando y tus notas de las tres conversaciones de prueba (sección 1.5.6).</li><li>☐ Una página con las siete preguntas respondidas sobre un proceso de tu oficio, junto con el resumen que entregó tu agente (secciones 1.4.5 y 1.5).</li><li>☐ (Opcional) Tu ficha Voz Silver (sección 1.6).</li></ul>
+<h3 id="s1-7-6">1.7.6 Preguntas para la reflexión final</h3>
+<p>Estas preguntas no tienen respuesta correcta. Sirven para escribir unas líneas en tu cuaderno o para conversar en la última sesión del módulo.</p>
+<ol><li>Si las herramientas de este módulo cambian de nombre el próximo año, ¿qué de lo aprendido seguirá siendo válido? (Plutarco, la nave de Teseo)</li><li>¿Qué error de estas semanas te enseñó más que un acierto? (Heidegger, la herramienta que falla)</li><li>Cuando entregas tu clave a un programa, ¿de qué acciones te haces autor? (Hobbes, autor y actor)</li><li>¿Qué parte de tu juicio profesional crees que nunca podría escribirse en una skill? (Polanyi, el conocimiento tácito)</li><li>¿En qué te sirvió tu experiencia para aprender algo nuevo? (Aristóteles, la prudencia)</li><li>¿Qué decisión tomaste en este módulo que antes habrías delegado en otra persona? (Kant, servirse del propio entendimiento)</li></ol>
+<h3 id="s1-7-7">1.7.7 Puente al módulo 2</h3>
+<p>El módulo 2, «Escribir la especificación», toma como materia prima lo que produjiste aquí: tu página de siete preguntas y el resumen de tu entrevistador de procesos. Con ellos construirás una especificación completa: problema, usuarios, entradas y salidas, herramientas, restricciones y criterios de éxito medibles. Será el documento que entregarás a tu agente de programación en el módulo 3 para construir un agente útil en tu oficio.</p>
+<p>Lleva a la primera sesión del módulo 2 esos dos documentos y una pregunta: ¿qué parte de tu proceso te gustaría no volver a hacer a mano?</p>
+<aside class="box taller"><p class="box-h">Para el taller</p>
+<p><strong>Para conversar.</strong> Ronda de cierre: cada participante comparte en una frase su victoria del módulo y responde una de las preguntas de la sección 1.7.6.</p>
+<p><strong>Para hacer.</strong> Completa la rúbrica de la tabla 1.25 y la lista de salida. Si alguna competencia quedó en nivel inicial, acuerda con tu pareja de taller un momento para repasarla antes del módulo 2.</p>
+</aside>
+<details class="refs"><summary>Referencias</summary>
+<p>Bacon, F. (1620). <em>Instauratio magna: Novum organum</em>. John Bill.</p>
+<p>Kant, I. (1784). Beantwortung der Frage: Was ist Aufklärung? <em>Berlinische Monatsschrift, 4</em>, 481-494. (La cita es traducción propia)</p>
+</details>
+  <p class="suggest">¿Algo que mejorar en la sección 1.7? Escribe a <code>dolivaresm@fen.uchile.cl</code></p>
+  <p class="folio">— 1.7 —</p>
 </article>
 
 </main>
@@ -911,19 +1503,21 @@ Al terminar, explícame en tres frases qué hiciste y cómo puedo comprobarlo.</
   <p><a class="btn solid" href="https://laexperienciaeselcodigo.com/#preventa">Reservar el libro impreso</a></p>
   <p class="small">¿Tienes una librería? Queremos que este libro también esté en tu tienda. <a href="https://laexperienciaeselcodigo.com/#librerias">Conoce las condiciones para librerías</a>.</p>
   <p class="contents-h" style="margin-top:40px">Registro de cambios</p>
-  <ul class="changes"><li><span>25 oct 2026</span>Primera versión pública del capítulo: secciones 1.1, 1.2 y 1.3.</li><li><span>24 oct 2026</span>Se escriben 1.2 Instalación guiada y 1.3 Autenticación.</li><li><span>15 oct 2026</span>Se escribe 1.1 El stack tecnológico.</li></ul>
+  <ul class="changes"><li><span>6 nov 2026</span>Capítulo completo en versión de trabajo: introducción, 1.4 Las skills, 1.5 Primera victoria, 1.6 Voz Silver y 1.7 Síntesis; epígrafes y reflexiones filosóficas en todas las secciones.</li><li><span>25 oct 2026</span>Primera versión pública del capítulo: secciones 1.1, 1.2 y 1.3.</li><li><span>24 oct 2026</span>Se escriben 1.2 Instalación guiada y 1.3 Autenticación.</li><li><span>15 oct 2026</span>Se escribe 1.1 El stack tecnológico.</li></ul>
   <p class="small">© 2026 Daniel Olivares. Todos los derechos reservados. Puedes citar fragmentos breves indicando la fuente. Compuesto en Literata, Playfair Display e IBM Plex Mono.</p>
 </section>
 
 <dialog class="drawer" id="drawer">
   <div class="drawer-in">
     <div class="drawer-h"><strong>Contenido</strong><button class="tool" type="button" id="close-toc">Cerrar</button></div>
-    <ol class="contents"><li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t"><span class="tt">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+    <ol class="contents"><li class=""><a href="#sec-1-0"><span class="n">Introducción</span><span class="t"><span class="tt">El taller antes de la obra</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-1"><span class="n">1.1</span><span class="t"><span class="tt">El stack tecnológico y los proveedores del libro</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
 <li class=""><a href="#sec-1-2"><span class="n">1.2</span><span class="t"><span class="tt">Instalación guiada: dos rutas hacia el mismo taller</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
 <li class=""><a href="#sec-1-3"><span class="n">1.3</span><span class="t"><span class="tt">Autenticación: tu propia clave y las reglas para cuidarla</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
-<li class="pend"><a href="#sec-1-4"><span class="n">1.4</span><span class="t"><span class="tt">Qué son las skills y por qué hacen experto al agente de programación</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-5"><span class="n">1.5</span><span class="t"><span class="tt">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
-<li class="pend"><a href="#sec-1-6"><span class="n">1.6</span><span class="t"><span class="tt">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span></span><span class="s wip">En construcción</span></a></li>
+<li class=""><a href="#sec-1-4"><span class="n">1.4</span><span class="t"><span class="tt">Las skills: cómo el agente de programación aprende a construir agentes</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-5"><span class="n">1.5</span><span class="t"><span class="tt">Primera victoria: conversar con un agente en tu navegador</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-6"><span class="n">1.6</span><span class="t"><span class="tt">Voz Silver: aprender una herramienta nueva después de los 50</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
+<li class=""><a href="#sec-1-7"><span class="n">1.7</span><span class="t"><span class="tt">Síntesis del módulo y autoevaluación</span><span class="lead-dots"></span></span><span class="s ok">Disponible</span></a></li>
 </ol>
     <p><a class="tool" href="#contenido" id="all-toc">Ver el libro completo</a></p>
   </div>
@@ -989,7 +1583,7 @@ Al terminar, explícame en tres frases qué hiciste y cómo puedo comprobarlo.</
   document.getElementById('close-toc').onclick=function(){drawer.close()};
   drawer.addEventListener('click',function(e){if(e.target===drawer||e.target.closest('a'))drawer.close()});
 
-  var side=document.getElementById('side'), links=[].slice.call(side.querySelectorAll('a')), first=document.getElementById('sec-1-1'), bar=document.getElementById('progress'), main=document.querySelector('main');
+  var side=document.getElementById('side'), links=[].slice.call(side.querySelectorAll('a')), first=document.querySelector('main .sheet'), bar=document.getElementById('progress'), main=document.querySelector('main');
   function onScroll(){
     var y=window.scrollY, top=main.offsetTop, h=main.offsetHeight-window.innerHeight;
     bar.style.width=Math.max(0,Math.min(100,(y-top)/h*100))+'%';
