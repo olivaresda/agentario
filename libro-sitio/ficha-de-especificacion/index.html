@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ficha de especificación de un agente de IA: plantilla gratis</title>
+<meta name="description" content="Plantilla gratis para especificar un agente de IA sin programar: las 7 preguntas que debes responder, un ejemplo completo y cómo probar tu ficha hoy mismo.">
+<meta name="author" content="Daniel Olivares Martínez">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://laexperienciaeselcodigo.com/ficha-de-especificacion/">
+<meta name="theme-color" content="#E9EEF2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101B2C" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="La experiencia es el código">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Plantilla: la ficha de especificación de un agente de IA">
+<meta property="og:description" content="Siete preguntas sobre tu oficio. Respóndelas y tu agente de IA estará a medio camino. Con ejemplo completo.">
+<meta property="og:url" content="https://laexperienciaeselcodigo.com/ficha-de-especificacion/">
+<meta property="og:image" content="https://laexperienciaeselcodigo.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-11-15">
+<meta property="article:author" content="Daniel Olivares Martínez">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plantilla: la ficha de especificación de un agente de IA">
+<meta name="twitter:description" content="Siete preguntas sobre tu oficio. Respóndelas y tu agente de IA estará a medio camino.">
+<meta name="twitter:image" content="https://laexperienciaeselcodigo.com/og.png">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=Playfair+Display:ital,wght@0,700;1,600&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://laexperienciaeselcodigo.com/ficha-de-especificacion/#guia",
+      "headline": "Ficha de especificación de un agente de IA: plantilla y ejemplo",
+      "description": "Plantilla gratis para especificar un agente de inteligencia artificial sin programar, con ejemplo completo.",
+      "inLanguage": "es",
+      "datePublished": "2026-11-15",
+      "dateModified": "2026-11-15",
+      "author": { "@type": "Person", "@id": "https://laexperienciaeselcodigo.com/#autor", "name": "Daniel Olivares Martínez", "url": "https://www.linkedin.com/in/dolivares/" },
+      "publisher": { "@type": "Organization", "name": "La experiencia es el código", "url": "https://laexperienciaeselcodigo.com/" },
+      "image": "https://laexperienciaeselcodigo.com/og.png",
+      "mainEntityOfPage": "https://laexperienciaeselcodigo.com/ficha-de-especificacion/",
+      "about": ["Agentes de inteligencia artificial", "Especificación de agentes de IA", "Plantilla"],
+      "isPartOf": { "@id": "https://laexperienciaeselcodigo.com/#sitio" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "La experiencia es el código", "item": "https://laexperienciaeselcodigo.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Ficha de especificación", "item": "https://laexperienciaeselcodigo.com/ficha-de-especificacion/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Qué es una ficha de especificación de un agente de IA?", "acceptedAnswer": { "@type": "Answer", "text": "Es un documento corto, escrito con tus palabras, que dice qué tarea hará el agente, qué reglas debe respetar, qué nunca debe hacer y cómo se reconoce un buen resultado. Con ella, un agente de programación puede construir el agente por ti." } },
+        { "@type": "Question", "name": "¿Cuánto debe medir la ficha?", "acceptedAnswer": { "@type": "Answer", "text": "Una página basta para empezar. Lo importante no es el largo sino la precisión: cada regla debe poder comprobarse con un caso real." } },
+        { "@type": "Question", "name": "¿Necesito saber programar para escribirla?", "acceptedAnswer": { "@type": "Answer", "text": "No. La ficha no lleva ninguna palabra técnica. Requiere criterio de oficio: saber cómo se hace bien la tarea y qué errores no se pueden cometer." } },
+        { "@type": "Question", "name": "¿Qué hago con la ficha una vez escrita?", "acceptedAnswer": { "@type": "Answer", "text": "Primero pruébala pegándola en un asistente de IA con un caso real y corrige la ficha cada vez que se equivoque. Después se la entregas a un agente de programación para que construya el agente." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root { --paper:#E9EEF2; --card:#FBFCFD; --ink:#14233A; --muted:#4E5E72; --line:#C3CDD7; --pencil:#C9962B; --pencil-soft:#F2E4C2; --on-pencil:#14233A; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --paper:#101B2C; --card:#172538; --ink:#E6ECF2; --muted:#A3B1C2; --line:#2C3D55; --pencil:#E0B04A; --pencil-soft:#3A3220; --on-pencil:#101B2C; color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Literata", Georgia, "Times New Roman", serif; font-size: 1.1875rem; line-height: 1.7; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  a { color: inherit; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--pencil); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+  .sans { font-family: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 1rem; top: 1rem; background: var(--card); padding: .5rem 1rem; z-index: 10; }
+  header.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: calc(1.25rem + env(safe-area-inset-top, 0px)) 0 1.25rem; font-size: 1rem; }
+  header.top .marca { text-decoration: none; font-weight: 600; }
+  header.top nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+  header.top nav a { text-decoration: none; }
+  header.top nav a:hover { text-decoration: underline; }
+  header.top nav a.nav-cta { background: var(--ink); color: var(--paper); padding: .45rem .9rem; border-radius: 3px; font-weight: 600; }
+  .btn { display: inline-block; padding: .8rem 1.25rem; font: 600 1rem/1.2 "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; text-decoration: none; border-radius: 3px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+  .btn.primary { background: var(--pencil); border-color: var(--pencil); color: var(--on-pencil); }
+  .btn:hover { filter: brightness(1.06); }
+  .migas { font-size: .95rem; color: var(--muted); margin: 1.5rem 0 1rem; }
+  .migas a { color: var(--muted); }
+  h1, article h2 { font-family: "Playfair Display", Georgia, "Times New Roman", serif; }
+  h1 { font-size: clamp(2.2rem, 5.2vw, 3.9rem); line-height: 1.06; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 1.25rem; max-width: 20ch; }
+  .respuesta { font-size: clamp(1.2rem, 2.2vw, 1.4rem); line-height: 1.55; max-width: 40rem; margin: 0 0 1rem; }
+  .autor { font-size: 1rem; color: var(--muted); margin: 0 0 3rem; }
+  .cuerpo { display: grid; grid-template-columns: 14rem minmax(0, 42rem); gap: 4rem; align-items: start; padding-bottom: 4rem; }
+  .toc { position: sticky; top: 1.5rem; font-size: 1rem; border-top: 2px solid var(--pencil); padding-top: .75rem; }
+  .toc p { margin: 0 0 .5rem; font-weight: 600; }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc li { padding: .3rem 0; line-height: 1.35; }
+  .toc a { text-decoration: none; color: var(--muted); }
+  .toc a:hover { color: var(--ink); text-decoration: underline; }
+  article h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.2; margin: 3.5rem 0 1rem; font-weight: 700; letter-spacing: -0.01em; }
+  article h2:first-child { margin-top: 0; }
+  article h3 { font-size: 1.3rem; line-height: 1.3; margin: 0 0 .4rem; }
+  article p { margin: 0 0 1.1rem; }
+  article ul { margin: 0 0 1.25rem; padding-left: 1.2rem; }
+  article li { margin-bottom: .45rem; }
+  ol.ruta { list-style: none; margin: 1.5rem 0 0; padding: 0; counter-reset: paso; }
+  ol.ruta > li { counter-increment: paso; display: grid; grid-template-columns: 3.25rem 1fr; gap: 0 1rem; padding: 1.4rem 0; border-bottom: 1px dotted var(--line); }
+  ol.ruta > li:first-child { padding-top: .25rem; }
+  ol.ruta > li::before { content: counter(paso); font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--pencil); }
+  ol.ruta p { margin: 0 0 .6rem; }
+  ol.ruta p:last-child { margin-bottom: 0; }
+  ol.ruta .dato { font-size: 1rem; color: var(--muted); }
+  .ficha { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1.6rem 1.75rem 1.4rem; margin: 1.75rem 0 1.5rem; transform: rotate(-.8deg); box-shadow: 10px 12px 0 -2px color-mix(in srgb, var(--pencil) 35%, transparent); }
+  .ficha .f-titulo { font-size: 1.05rem; font-weight: 600; margin: 0 0 1rem; padding-bottom: .6rem; border-bottom: 2px solid var(--pencil); }
+  .ficha dl { margin: 0; }
+  .ficha dt { font-size: .95rem; color: var(--muted); font-weight: 500; }
+  .ficha dd { margin: 0 0 .9rem; padding-bottom: .9rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; line-height: 1.45; }
+  .ficha dd:last-of-type { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+  pre.plantilla { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1.25rem 1.4rem; white-space: pre-wrap; font: 1rem/1.6 "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif; margin: 1.25rem 0 1rem; }
+  .copiar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+  .copiar .msg { font-size: .95rem; color: var(--muted); margin: 0; }
+  .errores { margin: 1rem 0 0; padding: 0; list-style: none; }
+  .errores li { padding: .9rem 0; border-bottom: 1px dotted var(--line); margin: 0; }
+  .errores strong { display: block; }
+  .errores span { color: var(--muted); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { cursor: pointer; list-style: none; padding: 1.05rem 2rem 1.05rem 0; font-size: 1.15rem; font-weight: 500; position: relative; line-height: 1.4; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: .25rem; top: .9rem; font-size: 1.5rem; line-height: 1; color: var(--muted); }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { color: var(--muted); }
+  .recibir { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--pencil); border-radius: 4px; padding: 1.4rem 1.5rem; margin: 2rem 0 0; }
+  .recibir h3 { margin-bottom: .5rem; }
+  .recibir .fila { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .75rem; }
+  .recibir label { position: absolute; left: -9999px; }
+  .recibir input[type=email] { flex: 1 1 14rem; padding: .75rem .9rem; font: 1rem "IBM Plex Sans Condensed", Arial, sans-serif; border: 1px solid var(--line); border-radius: 3px; background: var(--paper); color: var(--ink); }
+  .recibir .msg, .recibir .nota { font-size: .95rem; color: var(--muted); margin: .6rem 0 0; }
+  .honey { position: absolute; left: -9999px; }
+  .sigue { background: var(--card); border-left: 6px solid var(--pencil); padding: 1.5rem 1.6rem; margin: 3.5rem 0 0; border-radius: 0 4px 4px 0; }
+  .sigue h2 { margin-top: 0; }
+  .sigue .acciones { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+  footer { padding: 3rem 0 calc(4rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); font-size: 1rem; color: var(--muted); }
+  footer p { margin: 0 0 .4rem; }
+  footer a { color: var(--ink); }
+  @media (max-width: 900px) { .cuerpo { grid-template-columns: minmax(0, 1fr); gap: 2rem; } .toc { position: static; } .ficha { transform: none; } }
+  @media (max-width: 600px) { header.top { flex-direction: column; align-items: flex-start; } header.top nav { gap: .9rem 1.1rem; } ol.ruta > li { grid-template-columns: 2.4rem 1fr; } ol.ruta > li::before { font-size: 2.1rem; } }
+</style>
+<script src="/pixeles.js" defer></script>
+</head>
+<body>
+  <a class="skip sans" href="#contenido">Saltar al contenido</a>
+  <div class="wrap">
+    <header class="top sans">
+      <a class="marca" href="/">La experiencia es el código</a>
+      <nav aria-label="Secciones">
+        <a href="/#como-funciona">El libro</a>
+        <a href="/aprender-a-crear-agentes-de-ia/">Guía</a>
+        <a href="https://agentario.laexperienciaeselcodigo.com/">Agentario</a>
+        <a href="/capitulo-1/">Capítulo 1</a>
+        <a class="nav-cta" href="/#preventa">Precomprar</a>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <p class="migas sans"><a href="/">Inicio</a> / Ficha de especificación</p>
+      <h1>La ficha de especificación de un agente de IA</h1>
+      <p class="respuesta">Una ficha de especificación es una página, escrita con tus palabras, que dice qué hará un agente de IA, qué nunca debe hacer y cómo se reconoce un buen resultado. Es el 90&nbsp;% del agente. Aquí tienes la plantilla, un ejemplo completo y cómo probarla hoy.</p>
+      <p class="autor sans">Por <a href="https://www.linkedin.com/in/dolivares/" rel="author">Daniel Olivares Martínez</a>. Actualizada el 15 de noviembre de 2026</p>
+
+      <div class="cuerpo">
+        <nav class="toc sans" aria-label="En esta página">
+          <p>En esta página</p>
+          <ol>
+            <li><a href="#por-que">Por qué empezar por la ficha</a></li>
+            <li><a href="#preguntas-ficha">Las siete preguntas</a></li>
+            <li><a href="#ejemplo">Un ejemplo completo</a></li>
+            <li><a href="#plantilla">La plantilla para copiar</a></li>
+            <li><a href="#probar">Cómo probar tu ficha</a></li>
+            <li><a href="#errores">Errores comunes</a></li>
+            <li><a href="#preguntas">Preguntas frecuentes</a></li>
+          </ol>
+        </nav>
+
+        <article>
+          <h2 id="por-que">Por qué empezar por la ficha</h2>
+          <p>Hoy un agente de programación puede escribir el código de un agente de IA en una tarde. Lo que no puede hacer es adivinar cómo se hace bien tu trabajo. Eso solo lo sabe quien lleva años haciéndolo.</p>
+          <p>La ficha es el lugar donde ese criterio queda por escrito. Si está bien hecha, construir el agente se vuelve un encargo. Si está mal hecha, ningún código la salva.</p>
+
+          <h2 id="preguntas-ficha">Las siete preguntas</h2>
+          <p>Las tres primeras son las importantes y no requieren saber nada de tecnología. Las otras cuatro ordenan el trabajo para quien construye el agente.</p>
+          <ol class="ruta">
+            <li><div><h3>¿Qué sé hacer mejor que nadie?</h3><p>La tarea concreta, contada como se la explicarías a alguien que entra a tu equipo. Una sola tarea, no un oficio entero.</p></div></li>
+            <li><div><h3>¿Qué nunca se debe hacer?</h3><p>Los errores que no se pueden cometer, aunque alguien apure. Son las reglas que más protegen al agente y a ti.</p></div></li>
+            <li><div><h3>¿Cómo sé que salió bien?</h3><p>Una señal que se pueda comprobar: un plazo, un número, una revisión. «Que quede bien» no sirve; «cero pagos duplicados en el mes», sí.</p></div></li>
+            <li><div><h3>¿Qué recibe el agente?</h3><p>Los documentos, correos o planillas con que trabaja. Dónde están y en qué formato llegan.</p></div></li>
+            <li><div><h3>¿Qué entrega?</h3><p>El resultado exacto: una lista, un correo listo para enviar, un informe. A quién se lo entrega.</p></div></li>
+            <li><div><h3>¿Qué herramientas necesita?</h3><p>Leer el correo, abrir una planilla, consultar un sistema. Solo las necesarias.</p><p class="dato sans">Menos herramientas significa menos cosas que pueden salir mal.</p></div></li>
+            <li><div><h3>¿Cuándo debe pedir ayuda a una persona?</h3><p>Los casos en que el agente se detiene y te pregunta, en vez de decidir solo. Por ejemplo, montos sobre cierto valor o clientes nuevos.</p></div></li>
+          </ol>
+
+          <h2 id="ejemplo">Un ejemplo completo</h2>
+          <p>Esta es la ficha de una profesional de cuentas por pagar. No tiene una sola palabra técnica.</p>
+          <div class="ficha" role="figure" aria-label="Ejemplo completo de ficha de especificación">
+            <p class="f-titulo sans">Ficha de especificación · Revisión de facturas</p>
+            <dl>
+              <dt class="sans">Lo que sé hacer mejor que nadie</dt>
+              <dd>Revisar una factura y saber, en un minuto, si algo no cuadra.</dd>
+              <dt class="sans">Lo que nunca se debe hacer</dt>
+              <dd>Aprobar un pago sin la orden de compra, aunque el cliente apure.</dd>
+              <dt class="sans">Cómo sé que salió bien</dt>
+              <dd>Cero pagos duplicados en el mes y respuesta al proveedor en menos de un día.</dd>
+              <dt class="sans">Qué recibe</dt>
+              <dd>Las facturas que llegan al correo de pagos y la planilla de órdenes de compra.</dd>
+              <dt class="sans">Qué entrega</dt>
+              <dd>Una lista de facturas listas para pagar y otra con las observaciones de cada una, para la jefatura de finanzas.</dd>
+              <dt class="sans">Qué herramientas necesita</dt>
+              <dd>Leer el correo de pagos y la planilla de órdenes de compra. Nada más.</dd>
+              <dt class="sans">Cuándo pide ayuda</dt>
+              <dd>Cuando el monto no coincide con la orden de compra, cuando el proveedor es nuevo o cuando la factura supera el monto que defina la jefatura.</dd>
+            </dl>
+          </div>
+          <p>Con esta ficha, un agente ya sabe qué revisar, qué evitar y cuándo detenerse. El resto lo escribe la máquina.</p>
+
+          <h2 id="plantilla">La plantilla para copiar</h2>
+          <p>Copia la plantilla, pégala en un documento y respóndela pensando en una tarea que hagas todas las semanas.</p>
+<pre class="plantilla" id="plantilla-txt">FICHA DE ESPECIFICACIÓN DE UN AGENTE DE IA
+
+Tarea: (nombre corto de la tarea)
+
+1. Lo que sé hacer mejor que nadie:
+2. Lo que nunca se debe hacer:
+3. Cómo sé que salió bien:
+4. Qué recibe el agente (y dónde está):
+5. Qué entrega (y a quién):
+6. Qué herramientas necesita:
+7. Cuándo debe pedir ayuda a una persona:
+
+Casos de prueba (tres ejemplos reales con su resultado correcto):
+- Caso fácil:
+- Caso difícil:
+- Caso raro:</pre>
+          <div class="copiar">
+            <button class="btn primary" type="button" id="copiar">Copiar la plantilla</button>
+            <a class="btn" href="/#prueba">Escribir mi ficha en línea</a>
+            <p class="msg sans" id="copiar-msg" role="status" aria-live="polite"></p>
+          </div>
+
+          <form class="recibir" id="form-ficha" novalidate>
+            <h3>Recibe la versión para imprimir y los próximos capítulos</h3>
+            <p>Te enviamos la plantilla en PDF y te avisamos cuando se libere el capítulo «Escribir la especificación».</p>
+            <div class="fila">
+              <label for="r-email">Correo</label>
+              <input id="r-email" name="email" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+              <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button class="btn primary" type="submit">Enviarme la plantilla</button>
+            </div>
+            <p class="msg sans" role="status" aria-live="polite"></p>
+            <p class="nota sans">Usamos tu correo solo para escribirte sobre el libro.</p>
+          </form>
+
+          <h2 id="probar">Cómo probar tu ficha hoy</h2>
+          <ol class="ruta">
+            <li><div><h3>Pégala en un asistente de IA</h3><p>Abre el asistente que uses, pega la ficha y pídele: «Actúa como este agente y resuelve este caso». Después pega uno de tus casos de prueba.</p></div></li>
+            <li><div><h3>Corrige la ficha, no la respuesta</h3><p>Cada vez que se equivoque, pregúntate qué regla faltaba y agrégala a la ficha. Así aparecen las reglas que dabas por obvias.</p></div></li>
+            <li><div><h3>Repite con los tres casos</h3><p>Cuando resuelva bien el fácil, el difícil y el raro, tu ficha está lista para que un agente de programación construya el agente.</p><p class="dato sans">La <a href="/aprender-a-crear-agentes-de-ia/">guía en seis pasos</a> explica lo que viene después.</p></div></li>
+          </ol>
+
+          <h2 id="errores">Errores comunes</h2>
+          <ul class="errores">
+            <li><strong>Describir el oficio entero.</strong><span>Una ficha, una tarea. «Llevar la contabilidad» es demasiado; «revisar las facturas de proveedores antes de pagar» es justo.</span></li>
+            <li><strong>Escribir reglas que no se pueden comprobar.</strong><span>«Ser cuidadoso» no es una regla. «Comparar el monto con la orden de compra» sí.</span></li>
+            <li><strong>Olvidar cuándo detenerse.</strong><span>Un buen agente sabe cuándo no decidir. Si no lo escribes, decidirá siempre.</span></li>
+            <li><strong>Dar más herramientas de las necesarias.</strong><span>Si solo necesita leer el correo, no le des permiso para enviarlo.</span></li>
+          </ul>
+
+          <h2 id="preguntas">Preguntas frecuentes</h2>
+          <div class="faq">
+            <details><summary>¿Qué es una ficha de especificación de un agente de IA?</summary><p>Es un documento corto, escrito con tus palabras, que dice qué tarea hará el agente, qué reglas debe respetar, qué nunca debe hacer y cómo se reconoce un buen resultado. Con ella, un agente de programación puede construir el agente por ti.</p></details>
+            <details><summary>¿Cuánto debe medir la ficha?</summary><p>Una página basta para empezar. Lo importante no es el largo sino la precisión: cada regla debe poder comprobarse con un caso real.</p></details>
+            <details><summary>¿Necesito saber programar para escribirla?</summary><p>No. La ficha no lleva ninguna palabra técnica. Requiere criterio de oficio: saber cómo se hace bien la tarea y qué errores no se pueden cometer.</p></details>
+            <details><summary>¿Qué hago con la ficha una vez escrita?</summary><p>Primero pruébala pegándola en un asistente de IA con un caso real y corrige la ficha cada vez que se equivoque. Después se la entregas a un agente de programación para que construya el agente.</p></details>
+          </div>
+
+          <section class="sigue" aria-labelledby="sigue-t">
+            <h2 id="sigue-t">La ficha es el capítulo 2 del libro</h2>
+            <p><em>La experiencia es el código</em> dedica un capítulo completo a escribir la especificación, con fichas reales de profesionales con trayectoria. Se escribe en vivo: quienes precompran reciben cada capítulo apenas se libera.</p>
+            <div class="acciones">
+              <a class="btn primary" href="/#preventa">Ver la preventa del libro</a>
+              <a class="btn" href="https://agentario.laexperienciaeselcodigo.com/">Ver 130 casos en el Agentario</a>
+              <a class="btn" href="/#comunidad">Unirme a la comunidad</a>
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <p>Una guía de <a href="https://www.linkedin.com/in/dolivares/" rel="author">Daniel Olivares Martínez</a>, autor de <a href="/"><em>La experiencia es el código</em></a>, escrita desde Santiago de Chile.</p>
+      <p>Empieza por la <a href="/aprender-a-crear-agentes-de-ia/">guía para crear agentes de IA sin programar</a> o lee gratis el <a href="/capitulo-1/">capítulo 1</a>.</p>
+      <p>Explora los casos de uso en el <a href="https://agentario.laexperienciaeselcodigo.com/">Agentario</a>.</p>
+      <p>© 2026 La experiencia es el código</p>
+    </div>
+  </footer>
+
+<script>
+(function () {
+  var CORREO = "dolivaresm@fen.uchile.cl";
+  var b = document.getElementById("copiar"), m = document.getElementById("copiar-msg");
+  b.addEventListener("click", function () {
+    var t = document.getElementById("plantilla-txt").textContent;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject())
+      .then(function () { m.textContent = "Plantilla copiada. Pégala en un documento."; })
+      .catch(function () { m.textContent = "Selecciona el texto de la plantilla y cópialo."; });
+  });
+  var f = document.getElementById("form-ficha"), fm = f.querySelector(".msg");
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (f._honey.value) return;
+    var email = f.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { fm.textContent = "Revisa tu correo."; return; }
+    fm.textContent = "Enviando…";
+    fetch("https://formsubmit.co/ajax/" + encodeURIComponent(CORREO), {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ email: email, origen: "ficha-de-especificacion", _subject: "Pide plantilla de ficha (PDF)", _template: "table", _captcha: "false" })
+    }).then(function (r) { if (!r.ok) throw 0; fm.textContent = "Listo. Te enviaremos la plantilla a tu correo."; f.reset(); })
+      .catch(function () { fm.textContent = "No pudimos enviarlo. Intenta de nuevo en un momento."; });
+  });
+})();
+</script>
+</body>
+</html>
