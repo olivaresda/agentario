@@ -1,0 +1,123 @@
+{
+ "_nota": "Reels de texto para probar como reel de prueba en Instagram. Todo dato sale de laexperienciaeselcodigo.com, de social/angulos-libro.json o de social/instagram/banco-capitulo-1.md. Sin precios: cambian por etapas. Generar con: node herramientas/social/reels.mjs",
+ "reels": [
+  {"id":"saber-pedir","tag":"La experiencia es el código","pantallas":[
+   {"texto":"Te dijeron que para crear un agente de IA hay que programar.","grande":true,"barra":true},
+   {"texto":"No es así.","grande":true,"sub":"Hace falta otra cosa."},
+   {"texto":"Hace falta *saber pedir*.","sub":"Y eso es justo lo que domina un profesional con años de oficio."},
+   {"cierre":"Conoce el libro."}],
+   "caption":"Te dijeron que para crear un agente de IA hay que programar. No es así.\n\nHace falta saber pedir: qué hacer, qué nunca hacer y cómo saber si salió bien. Y eso es justo lo que domina un profesional con años de oficio.\n\nDe eso trata «La experiencia es el código», el libro que estoy escribiendo en vivo.\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"experiencia-90","oscuro":true,"tag":"La experiencia es el código","pantallas":[
+   {"texto":"Tu experiencia es el *90 %* del trabajo para construir un agente.","grande":true,"barra":true},
+   {"texto":"El otro 10 % lo hace la IA.","sub":"Escribe el código y ejecuta la tarea."},
+   {"titulo":"Tu 90 %:","lista":[["Lo que sé hacer mejor que nadie","Revisar una factura y saber, en un minuto, si algo no cuadra."],["Lo que nunca se debe hacer","Aprobar un pago sin la orden de compra."]]},
+   {"cierre":"Conoce el libro."}],
+   "caption":"Tu experiencia es el 90 % del trabajo para construir un agente de IA. El otro 10 % lo hace la máquina.\n\nCuando sabes revisar una factura y ver en un minuto si algo no cuadra, ya tienes lo más difícil. El código lo escribe la IA a partir de tus instrucciones.\n\nEso es lo que enseño en «La experiencia es el código».\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"escrito-en-vivo","tag":"Un libro que se escribe en vivo","pantallas":[
+   {"texto":"Estoy escribiendo un libro *en vivo*.","grande":true,"barra":true},
+   {"titulo":"Así funciona:","lista":[["Entrevistamos","Profesionales que dominan su oficio."],["Escribimos","Su historia y la especificación de su agente."],["Publicamos","Capítulo a capítulo, antes del impreso."]]},
+   {"texto":"Libro impreso: 5 de abril de 2027.","sub":"Los capítulos digitales se liberan desde ahora."},
+   {"cierre":"Síguelo desde el inicio."}],
+   "caption":"Estoy escribiendo un libro en vivo.\n\nEntrevisto a profesionales que dominan su oficio, escribo su historia y la especificación del agente de IA que los ayudaría, y publico cada capítulo apenas queda listo. El libro impreso sale el 5 de abril de 2027.\n\nSe llama «La experiencia es el código».\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"para-quien","oscuro":true,"pantallas":[
+   {"texto":"¿Tienes más de 50 años y conoces tu oficio a fondo?","grande":true,"barra":true},
+   {"texto":"Este libro es para ti.","sub":"Para aprovechar la IA sin convertirte en programador."},
+   {"texto":"Tu trayectoria no es un obstáculo.","sub":"Es la *materia prima* de un buen agente."},
+   {"cierre":"Conoce el libro."}],
+   "caption":"¿Tienes más de 50 años y conoces tu oficio a fondo? Este libro es para ti.\n\n«La experiencia es el código» es para profesionales con trayectoria que quieren aprovechar la inteligencia artificial sin convertirse en programadores. Tu experiencia no es un obstáculo: es lo que hace funcionar a un agente.\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"que-es-ia-agentica","tag":"Pregunta frecuente","pantallas":[
+   {"texto":"¿Qué es la IA agéntica?","grande":true,"barra":true},
+   {"texto":"IA que no solo responde preguntas.","sub":"Ejecuta tareas de varios pasos, usa herramientas y entrega un resultado."},
+   {"titulo":"Por ejemplo:","lista":[["Finanzas","Conciliar pagos."],["Reuniones","Preparar una minuta."],["Atención","Responder clientes."]]},
+   {"cierre":"Aprende a crearla."}],
+   "caption":"¿Qué es la IA agéntica?\n\nEs inteligencia artificial que no solo responde preguntas: ejecuta tareas de varios pasos, usa herramientas y entrega un resultado. Conciliar pagos, preparar una minuta o responder clientes.\n\nEn «La experiencia es el código» explico cómo crearla sin programar.\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"ficha-tres-preguntas","oscuro":true,"tag":"Ficha de especificación","pantallas":[
+   {"texto":"Tres respuestas sobre tu oficio.","grande":true,"barra":true},
+   {"titulo":"Respóndelas con tus palabras:","lista":[["1","Lo que sé hacer mejor que nadie."],["2","Lo que nunca se debe hacer."],["3","Cómo sé que salió bien."]]},
+   {"texto":"Con esto, un agente ya sabe qué hacer.","sub":"El código lo escribe la IA."},
+   {"cierre":"Escribe tu ficha."}],
+   "caption":"Tres respuestas sobre tu oficio, con tus palabras. Eso es el 90 % de un agente de IA.\n\nLo que sabes hacer mejor que nadie, lo que nunca se debe hacer y cómo sabes que salió bien. Con esto, un agente ya sabe qué hacer.\n\nEn el sitio del libro puedes escribir tu ficha gratis, con una tarea que hagas todas las semanas.\n\nEl link está en mi bio."},
+  {"id":"lo-que-nunca","tag":"Ficha de especificación","pantallas":[
+   {"texto":"La pregunta que más le sirve a un agente:","barra":true},
+   {"texto":"¿Qué es lo que *nunca* se debe hacer?","grande":true},
+   {"texto":"«Aprobar un pago sin la orden de compra, aunque el cliente apure.»","sub":"Eso solo lo sabe quien conoce el oficio."},
+   {"cierre":"Conoce el libro."}],
+   "caption":"La pregunta que más le sirve a un agente de IA: ¿qué es lo que nunca se debe hacer?\n\n«Aprobar un pago sin la orden de compra, aunque el cliente apure.» Esa regla no está en ningún manual de programación. La sabe quien lleva años en el oficio.\n\nEso es lo que enseño a escribir en «La experiencia es el código».\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"como-se-que-salio-bien","oscuro":true,"tag":"Ficha de especificación","pantallas":[
+   {"texto":"¿Cómo sabes que tu agente hizo bien su trabajo?","grande":true,"barra":true},
+   {"texto":"Con un número que ya conoces.","sub":"«Cero pagos duplicados en el mes.»"},
+   {"texto":"«Respuesta al proveedor en menos de un día.»","sub":"Si no lo puedes medir, no lo puedes delegar."},
+   {"cierre":"Conoce el libro."}],
+   "caption":"¿Cómo sabes que tu agente de IA hizo bien su trabajo?\n\nCon un número que ya conoces de tu oficio: cero pagos duplicados en el mes, respuesta al proveedor en menos de un día. Esa es la tercera pregunta de la ficha de especificación del libro.\n\nTodo sobre «La experiencia es el código» está en el link de mi bio."},
+  {"id":"cita-landerretche","tag":"Lo que dicen","pantallas":[
+   {"cita":"Mi sensación es que los grandes ganadores de la inteligencia artificial somos nosotros, lo que ellos llaman los boomers.","quien":"Óscar Landerretche"},
+   {"texto":"Tiene sentido.","sub":"La IA ejecuta. La *experiencia* decide qué ejecutar."},
+   {"cierre":"Conoce el libro."}],
+   "caption":"«Mi sensación es que los grandes ganadores de la inteligencia artificial somos nosotros, lo que ellos llaman los boomers», dice Óscar Landerretche.\n\nTiene sentido: la IA ejecuta, pero la experiencia decide qué ejecutar. De eso trata «La experiencia es el código».\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"ruta-11-capitulos","oscuro":true,"tag":"Capítulos del libro","pantallas":[
+   {"texto":"11 capítulos para crear tu primer agente de IA.","grande":true,"barra":true},
+   {"titulo":"La ruta:","lista":[["Empiezas","Preparar el entorno y escribir la especificación."],["Construyes","El agente con un solo encargo, y lo pruebas."],["Terminas","Desplegarlo, operarlo y armar un equipo de agentes."]]},
+   {"texto":"El índice crece con cada entrevista.","sub":"El capítulo 1 ya se puede leer gratis."},
+   {"cierre":"Lee el capítulo 1."}],
+   "caption":"11 capítulos para crear tu primer agente de IA sin programar.\n\nPreparar el entorno, escribir la especificación, construir el agente con un solo encargo, probarlo, evaluarlo, desplegarlo y operarlo. Al final, de un agente a un equipo de agentes.\n\nEl capítulo 1 ya se puede leer gratis. El link está en mi bio."},
+  {"id":"primera-silla","tag":"Capítulo 1 · Preparar el entorno","pantallas":[
+   {"texto":"Un carpintero no le enseña la primera silla al aprendiz.","grande":true,"barra":true},
+   {"texto":"Le muestra el taller.","grande":true},
+   {"texto":"Con un agente de IA pasa igual.","sub":"Antes de construir, conoce tus herramientas."},
+   {"cierre":"Lee el capítulo 1."}],
+   "caption":"Un carpintero no le enseña la primera silla al aprendiz. Le muestra el taller.\n\nCon un agente de IA pasa igual: antes de construir, conoces tus herramientas. Quién las fabrica, con qué licencia las ofrece y en qué condiciones las usas.\n\nEs el capítulo 1 de «La experiencia es el código», y se puede leer gratis. El link está en mi bio."},
+  {"id":"dos-rutas","oscuro":true,"tag":"Capítulo 1 · Preparar el entorno","pantallas":[
+   {"texto":"¿Instalas tú el programa o dejas que lo instale el agente?","grande":true,"barra":true},
+   {"titulo":"Dos rutas, mismo resultado:","lista":[["Ruta A","El agente instala y tú apruebas. Riesgo: aprobar sin leer."],["Ruta B","Tú ejecutas cada paso. Riesgo: saltarte una verificación."]]},
+   {"texto":"Lee la ruta B aunque sigas la A.","sub":"Saber cómo se hace te permite supervisar a quien lo hace por ti."},
+   {"cierre":"Lee el capítulo 1."}],
+   "caption":"¿Instalas tú el programa o dejas que lo instale el agente?\n\nEl capítulo 1 ofrece dos rutas que llegan al mismo resultado. En la A, el agente instala y tú apruebas cada acción. En la B, tú ejecutas cada paso.\n\nMi recomendación: lee la ruta B aunque sigas la A. Saber cómo se hace algo es lo que te permite supervisar bien a quien lo hace por ti.\n\nEl capítulo está en el link de mi bio."},
+  {"id":"tres-llaves","tag":"Capítulo 1 · Preparar el entorno","pantallas":[
+   {"texto":"Tres llaves, no una.","grande":true,"barra":true},
+   {"titulo":"Cada nivel tiene la suya:","lista":[["Nivel 1","El agente de programación entra con tu cuenta."],["Nivel 2","El agente que construyes necesita su propia clave."],["Nivel 3","El despliegue usa credenciales de la nube."]]},
+   {"texto":"Confundirlas es el error más común en esta etapa.","seg":3.4},
+   {"cierre":"Lee el capítulo 1."}],
+   "caption":"Tres llaves, no una.\n\nEl agente de programación entra con tu cuenta. El agente que tú construyes necesita su propia clave. El despliegue usa credenciales de la nube. Confundir los niveles es la causa más común de errores en esta etapa.\n\nEstá en el capítulo 1 de «La experiencia es el código». El link está en mi bio."},
+  {"id":"llaves-no-se-prestan","oscuro":true,"tag":"Capítulo 1 · Preparar el entorno","pantallas":[
+   {"texto":"Las llaves no se prestan.","grande":true,"barra":true},
+   {"texto":"Tampoco la clave de tu agente.","sub":"Todo lo que se haga con ella queda a tu nombre."},
+   {"titulo":"Por eso cada lector usa la suya:","lista":[["Tu presupuesto","Solo pagas lo que tú consumes."],["Tus datos","Nadie más ve lo que procesa tu agente."]]},
+   {"cierre":"Lee el capítulo 1."}],
+   "caption":"Las llaves no se prestan. Tampoco la clave de tu agente.\n\nEn una empresa, quien tiene la llave de la bodega entra a nombre de quien se la entregó. Una clave de API funciona igual: todo lo que se haga con ella queda a tu nombre.\n\nPor eso en el libro cada lector usa su propia clave. Así cuidas tu presupuesto y tus datos.\n\nEl capítulo 1 está en el link de mi bio."},
+  {"id":"agentario-gratis","tag":"Agentario","pantallas":[
+   {"texto":"Más de 170 casos de agentes de IA, gratis y en español.","grande":true,"barra":true},
+   {"titulo":"El Agentario:","lista":[["Qué es","Casos reales de lo que ya puedes delegar."],["Cuánto cuesta","Nada. Copias el prompt y lo pruebas."],["Para quién","Profesionales que no programan."]]},
+   {"texto":"Es el adelanto abierto del libro.","sub":"La experiencia es el código."},
+   {"cierre":"Pruébalo hoy."}],
+   "caption":"Más de 170 casos de agentes de IA, gratis y en español.\n\nEl Agentario es el adelanto abierto de mi libro: casos reales de lo que ya puedes delegar a un agente, cada uno con el prompt listo para copiar. No hace falta programar ni comprar software caro.\n\nEl link está en mi bio."},
+  {"id":"garantia","oscuro":true,"tag":"Preventa","pantallas":[
+   {"texto":"Si el libro no llega en la fecha, te devuelvo el *100 %*.","grande":true,"barra":true},
+   {"texto":"Fecha comprometida: 5 de abril de 2027.","sub":"Libro impreso."},
+   {"texto":"Mientras tanto, recibes cada capítulo digital apenas se libera.","seg":3.6},
+   {"cierre":"Conoce la preventa."}],
+   "caption":"Si el libro impreso no se entrega en la fecha comprometida, devolvemos el 100 % de lo pagado.\n\nLa fecha es el 5 de abril de 2027. Mientras tanto, quienes precompran reciben cada capítulo digital apenas se libera y entran a los talleres en línea.\n\nTodo sobre la preventa de «La experiencia es el código» está en el link de mi bio."},
+  {"id":"tu-oficio-capitulo","tag":"Comunidad del libro","pantallas":[
+   {"texto":"¿Tu oficio merece un capítulo?","grande":true,"barra":true},
+   {"texto":"Busco profesionales con trayectoria para entrevistar.","sub":"Finanzas, recursos humanos, salud, logística, educación, atención al cliente."},
+   {"texto":"Me cuentas con detalle una tarea que dominas.","sub":"Tu historia puede convertirse en un capítulo."},
+   {"cierre":"Súmate."}],
+   "caption":"¿Tu oficio merece un capítulo?\n\nCada capítulo de «La experiencia es el código» nace de una entrevista con alguien que domina su oficio: finanzas, recursos humanos, salud, logística, educación, atención al cliente. Me cuentas con detalle una tarea que dominas y tu historia puede convertirse en un capítulo.\n\nNo hace falta precomprar para sumarse. El link está en mi bio."},
+  {"id":"lector-beta","oscuro":true,"tag":"Comunidad del libro","pantallas":[
+   {"texto":"Busco lectores que me digan qué *no se entiende*.","grande":true,"barra":true},
+   {"texto":"Lector beta:","sub":"Recibes los borradores antes que nadie y comentas con ojo crítico."},
+   {"texto":"No hace falta precomprar para sumarse.","seg":3.2},
+   {"cierre":"Súmate."}],
+   "caption":"Busco lectores que me digan qué no se entiende.\n\nComo lector beta de «La experiencia es el código» recibes los borradores antes que nadie y me ayudas a que el libro sirva de verdad a profesionales que no programan.\n\nNo hace falta precomprar para sumarse. El link está en mi bio."},
+  {"id":"revisar-antes","tag":"La experiencia es el código","pantallas":[
+   {"texto":"Un agente no envía, no paga y no firma sin que tú lo revises.","grande":true,"barra":true},
+   {"titulo":"El reparto:","lista":[["Lo que pides tú","Qué hacer, qué nunca hacer y cómo saber si salió bien."],["Lo que hace la IA","Escribir el código y ejecutar la tarea."],["Lo que revisas tú","Todo antes de enviar, pagar o firmar."]]},
+   {"cierre":"Conoce el libro."}],
+   "caption":"Un agente de IA no envía, no paga y no firma sin que tú lo revises.\n\nTú pides qué hacer, qué nunca hacer y cómo saber si salió bien. La IA escribe el código y ejecuta la tarea. Y tú revisas todo antes de que salga.\n\nAsí se trabaja en «La experiencia es el código».\n\nTodo sobre el libro está en el link de mi bio."},
+  {"id":"quien-escribe","oscuro":true,"tag":"Quién escribe este libro","pantallas":[
+   {"texto":"Vengo de la cobranza y las finanzas operativas.","grande":true,"barra":true},
+   {"texto":"Hoy construyo agentes de voz que atienden y hacen llamadas para empresas.","seg":3.8},
+   {"texto":"Este es mi segundo libro sobre agentes.","sub":"Lo escribo en vivo, con mi comunidad, desde Santiago de Chile."},
+   {"cierre":"Conoce el libro."}],
+   "caption":"Vengo de la cobranza y las finanzas operativas, el ciclo Order to Cash. Hoy soy Director de IA en AidToGrow, donde construyo agentes de voz que atienden y hacen llamadas para empresas.\n\nMi primer libro sobre cómo construir agentes está en Amazon. Este es el segundo, «La experiencia es el código», y lo escribo en vivo con mi comunidad desde Santiago de Chile.\n\nTodo sobre el libro está en el link de mi bio."}
+ ]
+}
